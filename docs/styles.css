@@ -11,7 +11,7 @@ body {
     font-size: 11pt;
 
     color: black;
-    background-image: url(https://oasis.halfmoon.jp/pics/back.gif);
+    background-image: url(https://oasis3855.github.io/webpage/pics/back.gif);
 }
 
 p {
@@ -170,7 +170,7 @@ div#layout_header_menu {
 }
 #layout_header_menu li li {
     clear: both;
-    background-image: url(https://oasis.halfmoon.jp/pics/back.gif);
+    background-image: url(https://oasis3855.github.io/webpage/pics/back.gif);
     width:160px !important;
 }
 #layout_header_menu li:hover {
@@ -218,7 +218,7 @@ div#layout_header_menu {
 div#layout_header_menu_line {
     width: 100%;
     height: 7px;
-    background: url("https://oasis.halfmoon.jp/pics/bar_hs_bk.jpg") no-repeat;
+    background: url("https://oasis3855.github.io/webpage/pics/bar_hs_bk.jpg") no-repeat;
 }
 
 /* 画面上部のメニュー：リンク書式 */
@@ -374,7 +374,7 @@ H1.travelmenu {
     letter-spacing: 0;
     height:100px;
     padding-left: 110px;
-    background-image: url('https://oasis.halfmoon.jp/pics/ico_equestrian_statue.png');
+    background-image: url('https://oasis3855.github.io/webpage/pics/ico_equestrian_statue.png');
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: left top;
@@ -527,7 +527,7 @@ div.menu_large_brown {
 .menu_large_brown div.section_bar_gradation {
     width: 100%;
     height: 1px;
-    background: url("https://oasis.halfmoon.jp/pics/bar_hs_br1.png") no-repeat;
+    background: url("https://oasis3855.github.io/webpage/pics/bar_hs_br1.png") no-repeat;
     margin-bottom: 3px;  /* IE対策 */
 }
 
@@ -730,107 +730,107 @@ div.link_right {
 /********** アイコン付きリンク **********/
 
 a.link_external {
-    background: url(https://oasis.halfmoon.jp/pics/ico_link_external.png) center right no-repeat;
+    background: url(https://oasis3855.github.io/webpage/pics/ico_link_external.png) center right no-repeat;
     padding-right: 13px;
 }
 
 a.link_lock {
-    background: url(https://oasis.halfmoon.jp/pics/ico_link_lock.gif) center right no-repeat;
+    background: url(https://oasis3855.github.io/webpage/pics/ico_link_lock.gif) center right no-repeat;
     padding-right: 16px;
 }
 
 a.link_file {
-    background: url(https://oasis.halfmoon.jp/pics/ico_link_file.gif) center right no-repeat;
+    background: url(https://oasis3855.github.io/webpage/pics/ico_link_file.gif) center right no-repeat;
     padding-right: 16px;
 }
 
 a.link_document {
-    background: url(https://oasis.halfmoon.jp/pics/ico_link_document.png) center right no-repeat;
+    background: url(https://oasis3855.github.io/webpage/pics/ico_link_document.png) center right no-repeat;
     padding-right: 13px;
 }
 
 a.link_audio {
-    background: url(https://oasis.halfmoon.jp/pics/ico_link_audio.png) center right no-repeat;
+    background: url(https://oasis3855.github.io/webpage/pics/ico_link_audio.png) center right no-repeat;
     padding-right: 13px;
 }
 
 a.link_video {
-    background: url(https://oasis.halfmoon.jp/pics/ico_link_video.png) center right no-repeat;
+    background: url(https://oasis3855.github.io/webpage/pics/ico_link_video.png) center right no-repeat;
     padding-right: 13px;
 }
 
 a.link_download {
-    background: url(https://oasis.halfmoon.jp/pics/ico_link_download.gif) center right no-repeat;
+    background: url(https://oasis3855.github.io/webpage/pics/ico_link_download.gif) center right no-repeat;
     padding-right: 23px;
 }
 
 a.link_wikipedia {
-    background: url(https://oasis.halfmoon.jp/pics/ico_link_wikipedia_arrow.png) center right no-repeat;
+    background: url(https://oasis3855.github.io/webpage/pics/ico_link_wikipedia_arrow.png) center right no-repeat;
     padding-right: 18px;
 }
 
 a.link_orange {
-    background: url(https://oasis.halfmoon.jp/pics/ico_link_orangearrow.gif) center left no-repeat;
+    background: url(https://oasis3855.github.io/webpage/pics/ico_link_orangearrow.gif) center left no-repeat;
     padding-left: 14px;
 }
 
 a.link_blue {
-    background: url(https://oasis.halfmoon.jp/pics/ico_link_bluearrow.gif) center left no-repeat;
+    background: url(https://oasis3855.github.io/webpage/pics/ico_link_bluearrow.gif) center left no-repeat;
     padding-left: 14px;
 }
  
 a.link_red {
-    background: url(https://oasis.halfmoon.jp/pics/ico_link_redarrow.gif) center left no-repeat;
+    background: url(https://oasis3855.github.io/webpage/pics/ico_link_redarrow.gif) center left no-repeat;
     padding-left: 14px;
 }
 
 a.link_gray {
-    background: url(https://oasis.halfmoon.jp/pics/ico_link_grayarrow.gif) center left no-repeat;
+    background: url(https://oasis3855.github.io/webpage/pics/ico_link_grayarrow.gif) center left no-repeat;
     padding-left: 14px;
 }
 
 a.link_black {
-    background: url(https://oasis.halfmoon.jp/pics/ico_link_blackarrow.gif) center left no-repeat;
+    background: url(https://oasis3855.github.io/webpage/pics/ico_link_blackarrow.gif) center left no-repeat;
     padding-left: 14px;
 }
 
 a.link_orange_dot {
-    background: url(https://oasis.halfmoon.jp/pics/ico_link_orangedot.gif) center left no-repeat;
+    background: url(https://oasis3855.github.io/webpage/pics/ico_link_orangedot.gif) center left no-repeat;
     padding-left: 14px;
 }
 
 a.link_blue_dot {
-    background: url(https://oasis.halfmoon.jp/pics/ico_link_bluedot.gif) center left no-repeat;
+    background: url(https://oasis3855.github.io/webpage/pics/ico_link_bluedot.gif) center left no-repeat;
     padding-left: 14px;
 }
  
 a.link_red_dot {
-    background:  url(https://oasis.halfmoon.jp/pics/ico_link_reddot.gif) center left no-repeat;
+    background:  url(https://oasis3855.github.io/webpage/pics/ico_link_reddot.gif) center left no-repeat;
     padding-left:  14px;
 }
 
 a.link_gray_dot {
-    background:  url(https://oasis.halfmoon.jp/pics/ico_link_graydot.gif) center left no-repeat;
+    background:  url(https://oasis3855.github.io/webpage/pics/ico_link_graydot.gif) center left no-repeat;
     padding-left:  14px;
 }
 
 a.link_black_dot {
-    background:  url(https://oasis.halfmoon.jp/pics/ico_link_blackdot.gif) center left no-repeat;
+    background:  url(https://oasis3855.github.io/webpage/pics/ico_link_blackdot.gif) center left no-repeat;
     padding-left:  14px;
 }
 
 a.link_return {
-    background: url(https://oasis.halfmoon.jp/pics/ico_link_return.gif) center left no-repeat;
+    background: url(https://oasis3855.github.io/webpage/pics/ico_link_return.gif) center left no-repeat;
     padding-left: 28px;
 }
 
 a.link_right {
-    background: url(https://oasis.halfmoon.jp/pics/ico_link_right.gif) center right no-repeat;
+    background: url(https://oasis3855.github.io/webpage/pics/ico_link_right.gif) center right no-repeat;
     padding-right: 28px;
 }
 
 a.link_left {
-    background: url(https://oasis.halfmoon.jp/pics/ico_link_left.gif) center left no-repeat;
+    background: url(https://oasis3855.github.io/webpage/pics/ico_link_left.gif) center left no-repeat;
     padding-left: 28px;
 }
 
