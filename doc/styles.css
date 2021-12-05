@@ -1,0 +1,1198 @@
+/* CSS Level 3 */
+
+/********** ページ全体 **********/
+body {
+/*    position: relative;
+    width: 800px;
+    margin: 0 auto; */
+    margin: 0;
+    padding: 2px 2px;
+    font-family: Helvetica, sans-serif;
+    font-size: 11pt;
+
+    color: black;
+    background-image: url(https://oasis.halfmoon.jp/pics/back.gif);
+}
+
+p {
+    margin-left: 20px;
+}
+
+div#container {
+    position: relative;
+    width: 800px;
+    margin: 0 auto;
+/*    width: 100%;*/
+}
+
+
+/********** レスポンシブWebスタイルシート **********/
+
+/* 高解像度画面用スタイルシート */
+@media screen and (min-width: 640px){
+
+}
+
+/* 低解像度画面用スタイルシート */
+@media screen and (max-width: 639px){
+
+    body {
+        background-color: #faf2ed;
+        background-image: none !important;
+    }
+
+    div#container {
+        position: static !important;
+        width: auto !important;
+        margin: 0 !important;
+    }
+
+    div#main_content_left {
+        float: left;
+        width: 100% !important;
+    }
+
+    div#main_content_right {
+        float: right;
+        width: 100% !important;
+    }
+
+
+    #menu_2col_list ul > li > span.left, #menu_2col_list div.left {
+        width: 100% !important;
+    }
+    #menu_2col_list ul > li > span.right, #menu_2col_list div.right {
+        clear: both;
+        width: 100% !important;
+        float: left !important;
+        padding-left: 15px;
+    }
+
+    img {
+        max-width: 95% !important;
+        height: auto;
+    /*    width: auto;*/
+    }
+    div.photo_right, div.fig_right {
+        width: 95%;
+        float: none !important;
+        text-align: center;
+    }
+    div.photo_left, div.fig_left {
+        width: 95%;
+        margin: 8px !important;
+        float: none !important;
+        text-align: center;
+    }
+
+    div#layout_footer_left {
+        float: none !important;
+        width: 100% !important;
+    }
+    div#layout_footer_right {
+        float: none !important;
+        width: 100% !important;
+        text-align: left !important;
+    }
+    H1 {
+        font-size: 12pt !important;
+    }
+    H2 {
+        font-size: 12pt !important;
+    }
+
+    #layout_header_menu li {
+        width:60px !important;
+    }
+    #layout_header_menu a.new_sec, #layout_header_menu a.new {
+        font-size: 12px !important;
+    }
+    #layout_header_menu a {
+        font-size: 12px !important;
+    }
+
+    div.topic {
+        margin:0 5px 10px !important;
+    }
+
+    div.topictitle {
+        margin: 10px 5px 0 !important;
+    }
+    pre, div.code {
+        margin:0 5px 10px !important;
+        overflow-x: auto !important;
+        width: auto !important;
+    }
+
+    div.codetitle {
+        margin: 10px 5px 0 !important;
+        width: auto !important;
+    }
+
+}
+
+
+/********** レイアウト DIV **********/
+/* 画面上部のメニュー */
+div#layout_header_menu {
+    width: 100%;
+    height: 21px;
+    font-size: 12px;
+/*    background: url("http://oasis.halfmoon.jp/pics/header_banner.png") no-repeat;
+    padding-left:100px;*/
+}
+
+/* 画面上部メニュー新形式(ul, li）用（旧形式と併存可） */
+#layout_header_menu ul {
+    margin:0;
+    padding:0;
+    border:0;
+    list-style-type:none;
+    width:auto;
+    position: relative;
+    display: block;
+}
+
+#layout_header_menu li {
+    margin:0;
+    padding:0;
+    border:0;
+    float:left;
+    width:65px;
+}
+
+/* 画面上部メニュー新形式用 ドロップダウンメニュー */
+#layout_header_menu ul ul {
+    display: none;
+    position:absolute;
+    top:100%;
+    left:0;
+}
+#layout_header_menu li li {
+    clear: both;
+    background-image: url(https://oasis.halfmoon.jp/pics/back.gif);
+    width:160px !important;
+}
+#layout_header_menu li:hover {
+    position:relative;
+}
+#layout_header_menu li:hover > ul {
+    display: block;
+}
+
+/* 画面上部メニュー新形式(ul, li）用リンク書式（旧形式と併存可） */
+ #layout_header_menu a.new_sec, #layout_header_menu a.new {
+    display:block;
+    padding-top:1px;
+    padding-bottom:2px;
+    text-align:center;
+    text-decoration:none;
+    color:#000000;
+    font-family: "Arial", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+#layout_header_menu a.new_sec {
+    border-right:1px solid #cccccc;
+}
+
+/* 画面上部メニュー新形式用 ドロップダウンメニュー */
+#layout_header_menu a.new_sub, #layout_header_menu a.new_sub_bottom {
+    display:block;
+    padding-top:5px;
+    padding-bottom:5px;
+    text-align:left;
+    text-decoration:none;
+    color:#555555;
+    font-family: "Arial", sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    border-right:1px solid #cccccc;
+    border-left:1px solid #cccccc;
+}
+#layout_header_menu a.new_sub_bottom {
+    border-bottom:1px solid #cccccc;
+}
+
+/* 画面上部メニューの下の仕切り線 */
+div#layout_header_menu_line {
+    width: 100%;
+    height: 7px;
+    background: url("https://oasis.halfmoon.jp/pics/bar_hs_bk.jpg") no-repeat;
+}
+
+/* 画面上部のメニュー：リンク書式 */
+#layout_header_menu a {
+    font-family: "Arial", sans-serif;
+    color: #000000;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    /*border: 1px solid transparent;*/ /* IE6未対応 */
+    border: 1px dotted #fffdf5;
+}
+
+/* 画面上部のメニュー：リンク書式 */
+#layout_header_menu a:hover {
+    color: red;
+    background-color: #fff0aa;
+    border: 1px solid #ffa42f;
+}
+
+
+/* ヘッダー（バナー画像）部分 */
+div#layout_header {
+    width: 100%;
+    height: 100px;
+    font-size: 18pt;
+    line-height: 1.3em;
+    text-align: right;
+    color: maroon;
+    padding: 0px;
+    margin: 10px 0px;
+}
+
+/* ヘッダー（バナー画像）部分：高さ未定 */
+div#layout_header_noheight {
+    width: 100%;
+    font-size: 18pt;
+    line-height: 1.3em;
+    text-align: right;
+    color: maroon;
+    padding: 0px;
+    margin: 10px 0px;
+}
+
+/* メインコンテンツ（本文） */
+div#main_content_full {
+    width: 100%;
+    line-height: 1.7em;
+    padding: 0;
+    clear: both;
+}
+
+div#main_content_left {
+    float: left;
+    width: 170px;
+}
+
+div#main_content_right {
+    float: right;
+    width: 625px;
+}
+
+/* メインコンテンツ（左メニュー） */
+#main_content_left ul {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style: none;
+}
+
+#main_content_left li {
+    margin: 0;
+    padding: 0;
+}
+
+#main_content_left a.block_menu {
+    display: block;
+/*    color: maroon;*/
+    font-size: 12px;
+    height: 20px;
+    text-decoration: none;
+    padding: 1px 1px 1px 5px;
+    border: 1px dotted #fffdf5;
+}
+
+#main_content_left a.block_menu:hover {
+    color: red;
+    background-color: #f0d792;
+    border: 1px solid red;
+}
+
+/* 高さ1文字分、薄いベージュの区切り */
+#main_content_left div.section_bar {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    height: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 15px;
+    color: white;
+    background: #e0c2a5;
+}
+
+
+/* フッター部分 */
+div#layout_footer {
+    width: 100%;
+    height: 40px;
+    font-size: 10pt;
+    color: #636363;
+    border-top: solid 1px #d8c3b2;
+    padding: 0;
+    margin: 20px 0 0 0;
+    clear: both;
+}
+
+div#layout_footer_left {
+    float: left;
+    width: 50%;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+}
+
+div#layout_footer_right {
+    float: right;
+    width: 50%;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+}
+
+/********** ヘッダ文字列装飾 **********/
+ 
+H1 {
+    font-size: 16pt;
+    font-weight: lighter;
+    border-bottom: solid 1px #d8c3b2;
+    text-indent: 5px;
+    letter-spacing: 5px;
+    padding: 5px 5px;
+    margin: 30px 0px;
+    clear: both;
+}
+H1.travelmenu {
+    color: #5d1212;
+    font-size: 16pt;
+    line-height: 1.3em;
+    text-indent: 0;
+    letter-spacing: 0;
+    height:100px;
+    padding-left: 110px;
+    background-image: url('https://oasis.halfmoon.jp/pics/ico_equestrian_statue.png');
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: left top;
+    border-bottom: 0;
+}
+
+H2 {
+    font-size: 14pt;
+    font-weight: lighter;
+    text-indent: 5px;
+    letter-spacing: 3px;
+    border-width: 1px 1px 1px 5px;
+    border-style: solid;
+    border-top-color: #e4c5a6;
+    border-right-color: #e4c5a6;
+    border-bottom-color: #b87330;
+    border-left-color: #b87330;
+    background-color: #e4c5a6;
+    padding: 5px 5px;
+    margin: 10px 0px 5px;
+    clear: both;
+}
+
+H3 {
+    font-size: 12pt;
+    font-weight: lighter;
+    text-indent: 5px;
+    letter-spacing: 3px;
+    border-width: 0px 0px 1px 5px;
+    border-style: solid;
+    border-bottom-color: #b87330;
+    border-left-color: #b87330;
+    padding: 2px 5px;
+    margin: 8px 0px 3px;
+    clear: both;
+}
+
+H4 {
+    font-size: 12pt;
+    font-weight: lighter;
+    text-indent: 5px;
+    letter-spacing: 2px;
+    border-bottom: solid 1px #b87330;
+    padding: 2px 5px;
+    margin: 8px 0px 2px;
+    clear: both;
+}
+
+/* 高さ1文字分、右端が丸い茶色の区切り */
+/*
+H5 {
+    width: 100%;
+    padding: 0;
+    margin: 0px 0px 3px;
+    height: 15px;
+    background: url("http://oasis.halfmoon.jp/pics/sec_cl_500.png") no-repeat;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: bold;
+    color: white;
+    clear: both;
+}
+*/
+
+H5 {
+    font-size: 11pt;
+    font-weight: lighter;
+    font-variant: small-caps;
+    text-indent: 5px;
+    letter-spacing: 2px;
+    border-bottom: solid 1px #b87330;
+    padding: 2px 5px;
+    margin: 8px 0px 2px;
+    clear: both;
+}
+
+
+/********** その他の記述属性 **********/
+/* テキスト回り込みをすべて解除 */
+div.clear {
+    clear: both;
+}
+
+/* 横線 */
+div.hl {
+    width: 100%;
+    margin: 5px 0;
+    border-bottom: solid 1px #b87330;
+}
+
+/* 横線（点線） */
+div.hl_dash {
+    width: 100%;
+    margin: 5px 0;
+    border-bottom: dashed 1px #b87330;
+}
+ 
+
+/********** リンク文字属性 **********/
+/* 通常のリンク */
+a, a:visited {
+    color: #003366;
+}
+
+a:hover {
+     color: red;
+ }
+
+/* リンクメニュー（文字：大、色：茶色） */
+.menu_large_brown a {
+    color: maroon;
+    font-size: 18px;
+    font-weight: lighter;
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px dotted #fffdf5;
+}
+
+.menu_large_brown a:hover {
+    color: red;
+    background-color: #fff0aa;
+    border: 1px solid #ffa42f;
+}
+
+
+.menu_large_brown img {
+    float: left;/* 画像の横に文字が回りこむ設定 */
+}
+
+.menu_large_brown ul {
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu_large_brown li {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+div.menu_large_brown {
+    width: 100%;
+    color: gray;
+    font-size: 12px;
+    line-height: 150%;
+}
+
+/* 高さ1px、右に向かって消失する茶色の線（トップページで使用） */
+.menu_large_brown div.section_bar_gradation {
+    width: 100%;
+    height: 1px;
+    background: url("https://oasis.halfmoon.jp/pics/bar_hs_br1.png") no-repeat;
+    margin-bottom: 3px;  /* IE対策 */
+}
+
+/* リンクメニュー （文字：小） 共通部分 */
+.menu_small a {
+    font-size: 14px;
+    text-decoration: none;
+    border: 1px dotted #fffdf5;
+}
+
+
+.menu_small a:hover {
+    color: red;
+    background-color: #fff0aa;
+    border: 1px solid #ffa42f;
+}
+
+.menu_small ul {
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu_small li {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+div.menu_small {
+    width: 100%;
+    color: gray;
+    font-size: 12px;
+    line-height: 150%;
+}
+
+/* リンクメニュー（文字：小、色：灰色） */
+.menu_small_gray a {
+    color: gray;
+}
+
+/* リンクメニュー（文字：小、色：灰色） */
+.menu_small_black a {
+    color: black;
+}
+
+/* リンクメニュー（文字：小、フォント：ボールド） */
+.menu_small_bold a {
+    font-weight: bold;
+}
+
+/* リンクメニュー（文字：小、色：茶色） */
+.menu_small_brown a {
+    color: #501903;
+     font-size: 14px;
+     text-decoration: none;
+    font-weight: bold;
+    border: 1px dotted #fffdf5;
+}
+
+
+.menu_small_brown a:hover {
+    color: red;
+    background-color: #fff0aa;
+    border: 1px solid #ffa42f;
+}
+
+.menu_small_brown ul {
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu_small_brown li {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+div.menu_small_brown {
+    width: 100%;
+    color: gray;
+    font-size: 12px;
+    line-height: 150%;
+}
+
+/* リンクメニュー（文字：小、色：青） */
+.menu_small_blue a {
+    /*color: #003366; 親の色が透過するので省略 */
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px dotted #fffdf5;
+}
+
+
+.menu_small_blue a:hover {
+    color: red;
+    background-color: #fff0aa;
+    border: 1px solid #ffa42f;
+}
+
+.menu_small_blue ul {
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu_small_blue li {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+div.menu_small_blue {
+    width: 100%;
+    color: gray;
+    font-size: 12px;
+    line-height: 150%;
+}
+
+/* 画像ボタンリンク（マウスオーバー 透過度変化） */
+
+.img_button_link img {
+    opacity: 0.4;
+    filter: alpha(opacity=40);  /* IE<8 bugfix */
+}
+
+.img_button_link img:hover {
+    opacity: 1.0;
+    filter: alpha(opacity=100);  /* IE<8 bugfix */
+}
+
+
+.img_button_link a {
+    line-height: 1.0em;
+    color: gray;
+    margin: 2px 0px 0px;
+    text-decoration: none;
+}
+
+.img_button_link a:hover {
+    color: maroon;
+}
+
+.img_button_link span.text_overlay {
+    position:absolute;
+    top:15px;
+    left:10px;
+    color:white;
+    font-size:20px;
+    font-family:Arial;
+    font-weight:bold;
+    text-shadow:3px 3px 5px black;
+}
+
+/* 画面左右2分割のリストメニュー（左側にリンク、右側に説明） */
+#menu_2col_list {
+    line-height: 12pt;
+    color: gray;
+    font-size: 10pt;
+    margin: 15px;
+    padding: 0;
+}
+#menu_2col_list ul {
+    list-style:none; margin:0; padding:0; width:95%;
+}
+#menu_2col_list ul > li {
+    list-style:none; margin:0; padding:10px 0;
+    clear:both;
+}
+#menu_2col_list ul > li.topline {
+    /* この項目の上に仕切り線が引かれる */
+    border-top:1px solid #a14d4d;
+}
+#menu_2col_list ul > li > span.left, #menu_2col_list div.left {
+    width:49%; float: left;
+}
+#menu_2col_list ul > li > span.left > a {
+    text-decoration:none; font-size:11pt;
+}
+#menu_2col_list ul > li > span.right, #menu_2col_list div.right {
+    width:49%; float: right;
+}
+
+
+/* 右寄せ「前のページに戻る」リンク */
+div.link_right {
+    text-align: right;
+}
+
+.link_right a, .link_right a:hover{
+    text-decoration: none;
+}
+
+.link_right img {
+    vertical-align: middle;
+}
+
+/********** アイコン付きリンク **********/
+
+a.link_external {
+    background: url(https://oasis.halfmoon.jp/pics/ico_link_external.png) center right no-repeat;
+    padding-right: 13px;
+}
+
+a.link_lock {
+    background: url(https://oasis.halfmoon.jp/pics/ico_link_lock.gif) center right no-repeat;
+    padding-right: 16px;
+}
+
+a.link_file {
+    background: url(https://oasis.halfmoon.jp/pics/ico_link_file.gif) center right no-repeat;
+    padding-right: 16px;
+}
+
+a.link_document {
+    background: url(https://oasis.halfmoon.jp/pics/ico_link_document.png) center right no-repeat;
+    padding-right: 13px;
+}
+
+a.link_audio {
+    background: url(https://oasis.halfmoon.jp/pics/ico_link_audio.png) center right no-repeat;
+    padding-right: 13px;
+}
+
+a.link_video {
+    background: url(https://oasis.halfmoon.jp/pics/ico_link_video.png) center right no-repeat;
+    padding-right: 13px;
+}
+
+a.link_download {
+    background: url(https://oasis.halfmoon.jp/pics/ico_link_download.gif) center right no-repeat;
+    padding-right: 23px;
+}
+
+a.link_wikipedia {
+    background: url(https://oasis.halfmoon.jp/pics/ico_link_wikipedia_arrow.png) center right no-repeat;
+    padding-right: 18px;
+}
+
+a.link_orange {
+    background: url(https://oasis.halfmoon.jp/pics/ico_link_orangearrow.gif) center left no-repeat;
+    padding-left: 14px;
+}
+
+a.link_blue {
+    background: url(https://oasis.halfmoon.jp/pics/ico_link_bluearrow.gif) center left no-repeat;
+    padding-left: 14px;
+}
+ 
+a.link_red {
+    background: url(https://oasis.halfmoon.jp/pics/ico_link_redarrow.gif) center left no-repeat;
+    padding-left: 14px;
+}
+
+a.link_gray {
+    background: url(https://oasis.halfmoon.jp/pics/ico_link_grayarrow.gif) center left no-repeat;
+    padding-left: 14px;
+}
+
+a.link_black {
+    background: url(https://oasis.halfmoon.jp/pics/ico_link_blackarrow.gif) center left no-repeat;
+    padding-left: 14px;
+}
+
+a.link_orange_dot {
+    background: url(https://oasis.halfmoon.jp/pics/ico_link_orangedot.gif) center left no-repeat;
+    padding-left: 14px;
+}
+
+a.link_blue_dot {
+    background: url(https://oasis.halfmoon.jp/pics/ico_link_bluedot.gif) center left no-repeat;
+    padding-left: 14px;
+}
+ 
+a.link_red_dot {
+    background:  url(https://oasis.halfmoon.jp/pics/ico_link_reddot.gif) center left no-repeat;
+    padding-left:  14px;
+}
+
+a.link_gray_dot {
+    background:  url(https://oasis.halfmoon.jp/pics/ico_link_graydot.gif) center left no-repeat;
+    padding-left:  14px;
+}
+
+a.link_black_dot {
+    background:  url(https://oasis.halfmoon.jp/pics/ico_link_blackdot.gif) center left no-repeat;
+    padding-left:  14px;
+}
+
+a.link_return {
+    background: url(https://oasis.halfmoon.jp/pics/ico_link_return.gif) center left no-repeat;
+    padding-left: 28px;
+}
+
+a.link_right {
+    background: url(https://oasis.halfmoon.jp/pics/ico_link_right.gif) center right no-repeat;
+    padding-right: 28px;
+}
+
+a.link_left {
+    background: url(https://oasis.halfmoon.jp/pics/ico_link_left.gif) center left no-repeat;
+    padding-left: 28px;
+}
+
+/********** ボックス囲みリンク（パステル色ボタン） **********/
+a.box-white {
+    line-height: 200%;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    border: 1px solid lightgray;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;        /* CSS 3 */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-box-shadow: 3px 3px 3px lightgray;
+    -webkit-box-shadow: 3px 3px 3px lightgray;
+}
+
+a.box-gray {
+    line-height: 200%;
+    text-decoration: none;
+    color: black;
+    background-color: #e6e6e6;
+    border: 1px solid gray;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;        /* CSS 3 */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-box-shadow: 3px 3px 3px lightgray;
+    -webkit-box-shadow: 3px 3px 3px lightgray;
+}
+
+a.box-yellow {
+    line-height: 200%;
+    text-decoration: none;
+    color: black;
+    background-color: #faf1ca;
+    border: 1px solid #feda84;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;        /* CSS 3 */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-box-shadow: 3px 3px 3px lightgray;
+    -webkit-box-shadow: 3px 3px 3px lightgray;
+}
+
+a.box-brown {
+    line-height: 200%;
+    text-decoration: none;
+    color: black;
+    background-color: #f0e9df;
+    border: 1px solid #d3c3a2;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;        /* CSS 3 */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-box-shadow: 3px 3px 3px lightgray;
+    -webkit-box-shadow: 3px 3px 3px lightgray;
+}
+
+a.box-red {
+    line-height: 200%;
+    text-decoration: none;
+    color: black;
+    background-color: #fee2e1;
+    border: 1px solid #fbd7d7;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;        /* CSS 3 */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-box-shadow: 3px 3px 3px lightgray;
+    -webkit-box-shadow: 3px 3px 3px lightgray;
+}
+
+a.box-blue {
+    line-height: 200%;
+    text-decoration: none;
+    color: black;
+    background-color: #c8dafe;
+    border: 1px solid #7ba4fe;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;        /* CSS 3 */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-box-shadow: 3px 3px 3px lightgray;
+    -webkit-box-shadow: 3px 3px 3px lightgray;
+}
+
+a.box-cyan {
+    line-height: 200%;
+    text-decoration: none;
+    color: black;
+    background-color: #d9f0ff;
+    border: 1px solid #bde1f9;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;        /* CSS 3 */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-box-shadow: 3px 3px 3px lightgray;
+    -webkit-box-shadow: 3px 3px 3px lightgray;
+}
+
+a.box-green {
+    line-height: 200%;
+    text-decoration: none;
+    color: black;
+    background-color: #d1ffcc;
+    border: 1px solid #acffb0;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;        /* CSS 3 */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-box-shadow: 3px 3px 3px lightgray;
+    -webkit-box-shadow: 3px 3px 3px lightgray;
+}
+
+
+/********** 画像 **********/
+/* 画像の周囲の余白を取らない設定 */
+a img {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+div.photo_right {
+    background-color: #f0f0f0;
+    padding: 5px;
+    float: right;
+    line-height: 1em;
+    font-size: 10pt;
+    color: #353535;
+    margin: 8px;
+    border-width: 1px;
+    border-style: solid;
+    border-top-color: white;
+    border-left-color: white;
+    border-bottom-color: #e1e1e1;
+    border-right-color: #e1e1e1;
+    border-radius: 4px;        /*  CSS 3 */
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-box-shadow: 3px 3px 3px lightgray;
+    -webkit-box-shadow: 3px 3px 3px lightgray;
+}
+
+div.photo_left {
+    background-color: #f0f0f0;
+    padding: 5px;
+    float: left;
+    line-height: 1em;
+    font-size: 10pt;
+    color: #353535;
+    margin: 8px 8px 8px 28px;
+    border-width: 1px;
+    border-style:  solid;
+    border-top-color: white;
+    border-left-color: white;
+    border-bottom-color: #e1e1e1;
+    border-right-color: #e1e1e1;
+    border-radius: 4px;        /*  CSS  3 */
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-box-shadow: 3px 3px 3px lightgray;
+    -webkit-box-shadow: 3px 3px 3px lightgray;
+}
+
+.photo_right img, .photo_left img { 
+    margin-bottom: 5px;
+}
+
+ 
+div.fig_right {
+    padding: 5px;
+    float: right;
+    line-height: 1em;
+    font-size: 10pt;
+    color: #353535;
+    margin: 8px;
+}
+
+div.fig_left {
+    padding: 5px;
+    float: left;
+    line-height: 1em;
+    font-size: 10pt;
+    color: #353535;
+    margin: 8px 8px 8px 28px;
+ }
+
+div.fig_center {
+    padding: 5px;
+    text-align: center;
+    line-height: 1em;
+    font-size: 10pt;
+    color: #353535;
+    margin: 8px auto;
+ }
+
+ 
+ .fig_right img, .fig_left img, .fig_center img { 
+    margin-bottom: 5px;
+}
+
+
+/********** 画像 グリッド表示（ギャラリー） **********/
+div.gallerybox {
+    display: block;
+    position: relative;
+    float: left;
+    margin: 5px 4px;
+    min-width: 50px;
+    min-height: 50px;
+    font-size: 10pt;
+}
+
+div.g-comment2 {
+    line-height: 1.0em;
+    color: gray;
+    margin: 2px 0px 0px;
+}
+
+
+/********** テーブル **********/
+
+/* 通常のテーブルは、枠線が1px, グレー */
+table {
+    border:1px solid #aaa;
+    border-collapse:collapse;
+    font-size: 10pt;
+    margin: 10px;
+}
+
+th {
+    font-weight: normal;
+    background:#f8ede2;
+    border:1px solid #aaa;
+    padding: 0.2em 0.4em;
+}
+
+td {
+    border:1px solid #aaa;
+    padding: 0.2em 0.4em;
+}
+
+caption {
+    font-size: 11pt;
+    margin: 10px 0px;
+}
+
+/* 枠線が無いテーブル */
+table.noborder {
+    border-style: none;
+    border-width: 0px;
+    border-collapse:separate;
+}
+
+.noborder td {
+    border-style: none;
+    border-width: 0px;
+}
+
+/* テーブルでセクション風の背景 */
+td.h2 {
+    background-color:#e4c5a6;
+    border-bottom:1px solid #b87330;
+    border-left:5px solid #b87330;
+    font-size:12pt;
+    line-height:1.0em;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+td.h3 {
+    border-bottom:1px solid #b87330;
+    border-left:5px solid #b87330;
+    font-size:12pt;
+    line-height:1.0em;  
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+td.h4 {
+    border-bottom:1px solid #b87330;
+    font-size:12pt;
+    line-height:1.0em;  
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+/********** 箇条書き **********/
+
+ul {
+    margin:0 0 0 2em;
+    padding: 0;
+    list-style-type: circle;
+}
+
+/* OLタグは文章インデントとして利用する */
+ol {
+    margin: 0 0 0 2em;
+    padding: 0;
+    list-style-type: none;
+}
+
+li {
+    margin: 0 0 0 1em;
+    padding: 0;
+}
+
+/********** ソースコード **********/
+pre, div.code {
+    font-family: monospace;
+    line-height: 1.2em;
+    border: 1px dashed #cc9966;
+    padding: 5px 10px 8px 10px;
+    margin:0 40px 10px;
+    background-color: #f8ede2;
+    overflow-x: scroll;
+    width: 700px;    /* IE対策 */
+    white-space: pre;
+}
+
+div.codetitle {
+    font-family: monospace;
+    padding: 2px 5px;
+    margin: 10px 40px 0;
+    background-color: #f8ede2;
+    white-space: pre;
+    width: 712px;    /* IE対策 */
+ }
+
+code {
+    font-family: monospace;
+    border: 1px dashed #cc9966;
+    background-color: #f8ede2;
+}
+
+/********** 引用文書表示 **********/
+div.topic {
+    border:1px solid #aaa;
+    padding: 10px 10px 5px 5px;
+    margin:0 40px 10px;
+    background-color: #eae6e2;
+}
+
+div.topictitle {
+    padding: 2px 5px;
+    margin: 10px 40px 0;
+    background-color: #eae6e2;
+ }
+
+.topic p {
+    margin-left: 0px;
+}
+
+
