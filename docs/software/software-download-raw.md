@@ -1,5 +1,5 @@
 <!-- HTML本文ここから（貼付ここから） -->
-][Home](../index.html) > [Software](./index.html) > [Software Download](./software-download.html)(this page)
+[Home](../index.html) > [Software](./index.html) > [Software Download](./software-download.html)(this page)
 
 ここに掲載しているソフトウエアは[GNU General Public License v3](https://gpl.mhatta.org/gpl.ja.html)のもとで配布しています。
 
@@ -30,6 +30,14 @@
 #### センサー（測定デバイス）を扱うソフトウエア
 
 - [BMP280,DHT11の温湿度計測値をアップロード、ブラウザ表示(Perlスクリプト)](https://github.com/oasis3855/linux-weblogger/tree/main/web-loggraph) (2018/05/12)
+
+<br />
+<br />
+
+#### マイコンでセンサー（測定デバイス）や周辺デバイスを扱うソフトウエア
+
+- [Raspberry Pi用I2C汎用ライブラリ](https://github.com/oasis3855/rpi-i2c) (2018/11/20)
+- [PIC microcontroller用I2C汎用ライブラリ](https://github.com/oasis3855/pic-i2c-lib) (2016/10/9)
 
 <br />
 <br />
