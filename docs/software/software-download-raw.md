@@ -13,6 +13,7 @@
 - [画像一括リサイズ スクリプト（Linux）](https://github.com/oasis3855/image-tools/tree/main/image-resize) (2011/07/20)
 - [Exifデータによるjpegファイル名変更スクリプト（Linux）](https://github.com/oasis3855/image-tools/tree/main/renfile-exif-linux) (2011/01/07)
 - [Exifデータによるjpegファイル名変更・タイムスタンプ変更（Windows）](https://github.com/oasis3855/image-tools/tree/main/renfile-exif-win) (2007/08/27)
+- [exiftool実行メニュー Windows VBScript (Visual Basic Script))](https://github.com/oasis3855/win-scripts/tree/main/VB_Script) (2021/08/09)
 
 <br />
 <br />
@@ -23,6 +24,7 @@
 - [デスクトップ全画面表示した書籍を 左右キーで自動ページ送りして連続キャプチャ（Linux）](https://github.com/oasis3855/linux-bookscan-jpg2pdf/tree/main/capture-desktopimage) (2019/10/13)
 - [jpeg画像ファイル二分割・画質調整 for 書籍スキャン（Linux）](https://github.com/oasis3855/linux-bookscan-jpg2pdf/tree/main/image-divider) (2019/10/13)
 - [複数のjpegファイルを結合しpdfファイルを作成する for 書籍スキャン（Linux）](https://github.com/oasis3855/linux-bookscan-jpg2pdf/tree/main/jpg2pdf) (2019/10/13)
+- [PDFファイルを扱うWindowsバッチファイル](https://github.com/oasis3855/win-scripts/tree/main/batchfile_pdftool) (2022/03/21)
 
 <br />
 <br />
@@ -60,6 +62,7 @@
 - [RSS巡回表示](https://github.com/oasis3855/webservice-script/tree/main/web-rss-receive) (2014/09/16)
 - [Webファイルアップローダー](https://github.com/oasis3855/webservice-script/tree/main/web-uploader) (2015/01/17)
 - [WebSVN Administrator - Subversionリポジトリ管理](https://github.com/oasis3855/webservice-script/tree/main/websvn-admin) (2011/12/08)
+- [Webページ用アクセスログ記録とログ検索スクリプト (Linux, BSD)](https://github.com/oasis3855/webserver_tools/tree/main/web-access-counter) (2013/01/01)
 
 <br />
 <br />
@@ -71,6 +74,8 @@
 - [住所録CSVファイル相互変換 (Linux, Perlスクリプト)](https://github.com/oasis3855/linux-scripts/blob/main/addressbook_converter) (2011/12/08)
 - [Gnomeデスクトップ壁紙 スライドショー cron呼出スクリプト (Linux, シェルスクリプト)](https://github.com/oasis3855/linux-scripts/blob/main/gnome-change-desktop-image) (2020/01/11)
 - [Linux Nautilusのコンテキストメニュー「スクリプト」で使う小技スクリプト類](https://github.com/oasis3855/linux-scripts/blob/main/nautilus-script) (2020/07/12)
+- [テキストファイルを扱うWindows VBScript (Visual Basic Script)](https://github.com/oasis3855/win-scripts/tree/main/VB_Script) (2021/07/19)
+  - テキストエディタを選択して開く , ファイル名・更新日時変更
 
 <br />
 <br />
@@ -107,6 +112,15 @@
 
 
 #### 過去に配布したソフトウエア（現在のシステムでは実行不適など）
+
+- 『**[Webサーバ管理用ソフトウエア（Windows, Linux, BSD）](https://github.com/oasis3855/webserver_tools)**』 （目次ページ）
+  - [Apache Webサーバのログからエラー行を抽出してHTML化するPerlスクリプト (Linux, BSD)](https://github.com/oasis3855/webserver_tools/tree/main/apache-log-html-converter) (2012/02/21)
+  - [AutoLogParser（IIS/ApacheログをMicrosoft Log Parserで解析する自動化スクリプト生成ツール）(Windows)](https://github.com/oasis3855/webserver_tools/tree/main/auto_logparser) (2012/02/11)
+  - [ExecAnalog（Analogに今月・先月のログ解析をさせるための自動化ツール）(Windows)](https://github.com/oasis3855/webserver_tools/tree/main/exec_analog) (2007/07/25)
+  - [ReadNsLog（NetScreenのログからエラー行を抽出するツール）(Windows)](https://github.com/oasis3855/webserver_tools/tree/main/read_netscreen_log) (2007/07/25)
+  - [ReadEvent（Windowsイベント ログからエラー行を抽出しHTML化するツール）(Windows)](https://github.com/oasis3855/webserver_tools/tree/main/read_windows_event) (2007/07/25)
+- [MediaWikiの拡張機能と設定メモ](https://github.com/oasis3855/webservice-script/tree/main/mediawiki_extention) (2012/01/20)
+  - previouspage restrict拡張機能 , specialpage restrict拡張機能 , protect page拡張機能
 
 
 <br />
