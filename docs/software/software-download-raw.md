@@ -99,6 +99,18 @@
 <br />
 <br />
 
+#### Microsoft Office VBA スクリプト
+
+- [Excel find comment : コメントのあるセルを検索 for Microsoft Excel](https://github.com/oasis3855/office-scripts/blob/main/excel-find-comment) (2022/06/25)
+- [Excel find hidden line : 非表示の行・列を検索 for Microsoft Excel](https://github.com/oasis3855/office-scripts/blob/main/excel-find-hidden-line) (2022/06/25)
+- [Outlookメール自動作成・名簿データ差込 for Microsoft Excel](https://github.com/oasis3855/office-scripts/blob/main/excel-outlook-mailsend)  (2022/06/30)
+- [RndChar 簡易乱数表作成マクロ for Microsoft Excel](https://github.com/oasis3855/office-scripts/blob/main/excel-rndchar) (2002/05/15)
+- [Excel to Html : ワークシートをHTML tableに変換 for Microsoft Excel](https://github.com/oasis3855/office-scripts/blob/main/excel-to-html) (2022/06/25)
+- [Worksheet Compare : ワークシート比較 for Microsoft Excel](https://github.com/oasis3855/office-scripts/blob/main/excel-worksheet-compare) (2022/06/25)
+- [Outlookメール テキスト化ツール for Microsoft Outlook](https://github.com/oasis3855/office-scripts/blob/main/outlook-mail-export) (2022/07/05)
+
+<br />
+<br />
 
 #### その他
 
@@ -121,7 +133,12 @@
   - [ReadEvent（Windowsイベント ログからエラー行を抽出しHTML化するツール）(Windows)](https://github.com/oasis3855/webserver_tools/tree/main/read_windows_event) (2007/07/25)
 - [MediaWikiの拡張機能と設定メモ](https://github.com/oasis3855/webservice-script/tree/main/mediawiki_extention) (2012/01/20)
   - previouspage restrict拡張機能 , specialpage restrict拡張機能 , protect page拡張機能
-
+- [Windowsツール類](https://github.com/oasis3855/windows_misc_program)
+  - [FeliCaを用いたクライアント・サーバ型のタイムカードシステム](https://github.com/oasis3855/windows_misc_program/tree/main/felica_pasori_checkin_system) (2008/10/20)
+  - [FeliCaのデータを読み出す for Windows](https://github.com/oasis3855/windows_misc_program/tree/main/felica_raw_viewer) (2007/11/30)
+  - [GPSによるシステム時間設定 for Windows/Windows Mobile](https://github.com/oasis3855/windows_misc_program/tree/main/gps_timeset)(2008/05/31)
+  - [sf2mrtg : SpeedFanのデータをMRTGで取り込む補助ツール for Windows](https://github.com/oasis3855/windows_misc_program/tree/main/speedfan_to_mrtg) (2007/07/17)
+  - [バックライト制御 for Windows Mobile](https://github.com/oasis3855/windows_misc_program/tree/main/winmobile_backlight_ctrl) (2008/04/05)
 
 <br />
 <br />

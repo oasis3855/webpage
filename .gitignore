@@ -1,6 +1,6 @@
 *.bak
 *.BAK
-
+out/
 .vscode/
 
 *_raw.html
