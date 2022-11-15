@@ -107,6 +107,7 @@
 - [RndChar 簡易乱数表作成マクロ for Microsoft Excel](https://github.com/oasis3855/office-scripts/blob/main/excel-rndchar) (2002/05/15)
 - [Excel to Html : ワークシートをHTML tableに変換 for Microsoft Excel](https://github.com/oasis3855/office-scripts/blob/main/excel-to-html) (2022/06/25)
 - [Worksheet Compare : ワークシート比較 for Microsoft Excel](https://github.com/oasis3855/office-scripts/blob/main/excel-worksheet-compare) (2022/06/25)
+- [Outlook HTMLメール発見ツール for Microsoft Outlook](https://github.com/oasis3855/office-scripts/tree/main/outlook-htmlmail-find) (2003/05/08)
 - [Outlookメール テキスト化ツール for Microsoft Outlook](https://github.com/oasis3855/office-scripts/blob/main/outlook-mail-export) (2022/07/05)
 
 <br />
@@ -138,6 +139,8 @@
   - [FeliCaのデータを読み出す for Windows](https://github.com/oasis3855/windows_misc_program/tree/main/felica_raw_viewer) (2007/11/30)
   - [GPSによるシステム時間設定 for Windows/Windows Mobile](https://github.com/oasis3855/windows_misc_program/tree/main/gps_timeset)(2008/05/31)
   - [sf2mrtg : SpeedFanのデータをMRTGで取り込む補助ツール for Windows](https://github.com/oasis3855/windows_misc_program/tree/main/speedfan_to_mrtg) (2007/07/17)
+  - [cursor32 マウス座標表示 for Windows](https://github.com/oasis3855/windows_misc_program/tree/main/cursor32) (2004/04/17)
+  - [ InfoBar ニュース電光掲示板 for Windows](https://github.com/oasis3855/windows_misc_program/tree/main/infobar) (2003/06/01)
   - [バックライト制御 for Windows Mobile](https://github.com/oasis3855/windows_misc_program/tree/main/winmobile_backlight_ctrl) (2008/04/05)
 
 <br />
