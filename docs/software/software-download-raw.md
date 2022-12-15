@@ -76,6 +76,8 @@
 - [Linux Nautilusのコンテキストメニュー「スクリプト」で使う小技スクリプト類](https://github.com/oasis3855/linux-scripts/blob/main/nautilus-script) (2020/07/12)
 - [テキストファイルを扱うWindows VBScript (Visual Basic Script)](https://github.com/oasis3855/win-scripts/tree/main/VB_Script) (2021/07/19)
   - テキストエディタを選択して開く , ファイル名・更新日時変更
+- [CopyTime ファイルタイムスタンプ（日時）コピー (Windows)](https://github.com/oasis3855/windows-filer-program/blob/main/copytimestamp) (2002/05/20)
+- [ShiftTime ファイル日時の一括補正 (Windows)](https://github.com/oasis3855/windows-filer-program/blob/main/shifttimestamp) (2002/05/20)
 
 <br />
 <br />
@@ -136,12 +138,17 @@
   - previouspage restrict拡張機能 , specialpage restrict拡張機能 , protect page拡張機能
 - [Windowsツール類](https://github.com/oasis3855/windows_misc_program)
   - [FeliCaを用いたクライアント・サーバ型のタイムカードシステム](https://github.com/oasis3855/windows_misc_program/tree/main/felica_pasori_checkin_system) (2008/10/20)
-  - [FeliCaのデータを読み出す for Windows](https://github.com/oasis3855/windows_misc_program/tree/main/felica_raw_viewer) (2007/11/30)
-  - [GPSによるシステム時間設定 for Windows/Windows Mobile](https://github.com/oasis3855/windows_misc_program/tree/main/gps_timeset)(2008/05/31)
-  - [sf2mrtg : SpeedFanのデータをMRTGで取り込む補助ツール for Windows](https://github.com/oasis3855/windows_misc_program/tree/main/speedfan_to_mrtg) (2007/07/17)
-  - [cursor32 マウス座標表示 for Windows](https://github.com/oasis3855/windows_misc_program/tree/main/cursor32) (2004/04/17)
-  - [ InfoBar ニュース電光掲示板 for Windows](https://github.com/oasis3855/windows_misc_program/tree/main/infobar) (2003/06/01)
-  - [バックライト制御 for Windows Mobile](https://github.com/oasis3855/windows_misc_program/tree/main/winmobile_backlight_ctrl) (2008/04/05)
+  - [FeliCaのデータを読み出す (Windows)](https://github.com/oasis3855/windows_misc_program/tree/main/felica_raw_viewer) (2007/11/30)
+  - [GPSによるシステム時間設定 (forWindows/Windows Mobile)](https://github.com/oasis3855/windows_misc_program/tree/main/gps_timeset)(2008/05/31)
+  - [sf2mrtg : SpeedFanのデータをMRTGで取り込む補助ツール (Windows)](https://github.com/oasis3855/windows_misc_program/tree/main/speedfan_to_mrtg) (2007/07/17)
+  - [cursor32 : マウス座標表示 (Windows)](https://github.com/oasis3855/windows_misc_program/tree/main/cursor32) (2004/04/17)
+  - [InfoBar : ニュース電光掲示板 (Windows)](https://github.com/oasis3855/windows_misc_program/tree/main/infobar) (2003/06/01)
+  - [バックライト制御 (Windows Mobile)](https://github.com/oasis3855/windows_misc_program/tree/main/winmobile_backlight_ctrl) (2008/04/05)
+
+- [Windows ファイル操作関連ソフトウエア](https://github.com/oasis3855/windows-filer-program)
+  - [ddisk : 論理ディスク アクセスツール (Windows 95/98)](https://github.com/oasis3855/windows-filer-program/blob/main/ddisk) (2002/05/20)
+  - [FileCopyEx : ファイル部分コピーツール (Windows)](https://github.com/oasis3855/windows-filer-program/blob/main/filecopyex) (2002/05/11)
+
 
 <br />
 <br />
