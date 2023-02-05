@@ -93,16 +93,41 @@
 </ul>
 <br />
 <br />
-<h4 id="センサー測定デバイスを扱うソフトウエア">センサー（測定デバイス）を扱うソフトウエア</h4>
+<h4 id="raspberry-pi向けソフトウエア">Raspberry Pi向けソフトウエア</h4>
 <ul>
 <li><a href="https://github.com/oasis3855/linux-weblogger/tree/main/web-loggraph">BMP280,DHT11の温湿度計測値をアップロード、ブラウザ表示(Perlスクリプト)</a> (2018/05/12)</li>
+<li><a href="https://github.com/oasis3855/rpi-i2c">Raspberry Pi用I2C汎用ライブラリ</a> (2018/11/20)</li>
 </ul>
 <br />
 <br />
-<h4 id="マイコンでセンサー測定デバイスや周辺デバイスを扱うソフトウエア">マイコンでセンサー（測定デバイス）や周辺デバイスを扱うソフトウエア</h4>
+<h4 id="microchip-picマイコン向けソフトウエア">Microchip PICマイコン向けソフトウエア</h4>
 <ul>
-<li><a href="https://github.com/oasis3855/rpi-i2c">Raspberry Pi用I2C汎用ライブラリ</a> (2018/11/20)</li>
-<li><a href="https://github.com/oasis3855/pic-i2c-lib">PIC microcontroller用I2C汎用ライブラリ</a> (2016/10/9)</li>
+<li>
+<p>『<strong><a href="https://github.com/oasis3855/pic-i2c-lib">PIC microcontroller用I2C汎用ライブラリ</a></strong>』（目次ページ）</p>
+<ul>
+<li><a href="https://github.com/oasis3855/pic-i2c-lib/blob/main/i2c-scan">I2Cデバイス アドレスをスキャンする (PIC 12F1822)</a> (2013/01/14)</li>
+<li><a href="https://github.com/oasis3855/pic-i2c-lib/blob/main/lcd/README.html">I2C接続キャラクタLCDに文字列表示 (PIC 12F1822)</a> (2016/02/01 )
+<ul>
+<li>Strawberry Linux SB1602B</li>
+<li>I2C LCD 変換アダプタ mjkdz I2C lcd1602 (第一世代版)</li>
+<li>I2C LCD 変換アダプタ CEG003400</li>
+</ul>
+</li>
+<li><a href="https://github.com/oasis3855/pic-i2c-lib/blob/main/eeprom">I2C接続EEPROMを読み書き (PIC 12F1822)</a> (2013/02/03)</li>
+<li><a href="2013/02/03">I2C EEPROMのダンプ表示と書き込みツール (PIC 12F1822)</a></li>
+</ul>
+</li>
+<li>
+<p>『<strong><a href="https://github.com/oasis3855/pic-program">PIC microcontroller用 各種ソフトウエア</a></strong>』（目次ページ）</p>
+<ul>
+<li><a href="https://github.com/oasis3855/pic-program/blob/main/ct-ammeter-12f1822">シリアル出力 交流電流計 (PIC 12F1822)</a> (2016/07/17)</li>
+<li><a href="https://github.com/oasis3855/pic-program/blob/main/dht11-humid-12f1822">温湿度センサー DHT11を使う (PIC 12F1822)</a> (2015/12/31)</li>
+<li><a href="https://github.com/oasis3855/pic-program/blob/main/dustsensor-12f1822">粉塵センサー GP2Y1010AU0Fを使う (PIC 12F1822)</a> (2016/01/17)</li>
+<li><a href="https://github.com/oasis3855/pic-program/blob/main/thermometer-12f675">シリアル接続温度計 (PIC 12F675)</a> (2013/02/09)</li>
+<li><a href="https://github.com/oasis3855/pic-program/blob/main/thermometer-12f1822">ログデータ保存機能つきLCD表示温度計 (PIC 12F1822)</a> (2013/02/09)</li>
+<li><a href="https://github.com/oasis3855/pic-program/blob/main/thermometer-16f690">最低・最高温度記憶機能つきLCD表示温度計 (PIC 16F690)</a> (2012/08/26)</li>
+</ul>
+</li>
 </ul>
 <br />
 <br />
@@ -162,6 +187,7 @@
 <br />
 <h4 id="microsoft-office-vba-スクリプト">Microsoft Office VBA スクリプト</h4>
 <ul>
+<li><a href="https://github.com/oasis3855/office-scripts/blob/main/excel-bin2text">Binary Dump / Base64 Encode : バイナリダンプ／Base64エンコード for Microsoft Excel</a> (2023/02/02)</li>
 <li><a href="https://github.com/oasis3855/office-scripts/blob/main/excel-find-comment">Excel find comment : コメントのあるセルを検索 for Microsoft Excel</a> (2022/06/25)</li>
 <li><a href="https://github.com/oasis3855/office-scripts/blob/main/excel-find-hidden-line">Excel find hidden line : 非表示の行・列を検索 for Microsoft Excel</a> (2022/06/25)</li>
 <li><a href="https://github.com/oasis3855/office-scripts/blob/main/excel-outlook-mailsend">Outlookメール自動作成・名簿データ差込 for Microsoft Excel</a>  (2022/06/30)</li>
@@ -175,13 +201,43 @@
 <br />
 <h4 id="その他">その他</h4>
 <ul>
-<li><strong>『<a href="https://github.com/oasis3855/linux-scripts">各種スクリプト類（Linux）</a>』</strong>（目次ページ）</li>
-<li><a href="https://github.com/oasis3855/linux-scripts/blob/main/gpx-tools">GPX GPSログファイル 変換ツール類 (Linux, Perlスクリプト, Web CGI)</a>  (2021/09/19)</li>
-<li><a href="https://github.com/oasis3855/linux-scripts/blob/main/imap4_mail_indicator">未読メール通知Gnomeインジケータ アプレット (Linux, Pythonスクリプト)</a> (2014/05/10)</li>
-<li><a href="https://github.com/oasis3855/linux-scripts/blob/main/mail-textfile-send">SMTPサーバを利用するテキストメール送信Perlスクリプト (Linux)</a> (2019/09/23)</li>
+<li>
+<p><strong>『<a href="https://github.com/oasis3855/linux-scripts">各種スクリプト類（Linux）</a>』</strong>（目次ページ）</p>
+<ul>
+<li><a href="https://github.com/oasis3855/linux-scripts/blob/main/addressbook_converter">住所録CSVファイル相互変換 Linux, Perlスクリプト
+</a> (2011/12/08)</li>
+<li><a href="https://github.com/oasis3855/linux-scripts/blob/main/gnome-change-desktop-image">Gnomeデスクトップ壁紙 スライドショー cron呼出スクリプト (Linux シェルスクリプト)</a> (2020/01/11)</li>
+<li><a href="https://github.com/oasis3855/linux-scripts/blob/main/gpx-tools">GPX GPSログファイル 変換ツール類 (Linux, Perlスクリプト)</a> (2021/09/19)
+<ul>
+<li>Google Cloud Platform : Maps JavaScript API code builder (gpx2gmap.cgi)</li>
+<li>Google Cloud Platform : Maps JavaScript API code converter (<a href="http://csv2gmap.pl">csv2gmap.pl</a>)</li>
+<li>Google Cloud Platform : Maps Static API builder (google_staticmap_maker.cgi)</li>
+<li>GPX を CSV に変換 (<a href="http://gpx2csv.pl">gpx2csv.pl</a>)</li>
+<li>CSV を GPX に変換 (<a href="http://csv2gpx.pl">csv2gpx.pl</a>)</li>
 </ul>
+</li>
+<li><a href="https://github.com/oasis3855/linux-scripts/blob/main/imap4_mail_indicator">未読メール通知Gnomeインジケータ アプレット (Linux)</a> (2014/05/10)</li>
+<li><a href="https://github.com/oasis3855/linux-scripts/blob/main/mail-textfile-send">SMTPサーバを利用するテキストメール送信Perlスクリプト</a> (2019/09/23)</li>
+<li><a href="https://github.com/oasis3855/linux-scripts/blob/main/mp3_id3_tool">mp3 ID3タグ読込・書込ツール(Perlスクリプト)</a> (2012/03/20)</li>
+<li><a href="https://github.com/oasis3855/linux-scripts/blob/main/nautilus-script">Linux Nautilusのコンテキストメニュー「スクリプト」で使う小技スクリプト類</a> (2020/07/12)</li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/oasis3855/linux-scripts/blob/main/gpx-tools">GPX GPSログファイル 変換ツール類 (Linux, Perlスクリプト, Web CGI)</a>  (2021/09/19)</p>
+</li>
+<li>
+<p><a href="https://github.com/oasis3855/linux-scripts/blob/main/imap4_mail_indicator">未読メール通知Gnomeインジケータ アプレット (Linux, Pythonスクリプト)</a> (2014/05/10)</p>
+</li>
+<li>
+<p><a href="https://github.com/oasis3855/linux-scripts/blob/main/mail-textfile-send">SMTPサーバを利用するテキストメール送信Perlスクリプト (Linux)</a> (2019/09/23)</p>
+</li>
+<li>
+<p><a href="https://github.com/oasis3855/pic-program/blob/main/picmeter-win">PIC Meter : シリアルデータ受信・グラフ化ソフトウエア for Windows</a> (2013/02/09)
 <br />
-<br />
+<br /></p>
+</li>
+</ul>
+<hr>
 <h4 id="過去に配布したソフトウエア現在のシステムでは実行不適など">過去に配布したソフトウエア（現在のシステムでは実行不適など）</h4>
 <ul>
 <li>
@@ -195,13 +251,23 @@
 </ul>
 </li>
 <li>
-<p><a href="https://github.com/oasis3855/webservice-script/tree/main/mediawiki_extention">MediaWikiの拡張機能と設定メモ</a> (2012/01/20)</p>
+<p><strong>『<a href="https://github.com/oasis3855/linux-scripts">各種スクリプト類（Linux）</a>』</strong>（目次ページ）</p>
 <ul>
-<li>previouspage restrict拡張機能 , specialpage restrict拡張機能 , protect page拡張機能</li>
+<li><a href="https://github.com/oasis3855/linux-scripts/blob/main/gnome-desktop-img-xmlmaker">Gnomeデスクトップ壁紙 スライドショー XML作成 (Linux Perlスクリプト)</a> (2011/04/20)</li>
+<li><a href="https://github.com/oasis3855/linux-scripts/blob/main/gnome2_logon_theme">Gnome 2 ログオンテーマ</a> (2008/09/14)</li>
+<li><a href="https://github.com/oasis3855/linux-scripts/blob/main/weather_indicator">天気・気温通知Gnomeインジケータ アプレット (Linux)</a> (2014/05/17)</li>
 </ul>
 </li>
 <li>
-<p><a href="https://github.com/oasis3855/windows_misc_program">Windowsツール類</a></p>
+<p><a href="https://github.com/oasis3855/webservice-script/tree/main/mediawiki_extention">MediaWikiの拡張機能と設定メモ</a> (2012/01/20)</p>
+<ul>
+<li>previouspage restrict拡張機能</li>
+<li>specialpage restrict拡張機能</li>
+<li>protect page拡張機能</li>
+</ul>
+</li>
+<li>
+<p>『<strong><a href="https://github.com/oasis3855/windows_misc_program">Windowsツール類</a></strong>』（目次ページ）</p>
 <ul>
 <li><a href="https://github.com/oasis3855/windows_misc_program/tree/main/felica_pasori_checkin_system">FeliCaを用いたクライアント・サーバ型のタイムカードシステム</a> (2008/10/20)</li>
 <li><a href="https://github.com/oasis3855/windows_misc_program/tree/main/felica_raw_viewer">FeliCaのデータを読み出す (Windows)</a> (2007/11/30)</li>
@@ -213,10 +279,38 @@
 </ul>
 </li>
 <li>
-<p><a href="https://github.com/oasis3855/windows-filer-program">Windows ファイル操作関連ソフトウエア</a></p>
+<p>『<strong><a href="https://github.com/oasis3855/windows-filer-program">Windows ファイル操作関連ソフトウエア</a></strong>』（目次ページ）</p>
 <ul>
 <li><a href="https://github.com/oasis3855/windows-filer-program/blob/main/ddisk">ddisk : 論理ディスク アクセスツール (Windows 95/98)</a> (2002/05/20)</li>
 <li><a href="https://github.com/oasis3855/windows-filer-program/blob/main/filecopyex">FileCopyEx : ファイル部分コピーツール (Windows)</a> (2002/05/11)</li>
+</ul>
+</li>
+<li>
+<p>『<strong><a href="https://github.com/oasis3855/pc9801">PC9801 ソフトウエア</a></strong>』（目次ページ）</p>
+<ul>
+<li><a href="https://github.com/oasis3855/pc9801/blob/main/chkvec">CHKVEC：割り込みベクター監視ソフト for PC9801</a> (1992/07/19)</li>
+<li><a href="https://github.com/oasis3855/pc9801/blob/main/dclk">DCLK：デジタル クロック for PC9801</a> (1993/02/28)</li>
+<li><a href="https://github.com/oasis3855/pc9801/blob/main/fdmortoroff">フロッピーディスク モーター自動停止 for PC9801</a> (1992/03/07)</li>
+<li><a href="https://github.com/oasis3855/pc9801/blob/main/fortran-graphics">MS-Fortran 用 グラフィックス ライブラリ for PC9801</a> (1993/02/07)
+<ul>
+<li>GLIO.LIB : グラフィックス ライブラリ</li>
+<li>TLIB.LIB : テキスト画面直接出力/キーボード直接入力</li>
+</ul>
+</li>
+<li><a href="https://github.com/oasis3855/pc9801/blob/main/init">INIT：グラフィックス、テキスト、ビープ音初期化 for PC9801</a> (1993/01/14)</li>
+<li><a href="https://github.com/oasis3855/pc9801/blob/main/mandelbrot">マンデルブロート集合作図 統合環境 for PC9801</a> (1992/04/06)</li>
+<li><a href="https://github.com/oasis3855/pc9801/blob/main/pc98-common-lib">MS-DOS 統合環境実現用のテキスト／グラフィック ライブラリ for PC9801</a> (1992/04/01)
+<ul>
+<li>GLIO.LIB : グラフィックス ライブラリ</li>
+<li>WINP.LIB : テキスト ウィンドウ ライブラリ</li>
+<li>TXTL.LIB : テキスト入力/編集ライブラリ</li>
+<li>ETC.LIB : PC-9801 BIOSファンクションを用いる雑多な関数</li>
+<li>HDCPY.LIB : ハードコピー ライブラリ</li>
+</ul>
+</li>
+<li><a href="https://github.com/oasis3855/pc9801/blob/main/setkeytable">MS-DOS キーテーブル初期化 for PC9801</a> (1991/04/26)</li>
+<li><a href="https://github.com/oasis3855/pc9801/blob/main/setlinenumber">SETNUM：行番号自動作成 for PC9801</a> (1991/04/29)</li>
+<li><a href="https://github.com/oasis3855/pc9801/blob/main/xy-graph">XY Graph：関数グラフ作成 統合環境 for PC9801</a> (1992/12/30)</li>
 </ul>
 </li>
 </ul>

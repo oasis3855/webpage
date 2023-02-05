@@ -6,6 +6,7 @@
 <br />
 <br />
 
+
 #### 画像ファイルを扱うソフトウエア
 
 - [サムネイルHTML作成スクリプト（Linux）](https://github.com/oasis3855/image-tools/tree/main/thumbnail-html) (2014/04/26)
@@ -29,17 +30,33 @@
 <br />
 <br />
 
-#### センサー（測定デバイス）を扱うソフトウエア
+#### Raspberry Pi向けソフトウエア
 
 - [BMP280,DHT11の温湿度計測値をアップロード、ブラウザ表示(Perlスクリプト)](https://github.com/oasis3855/linux-weblogger/tree/main/web-loggraph) (2018/05/12)
-
-<br />
-<br />
-
-#### マイコンでセンサー（測定デバイス）や周辺デバイスを扱うソフトウエア
-
 - [Raspberry Pi用I2C汎用ライブラリ](https://github.com/oasis3855/rpi-i2c) (2018/11/20)
-- [PIC microcontroller用I2C汎用ライブラリ](https://github.com/oasis3855/pic-i2c-lib) (2016/10/9)
+
+<br />
+<br />
+
+#### Microchip PICマイコン向けソフトウエア
+
+- 『**[PIC microcontroller用I2C汎用ライブラリ](https://github.com/oasis3855/pic-i2c-lib)**』（目次ページ）
+  - [I2Cデバイス アドレスをスキャンする (PIC 12F1822)](https://github.com/oasis3855/pic-i2c-lib/blob/main/i2c-scan) (2013/01/14)
+  - [I2C接続キャラクタLCDに文字列表示 (PIC 12F1822)](https://github.com/oasis3855/pic-i2c-lib/blob/main/lcd/README.md) (2016/02/01 )
+    - Strawberry Linux SB1602B
+    - I2C LCD 変換アダプタ mjkdz I2C lcd1602 (第一世代版)
+    - I2C LCD 変換アダプタ CEG003400
+  - [I2C接続EEPROMを読み書き (PIC 12F1822)](https://github.com/oasis3855/pic-i2c-lib/blob/main/eeprom) (2013/02/03)
+  - [I2C EEPROMのダンプ表示と書き込みツール (PIC 12F1822)](2013/02/03)
+
+
+- 『**[PIC microcontroller用 各種ソフトウエア](https://github.com/oasis3855/pic-program)**』（目次ページ）
+  - [シリアル出力 交流電流計 (PIC 12F1822)](https://github.com/oasis3855/pic-program/blob/main/ct-ammeter-12f1822) (2016/07/17)
+  - [温湿度センサー DHT11を使う (PIC 12F1822)](https://github.com/oasis3855/pic-program/blob/main/dht11-humid-12f1822) (2015/12/31)
+  - [粉塵センサー GP2Y1010AU0Fを使う (PIC 12F1822)](https://github.com/oasis3855/pic-program/blob/main/dustsensor-12f1822) (2016/01/17)
+  - [シリアル接続温度計 (PIC 12F675)](https://github.com/oasis3855/pic-program/blob/main/thermometer-12f675) (2013/02/09)
+  - [ログデータ保存機能つきLCD表示温度計 (PIC 12F1822)](https://github.com/oasis3855/pic-program/blob/main/thermometer-12f1822) (2013/02/09)
+  - [最低・最高温度記憶機能つきLCD表示温度計 (PIC 16F690)](https://github.com/oasis3855/pic-program/blob/main/thermometer-16f690) (2012/08/26)
 
 <br />
 <br />
@@ -103,6 +120,7 @@
 
 #### Microsoft Office VBA スクリプト
 
+- [Binary Dump / Base64 Encode : バイナリダンプ／Base64エンコード for Microsoft Excel](https://github.com/oasis3855/office-scripts/blob/main/excel-bin2text) (2023/02/02)
 - [Excel find comment : コメントのあるセルを検索 for Microsoft Excel](https://github.com/oasis3855/office-scripts/blob/main/excel-find-comment) (2022/06/25)
 - [Excel find hidden line : 非表示の行・列を検索 for Microsoft Excel](https://github.com/oasis3855/office-scripts/blob/main/excel-find-hidden-line) (2022/06/25)
 - [Outlookメール自動作成・名簿データ差込 for Microsoft Excel](https://github.com/oasis3855/office-scripts/blob/main/excel-outlook-mailsend)  (2022/06/30)
@@ -118,13 +136,29 @@
 #### その他
 
 - **『[各種スクリプト類（Linux）](https://github.com/oasis3855/linux-scripts)』**（目次ページ）
+
+  - [住所録CSVファイル相互変換 Linux, Perlスクリプト
+](https://github.com/oasis3855/linux-scripts/blob/main/addressbook_converter) (2011/12/08)
+  - [Gnomeデスクトップ壁紙 スライドショー cron呼出スクリプト (Linux シェルスクリプト)](https://github.com/oasis3855/linux-scripts/blob/main/gnome-change-desktop-image) (2020/01/11)
+  - [GPX GPSログファイル 変換ツール類 (Linux, Perlスクリプト)](https://github.com/oasis3855/linux-scripts/blob/main/gpx-tools) (2021/09/19)
+    - Google Cloud Platform : Maps JavaScript API code builder (gpx2gmap.cgi)
+    - Google Cloud Platform : Maps JavaScript API code converter (csv2gmap.pl)
+    - Google Cloud Platform : Maps Static API builder (google_staticmap_maker.cgi)
+    - GPX を CSV に変換 (gpx2csv.pl)
+    - CSV を GPX に変換 (csv2gpx.pl)
+  - [未読メール通知Gnomeインジケータ アプレット (Linux)](https://github.com/oasis3855/linux-scripts/blob/main/imap4_mail_indicator) (2014/05/10)
+  - [SMTPサーバを利用するテキストメール送信Perlスクリプト](https://github.com/oasis3855/linux-scripts/blob/main/mail-textfile-send) (2019/09/23)
+  - [mp3 ID3タグ読込・書込ツール(Perlスクリプト)](https://github.com/oasis3855/linux-scripts/blob/main/mp3_id3_tool) (2012/03/20)
+  - [Linux Nautilusのコンテキストメニュー「スクリプト」で使う小技スクリプト類](https://github.com/oasis3855/linux-scripts/blob/main/nautilus-script) (2020/07/12)
+
 - [GPX GPSログファイル 変換ツール類 (Linux, Perlスクリプト, Web CGI)](https://github.com/oasis3855/linux-scripts/blob/main/gpx-tools)  (2021/09/19)
 - [未読メール通知Gnomeインジケータ アプレット (Linux, Pythonスクリプト)](https://github.com/oasis3855/linux-scripts/blob/main/imap4_mail_indicator) (2014/05/10)
 - [SMTPサーバを利用するテキストメール送信Perlスクリプト (Linux)](https://github.com/oasis3855/linux-scripts/blob/main/mail-textfile-send) (2019/09/23)
-
+- [PIC Meter : シリアルデータ受信・グラフ化ソフトウエア for Windows](https://github.com/oasis3855/pic-program/blob/main/picmeter-win) (2013/02/09)
 <br />
 <br />
 
+---
 
 #### 過去に配布したソフトウエア（現在のシステムでは実行不適など）
 
@@ -134,9 +168,20 @@
   - [ExecAnalog（Analogに今月・先月のログ解析をさせるための自動化ツール）(Windows)](https://github.com/oasis3855/webserver_tools/tree/main/exec_analog) (2007/07/25)
   - [ReadNsLog（NetScreenのログからエラー行を抽出するツール）(Windows)](https://github.com/oasis3855/webserver_tools/tree/main/read_netscreen_log) (2007/07/25)
   - [ReadEvent（Windowsイベント ログからエラー行を抽出しHTML化するツール）(Windows)](https://github.com/oasis3855/webserver_tools/tree/main/read_windows_event) (2007/07/25)
+
+- **『[各種スクリプト類（Linux）](https://github.com/oasis3855/linux-scripts)』**（目次ページ）
+
+  - [Gnomeデスクトップ壁紙 スライドショー XML作成 (Linux Perlスクリプト)](https://github.com/oasis3855/linux-scripts/blob/main/gnome-desktop-img-xmlmaker) (2011/04/20)
+  - [Gnome 2 ログオンテーマ](https://github.com/oasis3855/linux-scripts/blob/main/gnome2_logon_theme) (2008/09/14)
+  - [天気・気温通知Gnomeインジケータ アプレット (Linux)](https://github.com/oasis3855/linux-scripts/blob/main/weather_indicator) (2014/05/17)
+
+
 - [MediaWikiの拡張機能と設定メモ](https://github.com/oasis3855/webservice-script/tree/main/mediawiki_extention) (2012/01/20)
-  - previouspage restrict拡張機能 , specialpage restrict拡張機能 , protect page拡張機能
-- [Windowsツール類](https://github.com/oasis3855/windows_misc_program)
+  - previouspage restrict拡張機能
+  - specialpage restrict拡張機能
+  - protect page拡張機能
+  
+- 『**[Windowsツール類](https://github.com/oasis3855/windows_misc_program)**』（目次ページ）
   - [FeliCaを用いたクライアント・サーバ型のタイムカードシステム](https://github.com/oasis3855/windows_misc_program/tree/main/felica_pasori_checkin_system) (2008/10/20)
   - [FeliCaのデータを読み出す (Windows)](https://github.com/oasis3855/windows_misc_program/tree/main/felica_raw_viewer) (2007/11/30)
   - [GPSによるシステム時間設定 (forWindows/Windows Mobile)](https://github.com/oasis3855/windows_misc_program/tree/main/gps_timeset)(2008/05/31)
@@ -145,10 +190,29 @@
   - [InfoBar : ニュース電光掲示板 (Windows)](https://github.com/oasis3855/windows_misc_program/tree/main/infobar) (2003/06/01)
   - [バックライト制御 (Windows Mobile)](https://github.com/oasis3855/windows_misc_program/tree/main/winmobile_backlight_ctrl) (2008/04/05)
 
-- [Windows ファイル操作関連ソフトウエア](https://github.com/oasis3855/windows-filer-program)
+- 『**[Windows ファイル操作関連ソフトウエア](https://github.com/oasis3855/windows-filer-program)**』（目次ページ）
   - [ddisk : 論理ディスク アクセスツール (Windows 95/98)](https://github.com/oasis3855/windows-filer-program/blob/main/ddisk) (2002/05/20)
   - [FileCopyEx : ファイル部分コピーツール (Windows)](https://github.com/oasis3855/windows-filer-program/blob/main/filecopyex) (2002/05/11)
 
+- 『**[PC9801 ソフトウエア](https://github.com/oasis3855/pc9801)**』（目次ページ）
+  - [CHKVEC：割り込みベクター監視ソフト for PC9801](https://github.com/oasis3855/pc9801/blob/main/chkvec) (1992/07/19)
+  - [DCLK：デジタル クロック for PC9801](https://github.com/oasis3855/pc9801/blob/main/dclk) (1993/02/28)
+  - [フロッピーディスク モーター自動停止 for PC9801](https://github.com/oasis3855/pc9801/blob/main/fdmortoroff) (1992/03/07)
+  - [MS-Fortran 用 グラフィックス ライブラリ for PC9801](https://github.com/oasis3855/pc9801/blob/main/fortran-graphics) (1993/02/07)
+    - GLIO.LIB : グラフィックス ライブラリ 
+    - TLIB.LIB : テキスト画面直接出力/キーボード直接入力
+  - [INIT：グラフィックス、テキスト、ビープ音初期化 for PC9801](https://github.com/oasis3855/pc9801/blob/main/init) (1993/01/14)
+  - [マンデルブロート集合作図 統合環境 for PC9801](https://github.com/oasis3855/pc9801/blob/main/mandelbrot) (1992/04/06)
+  - [MS-DOS 統合環境実現用のテキスト／グラフィック ライブラリ for PC9801](https://github.com/oasis3855/pc9801/blob/main/pc98-common-lib) (1992/04/01)
+    - GLIO.LIB : グラフィックス ライブラリ
+    - WINP.LIB : テキスト ウィンドウ ライブラリ
+    - TXTL.LIB : テキスト入力/編集ライブラリ
+    - ETC.LIB : PC-9801 BIOSファンクションを用いる雑多な関数
+    - HDCPY.LIB : ハードコピー ライブラリ
+  - [MS-DOS キーテーブル初期化 for PC9801](https://github.com/oasis3855/pc9801/blob/main/setkeytable) (1991/04/26)
+  - [SETNUM：行番号自動作成 for PC9801](https://github.com/oasis3855/pc9801/blob/main/setlinenumber) (1991/04/29)
+  - [XY Graph：関数グラフ作成 統合環境 for PC9801](https://github.com/oasis3855/pc9801/blob/main/xy-graph) (1992/12/30)
+  
 
 <br />
 <br />
