@@ -106,7 +106,8 @@
 - [Android 連絡先一覧表示・一括削除プログラム](https://github.com/oasis3855/android-phone-tools/blob/main/contact-edit) (2016/12/23)
 - **『[Android メディアを扱うソフトウエア](https://github.com/oasis3855/android-media-tools)』**（目次ページ）
 - [Android ネットラジオ受信プログラム](https://github.com/oasis3855/android-media-tools/blob/main/net-radio) (2015/10/25)
-
+- **『[Android ツール類](https://github.com/oasis3855/android-tools/tree/main)』**（目次ページ）
+- [シンプル デスク クロック](https://github.com/oasis3855/android-tools/tree/main/SimpleDeskClock) (2023/06/12)
 
 <br />
 <br />
