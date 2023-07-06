@@ -140,7 +140,6 @@
 #### その他
 
 - **『[各種スクリプト類（Linux）](https://github.com/oasis3855/linux-scripts)』**（目次ページ）
-
   - [住所録CSVファイル相互変換 Linux, Perlスクリプト
 ](https://github.com/oasis3855/linux-scripts/blob/main/addressbook_converter) (2011/12/08)
   - [Gnomeデスクトップ壁紙 スライドショー cron呼出スクリプト (Linux シェルスクリプト)](https://github.com/oasis3855/linux-scripts/blob/main/gnome-change-desktop-image) (2020/01/11)
@@ -154,12 +153,12 @@
   - [SMTPサーバを利用するテキストメール送信Perlスクリプト](https://github.com/oasis3855/linux-scripts/blob/main/mail-textfile-send) (2019/09/23)
   - [mp3 ID3タグ読込・書込ツール(Perlスクリプト)](https://github.com/oasis3855/linux-scripts/blob/main/mp3_id3_tool) (2012/03/20)
   - [Linux Nautilusのコンテキストメニュー「スクリプト」で使う小技スクリプト類](https://github.com/oasis3855/linux-scripts/blob/main/nautilus-script) (2020/07/12)
-
 - [GPX GPSログファイル 変換ツール類 (Linux, Perlスクリプト, Web CGI)](https://github.com/oasis3855/linux-scripts/blob/main/gpx-tools)  (2021/09/19)
 - [未読メール通知Gnomeインジケータ アプレット (Linux, Pythonスクリプト)](https://github.com/oasis3855/linux-scripts/blob/main/imap4_mail_indicator) (2014/05/10)
 - [SMTPサーバを利用するテキストメール送信Perlスクリプト (Linux)](https://github.com/oasis3855/linux-scripts/blob/main/mail-textfile-send) (2019/09/23)
 - [PIC Meter : シリアルデータ受信・グラフ化ソフトウエア for Windows](https://github.com/oasis3855/pic-program/blob/main/picmeter-win) (2013/02/09)
 - [(Java) Swing用カレンダー コントロール](https://github.com/oasis3855/java-program/blob/main/java-swingcalendar) (2015/05/06)
+
 <br />
 <br />
 
@@ -187,15 +186,16 @@
   - protect page拡張機能
   
 - 『**[Windowsツール類](https://github.com/oasis3855/windows_misc_program)**』（目次ページ）
+  - [cursor32 : マウス座標表示 (Windows)](https://github.com/oasis3855/windows_misc_program/tree/main/cursor32) (2004/04/17)
+  - [デバッグ用 引数表示ソフトウエア for Windows](https://github.com/oasis3855/windows_misc_program/blob/main/dummyprog_paramdisp) (2002/03/23)
   - [FeliCaを用いたクライアント・サーバ型のタイムカードシステム](https://github.com/oasis3855/windows_misc_program/tree/main/felica_pasori_checkin_system) (2008/10/20)
   - [FeliCaのデータを読み出す (Windows)](https://github.com/oasis3855/windows_misc_program/tree/main/felica_raw_viewer) (2007/11/30)
   - [GPSによるシステム時間設定 (forWindows/Windows Mobile)](https://github.com/oasis3855/windows_misc_program/tree/main/gps_timeset)(2008/05/31)
-  - [sf2mrtg : SpeedFanのデータをMRTGで取り込む補助ツール (Windows)](https://github.com/oasis3855/windows_misc_program/tree/main/speedfan_to_mrtg) (2007/07/17)
-  - [cursor32 : マウス座標表示 (Windows)](https://github.com/oasis3855/windows_misc_program/tree/main/cursor32) (2004/04/17)
+  - [Internet Explorer Cookie コントローラ for Windows](https://github.com/oasis3855/windows_misc_program/tree/main/ie_cookie_ctrl) (2002/05/07)
   - [InfoBar : ニュース電光掲示板 (Windows)](https://github.com/oasis3855/windows_misc_program/tree/main/infobar) (2003/06/01)
-  - [バックライト制御 (Windows Mobile)](https://github.com/oasis3855/windows_misc_program/tree/main/winmobile_backlight_ctrl) (2008/04/05)
-  - [デバッグ用 引数表示ソフトウエア for Windows](https://github.com/oasis3855/windows_misc_program/blob/main/dummyprog_paramdisp) (2002/03/23)
   - [日本語文字コード表示ツール for Windows](https://github.com/oasis3855/windows_misc_program/blob/main/kanjicode) (1998/10/30)
+  - [sf2mrtg : SpeedFanのデータをMRTGで取り込む補助ツール (Windows)](https://github.com/oasis3855/windows_misc_program/tree/main/speedfan_to_mrtg) (2007/07/17)
+  - [バックライト制御 (Windows Mobile)](https://github.com/oasis3855/windows_misc_program/tree/main/winmobile_backlight_ctrl) (2008/04/05)
 
 - 『**[Windows ファイル操作関連ソフトウエア](https://github.com/oasis3855/windows-filer-program)**』（目次ページ）
   - [ddisk : 論理ディスク アクセスツール (Windows 95/98)](https://github.com/oasis3855/windows-filer-program/blob/main/ddisk) (2002/05/20)
