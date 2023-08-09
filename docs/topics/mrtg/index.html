@@ -1,0 +1,629 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" dir="ltr" lang="ja">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="https://oasis3855.github.io/webpage/styles.css" type="text/css" />
+
+
+    <!-- disable viewport for mobile device -->
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
+
+
+    <title>Travel and Software - Powered by GitHub Pages</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="layout_header_menu">
+            <!-- page top menu line -->
+            <ul>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/index.shtml" target="_self">Home</a></li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/traveldia/index.html" target="_self">Travels</a>
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub" href="http://www.youtube.com/user/inoue0111"
+                                target="_self">動画(YouTube)</a></li>
+                        <li><a class="new_sub_bottom" href="http://oasis-halfmoon.blogspot.com/"
+                                target="_self">編集前旅行記(Blogger)</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">Photo</a>
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">All Page
+                                List</a></li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub_bottom" href="https://oasis.halfmoon.jp/about/index.html"
+                                target="_self">利用許諾条件</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="../../software/index.html" target="_self">Software</a>
+                    <ul>
+                        <li><a class="new_sub" href="../../software/index.html"
+                                target="_self">Software Main Page</a></li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/cgi-bin/websvn/"
+                                target="_self">Subversion</a></li>
+                        <li><a class="new_sub" href="https://github.com/oasis3855"
+                                target="_self">GitHub</a></li>
+                        <li><a class="new_sub_bottom" href="http://code.google.com/u/101092603816443690725/"
+                                target="_self">Google Code</a></li>
+                    </ul>
+                </li>
+                <li><a class="new" href="https://oasis.halfmoon.jp/links/index.html" target="_self">Links</a></li>
+            </ul>
+        </div>
+        <div id="layout_header_menu_line">
+            <!-- Horizonal Line (Menu) -->
+        </div>
+
+
+        <div id="main_content_full">
+            <!-- ********* CONTENTS START FROM HERE ********* -->
+
+
+
+            <h1>mrtgでサーバ状態の監視</h1>
+
+            <p><a href="../../index.html">Home</a> &gt; <a href="../../software/index.html">Software</a> &gt; <a href="../../software/software_server_memo.html">ソフトウエア開発・サーバ管理のメモ帳</a> &gt; このページ</p>
+            <p style="text-align: right;">Last Update 2012/01/27</p>
+
+            <div class="fig_center">
+                <img alt="20070408-cpu.png" src="pics/cpu.png" width="500" height="135" /><br />
+            </div>
+
+            <p>&nbsp;</p>
+
+
+            <p>&nbsp;</p>
+
+            <p>サーバのCPU負荷・温度・ネットワーク転送量などを、MRTGでグラフ化してWebサーバ経由で監視する方法</p>
+
+            <p>&nbsp;</p>
+
+            <h2>Linux（RHEL, CentOS, Fedora）での設定</h2>
+            <h4>CPU・M/B温度センサからの読み込み設定</h4>
+
+            <p>まず、LM75など温度センサーICとのインターフェース・デーモンをインストールする。</p>
+
+            <pre>
+[root@wslnx-111 ~]# <b>yum install lm_sensors</b>
+    
+～ （中略） インストールされる画面表示 ～
+    
+[root@wslnx-111 ~]# <b>sensors-detect</b>
+    
+～ （中略） 自動コンフィグ、質問は基本的にデフォルトのYESなどで ～
+            </pre>
+
+            <p>sensors-detect のコンフィグ中の表示で /etc/rc.local と /etc/modprobe.conf
+                に追加すべき記述が出てくるので、それが追加されているか各設定ファイルを開いてチェックする。（赤で示した行が追加されていない場合は、手動追加する）</p>
+
+            <pre class="title">/etc/modprobe.conf</pre>
+            <pre>
+... （前略） ...
+/modprobe -r --ignore-remove snd-hda-intel
+    
+<span style="color:red;"># I2C module options
+alias char-major-89 i2c-dev</span>
+            </pre>
+
+            <pre class="title">/etc/rc.local</pre>
+            <pre>
+... （前略） ...
+touch /var/lock/subsys/local
+<span style="color:red;"># I2C adapter drivers
+modprobe i2c-i801
+modprobe i2c-isa
+# I2C chip drivers
+modprobe eeprom
+modprobe w83627hf</span>
+# sleep 2 # optional
+/usr/bin/sensors -s # recommended
+            </pre>
+
+            <p>なお、各値名前や値の最大・最小などを決める定義ファイルは /etc/sensors.conf に書かれているので、マシンのセンサー名の項目以下を適宜修正する。</p>
+
+            <pre class="title">/etc/sensors.conf</pre>
+            <pre>
+... （前略） ...
+chip &quot;w83627thf-*&quot; &quot;w83637hf-*&quot;
+
+label in0 &quot;VCore&quot;
+label in1 &quot;+12V&quot;
+label in2 &quot;+3.3V&quot;
+label in3 &quot;+5V&quot;
+label in4 &quot;-12V&quot;
+label in7 &quot;V5SB&quot;
+label in8 &quot;VBat&quot;
+
+compute in1 ((28/10)+1)*@, @/((28/10)+1)
+compute in3 ((34/51)+1)*@, @/((34/51)+1)
+compute in4 (5.14*@)-14.91, (@+14.91)/5.14
+compute in7 ((6.8/10)+1)*@ , @/((6.8/10)+1)
+
+<span style="color:red;">set in0_min 0.988 * 0.98 # Pentium M 750 Vccmax
+set in0_max 1.356 * 1.00 # Pentium M 750 Vcclfm</span>
+set in1_min 12 * 0.95
+set in1_max 12 * 1.05
+set in2_min 3.3 * 0.95
+set in2_max 3.3 * 1.05
+set in3_min 5.0 * 0.95
+set in3_max 5.0 * 1.05
+<span style="color:red;">set in4_min -12 * 1.10
+set in4_max 0</span>
+set in7_min 5 * 0.95
+set in7_max 5 * 1.05
+set in8_min 3.0 * 0.80
+set in8_max 3.0 * 1.20
+
+# set sensor1 1
+# set sensor2 2
+# set sensor3 3435
+
+label temp1 &quot;M/B Temp&quot;
+label temp2 &quot;CPU Temp&quot;
+ignore temp3
+
+<span style="color:red;">set temp1_over 45
+set temp1_hyst 35
+set temp2_over 60
+set temp2_hyst 50</span>
+
+label fan1 &quot;Case Fan&quot;
+label fan2 &quot;CPU Fan&quot;
+ignore fan3
+
+<span style="color:red;">set fan1_div 8
+set fan1_min 1400 # fanx_min must be written after fanx_div
+set fan2_div 8
+set fan2_min 2000
+
+set beep_enable 0</span>
+            </pre>
+
+            <p>Linuxを再起動するか、lm_sensorsデーモンを再起動して、モジュールがちゃんと読み込まれているか確認する<br />
+                ※ 再起動しない場合、modprobeを手動で実行する必要がある場合もある。</p>
+
+            <pre>
+[root@wslnx-111 ~]# <b>/etc/rc.d/init.d/lm_sensors restart</b>
+lm_sensors を停止中: [ OK ]
+lm_sensors を起動中: [ OK ]
+    
+[root@wslnx-111 ~]# <b>lsmod | grep -e i2c</b>
+i2c_isa 5697 1 w83627hf
+i2c_ec 5569 1 sbs
+i2c_i801 8013 0
+i2c_core 21697 5 w83627hf,eeprom,i2c_isa,i2c_ec,i2c_i801
+    
+[root@wslnx-111 ~]#
+            </pre>
+
+            <p>端末上で現在のセンサーの計測値を表示すると...</p>
+
+            <pre>
+[root@wslnx-111 ~]# <b>sensors</b>
+w83627thf-isa-0290 <span style="color:red;">← マシンのセンサー名（sensors.confではこのセンサー項目を編集すれば良い)</span>
+Adapter: ISA adapter
+VCore: +1.00 V (min = +0.97 V, max = +1.35 V)
++12V: +12.10 V (min = +11.37 V, max = +12.59 V)
++3.3V: +3.38 V (min = +3.14 V, max = +3.47 V)
++5V: +4.96 V (min = +4.75 V, max = +5.25 V)
+-12V: -5.62 V (min = -13.18 V, max = -0.02 V)
+V5SB: +5.00 V (min = +4.76 V, max = +5.24 V)
+VBat: +3.30 V (min = +2.40 V, max = +3.60 V)
+Case Fan: 1577 RPM (min = 1394 RPM, div = 8) (beep)
+CPU Fan: 2191 RPM (min = 2008 RPM, div = 8) (beep)
+M/B Temp: +26°C (high = +45°C, hyst = +35°C) sensor = thermistor
+CPU Temp: +41.0°C (high = +60°C, hyst = +50°C) sensor = diode (beep)
+alarms:
+beep_enable:
+Sound alarm disabled
+[root@wslnx-111 ~]#
+            </pre>
+
+            <p>ここまでの情報は ＠ITの次のトピックに書かれている</p>
+
+            <p>「CPUの温度やファンの回転数などをモニタするには」<br />
+                <a class="link_external"
+                    href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/743hwmonitor.html">http://www.atmarkit.co.jp/flinux/rensai/linuxtips/743hwmonitor.html</a>
+            </p>
+
+            <h4>MRTGの設定</h4>
+
+            <p>さらに、これを系時グラフ化する設定をMRTGで行う。</p>
+
+            <p>まずは MRTG のインストール。今回は、ネットの監視では無く、グラフ描画だけの機能を流用する。</p>
+
+            <pre>
+[root@wslnx-111 ~]# <b>yum install mrtg</b>
+            </pre>
+
+            <p>設定ファイルをいじる</p>
+
+            <pre class="title">/etc/mrtg/mrtg.cfg</pre>
+            <pre>
+HtmlDir: /var/www/mrtg
+ImageDir: /var/www/mrtg
+LogDir: /var/lib/mrtg
+ThreshDir: /var/lib/mrtg
+    
+Target[cputemp]: `/usr/bin/sensors | grep Temp | awk '{print $3}' | 
+sed -e 's/+//' -e 's/[^0-9+\.].*//'`
+MaxBytes[cputemp]: 100
+Title[cputemp]: CPU and Motherboard Temperature by lm_sensors
+PageTop[cputemp]: &lt;h1&gt;CPU and Motherboard Temperature&lt;/h1&gt;
+Options[cputemp]: growright,absolute,gauge,nopercent,noinfo
+WithPeak[cputemp]: ymw
+#unscaled[cputemp]: dwmy
+YLegend[cputemp]: Temperature
+ShortLegend[cputemp]: C
+LegendI[cputemp]: M/B
+LegendO[cputemp]: CPU
+Legend1[cputemp]: M/B
+Legend2[cputemp]: CPU
+            </pre>
+
+            <p>MRTGのマニュアルによれば、Target キーワードに外部コマンドを用いる場合は、計測された測定値を４行で出力させる必要性があるそうだ。<br />
+                1行目：LegendI（数値）、2行目：LegendO（数値）、3行目：稼働時間（文字列）、4行目：対象名（文字列）。</p>
+
+            <p>MRTGを５分おきに起動させるために、cronの設定ファイルが次の様になっていることを確認する。</p>
+
+            <pre class="title">/etc/cron.d/mrtg</pre>
+            <pre>
+*/5 * * * * root LANG=C LC_ALL=C /usr/bin/mrtg /etc/mrtg/mrtg.cfg --lock-file /var/lock/mrtg/mrtg_l --confcache-file /var/lib/mrtg/mrtg.ok
+            </pre>
+
+            <p>グラフを見るには、Apacheが走っている場合は</p>
+
+            <pre>
+http://localhost/mrtg/cputemp.html
+            </pre>
+
+            <p>そうでない場合は、直接ファイルを見に行く</p>
+
+            <pre>
+file:///var/www/mrtg/cputemp.html
+            </pre>
+
+            <p>ここまでの情報は ＠ITの次のトピックに書かれている</p>
+
+            <p>「MRTGでCPUの温度変化をグラフ化するには」<br />
+                <a class="link_external"
+                    href="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/797mrtg2cpu.html">http://www.atmarkit.co.jp/flinux/rensai/linuxtips/797mrtg2cpu.html</a>
+            </p>
+
+            <p>また、MRTG設定ファイルの記述方法は公式ページに書かれている<br />
+                <a class="link_external" href="http://www.mrtg.jp/">http://www.mrtg.jp/</a>
+            </p>
+
+            <h4>HDD温度センサからの読み込み設定とMRTGの設定</h4>
+
+            <p>hddtemp をインストール</p>
+
+            <pre>
+[root@wslnx-111 ~]# <b>yum install hddtemp</b>
+            </pre>
+
+            <p>MRTG設定ファイルは次のようになる</p>
+
+            <pre class="title">/etc/mrtg/mrtg.cfg</pre>
+            <pre>
+Target[hddtemp]: `/usr/bin/sensors | grep &quot;M/B Temp&quot; | awk 
+'{print $3}' | sed -e 's/+//' -e 's/[^0-9+\.].*//' &amp;&amp; /usr/sbin/hddtemp /dev/sda | awk '{print $3}'|sed -e 's/[^0-9+\.].*//' &amp;&amp; uptime 
+&amp;&amp; df | grep sda`
+MaxBytes[hddtemp]: 100
+Title[hddtemp]: HDD and Motherboard Temperature by lm_sensors and 
+hddtemp
+PageTop[hddtemp]: &lt;h1&gt;HDD and Motherboard Temperature&lt;/h1&gt;
+Options[hddtemp]: growright,absolute,gauge,nopercent
+WithPeak[hddtemp]: ymw
+#unscaled[hddtemp]: dwmy
+YLegend[hddtemp]: Temperature
+ShortLegend[hddtemp]: C
+LegendI[hddtemp]: M/B
+LegendO[hddtemp]: HDD
+Legend1[hddtemp]: M/B
+Legend2[hddtemp]: HDD
+Legend3[hddtemp]: system uptime
+Legend4[hddtemp]: partition df
+            </pre>
+
+            <h2>Windows での設定</h2>
+            <h4>Windows SNMP エージェントのインストール</h4>
+
+            <p>コントロールパネルのプログラムの追加と削除より、「Windowsコンポーネントの追加と削除」でSNTPサービスをインストールする。</p>
+
+            <p><img alt="20070408-instsnmp01.png" src="pics/instsnmp01-thumb.png" width="320" height="196" /><br />
+                Windows XP の場合</p>
+
+            <p><img alt="20070408-instsnmp03.png" src="pics/instsnmp03-thumb.png" width="320" height="276" /><br />
+                Windows Vista の場合</p>
+
+            <p>サービスを自動起動させるよう設定する</p>
+
+            <p><img alt="20070408-instsnmp02.png" src="pics/instsnmp02-thumb.png" width="320" height="164" /></p>
+
+            <p>Windows Vistaの場合は、サービス名を右クリックしてプロパティを表示し、コミュニティ名を設定する必要性がある。（通常、コミュニティ名はpublicとする）</p>
+
+            <p><img alt="20070408-instsnmp04.png" src="pics/instsnmp04-thumb.png" width="320" height="298" /></p>
+
+            <p>Windows標準のSNMPエージェントで得られるのは MIB-2, RFC1514など。ハードウエアの状態などは得られない。</p>
+
+            <h4>システム関連 のSNMPエージェント拡張</h4>
+
+            <p>CPUの負荷状態やメモリーの利用状況、ハードディスクの容量などを得るためのSNMPエージェント拡張機能をインストールする。</p>
+
+            <p>Windows NT系に対応したフリーのもので、よく使われているものは次の2つくらいか</p>
+
+            <ul>
+                <li><a class="link_external" href="http://www.snmp-informant.com/">SNMP Informant Standard
+                        (http://www.snmp-informant.com/)</a></li>
+                <li><a class="link_external" href="http://www.snmp4tpc.com/snmp4w2k.htm">SNMP4W2K Standard
+                        (http://www.snmp4tpc.com/snmp4w2k.htm)</a></li>
+            </ul>
+
+            <p>どちらか一つを入れればよい。</p>
+
+            <p>CPU温度などをSNMP経由で得たい場合は</p>
+
+            <p><a class="link_external" href="http://cowscorpion.com/CPU/MBM.html">MBM (Motherboard Monitor) </a>用の拡張機能の
+                <a class="link_external" href="http://www.wtcs.org/informant/products.htm#MBM">SNMP Informant-MBM
+                    (http://www.wtcs.org/informant/products.htm)</a>をインストールする。
+            </p>
+
+            <p>なお、MBMは2004年に開発と配布が終了しているらしい。</p>
+
+            <p>SpeedFan 用の拡張も配布されている。</p>
+
+            <p><a class="link_external" href="http://code.bastart.eu.org/projects/sfsnmp/">SpeedFan SNMP Extension
+                    (http://code.bastart.eu.org/projects/sfsnmp/)</a></p>
+
+            <p>MIBが配布されていないので、OIDを直接叩く以外に無い。</p>
+
+            <p>CPU温度などの温度センサーは次のOIDに割り付けられている。<br />
+                .1.3.6.1.4.1.16.0.1.x　　(x=0,1,2...)</p>
+
+            <p>VistaのUAC制御でSpeedFanとMRTGの実行ユーザが違う場合、SNMP経由でうまく取り込めません。SpeedFanのログファイルを用いてデータを取り込むプログラムを<a
+                    class="link_orange" href="http://hp.vector.co.jp/authors/VA001911/freeware/doc_sf2mrtg.html">公開しています
+                    （sf2mrtg）</a>。</p>
+
+            <h4>Perlのインストール</h4>
+
+            <p>MRTGはPerlで書かれているため、Perlの実行環境を整える。</p>
+
+            <p><a class="link_external" href="http://aspn.activestate.com/ASPN/Downloads/ActivePerl/">Active Perl
+                    (http://aspn.activestate.com/ASPN/Downloads/ActivePerl/)</a></p>
+
+            <h4>MRTGのインストール</h4>
+
+            <p><a class="link_external" href="http://www.mrtg.jp/doc/">MRTGの入手と日本語ドキュメント (http://www.mrtg.jp/doc/)</a>
+            </p>
+
+            <p>Windows用zipファイルをダウンロードして、C:\Program Filesに解凍する。</p>
+
+            <p>mrtg.cfgを自分で作成しない場合は、自マシンのNIC情報のみを付加したmrtg.cfgを自動生成させることも出来る。<br />
+                ※ MRTGのログデータを格納するフォルダ名には、空白が入ってはいけないようだ。</p>
+
+            <pre class="title">cfgmaker による mrtg.cfg 自動作成方法</pre>
+            <pre>
+c:\Program Files\mrtg-2.15.0\bin&gt;<b><span style="color:red;">perl 
+cfgmaker public@localhost --global &quot;WorkDir: c:\mrtg&quot; --output 
+mrtg.cfg</span></b>
+--base: Get Device Info on public@localhost:
+--base: Vendor Id:
+--base: Populating confcache
+--coca: populate confcache public@localhost:
+--coca: store in confcache public@localhost_ Descr MS TCP Loopback 
+interface --&gt; 1
+--coca: store in confcache public@localhost_ Descr Marvell Yukon 88E8053 
+PCI-E Gigabit Ethernet Controller #2 --&gt; 65539
+--coca: store in confcache public@localhost_ Type 24 --&gt; 1
+--coca: store in confcache public@localhost_ Type 6 --&gt; 65539
+--coca: store in confcache public@localhost_ Ip 127.0.0.1 --&gt; 1
+--coca: store in confcache public@localhost_ Ip 192.168.1.10 --&gt; 
+65539
+--coca: store in confcache public@localhost_ Eth --&gt; 1
+--coca: store in confcache public@localhost_ Eth 00-01-80-61-00-00 
+--&gt; 65539
+--base: Get Interface Info
+--base: Walking ifIndex
+--base: Walking ifType
+--base: Walking ifAdminStatus
+--base: Walking ifOperStatus
+--base: Walking ifMtu
+--base: Walking ifSpeed
+--base: Writing mrtg.cfg
+            </pre>
+
+            <p>自動作成で出来るファイルは次のようなものなので、これと同じ書式にしたがって自分でmrtg.cfgを作ってもよい</p>
+
+            <pre class="title">c:\Program Files\mrtg-2.15.0\bin\mrtg.cfg</pre>
+            <pre>
+# Created by
+# cfgmaker public@localhost --global &quot;WorkDir: h:\mrtg&quot; --output mrtg.cfg
+    
+### Global Config Options
+    
+# for UNIX
+# WorkDir: /home/http/mrtg
+    
+# or for NT
+WorkDir: c:\mrtg
+    
+### Global Defaults
+# to get bits instead of bytes and graphs growing to the right
+# Options[_]: growright, bits
+    
+EnableIPv6: no
+    
+Target[localhost_65539]: 65539:public@localhost:
+SetEnv[localhost_65539]: MRTG_INT_IP=&quot;192.168.1.10&quot; 
+MRTG_INT_DESCR=&quot;Marvell-Yukon-88E8053-PCI-E-Gigabit-Ethernet-Controller-#2&quot;
+MaxBytes[localhost_65539]: 12500000
+Title[localhost_65539]: Network Interface
+PageTop[localhost_65539]: Network Interface
+            </pre>
+
+            <h4>MRTGの実行</h4>
+
+            <p>MRTG本体のあるフォルダで実行する。</p>
+
+            <pre>
+c:\Program Files\mrtg-2.15.0\bin&gt;<b><span style="color:red;">perl mrtg mrtg.cfg</span></b>
+            </pre>
+
+            <h4>5分おきにグラフをアップデートするように設定</h4>
+
+            <p>Windows 版 cron サービスをインストールする。<br />
+                <a class="link_external" href="http://www.kalab.com/freeware/cron/cron.htm">Cron NT service
+                    (http://www.kalab.com/freeware/cron/cron.htm)</a>
+            </p>
+
+            <p>インストーラがインストール先のフォルダ名を聞いてくるので、（たとえば）c:\Windows\system32 にインストールする。<br />
+                アンインストール用のショートカットなどは「全く」作成されない。インストールしたフォルダでcmd.exeを開き<code> crons.exe /? </code>と実行すれば取り得るオプションが表示される。
+            </p>
+
+            <p>Linuxと同じく、1分おきにcrontabを確認しに来るので、crons.exeがあるフォルダに <br />
+                crontab ファイルを作成する。</p>
+
+            <pre class="title">c:\Windows\system32\crontab</pre>
+            <pre>
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * cron-mrtg-run.cmd
+            </pre>
+
+            <p>※ */5 のような記述はシンタックスエラーになる。完全にLinux互換とはいかない様だ...</p>
+
+            <p>なお、実行するコマンドは次のようなスクリプトファイルにまとめている。</p>
+
+            <pre class="title">c:\Windows\system32\crontab</pre>
+            <pre>
+cd c:\Program Files\mrtg-2.15.0\bin
+perl mrtg mrtg.cfg
+            </pre>
+
+            <h4>MIBブラウザ</h4>
+
+            <p>Windowsには snmpwalk コマンド等の SNMP を扱うプログラムが標準では提供されていない。<br />
+                GUIでMIBのOIDツリーを眺められる次のようなツールを使う。</p>
+
+            <p><a class="link_external" href="http://www.wtcs.org/informant/free_snmp_tools.htm">GetIf SNMP MIB Browser
+                    (http://www.wtcs.org/informant/free_snmp_tools.htm)</a><br />
+                インストールしたら、GetIfのフォルダ内に「mibs」というサブフォルダが作成される。ここに、SNMP Informant や SNMP4W2K のインストールフォルダから
+                MIBツリーの定義ファイルをコピーする。<br />
+                ※ コピーしない場合は、何のキーワードも表示されないだけで、データ自体は参照できる。</p>
+
+            <p><img alt="20070408-mib01.png" src="pics/mib01-thumb.png" width="320" height="144" /></p>
+
+            <p>Host Name に、ターゲットのアドレスを入力 （自マシンの場合は localhost） して Enter キーを押す</p>
+
+            <p><img alt="20070408-mib02.png" src="pics/mib02-thumb.png" width="320" height="144" /></p>
+
+            <p>MBrowser タブに移り、OIDツリーをたどって必要な項目を表示（①）させて enter キーを押す。<br />
+                SNMP経由でレスポンスが返ってきたら、必要な項目をクリック（②）して、enter キーを押す。<br />
+                そうすると、OIDの識別値が ③ に表示される。</p>
+
+            <p>OIDを直接指定してSNMPエージェントから値を得るだけなら、マイクロソフト純正のツールがある。<br />
+                SnmpUtilG というソフトが、Windows 2000 Resource Kit や Windows XP Support Tool として配布されている。</p>
+
+            <h4>mrtg.cfg のカスタマイズ</h4>
+
+            <p>たとえば、CPU負荷のグラフを描かせたい場合は、次のような設定を追加する。（SNMP4W2Kの場合）</p>
+
+            <pre class="title">c:\Program Files\mrtg-2.15.0\bin\mrtg.cfg</pre>
+            <pre>
+# SNMP4W2Kを用いる場合
+Target[cpuload]: 
+1.3.6.1.4.1.311.1.1.3.1.1.2.1.3.1.48&amp;1.3.6.1.4.1.311.1.1.3.1.1.2.1.4.1.48:public@localhost:
+MaxBytes[cpuload]: 100
+Title[cpuload]: CPU Load Log (MRTG)
+PageTop[cpuload]: CPU Load Log
+Options[cpuload]: growright,absolute,gauge,nopercent,unknaszero,integer
+WithPeak[cpuload]: ymw
+Unscaled[cpuload]: dwmy
+YLegend[cpuload]: CPU Load
+ShortLegend[cpuload]: %
+LegendI[cpuload]: System
+LegendO[cpuload]: User
+Legend1[cpuload]: System
+Legend2[cpuload]: User
+            </pre>
+
+            <p><img alt="20070408-cpu.png" src="pics/cpu.png" width="500" height="135" /></p>
+
+            <p>SpeedFanで温度変化のグラフを描かせたい場合は、次のような設定を追加する。</p>
+
+            <pre class="title">c:\Program Files\mrtg-2.15.0\bin\mrtg.cfg</pre>
+            <pre>
+# sf2mrtg を用いる場合
+Target[temp]: `C:\Program Files\SpeedFan\sf2mrtg\sf2mrtg.exe`
+# SpeedFan SNMP Extension を用いる場合
+# Target[temp]: 1.3.6.1.4.1.16.0.1.0&amp;1.3.6.1.4.1.16.0.1.1:public@localhost:
+MaxBytes[temp]: 6000
+Title[temp]: System Temperature Log (MRTG)
+PageTop[temp]: System Temperature Log
+Options[temp]: growright,absolute,gauge,nopercent,unknaszero,integer
+WithPeak[temp]: ymw
+Unscaled[temp]: dwmy
+YLegend[temp]: Temperature
+ShortLegend[temp]: deg-C x 100
+LegendI[temp]: System Temp
+LegendO[temp]: CPU Temp
+Legend1[temp]: System Temp
+Legend2[temp]: CPU Temp
+            </pre>
+
+            <p><img alt="20070408-temp.png" src="pics/temp.png" width="500" height="135" /></p>
+
+            <p>MRTG の cfgmaker で作成されたネットワークの負荷を監視するグラフは次のようになる。</p>
+
+            <pre class="title">c:\Program Files\mrtg-2.15.0\bin\mrtg.cfg</pre>
+            <pre>
+Target[network]: 65539:public@localhost:
+SetEnv[network]: MRTG_INT_IP="192.168.1.1" MRTG_INT_DESCR="Marvell-Yukon-88E8053-PCI-E-Gigabit-Ethernet-Controller"
+MaxBytes[network]: 62500
+Title[network]: Network Interface Log (MRTG)
+PageTop[network]: Network Interface
+Options[network]: growright,nopercent,unknaszero,bits
+            </pre>
+
+            <p><img alt="20070408-net.png" src="pics/net.png" width="500" height="135" /></p>
+
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+
+
+            <!-- HTML本文ここまで（貼付ここまで） -->
+
+            <!-- ********* CONTENTS END AT THIS LINE ********* -->
+        </div>
+        <div id="layout_footer">
+            <div id="layout_footer_left">
+                <p style="text-align:left;"><a href="http://validator.w3.org/" target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/w3c-valid-xhtml10-pale.png" border="0"
+                            align="left" alt="Valid XHTML 1.0 Transitional" width="88" height="31" /></a>
+                    &nbsp;Last update on 27 January 2012<br />
+                    &nbsp;Powered by GitHub Pages<br clear="all" />
+                </p>
+            </div>
+
+            <div id="layout_footer_right">
+                <p style="text-align:right;"><a href="http://creativecommons.org/licenses/by-nc-nd/2.1/jp/"
+                        target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/creativecommons-by-nc-nd-pale.png" border="0"
+                            align="right" alt="Creative Commons Licence : Attribution-Noncommercial-No Derivative Works"
+                            width="88" height="31" /></a>
+                    <a href="/about/index.html" target="_self">Copyright (C) INOUE Hirokazu.</a>&nbsp;<br />For
+                    <i>commercial usage</i> ? See detail at <a href="/about/index.html"
+                        target="_self">HERE</a>.&nbsp;<br clear="all" />
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -111,21 +111,18 @@ div#container {
         font-size: 12px !important;
     }
 
-    div.topic {
+    blockquote, div.topic {
         margin:0 5px 10px !important;
+        width: auto !important;
     }
 
-    div.topictitle {
-        margin: 10px 5px 0 !important;
-    }
     pre, div.code {
         margin:0 5px 10px !important;
         overflow-x: auto !important;
         width: auto !important;
     }
 
-    div.codetitle {
-        margin: 10px 5px 0 !important;
+    pre.title, div.codetitle, blockquote.title, div.topictitle {
         width: auto !important;
     }
 
@@ -480,8 +477,8 @@ a, a:visited {
 }
 
 a:hover {
-     color: red;
- }
+    color: red;
+}
 
 /* リンクメニュー（文字：大、色：茶色） */
 .menu_large_brown a {
@@ -582,8 +579,8 @@ div.menu_small {
 /* リンクメニュー（文字：小、色：茶色） */
 .menu_small_brown a {
     color: #501903;
-     font-size: 14px;
-     text-decoration: none;
+    font-size: 14px;
+    text-decoration: none;
     font-weight: bold;
     border: 1px dotted #fffdf5;
 }
@@ -1153,43 +1150,45 @@ li {
 pre, div.code {
     font-family: monospace;
     line-height: 1.2em;
-    border: 1px dashed #cc9966;
-    padding: 5px 10px 8px 10px;
-    margin:0 40px 10px;
+    padding: 5px;
+    margin: 0px 0px 5px 20px;
+    border: 1px solid #cc9966;
     background-color: #f8ede2;
     overflow-x: scroll;
-    width: 700px;    /* IE対策 */
     white-space: pre;
+    width: 700px;
 }
 
-div.codetitle {
+pre.title, div.codetitle, blockquote.title, div.topictitle {
     font-family: monospace;
-    padding: 2px 5px;
-    margin: 10px 40px 0;
+    padding: 1px 5px;
+    margin: 5px 0px 0px 20px;
+    border-width: 1px 1px 0px 1px;
+    border-style: solid;
+    border-color: #cc9966;
     background-color: #f8ede2;
     white-space: pre;
-    width: 712px;    /* IE対策 */
- }
+    width: 712px;
+}
 
 code {
     font-family: monospace;
+    padding-left: 5px;
+    padding-right: 5px;
     border: 1px dashed #cc9966;
     background-color: #f8ede2;
+    white-space: pre-wrap;
 }
 
 /********** 引用文書表示 **********/
-div.topic {
+blockquote, div.topic {
+    padding: 2px 5px;
+    margin: 0px 0px 5px 20px;
     border:1px solid #aaa;
-    padding: 10px 10px 5px 5px;
-    margin:0 40px 10px;
     background-color: #eae6e2;
+    width: 700px;
 }
 
-div.topictitle {
-    padding: 2px 5px;
-    margin: 10px 40px 0;
-    background-color: #eae6e2;
- }
 
 .topic p {
     margin-left: 0px;
