@@ -7,22 +7,22 @@
 
     <link rel="stylesheet" href="https://oasis3855.github.io/webpage/styles.css" type="text/css" />
 
-
     <!-- disable viewport for mobile device -->
     <meta name="viewport"
         content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
 
-
-    <title>Travel and Software - Powered by GitHub Pages</title>
+    <title>mrtgでサーバ状態の監視</title>
 </head>
 
 <body>
     <div id="container">
         <div id="layout_header_menu">
             <!-- page top menu line -->
+
             <ul>
                 <li><a class="new_sec" href="https://oasis.halfmoon.jp/index.shtml" target="_self">Home</a></li>
                 <li><a class="new_sec" href="https://oasis.halfmoon.jp/traveldia/index.html" target="_self">Travels</a>
+
                     <ul>
                         <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
                                 target="_self">Country List</a></li>
@@ -33,6 +33,7 @@
                     </ul>
                 </li>
                 <li><a class="new_sec" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">Photo</a>
+
                     <ul>
                         <li><a class="new_sub" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">All Page
                                 List</a></li>
@@ -43,13 +44,13 @@
                     </ul>
                 </li>
                 <li><a class="new_sec" href="../../software/index.html" target="_self">Software</a>
+
                     <ul>
-                        <li><a class="new_sub" href="../../software/index.html"
-                                target="_self">Software Main Page</a></li>
+                        <li><a class="new_sub" href="../../software/index.html" target="_self">Software Main Page</a>
+                        </li>
                         <li><a class="new_sub" href="https://oasis.halfmoon.jp/cgi-bin/websvn/"
                                 target="_self">Subversion</a></li>
-                        <li><a class="new_sub" href="https://github.com/oasis3855"
-                                target="_self">GitHub</a></li>
+                        <li><a class="new_sub" href="https://github.com/oasis3855" target="_self">GitHub</a></li>
                         <li><a class="new_sub_bottom" href="http://code.google.com/u/101092603816443690725/"
                                 target="_self">Google Code</a></li>
                     </ul>
@@ -61,15 +62,14 @@
             <!-- Horizonal Line (Menu) -->
         </div>
 
-
         <div id="main_content_full">
             <!-- ********* CONTENTS START FROM HERE ********* -->
 
-
-
             <h1>mrtgでサーバ状態の監視</h1>
 
-            <p><a href="../../index.html">Home</a> &gt; <a href="../../software/index.html">Software</a> &gt; <a href="../../software/software_server_memo.html">ソフトウエア開発・サーバ管理のメモ帳</a> &gt; このページ</p>
+            <p><a href="../../index.html">Home</a> &gt; <a href="../../software/index.html">Software</a> &gt; <a
+                    href="../../software/software_server_memo.html">ソフトウエア開発・サーバ管理のメモ帳</a> &gt; このページ</p>
+
             <p style="text-align: right;">Last Update 2012/01/27</p>
 
             <div class="fig_center">
@@ -78,7 +78,6 @@
 
             <p>&nbsp;</p>
 
-
             <p>&nbsp;</p>
 
             <p>サーバのCPU負荷・温度・ネットワーク転送量などを、MRTGでグラフ化してWebサーバ経由で監視する方法</p>
@@ -86,6 +85,7 @@
             <p>&nbsp;</p>
 
             <h2>Linux（RHEL, CentOS, Fedora）での設定</h2>
+
             <h4>CPU・M/B温度センサからの読み込み設定</h4>
 
             <p>まず、LM75など温度センサーICとのインターフェース・デーモンをインストールする。</p>
@@ -104,6 +104,7 @@
                 に追加すべき記述が出てくるので、それが追加されているか各設定ファイルを開いてチェックする。（赤で示した行が追加されていない場合は、手動追加する）</p>
 
             <pre class="title">/etc/modprobe.conf</pre>
+
             <pre>
 ... （前略） ...
 /modprobe -r --ignore-remove snd-hda-intel
@@ -113,6 +114,7 @@ alias char-major-89 i2c-dev</span>
             </pre>
 
             <pre class="title">/etc/rc.local</pre>
+
             <pre>
 ... （前略） ...
 touch /var/lock/subsys/local
@@ -129,6 +131,7 @@ modprobe w83627hf</span>
             <p>なお、各値名前や値の最大・最小などを決める定義ファイルは /etc/sensors.conf に書かれているので、マシンのセンサー名の項目以下を適宜修正する。</p>
 
             <pre class="title">/etc/sensors.conf</pre>
+
             <pre>
 ... （前略） ...
 chip &quot;w83627thf-*&quot; &quot;w83637hf-*&quot;
@@ -246,6 +249,7 @@ Sound alarm disabled
             <p>設定ファイルをいじる</p>
 
             <pre class="title">/etc/mrtg/mrtg.cfg</pre>
+
             <pre>
 HtmlDir: /var/www/mrtg
 ImageDir: /var/www/mrtg
@@ -274,6 +278,7 @@ Legend2[cputemp]: CPU
             <p>MRTGを５分おきに起動させるために、cronの設定ファイルが次の様になっていることを確認する。</p>
 
             <pre class="title">/etc/cron.d/mrtg</pre>
+
             <pre>
 */5 * * * * root LANG=C LC_ALL=C /usr/bin/mrtg /etc/mrtg/mrtg.cfg --lock-file /var/lock/mrtg/mrtg_l --confcache-file /var/lib/mrtg/mrtg.ok
             </pre>
@@ -312,6 +317,7 @@ file:///var/www/mrtg/cputemp.html
             <p>MRTG設定ファイルは次のようになる</p>
 
             <pre class="title">/etc/mrtg/mrtg.cfg</pre>
+
             <pre>
 Target[hddtemp]: `/usr/bin/sensors | grep &quot;M/B Temp&quot; | awk 
 '{print $3}' | sed -e 's/+//' -e 's/[^0-9+\.].*//' &amp;&amp; /usr/sbin/hddtemp /dev/sda | awk '{print $3}'|sed -e 's/[^0-9+\.].*//' &amp;&amp; uptime 
@@ -334,6 +340,7 @@ Legend4[hddtemp]: partition df
             </pre>
 
             <h2>Windows での設定</h2>
+
             <h4>Windows SNMP エージェントのインストール</h4>
 
             <p>コントロールパネルのプログラムの追加と削除より、「Windowsコンポーネントの追加と削除」でSNTPサービスをインストールする。</p>
@@ -410,6 +417,7 @@ Legend4[hddtemp]: partition df
                 ※ MRTGのログデータを格納するフォルダ名には、空白が入ってはいけないようだ。</p>
 
             <pre class="title">cfgmaker による mrtg.cfg 自動作成方法</pre>
+
             <pre>
 c:\Program Files\mrtg-2.15.0\bin&gt;<b><span style="color:red;">perl 
 cfgmaker public@localhost --global &quot;WorkDir: c:\mrtg&quot; --output 
@@ -443,6 +451,7 @@ PCI-E Gigabit Ethernet Controller #2 --&gt; 65539
             <p>自動作成で出来るファイルは次のようなものなので、これと同じ書式にしたがって自分でmrtg.cfgを作ってもよい</p>
 
             <pre class="title">c:\Program Files\mrtg-2.15.0\bin\mrtg.cfg</pre>
+
             <pre>
 # Created by
 # cfgmaker public@localhost --global &quot;WorkDir: h:\mrtg&quot; --output mrtg.cfg
@@ -492,6 +501,7 @@ c:\Program Files\mrtg-2.15.0\bin&gt;<b><span style="color:red;">perl mrtg mrtg.c
                 crontab ファイルを作成する。</p>
 
             <pre class="title">c:\Windows\system32\crontab</pre>
+
             <pre>
 0,5,10,15,20,25,30,35,40,45,50,55 * * * * cron-mrtg-run.cmd
             </pre>
@@ -501,6 +511,7 @@ c:\Program Files\mrtg-2.15.0\bin&gt;<b><span style="color:red;">perl mrtg mrtg.c
             <p>なお、実行するコマンドは次のようなスクリプトファイルにまとめている。</p>
 
             <pre class="title">c:\Windows\system32\crontab</pre>
+
             <pre>
 cd c:\Program Files\mrtg-2.15.0\bin
 perl mrtg mrtg.cfg
@@ -535,6 +546,7 @@ perl mrtg mrtg.cfg
             <p>たとえば、CPU負荷のグラフを描かせたい場合は、次のような設定を追加する。（SNMP4W2Kの場合）</p>
 
             <pre class="title">c:\Program Files\mrtg-2.15.0\bin\mrtg.cfg</pre>
+
             <pre>
 # SNMP4W2Kを用いる場合
 Target[cpuload]: 
@@ -558,6 +570,7 @@ Legend2[cpuload]: User
             <p>SpeedFanで温度変化のグラフを描かせたい場合は、次のような設定を追加する。</p>
 
             <pre class="title">c:\Program Files\mrtg-2.15.0\bin\mrtg.cfg</pre>
+
             <pre>
 # sf2mrtg を用いる場合
 Target[temp]: `C:\Program Files\SpeedFan\sf2mrtg\sf2mrtg.exe`
@@ -582,6 +595,7 @@ Legend2[temp]: CPU Temp
             <p>MRTG の cfgmaker で作成されたネットワークの負荷を監視するグラフは次のようになる。</p>
 
             <pre class="title">c:\Program Files\mrtg-2.15.0\bin\mrtg.cfg</pre>
+
             <pre>
 Target[network]: 65539:public@localhost:
 SetEnv[network]: MRTG_INT_IP="192.168.1.1" MRTG_INT_DESCR="Marvell-Yukon-88E8053-PCI-E-Gigabit-Ethernet-Controller"
@@ -594,8 +608,8 @@ Options[network]: growright,nopercent,unknaszero,bits
             <p><img alt="20070408-net.png" src="pics/net.png" width="500" height="135" /></p>
 
             <p>&nbsp;</p>
-            <p>&nbsp;</p>
 
+            <p>&nbsp;</p>
 
             <!-- HTML本文ここまで（貼付ここまで） -->
 
@@ -603,6 +617,7 @@ Options[network]: growright,nopercent,unknaszero,bits
         </div>
         <div id="layout_footer">
             <div id="layout_footer_left">
+
                 <p style="text-align:left;"><a href="http://validator.w3.org/" target="_self"><img
                             src="https://oasis3855.github.io/webpage/pics/w3c-valid-xhtml10-pale.png" border="0"
                             align="left" alt="Valid XHTML 1.0 Transitional" width="88" height="31" /></a>
@@ -612,6 +627,7 @@ Options[network]: growright,nopercent,unknaszero,bits
             </div>
 
             <div id="layout_footer_right">
+
                 <p style="text-align:right;"><a href="http://creativecommons.org/licenses/by-nc-nd/2.1/jp/"
                         target="_self"><img
                             src="https://oasis3855.github.io/webpage/pics/creativecommons-by-nc-nd-pale.png" border="0"
