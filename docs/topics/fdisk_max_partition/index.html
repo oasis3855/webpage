@@ -1,0 +1,194 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" dir="ltr" lang="ja">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../styles.css" type="text/css" />
+
+    <!-- jpeg popup window : lightbox -->
+    <script type="text/javascript" src="/webpage/cgi-bin/jquery-3.7.0.min.js"></script>
+    <script type="text/javascript" src="/webpage/cgi-bin/fancybox-2.1.5/jquery.mousewheel-3.0.6.pack.js"></script>
+    <script type="text/javascript" src="/webpage/cgi-bin/fancybox-2.1.5/jquery.fancybox.pack.js"></script>
+    <link rel="stylesheet" type="text/css" href="/webpage/cgi-bin/fancybox-2.1.5/jquery.fancybox.css" media="screen" />
+    <script type="text/javascript" src="/webpage/cgi-bin/fancybox-2.1.5/fancyboxOnload.js"></script>
+    <!-- jpeg popup window : lightbox -->
+
+    <!-- VSCode DEBUG : jpeg popup window : lightbox -->
+    <!--
+    <script type="text/javascript" src="../../cgi-bin/jquery-3.7.0.min.js"></script>
+    <script type="text/javascript" src="../../cgi-bin/fancybox-2.1.5/jquery.mousewheel-3.0.6.pack.js"></script>
+    <script type="text/javascript" src="../../cgi-bin/fancybox-2.1.5/jquery.fancybox.pack.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../cgi-bin/fancybox-2.1.5/jquery.fancybox.css" media="screen" />
+    <script type="text/javascript" src="../../cgi-bin/fancybox-2.1.5/fancyboxOnload.js"></script>
+    -->
+    <!-- VSCode DEBUG : jpeg popup window : lightbox -->
+
+    <!-- disable viewport for mobile device -->
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
+    <title>このWebサイト管理者用メモ ： GitHub pagesでのCSSスタイル</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="layout_header_menu">
+            <!-- page top menu line -->
+
+            <ul>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/index.shtml" target="_self">Home</a></li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/traveldia/index.html" target="_self">Travels</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub" href="http://www.youtube.com/user/inoue0111"
+                                target="_self">動画(YouTube)</a></li>
+                        <li><a class="new_sub_bottom" href="http://oasis-halfmoon.blogspot.com/"
+                                target="_self">編集前旅行記(Blogger)</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">Photo</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">All Page
+                                List</a></li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub_bottom" href="https://oasis.halfmoon.jp/about/index.html"
+                                target="_self">利用許諾条件</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="../software/index.html" target="_self">Software</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="../software/index.html" target="_self">Software Main Page</a></li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/cgi-bin/websvn/"
+                                target="_self">Subversion</a></li>
+                        <li><a class="new_sub" href="https://github.com/oasis3855?tab=repositories"
+                                target="_self">GitHub</a></li>
+                        <li><a class="new_sub_bottom" href="http://code.google.com/u/101092603816443690725/"
+                                target="_self">Google Code</a></li>
+                    </ul>
+                </li>
+                <li><a class="new" href="https://oasis.halfmoon.jp/links/index.html" target="_self">Links</a></li>
+            </ul>
+        </div>
+        <div id="layout_header_menu_line">
+            <!-- Horizonal Line (Menu) -->
+        </div>
+        <div id="main_content_full">
+
+            <!-- ********* CONTENTS START FROM HERE ********* -->
+
+            <h1>Linuxでの最大パーティション数</h1>
+
+            <p>Ubuntu 22.04のutil-linuxソースパッケージを観察すると、MBRでのパーティションはfdiskでは 1から59まで、partedでは1から63までとなっている</p>
+
+            <pre class="title">util-linux-2.37.2  -&gt;  /libfdisk/src/dos.c</pre>
+
+            <pre>
+<span style="color:red; background-color:yellow;">#define MAXIMUM_PARTS    60</span>
+
+// 〜 途中省略 〜
+
+static void read_extended(struct fdisk_context *cxt, size_t ext)
+{
+    size_t i;
+    struct pte *pex, *pe;
+    struct dos_partition *p, *q;
+    struct fdisk_dos_label *l = self_label(cxt);
+
+    l->ext_index = ext;
+    pex = self_pte(cxt, ext);
+    if (!pex) {
+        DBG(LABEL, ul_debug("DOS: uninitialized pointer to %zu pex", ext));
+        return;
+    }
+    pex->ex_entry = pex->pt_entry;
+
+    p = pex->pt_entry;
+    if (!dos_partition_get_start(p)) {
+        fdisk_warnx(cxt, _("Bad offset in primary extended partition."));
+        return;
+    }
+
+    DBG(LABEL, ul_debug("DOS: Reading extended %zu", ext));
+
+    while (IS_EXTENDED (p->sys_ind)) {
+<span style="color:red; background-color:yellow;">        if (cxt->label->nparts_max >= MAXIMUM_PARTS) {</span>
+            /* This is not a Linux restriction, but
+                this program uses arrays of size MAXIMUM_PARTS.
+                Do not try to `improve' this test. */
+            struct pte *pre = self_pte(cxt,
+                        cxt->label->nparts_max - 1);
+            fdisk_warnx(cxt,
+            _("Omitting partitions after #%zu. They will be deleted "
+                "if you save this partition table."),
+                cxt->label->nparts_max);
+
+            if (pre) {
+                clear_partition(pre->ex_entry);
+                partition_set_changed(cxt,
+                        cxt->label->nparts_max - 1, 1);
+            }
+            return;
+        }
+                
+            </pre>
+
+            <pre class="title">parted-3.4  -&gt;  /libparted/arch/linux.c</pre>
+
+            <pre>
+/* Maximum number of partitions supported by linux. */
+<span style="color:red; background-color:yellow;">#define MAX_NUM_PARTS		64</span>
+
+// 〜 途中省略 〜
+
+/*
+* The number of partitions that a device can have depends on the kernel.
+* If we don't find this value in /sys/block/DEV/ext_range, we will use our own
+* value.
+*/
+static unsigned int
+_device_get_partition_range(PedDevice const* dev)
+{
+        int range;
+        if (dev->type == PED_DEVICE_DM)
+                return MAX_NUM_PARTS;
+        bool ok = _sysfs_int_entry_from_dev(dev, "ext_range", &range);
+
+        if (!ok)
+                return MAX_NUM_PARTS;
+        /* both 0 and 1 mean no partitions */
+        return range > 1 ? range : 0;
+}
+            </pre>
+
+            <!-- HTML本文ここまで（貼付ここまで） -->
+            <!-- ********* CONTENTS END AT THIS LINE ********* -->
+        </div>
+        <div id="layout_footer">
+            <div id="layout_footer_left">
+
+                <p style="text-align:left;"><a href="http://validator.w3.org/" target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/w3c-valid-xhtml10-pale.png" border="0"
+                            align="left" alt="Valid XHTML 1.0 Transitional" width="88" height="31" /></a> &nbsp;Last
+                    update on 15 August 2023<br /> &nbsp;Powered by GitHub Pages<br clear="all" />
+                </p>
+            </div>
+            <div id="layout_footer_right">
+
+                <p style="text-align:right;"><a href="http://creativecommons.org/licenses/by-nc-nd/2.1/jp/"
+                        target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/creativecommons-by-nc-nd-pale.png" border="0"
+                            align="right" alt="Creative Commons Licence : Attribution-Noncommercial-No Derivative Works"
+                            width="88" height="31" /></a>
+                    <a href="/about/index.html" target="_self">Copyright (C) INOUE Hirokazu.</a>&nbsp;<br />For
+                    <i>commercial usage</i> ? See detail at <a href="/about/index.html"
+                        target="_self">HERE</a>.&nbsp;<br clear="all" />
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
