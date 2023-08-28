@@ -468,7 +468,27 @@ div.hl_dash {
     margin: 5px 0;
     border-bottom: dashed 1px #b87330;
 }
- 
+
+/* 文字列にマーカーでアンダーラインを引く効果 */
+span.marker_yellow {
+    background:linear-gradient(transparent 50%, #ff6 60%);
+}
+
+span.marker_orange {
+    background:linear-gradient(transparent 50%, #fa6 60%);
+}
+
+span.marker_pink {
+    background:linear-gradient(transparent 50%, #f6c 60%);
+}
+
+span.marker_cyan {
+    background:linear-gradient(transparent 50%, #6cf 60%);
+}
+
+span.marker_green {
+    background:linear-gradient(transparent 50%, #6f6 60%);
+}
 
 /********** リンク文字属性 **********/
 /* 通常のリンク */

@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <link rel="stylesheet" href="https://oasis3855.github.io/webpage/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../../styles.css" type="text/css" />
 
     <!-- disable viewport for mobile device -->
     <meta name="viewport"
@@ -185,7 +185,7 @@ sysLocation    Sitting on the Dock of the Bay
 sysContact     Me &lt;me@example.org&gt;
 sysServices    72
 master  agentx
-<span style="background: linear-gradient(transparent 50%, lightsalmon 90%);">agentaddress  127.0.0.1,[::1]</span>
+<span class="marker_orange">agentaddress  127.0.0.1,[::1]</span>
 view   systemonly  included   .1.3.6.1.2.1.1
 view   systemonly  included   .1.3.6.1.2.1.25.1
 rocommunity  public default -V systemonly
@@ -193,16 +193,15 @@ rocommunity6 public default -V systemonly
 rouser authPrivUser authpriv -V systemonly
 includeDir /etc/snmp/snmpd.conf.d</pre>
 
-            <p><span
-                    style="background: linear-gradient(transparent 50%, lightsalmon 90%);">下線を引いた部分</span>で、loopback（自分自身）以外からのアクセス制限をしているが、他のPCの値を読み出したい場合はここを変更すればよい
+            <p><span class="marker_orange">下線を引いた部分</span>で、loopback（自分自身）以外からのアクセス制限をしているが、他のPCの値を読み出したい場合はここを変更すればよい
             </p>
 
             <p>ネットワークの情報にアクセスするため、設定を加える必要がある。具体的には赤で着色した部分を加えるとネットワーク情報が得られる</p>
 
-            <p>どのOIDサブツリーを有効化するかの参考資料としては、「<a
+            <p>どのOIDサブツリーを有効化するかの参考資料としては、「<a class="link_external"
                     href="https://www.itmedia.co.jp/help/howto/linux/0007master/06/11.html">SNMPによるネットワークモニタリング</a>」（ITmedia
-                エンタープライズ）が分かりやすい。OIDのリファレンスは「<a href="http://oidref.com/1.3.6.1">Reference record for OID
-                    1.3.6.1</a>」などを参照</p>
+                エンタープライズ）が分かりやすい。OIDのリファレンスは「<a class="link_external" href="http://oidref.com/1.3.6.1">Reference record
+                    for OID 1.3.6.1</a>」などを参照</p>
 
             <pre>
 #  system + hrSystem groups only
@@ -432,7 +431,7 @@ $ <b>sudo apt install lm_sensors</b></pre>
             <p>YES/NOをすべてデフォルトオプションを選択する場合は、<code>--auto</code> スイッチを付けて実行しても良い</p>
 
             <p>なお、sensors-detectのマニュアルページには<span
-                    style="background: linear-gradient(transparent 50%, lightsalmon 90%);">「デフォルトオプションがNOである“推奨以外の”センサー読み出しを試すと、ハードウエアに致命的なダメージを与えることがある」</span>と書かれている
+                    class="marker_orange">「デフォルトオプションがNOである“推奨以外の”センサー読み出しを試すと、ハードウエアに致命的なダメージを与えることがある」</span>と書かれている
             </p>
 
             <pre>
@@ -524,7 +523,7 @@ Composite:
             <p>mrtgで温度を抜き出す場合、センサー名が一意になっている必要がある</p>
 
             <p>上に示した例では、<code>temp1</code>と表示されているものがマザーボード(acpitz-acpi-0)とwifiカード(iwlwifi_1-virtual-0)で<span
-                    style="background: linear-gradient(transparent 50%, lightsalmon 90%);">重複しており、mrtgからは見分けがつかない</span>
+                    class="marker_orange">重複しており、mrtgからは見分けがつかない</span>
             </p>
 
             <p>そこで、センサー名をカスタマイズする</p>
@@ -905,7 +904,8 @@ Legend1[temperature]: CPU
 Legend2[temperature]: NVMe disk
             </pre>
 
-            <p><a href="https://oss.oetiker.ch/mrtg/doc/mrtg-reference.en.html">MRTGのマニュアル</a>によれば、Target
+            <p><a class="link_external"
+                    href="https://oss.oetiker.ch/mrtg/doc/mrtg-reference.en.html">MRTGのマニュアル</a>によれば、Target
                 キーワードに外部コマンドを用いる場合は、次のようなフォーマットにする必要がある</p>
             <blockquote>
 
@@ -947,14 +947,15 @@ $ <b>sudo -u mrtg sh -c "indexmaker /etc/mrtg/mrtg.cfg > /var/www/html/mrtg/inde
             <pre>
 $ <b>sudo -u mrtg sh -c "LANG=C mrtg /etc/mrtg/mrtg.cfg"</b></pre>
 
-            <p>/etc/mrtg/ 内にロック ファイルが、/var/www/html/mrtg/ 内に各種データファイルが作成されるが、<span style="background: linear-gradient(transparent 50%, lightsalmon 90%);">実行時の毎回ユーザが違うと、上書き不能エラーとなる可能性がある</span>。ここでは ユーザを
+            <p>/etc/mrtg/ 内にロック ファイルが、/var/www/html/mrtg/ 内に各種データファイルが作成されるが、<span
+                    class="marker_orange">実行時の毎回ユーザが違うと、上書き不能エラーとなる可能性がある</span>。ここでは ユーザを
                 mrtg で固定して行っている（sudo -u mrtg …）</p>
 
             <p>&nbsp;</p>
 
             <h4 id="h4_mrtg_cron_setup">cronでmrtgの自動実行を設定する</h4>
 
-            <p>MRTGを5分ごとに起動させるための設定は、<a
+            <p>MRTGを5分ごとに起動させるための設定は、<a class="link_external"
                     href="https://oss.oetiker.ch/mrtg/doc/mrtg-unix-guide.en.html">公式マニュアル</a>では次のように記載すればよいと書かれている</p>
 
             <blockquote>
@@ -995,7 +996,8 @@ file:///var/www/mrtg/index.html</pre>
 
             <h4 id="h4_mrtg_manual">MRTGの公式マニュアル</h4>
 
-            <p><a href="https://oss.oetiker.ch/mrtg/">Tobi Oetiker's MRTG - The Multi Router Traffic Grapher</a></p>
+            <p><a class="link_external" href="https://oss.oetiker.ch/mrtg/">Tobi Oetiker's MRTG - The Multi Router
+                    Traffic Grapher</a></p>
 
             <p>&nbsp;</p>
 
@@ -1060,7 +1062,8 @@ file:///var/www/mrtg/index.html</pre>
                 .1.3.6.1.4.1.16.0.1.x　　(x=0,1,2...)</p>
 
             <p>Windows 7/8/10系のUAC制御でSpeedFanとMRTGの実行ユーザが違う場合、SNMP経由でうまく取り込めません。SpeedFanのログファイルを用いてデータを取り込むプログラムを<a
-                    class="link_orange" href="http://hp.vector.co.jp/authors/VA001911/freeware/doc_sf2mrtg.html">公開しています
+                    class="link_orange"
+                    href="https://github.com/oasis3855/windows_misc_program/tree/main/speedfan_to_mrtg">公開しています
                     （sf2mrtg）</a>。</p>
 
             <p>&nbsp;</p>
@@ -1297,7 +1300,7 @@ Options[network]: growright,nopercent,unknaszero,bits
                 <p style="text-align:left;"><a href="http://validator.w3.org/" target="_self"><img
                             src="https://oasis3855.github.io/webpage/pics/w3c-valid-xhtml10-pale.png" border="0"
                             align="left" alt="Valid XHTML 1.0 Transitional" width="88" height="31" /></a>
-                    &nbsp;Last update on 27 January 2012<br />
+                    &nbsp;Last update on 22 August 2023<br />
                     &nbsp;Powered by GitHub Pages<br clear="all" />
                 </p>
             </div>
