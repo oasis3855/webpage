@@ -27,7 +27,7 @@
     <!-- disable viewport for mobile device -->
     <meta name="viewport"
         content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
-    <title>このWebサイト管理者用メモ ： GitHub pagesでのCSSスタイル</title>
+    <title>Linuxで認識できるディスクの最大パーティション数は幾つなのか 徹底調査</title>
 </head>
 
 <body>
@@ -81,9 +81,965 @@
 
             <!-- ********* CONTENTS START FROM HERE ********* -->
 
-            <h1>Linuxでの最大パーティション数</h1>
+            <h1>Linuxで認識できるディスクの最大パーティション数は幾つなのか</h1>
 
-            <p>Ubuntu 22.04のutil-linuxソースパッケージを観察すると、MBRでのパーティションはfdiskでは 1から59まで、partedでは1から63までとなっている</p>
+            <p><a href="../../index.html">Home</a> &gt; <a href="../../software/index.html">Software</a> &gt; <a
+                    href="../../software/software_server_memo.html">ソフトウエア開発・サーバ管理のメモ帳</a> &gt; このページ</p>
+
+            <p style="text-align: right;">Last Update 2023/09/14</p>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>Linuxで扱えるディスクの最大パーティション数には次のような制限があるという</p>
+
+            <table style="margin:auto;">
+                <caption>パーティション数制限の【都市伝説】</caption>
+                <tr>
+                    <th>Format Type</th>
+                    <th>Disk Type</th>
+                    <th>最大パーティション数</th>
+                </tr>
+                <tr>
+                    <td>GPT</td>
+                    <td></td>
+                    <td>128</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">MBR (DOS)</td>
+                    <td>IDE</td>
+                    <td>63 ?</td>
+                </tr>
+                <tr>
+                    <td>SCSI (SATA)</td>
+                    <td>16 ?</td>
+                </tr>
+            </table>
+
+            <p>10年以上前のことだが、20パーティションほどに区切ったハードディスクに新たなパーティションを追加しLinuxをインストールしようとしたところ、<span
+                    class="marker_orange">16パーティション以上が強制削除されてしまった</span>苦い経験がある</p>
+
+            <p>現在でもこのような「理不尽な」制限は存在するのか。そもそもパーティションの最大数の制限は幾つなのか、改めて徹底調査してみた</p>
+
+            <p>&nbsp;</p>
+
+            <p>はじめに、最近のLinuxの代表例としてUbuntu22.04で最大パーティション数が「16に引き下げられていない」ことを確認。次に、最大パーティション数が16だったと記憶している2000年代前半のVine
+                Linux
+                4で「状況が確実に再現する」ことを再確認した</p>
+
+            <p>この制限がどこから来ているのか、Fedora系とRedHat系のそれぞれで、fdiskのソースコードを年代別に調査してみたところ、「制限のあった年代」がほぼ判明した</p>
+
+            <p>今回調べた内容をもとに、最大パーティション数の制限を一覧表に取りまとめた</p>
+
+            <table style="margin:auto;">
+                <caption>今回調査して判明したパーティション数制限の詳細</caption>
+                <tr>
+                    <th rowspan="2">Format Type</th>
+                    <th rowspan="2">Disk Type</th>
+                    <th rowspan="2">Debian系</th>
+                    <th colspan="2">RedHat系</th>
+                </tr>
+                <tr>
+                    <th>2000年〜2005年頃</th>
+                    <th>2005年頃〜現在</th>
+                </tr>
+                <tr>
+                    <td colspan="2">GPT</td>
+                    <td>128</td>
+                    <td colspan="2">128</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">MBR (DOS)</td>
+                    <td>IDE</td>
+                    <td>60</td>
+                    <td>60 (system)<br />16 (fdisk)</td>
+                    <td>60</td>
+                </tr>
+                <tr>
+                    <td>SCSI (SATA)</td>
+                    <td>60</td>
+                    <td>16</td>
+                    <td>60</td>
+                </tr>
+            </table>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <h3>もくじ</h3>
+
+            <ul>
+                <li><a href="#Section_h2_vmware">VMWareでのテスト環境、仮想ディスクの準備</a></li>
+                <li><a href="#Section_h2_example60">最近のLinuxディストリ（Ubuntu 22.04）での状況確認</a>
+
+                    <ul>
+                        <li><a href="#Section_h3_example60_fdisk">fdiskで16パーティションを超えるSATAとIDEディスクを扱えるか</a></li>
+                        <li><a href="#Section_h3_example60_dmesg">dmesgでのシステム認識状況は</a></li>
+                    </ul>
+                </li>
+                <li><a href="#Section_h2_example16">2000年代初頭のLinuxディストリ（Vine Linux 4）での状況確認</a>
+
+                    <ul>
+                        <li><a href="#Section_h3_example16_fdisk">fdiskで16パーティションを超えるSATAとIDEディスクを扱えるか</a></li>
+                        <li><a href="#Section_h3_example16_dmesg">dmesgでのシステム認識状況は</a></li>
+                        <li><a href="#Section_h3_example16_parted">partedではどうなのか</a></li>
+                    </ul>
+                </li>
+                <li><a href="#Section_h2_debian">Debian系 各バージョンでのfdiskソースコード解読</a>
+
+                    <ul>
+                        <li><a href="#Section_ubuntu504">Ubuntu 5.04</a>, <a href="#Section_debian50">Debian 5.0</a>, <a
+                                href="#Section_debian80">Debian 8.0</a>, <a href="#Section_ubuntu2204">Ubuntu 22.04</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#Section_h2_redhat">RedHat系 各バージョンでのfdiskソースコード解読</a>
+
+                    <ul>
+                        <li><a href="#Section_vine20">Vine Linux 2.0</a>, <a href="#Section_vine25">Vine Linux 2.5</a>,
+                            <a href="#Section_vine30">Vine Linux 3.0</a>, <a href="#Section_centos40">CentOS 4.0</a>, <a
+                                href="#Section_vine40">Vine Linux 4.0</a>, <a href="#Section_vine50">Vine Linux 5.0</a>,
+                            <a href="#Section_centos50">CentOS 5.0</a>, <a href="#Section_centos80">CentOS 8.0</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#Section_h2_src_compare">パーティション数制限あり／なしのfdiskソースコード比較</a>
+
+                    <ul>
+                        <li><a href="#Section_h3_ubuntu2204">パーティション制限なしの場合（Ubuntu 22.04）</a></li>
+                        <li><a href="#Section_h3_vine25">パーティション制限ありの場合（Vine Linux 2.5）</a></li>
+                    </ul>
+                </li>
+                </li>
+            </ul>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <h2 id="Section_h2_vmware">VMWareでのテスト環境、仮想ディスクの準備</h2>
+
+            <p>今回利用した仮想マシンはVMware Player 16.2.5</p>
+
+            <p>そしてVMWare内でUbuntu22.04を起動し、fdiskで次の2種類のテスト用仮想ディスクを作成</p>
+
+            <ul>
+                <li>SATAディスク<br />dos(MBR)パーティションテーブル<br />論理パーティションを17個（No.5〜21）作成</li>
+                <li>IDEディスク<br />dos(MBR)パーティションテーブル<br />論理パーティションを17個（No.5〜21）作成</li>
+            </ul>
+
+            <p>この2種類の仮想ディスクを、（VMWare内にインストールした）Linuxの各バージョンで読み取った</p>
+
+            <h2 id="Section_h2_example60">最近のLinuxディストリ（Ubuntu 22.04）での状況確認</h2>
+
+            <h3 id="Section_h3_example60_fdisk">fdiskで16パーティションを超えるSATAとIDEディスクを扱う</h3>
+
+            <p><span class="marker_yellow">SATA, IDEディスクともに、16パーティション以上を正しく認識している</span></p>
+
+            <pre>
+$ <b>cat /etc/os-release  | grep -e VERSION=</b>
+VERSION="22.04.3 LTS (Jammy Jellyfish)"
+$ <b>uname -a</b>
+Linux Ubuntu2204-vm 6.2.0-32-generic #32~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Aug 18 10:40:13 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+$ <b>fdisk -v</b>
+fdisk from util-linux 2.37.2
+
+$ <b>sudo fdisk /dev/sdd</b>    <span style="color:green;">※ SATAディスクのパーティション一覧を表示する</span>
+
+fdisk (util-linux 2.37.2) へようこそ。
+ここで設定した内容は、書き込みコマンドを実行するまでメモリのみに保持されます。
+書き込みコマンドを使用する際は、注意して実行してください。
+
+
+コマンド (m でヘルプ): <b>p</b>
+ディスク /dev/sdd: 1 GiB, 1073741824 バイト, 2097152 セクタ
+Disk model: VMware Virtual S
+単位: セクタ (1 * 512 = 512 バイト)
+セクタサイズ (論理 / 物理): 512 バイト / 512 バイト
+I/O サイズ (最小 / 推奨): 512 バイト / 512 バイト
+ディスクラベルのタイプ: dos
+ディスク識別子: 0x14116609
+
+デバイス   起動 開始位置 最後から  セクタ サイズ Id タイプ
+/dev/sdd1           2048  2097151 2095104  1023M  5 拡張領域
+/dev/sdd5           4096    36863   32768    16M 83 Linux
+/dev/sdd6          38912    71679   32768    16M 83 Linux
+/dev/sdd7          73728   106495   32768    16M 83 Linux
+/dev/sdd8         108544   141311   32768    16M 83 Linux
+/dev/sdd9         143360   176127   32768    16M 83 Linux
+/dev/sdd10        178176   210943   32768    16M 83 Linux
+/dev/sdd11        212992   245759   32768    16M 83 Linux
+/dev/sdd12        247808   280575   32768    16M 83 Linux
+/dev/sdd13        282624   315391   32768    16M 83 Linux
+/dev/sdd14        317440   350207   32768    16M 83 Linux
+/dev/sdd15        352256   385023   32768    16M 83 Linux
+/dev/sdd16        387072   419839   32768    16M 83 Linux
+/dev/sdd17        421888   454655   32768    16M 83 Linux
+/dev/sdd18        456704   489471   32768    16M 83 Linux
+/dev/sdd19        491520   524287   32768    16M 83 Linux
+/dev/sdd20        526336   559103   32768    16M 83 Linux
+/dev/sdd21        561152   593919   32768    16M 83 Linux
+
+コマンド (m でヘルプ): q
+
+$ <b>sudo fdisk /dev/sda</b>    <span style="color:green;">※ IDEディスクのパーティション一覧を表示する</span>
+
+fdisk (util-linux 2.37.2) へようこそ。
+ここで設定した内容は、書き込みコマンドを実行するまでメモリのみに保持されます。
+書き込みコマンドを使用する際は、注意して実行してください。
+
+
+コマンド (m でヘルプ): <b>p</b>
+ディスク /dev/sda: 1 GiB, 1073741824 バイト, 2097152 セクタ
+Disk model: VMware Virtual I
+単位: セクタ (1 * 512 = 512 バイト)
+セクタサイズ (論理 / 物理): 512 バイト / 512 バイト
+I/O サイズ (最小 / 推奨): 512 バイト / 512 バイト
+ディスクラベルのタイプ: dos
+ディスク識別子: 0xa9d78f78
+
+デバイス   起動 開始位置 最後から  セクタ サイズ Id タイプ
+/dev/sda1           2048  2097151 2095104  1023M  5 拡張領域
+/dev/sda5           4096    36863   32768    16M 83 Linux
+/dev/sda6          38912    71679   32768    16M 83 Linux
+/dev/sda7          73728   106495   32768    16M 83 Linux
+/dev/sda8         108544   141311   32768    16M 83 Linux
+/dev/sda9         143360   176127   32768    16M 83 Linux
+/dev/sda10        178176   210943   32768    16M 83 Linux
+/dev/sda11        212992   245759   32768    16M 83 Linux
+/dev/sda12        247808   280575   32768    16M 83 Linux
+/dev/sda13        282624   315391   32768    16M 83 Linux
+/dev/sda14        317440   350207   32768    16M 83 Linux
+/dev/sda15        352256   385023   32768    16M 83 Linux
+/dev/sda16        387072   419839   32768    16M 83 Linux
+/dev/sda17        421888   454655   32768    16M 83 Linux
+/dev/sda18        456704   489471   32768    16M 83 Linux
+/dev/sda19        491520   524287   32768    16M 83 Linux
+/dev/sda20        526336   559103   32768    16M 83 Linux
+/dev/sda21        561152   593919   32768    16M 83 Linux
+
+コマンド (m でヘルプ): </pre>
+
+            <h3 id="Section_h3_example60_dmesg">dmesgでのシステム認識状況は</h3>
+
+            <p><span class="marker_yellow">Linuxカーネルも、SATA, IDEディスクともに正しくパーティション数を認識している</span></p>
+
+            <pre>
+<span style="color:green;">※ SATAディスク /dev/sddの認識ログ</span>
+scsi 2:0:0:0: Direct-Access     ATA      VMware Virtual S 0001 PQ: 0 ANSI: 5
+sd 2:0:0:0: [sdd] 2097152 512-byte logical blocks: (1.07 GB/1.00 GiB)
+sd 2:0:0:0: [sdd] Write Protect is off
+sd 2:0:0:0: [sdd] Mode Sense: 00 3a 00 00
+sd 2:0:0:0: [sdd] Write cache: disabled, read cache: enabled, doesn't support DPO or FUA
+sd 2:0:0:0: [sdd] Preferred minimum I/O size 512 bytes
+sdd: <span style="background-color: yellow;">sdd1 < sdd5 sdd6 sdd7 sdd8 sdd9 sdd10 sdd11 sdd12 sdd13 sdd14 sdd15 sdd16 
+sdd17 sdd18 sdd19 sdd20 sdd21 ></span>
+sd 2:0:0:0: [sdd] Attached SCSI disk
+
+<span style="color:green;">※ IDEディスク /dev/sdaの認識ログ</span>
+sd 0:0:0:0: Attached scsi generic sg0 type 0
+sd 0:0:0:0: [sda] 2097152 512-byte logical blocks: (1.07 GB/1.00 GiB)
+sd 0:0:0:0: [sda] Write Protect is off
+sd 0:0:0:0: [sda] Mode Sense: 00 3a 00 00
+sd 0:0:0:0: [sda] Write cache: disabled, read cache: enabled, doesn't support DP
+O or FUA
+sd 0:0:0:0: [sda] Preferred minimum I/O size 512 bytes
+sda: <span style="background-color: yellow;">sda1 < sda5 sda6 sda7 sda8 sda9 sda10 sda11 sda12 sda13 sda14 sda15 sda16 
+sda17 sda18 sda19 sda20 sda21 ></span>
+sd 0:0:0:0: [sda] Attached SCSI disk</pre>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <h2 id="Section_h2_example16">2000年代初頭のLinuxディストリ（Vine Linux 4）での状況確認</h2>
+
+            <h3>Linuxのインストール時</h3>
+
+            <p>Linuxのインストール時に制限に引っかかった場合は、次のようなメッセージが表示され、インストールできなかった</p>
+
+            <pre>
+Error informing the kernel about modifications to partition /dev/sda16 無効な引数です
+
+This means Linux won't know about any changes you made to /dev/sda16 until you reboot
+
+An unhandled exception has occured</pre>
+
+            <h3 id="Section_h3_example16_fdisk">fdiskで16パーティションを超えるSATAとIDEディスクを扱う</h3>
+
+            <p><span class="marker_yellow">SATA, IDEディスクともに、16パーティション以上は認識できていない</span></p>
+
+            <pre>
+$ <b>cat /etc/vine-release</b>
+Vine Linux 4.0 (Latour)
+$ <b>uname -a</b>
+Linux localhost.localdomain 2.6.16-0vl60 #1 SMP Fri Oct 27 03:39:46 JST 2006 i686 i686 i386 GNU/Linux
+$ <b>fdisk -v</b>
+fdisk v2.12p
+
+$ <b>sudo fdisk /dev/sdb</b>    <span style="color:green;">※ SATAディスクのパーティション一覧を表示する</span>
+
+このディスクのシリンダ数は 4112 に設定されています。
+間違いではないのですが、1024 を超えているため、以下の場合
+に問題を生じうる事を確認しましょう:
+1) ブート時に実行するソフトウェア (例. バージョンが古い LILO)
+2) 別の OS のブートやパーティション作成ソフト
+   (例. DOS FDISK, OS/2 FDISK)
+<span style="background-color: yellow;">Warning: omitting partitions after #15.
+They will be deleted if you save this partition table.</span>
+
+コマンド (m でヘルプ): <b>p</b>
+
+Disk /dev/sdb: 1073 MB, 1073741824 bytes
+255 heads, 2 sectors/track, 4112 cylinders
+Units = シリンダ数 of 510 * 512 = 261120 bytes
+
+デバイス Boot      Start         End      Blocks   Id  System
+/dev/sdb1               5        4113     1047552    5  拡張領域
+/dev/sdb5               9          73       16384   83  Linux
+/dev/sdb6              77         141       16384   83  Linux
+/dev/sdb7             145         209       16384   83  Linux
+/dev/sdb8             213         278       16384   83  Linux
+/dev/sdb9             282         346       16384   83  Linux
+/dev/sdb10            350         414       16384   83  Linux
+/dev/sdb11            418         482       16384   83  Linux
+/dev/sdb12            486         551       16384   83  Linux
+/dev/sdb13            555         619       16384   83  Linux
+/dev/sdb14            623         687       16384   83  Linux
+/dev/sdb15            691         755       16384   83  Linux
+
+コマンド (m でヘルプ): <b>q</b>
+
+$ <b>sudo fdisk /dev/hda</b>    <span style="color:green;">※ IDEディスクのパーティション一覧を表示する</span>
+
+このディスクのシリンダ数は 1885 に設定されています。
+間違いではないのですが、1024 を超えているため、以下の場合
+に問題を生じうる事を確認しましょう:
+1) ブート時に実行するソフトウェア (例. バージョンが古い LILO)
+2) 別の OS のブートやパーティション作成ソフト
+   (例. DOS FDISK, OS/2 FDISK)
+<span style="background-color: yellow;">Warning: omitting partitions after #15.
+They will be deleted if you save this partition table.</span>
+
+コマンド (m でヘルプ): <b>p</b>
+
+Disk /dev/hda: 1073 MB, 1073741824 bytes
+139 heads, 8 sectors/track, 1885 cylinders
+Units = シリンダ数 of 1112 * 512 = 569344 bytes
+
+ デバイス Boot      Start         End      Blocks   Id  System
+/dev/hda1               2        1886     1047552    5  拡張領域
+/dev/hda5               4          34       16384   83  Linux
+/dev/hda6              35          65       16384   83  Linux
+/dev/hda7              67          96       16384   83  Linux
+/dev/hda8              98         128       16384   83  Linux
+/dev/hda9             129         159       16384   83  Linux
+/dev/hda10            161         190       16384   83  Linux
+/dev/hda11            192         222       16384   83  Linux
+/dev/hda12            223         253       16384   83  Linux
+/dev/hda13            255         284       16384   83  Linux
+/dev/hda14            286         315       16384   83  Linux
+/dev/hda15            317         347       16384   83  Linux
+
+コマンド (m でヘルプ):
+
+</pre>
+
+            <h3 id="Section_h3_example16_dmesg">dmesgでのシステム認識状況は</h3>
+
+            <p><span class="marker_yellow">Linuxカーネルは、SATAディスクは16パーティション以上を認識していない一方、IDEディスクは正しくパーティション数を認識している</span>
+            </p>
+
+            <pre>
+<span style="color:green;">※ SATAディスク /dev/sdbの認識ログ</span>
+sd 0:0:0:0: Attached scsi disk sda
+Vendor: VMware,   Model: VMware Virtual S  Rev: 1.0
+Type:   Direct-Access                      ANSI SCSI revision: 02
+SCSI device sdb: 2097152 512-byte hdwr sectors (1074 MB)
+sdb: Write Protect is off
+sdb: Mode Sense: 61 00 00 00
+sdb: cache data unavailable
+sdb: assuming drive cache: write through
+SCSI device sdb: 2097152 512-byte hdwr sectors (1074 MB)
+sdb: Write Protect is off
+sdb: Mode Sense: 61 00 00 00
+sdb: cache data unavailable
+sdb: assuming drive cache: write through
+sdb: <span style="background-color: yellow;">sdb1 < sdb5 sdb6 sdb7 sdb8 sdb9 sdb10 sdb11 sdb12 sdb13 sdb14 sdb15 ></span>
+sd 0:0:1:0: Attached scsi disk sdb
+
+<span style="color:green;">※ IDEディスク /dev/hdaの認識ログ</span>
+ide: Assuming 33MHz system bus speed for PIO modes; override with idebus=xx
+PIIX4: IDE controller at PCI slot 0000:00:07.1
+PIIX4: chipset revision 1
+PIIX4: not 100% native mode: will probe irqs later
+ide0: BM-DMA at 0x1060-0x1067, BIOS settings: hda:DMA, hdb:pio
+ide1: BM-DMA at 0x1068-0x106f, BIOS settings: hdc:DMA, hdd:pio
+Probing IDE interface ide0...
+hda: VMware Virtual IDE Hard Drive, ATA DISK drive
+ide0 at 0x1f0-0x1f7,0x3f6 on irq 14
+hda: max request size: 128KiB
+hda: 2097152 sectors (1073 MB) w/32KiB Cache, CHS=2080/16/63, UDMA(33)
+hda: <span style="background-color: yellow;">hda1 < hda5 hda6 hda7 hda8 hda9 hda10 hda11 hda12 hda13 hda14 hda15 hda16
+hda17 hda18 hda19 hda20 hda21 ></span></pre>
+
+            <h3 id="Section_h3_example16_parted">partedではどうなのか</h3>
+
+            <p>カーネルで16を超えるパーティションを正しく認識できているIDEディスクについては、partedも正しく認識できている</p>
+
+            <pre>
+$ <b>sudo parted /dev/hda</b>
+GNU Parted 1.6.25.1
+Copyright (C) 1998 - 2005 Free Software Foundation, Inc.
+このプログラムは GPL に基づいたフリーソフトウェアです。
+日本語訳に関しては Hiroshi Takekawa <sian@big.or.jp> までおねがいします。
+
+本プログラムは有用とは思いますが、頒布にあたっては、市場性及び特定目的適合性についての暗黙の保証を含めて、いかなる保証も行ないません。詳細についてはGNU
+一般公有使用許諾書をお読みください。
+/dev/hda を使用
+(parted) <b>p</b>
+/dev/hdaの Disk geometry: 0kB - 1074MB
+ディスクラベルの種類: msdos
+番号    開始    終了    サイズ  タイプ    ファイルシステム フラグ
+1       1049kB  1074MB  1073MB  拡張
+5       2097kB  19MB    17MB    論理
+6       20MB    37MB    17MB    論理
+7       38MB    55MB    17MB    論理
+8       56MB    72MB    17MB    論理
+9       73MB    90MB    17MB    論理
+10      91MB    108MB   17MB    論理
+11      109MB   126MB   17MB    論理
+12      127MB   144MB   17MB    論理
+13      145MB   161MB   17MB    論理
+14      163MB   179MB   17MB    論理
+15      180MB   197MB   17MB    論理
+16      198MB   215MB   17MB    論理
+17      216MB   233MB   17MB    論理
+18      234MB   251MB   17MB    論理
+19      252MB   268MB   17MB    論理
+20      269MB   286MB   17MB    論理
+21      287MB   304MB   17MB    論理
+(parted)
+</pre>
+
+            <p>しかし、<span
+                    class="marker_yellow">カーネルで16を超える部分が認識できていないSATAディスクについては、partedはエラーを吐き出しながらも正しく認識だけはしているようです</span>
+            </p>
+
+            <p>この状態では何が起こるかわからず、実質的に利用不可能と考えて良いと思います</p>
+
+            <pre>
+$ <b>sudo parted /dev/sdb</b>
+GNU Parted 1.6.25.1
+Copyright (C) 1998 - 2005 Free Software Foundation, Inc.
+このプログラムは GPL に基づいたフリーソフトウェアです。
+日本語訳に関しては Hiroshi Takekawa <sian@big.or.jp> までおねがいします。
+
+本プログラムは有用とは思いますが、頒布にあたっては、市場性及び特定目的適合性についての暗黙の保証を含めて、いかなる保証も行ないません。詳細についてはGNU
+一般公有使用許諾書をお読みください。
+/dev/sdb を使用
+(parted) <b>p</b>
+
+
+You found a bug in GNU Parted.
+This may have been fixed in the last version of GNU Parted that you can find at:        http://ftp.gnu.org/gnu/parted/
+If this has not been fixed or if you don't know how to check, please email:
+        bug-parted@gnu.org
+or (preferably) file a bug report at:
+        http://parted.alioth.debian.org/bugs/
+Your report should contain the version of this release (1.6.25.1) along with thefollowing message and preferably additional information about your setup.
+Refer to the web site of parted
+        http://www.gnu.org/software/parted/parted.html
+for more informations of what could be useful for bug submitting!
+
+Assertion (cyl_size > 0) at disk_dos.c:583 in function
+probe_partition_for_geom() failed.
+
+無視(I)/Ignore/取消(C)/Cancel? <b>C</b>
+
+
+/dev/sdbの Disk geometry: 0kB - 1074MB
+ディスクラベルの種類: msdos
+番号    開始    終了    サイズ  タイプ    ファイルシステム フラグ
+1       1049kB  1074MB  1073MB  拡張
+5       2097kB  19MB    17MB    論理
+6       20MB    37MB    17MB    論理
+7       38MB    55MB    17MB    論理
+8       56MB    72MB    17MB    論理
+9       73MB    90MB    17MB    論理
+10      91MB    108MB   17MB    論理
+11      109MB   126MB   17MB    論理
+12      127MB   144MB   17MB    論理
+13      145MB   161MB   17MB    論理
+14      163MB   179MB   17MB    論理
+15      180MB   197MB   17MB    論理
+16      198MB   215MB   17MB    論理
+17      216MB   233MB   17MB    論理
+18      234MB   251MB   17MB    論理
+19      252MB   268MB   17MB    論理
+20      269MB   286MB   17MB    論理
+21      287MB   304MB   17MB    論理
+(parted)
+</pre>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <h2 id="Section_h2_debian">Debian系 パーティション数制限の一覧とソースコード検索</h2>
+
+            <table>
+                <tr>
+                    <th>リリース年</th>
+                    <th>ディストリ ver</th>
+                    <th>util-linux ver</th>
+                    <th>MAXIMUM_PARTS</th>
+                </tr>
+                <tr>
+                    <td>2005年</td>
+                    <td>Ubuntu 5.04 (kernel 2.6.10)</td>
+                    <td>2.12p</td>
+                    <td>60</td>
+                </tr>
+                <tr>
+                    <td>2009年</td>
+                    <td>Debian 5.0 (kernel 2.6.26)</td>
+                    <td>2.13.1.1-1</td>
+                    <td>60</td>
+                </tr>
+                <tr>
+                    <td>2015年</td>
+                    <td>Debian 8.0 (kernel 3.16.0)</td>
+                    <td>2.25.2-6</td>
+                    <td>60</td>
+                </tr>
+                <tr>
+                    <td>2022年</td>
+                    <td>Ubuntu 22.04 (kernel 5.15〜6.2)</td>
+                    <td>2.37.2</td>
+                    <td>60</td>
+                </tr>
+            </table>
+
+            <p>2005年リリースのディストリより、およそ5年毎に調べてみた結果、<span class="marker_yellow">パーティション数に独自の制限を設けているものは見当たらなかった</span></p>
+
+            <p>Ubuntuは直近バージョンの22.04と、最も古い5.04を除いてソースパッケージの配布サイトを見つけられなかったので、上位のDebian5.0と8.0を途中の年代のサンプルとした</p>
+
+            <p>&nbsp;</p>
+
+            <h3 id="Section_ubuntu504">Ubuntu 5.04（2005年リリース）</h3>
+
+            <p>ソースコードは <a href="http://old-releases.ubuntu.com/releases/hoary/source/">Ubuntu 5.04 (Hoary Hedgehog)
+                    Source CD</a> より、ubuntu-5.04-src-1.iso をダウンロードする</p>
+
+            <p>ディストリのパッチファイルも含め、MAXIMUM_PARTSが書き換えられている場所は発見できなかった</p>
+
+            <pre>
+<span style="color:green;"># isoファイルをマウントし、util-linux関連ファイルを検索</span>
+Ubuntu 5.04 Src-1$ <b>find ./ -name 'util-linux*' -print</b>
+./pool/main/u/util-linux
+./pool/main/u/util-linux/util-linux_2.12p-2ubuntu2.dsc
+./pool/main/u/util-linux/util-linux_2.12p-2ubuntu2.diff.gz
+./pool/main/u/util-linux/util-linux_2.12p.orig.tar.gz
+
+<span style="color:green;"># ファイルを、Homeディレクトリ内に作成したワークディレクトリに展開</span>
+$ <b>mkdir ~/util-linux_2.12p</b>
+$ <b>tar xvf ./pool/main/u/util-linux/util-linux_2.12p.orig.tar.gz -C ~/util-linux_2.12p/</b>
+$ <b>gzip -cd ./pool/main/u/util-linux/util-linux_2.12p-2ubuntu2.diff.gz > ~/util-linux_2.12p/util-linux_2.12p-2ubuntu2.diff</b>
+$ <b>cd ~/util-linux_2.12p</b>
+
+<span style="color:green;"># キーワード検索</span>
+util-linux_2.12p$ <b>grep -e 'MAXIMUM_PARTS' -R *</b>
+src/fdisk/cfdisk.c:<span class="marker_orange">#define MAXIMUM_PARTS 60</span>
+src/fdisk/cfdisk.c:partition_info p_info[MAXIMUM_PARTS];
+src/fdisk/cfdisk.c:int logical_sectors[MAXIMUM_PARTS];
+src/fdisk/cfdisk.c:    if (num_parts == MAXIMUM_PARTS) {
+src/fdisk/cfdisk.c:	    } while (pn < 4 && logical < MAXIMUM_PARTS-4);
+src/fdisk/fdisk.h:<span class="marker_orange">#define MAXIMUM_PARTS	60</span>
+src/fdisk/fdisk.c:} ptes[MAXIMUM_PARTS];
+src/fdisk/fdisk.c:	for (i = 0; i < MAXIMUM_PARTS; i++)
+src/fdisk/fdisk.c:		if (partitions >= MAXIMUM_PARTS) {
+src/fdisk/fdisk.c:			   this program uses arrays of size MAXIMUM_PARTS.
+src/fdisk/fdisk.c:	if (!free_primary && partitions >= MAXIMUM_PARTS) {
+src/fdisk/fdisk.c:	} else if (partitions >= MAXIMUM_PARTS) {
+src/fdisk/fdiskaixlabel.h:extern char changed[MAXIMUM_PARTS];</pre>
+
+            <p>&nbsp;</p>
+
+            <h3 id="Section_debian50">Debian 5.0（2009年リリース）</h3>
+
+            <p>Debianの各バージョンのutil-linuxパッケージは <a
+                    href="http://archive.debian.org/debian/pool/main/u/util-linux/">http://archive.debian.org/debian/pool/main/u/util-linux/</a>
+                からダウンロードできる。特定のDebianのバージョンで、どのバージョンのutil-linuxが使われているかは、（例えばDebian5.0の場合は）<a
+                    href="http://archive.debian.org/debian/dists/lenny/main/binary-i386/">http://archive.debian.org/debian/dists/lenny/main/binary-i386/</a>に格納されているSourcesファイルにパッケージ一覧が書かれているので、それを参考とする
+            </p>
+
+            <pre class="title">Debian 5.0 lenny の場合</pre>
+
+            <pre>
+$ <b>mkdir util-linux_2.13.1.1</b>
+$ <b>tar xvf util-linux_2.13.1.1.orig.tar.gz -C ./util-linux_2.13.1.1/</b>
+$ <b>gzip -cd util-linux_2.13.1.1-1.diff.gz > ./util-linux_2.13.1.1/util-linux_2.13.1.1-1.diff</b>
+$ <b>cd util-linux_2.13.1.1/</b>
+
+util-linux_2.13.1.1$ <b>grep -e 'MAXIMUM_PARTS' -R *</b>
+util-linux-ng-2.13.1.1/fdisk/cfdisk.c:<span class="marker_orange">#define MAXIMUM_PARTS 60</span>
+util-linux-ng-2.13.1.1/fdisk/cfdisk.c:partition_info p_info[MAXIMUM_PARTS];
+util-linux-ng-2.13.1.1/fdisk/cfdisk.c:int logical_sectors[MAXIMUM_PARTS];
+util-linux-ng-2.13.1.1/fdisk/cfdisk.c:    if (num_parts == MAXIMUM_PARTS) {
+util-linux-ng-2.13.1.1/fdisk/cfdisk.c:	    } while (pn < 4 && logical < MAXIMUM_PARTS-4);
+util-linux-ng-2.13.1.1/fdisk/fdisk.h:<span class="marker_orange">#define MAXIMUM_PARTS	60</span>
+util-linux-ng-2.13.1.1/fdisk/fdisk.c:} ptes[MAXIMUM_PARTS];
+util-linux-ng-2.13.1.1/fdisk/fdisk.c:	for (i = 0; i < MAXIMUM_PARTS; i++)
+util-linux-ng-2.13.1.1/fdisk/fdisk.c:		if (partitions >= MAXIMUM_PARTS) {
+util-linux-ng-2.13.1.1/fdisk/fdisk.c:			   this program uses arrays of size MAXIMUM_PARTS.
+util-linux-ng-2.13.1.1/fdisk/fdisk.c:	if (!free_primary && partitions >= MAXIMUM_PARTS) {
+util-linux-ng-2.13.1.1/fdisk/fdisk.c:	} else if (partitions >= MAXIMUM_PARTS) {</pre>
+
+            <p>&nbsp;</p>
+
+            <h3 id="Section_debian80">Debian 8.0（2015年リリース）</h3>
+
+            <pre class="title">Debian 8.0 jessie の場合</pre>
+
+            <pre>
+$ <b>mkdir util-linux_2.25.2</b>
+$ <b>tar -xvf util-linux_2.25.2.orig.tar.xz -C util-linux_2.25.2/</b>
+$ <b>tar -xvf util-linux_2.25.2-6.debian.tar.xz -C util-linux_2.25.2/</b>
+$ <b>cd util-linux_2.25.2</b>
+
+util-linux_2.25.2$ <b>grep -e 'MAXIMUM_PARTS' -R *</b>
+util-linux-2.25.2/libfdisk/src/dos.c:<span class="marker_orange">#define MAXIMUM_PARTS	60</span>
+util-linux-2.25.2/libfdisk/src/dos.c:	struct pte	ptes[MAXIMUM_PARTS];	/* partition */
+util-linux-2.25.2/libfdisk/src/dos.c:		if (cxt->label->nparts_max >= MAXIMUM_PARTS) {
+util-linux-2.25.2/libfdisk/src/dos.c:			   this program uses arrays of size MAXIMUM_PARTS.
+util-linux-2.25.2/libfdisk/src/dos.c:	if (!free_primary && cxt->label->nparts_max >= MAXIMUM_PARTS) {
+util-linux-2.25.2/libfdisk/src/dos.c:	} else if (cxt->label->nparts_max >= MAXIMUM_PARTS) {
+</pre>
+
+            <p>&nbsp;</p>
+
+            <h3 id="Section_ubuntu2204">Ubuntu 22.04（2022年リリース）</h3>
+
+            <p>この記事を書いた時点（2023年8月）での最新のステーブル・バージョンであるUbuntu 22.04にも、ディストリが独自にutil-linuxの最大パーティション数の制限を書き換えているようなことはなかった
+            </p>
+
+            <p>linux-utils (fdisk) に加え、parted にもパーティション数の制限書き換えがないか確認してみる</p>
+
+            <p>直近数年間にリリースされたバージョンのソースコードは <a href="https://packages.ubuntu.com/">https://packages.ubuntu.com/</a>
+                からダウンロードできる</p>
+
+            <pre>
+util-linux-2.37.2$ <b>grep -e 'MAXIMUM_PARTS' -R *</b>
+libfdisk/src/dos.c:<span class="marker_orange">#define MAXIMUM_PARTS	60</span>
+libfdisk/src/dos.c:	struct pte	ptes[MAXIMUM_PARTS];	/* partition */
+libfdisk/src/dos.c:		if (cxt->label->nparts_max >= MAXIMUM_PARTS) {
+libfdisk/src/dos.c:			   this program uses arrays of size MAXIMUM_PARTS.
+libfdisk/src/dos.c:	if (cxt->label->nparts_max >= MAXIMUM_PARTS) {
+
+parted-3.4$ <b>grep -e 'MAX_NUM_PARTS' -R *</b>
+libparted/arch/linux.c:<span class="marker_orange">#define MAX_NUM_PARTS		64</span>
+libparted/arch/linux.c:                return MAX_NUM_PARTS;
+libparted/arch/linux.c:                return MAX_NUM_PARTS;</pre>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <h2 id="Section_h2_redhat">RedHat系 パーティション数制限の一覧とソースコード検索</h2>
+
+            <table>
+                <tr>
+                    <th>リリース年</th>
+                    <th>ディストリ ver</th>
+                    <th>util-linux ver</th>
+                    <th>MAXIMUM_PARTS</th>
+                </tr>
+                <tr>
+                    <td>2000年</td>
+                    <td>Vine Linux 2.0</td>
+                    <td>2.9z</td>
+                    <td>60</td>
+                </tr>
+                <tr>
+                    <td>2002年</td>
+                    <td>Vine Linux 2.5</td>
+                    <td>2.11n</td>
+                    <td style="color:red;">16</td>
+                </tr>
+                <tr>
+                    <td>2004年</td>
+                    <td>Vine Linux 3.0</td>
+                    <td>2.11z</td>
+                    <td style="color:red;">16</td>
+                </tr>
+                <tr>
+                    <td>2005年</td>
+                    <td>CentOS 4.0</td>
+                    <td>2.12a</td>
+                    <td style="color:red;">16</td>
+                </tr>
+                <tr>
+                    <td>2006年</td>
+                    <td>Vine Linux 4.0</td>
+                    <td>2.12p</td>
+                    <td style="color:red;">16</td>
+                </tr>
+                <tr>
+                    <td>2009年</td>
+                    <td>Vine Linux 5.0</td>
+                    <td>2.14</td>
+                    <td>60</td>
+                </tr>
+                <tr>
+                    <td>2011年</td>
+                    <td>CentOS 6.0</td>
+                    <td>2.17</td>
+                    <td>60</td>
+                </tr>
+
+                <tr>
+                    <td>2019年</td>
+                    <td>CentOS 8.0</td>
+                    <td>2.32</td>
+                    <td>60</td>
+                </tr>
+            </table>
+
+            <p>2009年以前にリリースされたものでは、最大パーティション数の制限値が60から16まで引き下げられていたことがわかった</p>
+
+            <p>最新版のディストリビューションでは、この制限値引き下げは行われていないが、将来に渡ってこれが維持されるかはわからない</p>
+
+            <p>fdisk実行時に「警告: 16 以降の領域を削除します」などのメッセージが表示されたら要注意である</p>
+
+            <p>&nbsp;</p>
+
+            <h3 id="Section_vine20">Vine Linux 2.0（2000年リリース）</h3>
+
+            <pre>
+$ wget <b>http://ftp.kddilabs.jp/pub/Linux/packages/Vine/Vine-2.0/SRPMS/SRPMS/util-linux-2.9z-2.src.rpm</b>
+$ <b>7z x util-linux-2.9z-2.src.rpm</b>
+$ <b>7z x util-linux-2.9z-2.src.cpio -o./util-linux-2.9z</b>
+$ <b>cd util-linux-2.9z/</b>
+util-linux-2.9z$ <b>tar -xvf util-linux-2.9z.tar.gz</b>
+
+util-linux-2.9z$ <b>grep -e 'MAXIMUM_PARTS' -R *</b>
+util-linux-2.9z/fdisk/fdisksunlabel.c:	for (i = 1; i < MAXIMUM_PARTS; i++)
+util-linux-2.9z/fdisk/cfdisk.c:<span class="marker_orange">#define MAXIMUM_PARTS 60</span>
+util-linux-2.9z/fdisk/cfdisk.c:partition_info p_info[MAXIMUM_PARTS];
+util-linux-2.9z/fdisk/cfdisk.c:int logical_sectors[MAXIMUM_PARTS];
+util-linux-2.9z/fdisk/cfdisk.c:    if (num_parts == MAXIMUM_PARTS) {
+util-linux-2.9z/fdisk/cfdisk.c:	    } while (pn < 4 && logical < MAXIMUM_PARTS-4);
+util-linux-2.9z/fdisk/fdisksgilabel.h:extern char changed[MAXIMUM_PARTS];
+util-linux-2.9z/fdisk/fdisksunlabel.h:extern char changed[MAXIMUM_PARTS];
+util-linux-2.9z/fdisk/fdisk.h:<span class="marker_orange">#define MAXIMUM_PARTS	60</span>
+util-linux-2.9z/fdisk/fdisk.c:	changed[MAXIMUM_PARTS],		/* marks changed buffers */
+util-linux-2.9z/fdisk/fdisk.c:	*buffers[MAXIMUM_PARTS]		/* pointers to buffers */
+util-linux-2.9z/fdisk/fdisk.c:	offsets[MAXIMUM_PARTS] = {0, 0, 0, 0};
+util-linux-2.9z/fdisk/fdisk.c:struct	partition *part_table[MAXIMUM_PARTS]	/* partitions */
+util-linux-2.9z/fdisk/fdisk.c:	*ext_pointers[MAXIMUM_PARTS]		/* link pointers */
+util-linux-2.9z/fdisk/fdisk.c:		if (partitions >= MAXIMUM_PARTS) {
+util-linux-2.9z/fdisk/fdisk.c:			   this program uses arrays of size MAXIMUM_PARTS.
+util-linux-2.9z/fdisk/fdisk.c:	for (i = 1; i < MAXIMUM_PARTS; i++)
+util-linux-2.9z/fdisk/fdisk.c:	if (partitions >= MAXIMUM_PARTS) {
+util-linux-2.9z/fdisk/fdiskaixlabel.h:extern char changed[MAXIMUM_PARTS];</pre>
+
+            <p>&nbsp;</p>
+
+            <h3 id="Section_vine25">Vine Linux 2.5（2002年リリース）</h3>
+
+            <pre>
+$ <b>wget http://ftp.kddilabs.jp/pub/Linux/packages/Vine/Vine-2.5/i386/SRPMS.main/SRPMS/util-linux-2.11n-4vl5.src.rpm</b>
+$ <b>7z x util-linux-2.11n-4vl5.src.rpm</b>
+$ <b>7z x util-linux-2.11n-4vl5.src.cpio -o./util-linux-2.11n</b>
+$ <b>cd util-linux-2.11n/</b>
+util-linux-2.11n$ <b>tar -xvf util-linux-2.11n.tar.bz2</b>
+
+util-linux-2.11n$ <b>grep -e 'MAXIMUM_PARTS' -R *</b>
+util-linux-2.11n/fdisk/cfdisk.c:<span class="marker_orange">#define MAXIMUM_PARTS 60</span>
+util-linux-2.11n/fdisk/cfdisk.c:partition_info p_info[MAXIMUM_PARTS];
+util-linux-2.11n/fdisk/cfdisk.c:int logical_sectors[MAXIMUM_PARTS];
+util-linux-2.11n/fdisk/cfdisk.c:    if (num_parts == MAXIMUM_PARTS) {
+util-linux-2.11n/fdisk/cfdisk.c:	    } while (pn < 4 && logical < MAXIMUM_PARTS-4);
+util-linux-2.11n/fdisk/fdisk.h:<span class="marker_orange">#define MAXIMUM_PARTS	60</span>
+util-linux-2.11n/fdisk/fdisk.c:} ptes[MAXIMUM_PARTS];
+util-linux-2.11n/fdisk/fdisk.c:	for (i = 0; i < MAXIMUM_PARTS; i++)
+util-linux-2.11n/fdisk/fdisk.c:		if (partitions >= MAXIMUM_PARTS) {
+util-linux-2.11n/fdisk/fdisk.c:			   this program uses arrays of size MAXIMUM_PARTS.
+util-linux-2.11n/fdisk/fdisk.c:	if (partitions >= MAXIMUM_PARTS) {
+util-linux-2.11n/fdisk/fdiskaixlabel.h:extern char changed[MAXIMUM_PARTS];
+util-linux-2.11n-miscfixes.patch:<span class="marker_orange">-#define MAXIMUM_PARTS	60</span>
+util-linux-2.11n-miscfixes.patch:<span class="marker_green">+#define MAXIMUM_PARTS	16</span></pre>
+
+            <p>&nbsp;</p>
+
+            <h3 id="Section_vine30">Vine Linux 3.0（2004年リリース）</h3>
+
+            <pre>
+$ <b>wget http://ftp.kddilabs.jp/pub/Linux/packages/Vine/Vine-3.0/SRPMS/SRPMS/util-linux-2.11z-0vl1.src.rpm</b>
+$ <b>7z x util-linux-2.11z-0vl1.src.rpm</b>
+$ <b>7z x util-linux-2.11z-0vl1.src.cpio -o./util-linux-2.11z</b>
+$ <b>cd util-linux-2.11z/</b>
+util-linux-2.11z$ <b>tar -xvf util-linux-2.11z.tar.bz2</b>
+
+util-linux-2.11z$ <b>grep -e 'MAXIMUM_PARTS' -R *</b>
+util-linux-2.11y-fdisksegv-103954.patch:! 	if (!free_primary && partitions >= MAXIMUM_PARTS) {
+util-linux-2.11y-fdisksegv-103954.patch:! 	if (partitions >= MAXIMUM_PARTS) {
+util-linux-2.11z/fdisk/cfdisk.c:<span class="marker_orange">#define MAXIMUM_PARTS 60</span>
+util-linux-2.11z/fdisk/cfdisk.c:partition_info p_info[MAXIMUM_PARTS];
+util-linux-2.11z/fdisk/cfdisk.c:int logical_sectors[MAXIMUM_PARTS];
+util-linux-2.11z/fdisk/cfdisk.c:    if (num_parts == MAXIMUM_PARTS) {
+util-linux-2.11z/fdisk/cfdisk.c:	    } while (pn < 4 && logical < MAXIMUM_PARTS-4);
+util-linux-2.11z/fdisk/fdisk.h:<span class="marker_orange">#define MAXIMUM_PARTS	60</span>
+util-linux-2.11z/fdisk/fdisk.c:} ptes[MAXIMUM_PARTS];
+util-linux-2.11z/fdisk/fdisk.c:	for (i = 0; i < MAXIMUM_PARTS; i++)
+util-linux-2.11z/fdisk/fdisk.c:		if (partitions >= MAXIMUM_PARTS) {
+util-linux-2.11z/fdisk/fdisk.c:			   this program uses arrays of size MAXIMUM_PARTS.
+util-linux-2.11z/fdisk/fdisk.c:	if (!free_primary && partitions >= MAXIMUM_PARTS) {
+util-linux-2.11z/fdisk/fdiskaixlabel.h:extern char changed[MAXIMUM_PARTS];
+util-linux-2.11z-miscfixes.patch:<span class="marker_orange">-#define MAXIMUM_PARTS	60</span>
+util-linux-2.11z-miscfixes.patch:<span class="marker_green">+#define MAXIMUM_PARTS	16</span></pre>
+
+            <p>&nbsp;</p>
+
+            <h3 id="Section_centos40">CentOS 4.0（2005年リリース）</h3>
+
+            <pre>
+$ <b>wget https://vault.centos.org/4.0/os/SRPMS/util-linux-2.12a-16.EL4.6.src.rpm</b>
+$ <b>7z x util-linux-2.12a-16.EL4.6.src.rpm</b>
+$ <b>7z x util-linux-2.12a-16.EL4.6.src.cpio -o./util-linux-2.12a</b>
+$ <b>cd util-linux-2.12a/</b>
+util-linux-2.12a$ <b>tar -xvf util-linux-2.12a.tar.gz</b>
+
+util-linux-2.12a$ <b>grep -e 'MAXIMUM_PARTS' -R *</b>
+util-linux-2.11y-fdisksegv-103954.patch:! 	if (!free_primary && partitions >= MAXIMUM_PARTS) {
+util-linux-2.11y-fdisksegv-103954.patch:! 	if (partitions >= MAXIMUM_PARTS) {
+util-linux-2.12a/fdisk/cfdisk.c:<span class="marker_orange">#define MAXIMUM_PARTS 60</span>
+util-linux-2.12a/fdisk/cfdisk.c:partition_info p_info[MAXIMUM_PARTS];
+util-linux-2.12a/fdisk/cfdisk.c:int logical_sectors[MAXIMUM_PARTS];
+util-linux-2.12a/fdisk/cfdisk.c:    if (num_parts == MAXIMUM_PARTS) {
+util-linux-2.12a/fdisk/cfdisk.c:	    } while (pn < 4 && logical < MAXIMUM_PARTS-4);
+util-linux-2.12a/fdisk/fdisk.h:<span class="marker_orange">#define MAXIMUM_PARTS	60</span>
+util-linux-2.12a/fdisk/fdisk.c:} ptes[MAXIMUM_PARTS];
+util-linux-2.12a/fdisk/fdisk.c:	for (i = 0; i < MAXIMUM_PARTS; i++)
+util-linux-2.12a/fdisk/fdisk.c:		if (partitions >= MAXIMUM_PARTS) {
+util-linux-2.12a/fdisk/fdisk.c:			   this program uses arrays of size MAXIMUM_PARTS.
+util-linux-2.12a/fdisk/fdisk.c:	if (!free_primary && partitions >= MAXIMUM_PARTS) {
+util-linux-2.12a/fdisk/fdisk.c:	} else if (partitions >= MAXIMUM_PARTS) {
+util-linux-2.12a/fdisk/fdiskaixlabel.h:extern char changed[MAXIMUM_PARTS];
+util-linux-2.12a-partlimit.patch:<span class="marker_orange">-#define MAXIMUM_PARTS	60</span>
+util-linux-2.12a-partlimit.patch:<span class="marker_green">+#define MAXIMUM_PARTS	16</span></pre>
+
+            <p>&nbsp;</p>
+
+            <h3 id="Section_vine40">Vine Linux 4.0（2006年リリース）</h3>
+
+            <pre>
+$ <b>wget http://ftp.kddilabs.jp/pub/Linux/packages/Vine/Vine-4.0/SRPMS/SRPMS/util-linux-2.12p-0vl5.src.rpm</b>
+$ <b>7z x util-linux-2.12p-0vl5.src.rpm</b>
+$ <b>7z x util-linux-2.12p-0vl5.src.cpio -o./util-linux-2.12p</b>
+$ <b>cd util-linux-2.12p/</b>
+util-linux-2.12p$ <b>tar -xvf util-linux-2.12p.tar.gz</b>
+
+util-linux-2.12p$ <b>grep -e 'MAXIMUM_PARTS' -R *</b>
+util-linux-2.11y-fdisksegv-103954.patch:! 	if (!free_primary && partitions >= MAXIMUM_PARTS) {
+util-linux-2.11y-fdisksegv-103954.patch:! 	if (partitions >= MAXIMUM_PARTS) {
+util-linux-2.12a-partlimit.patch:<span class="marker_orange">-#define MAXIMUM_PARTS	60</span>
+util-linux-2.12a-partlimit.patch:<span class="marker_green">+#define MAXIMUM_PARTS	15</span>
+util-linux-2.12p/fdisk/cfdisk.c:<span class="marker_orange">#define MAXIMUM_PARTS 60</span>
+util-linux-2.12p/fdisk/cfdisk.c:partition_info p_info[MAXIMUM_PARTS];
+util-linux-2.12p/fdisk/cfdisk.c:int logical_sectors[MAXIMUM_PARTS];
+util-linux-2.12p/fdisk/cfdisk.c:    if (num_parts == MAXIMUM_PARTS) {
+util-linux-2.12p/fdisk/cfdisk.c:	    } while (pn < 4 && logical < MAXIMUM_PARTS-4);
+util-linux-2.12p/fdisk/fdisk.h:<span class="marker_orange">#define MAXIMUM_PARTS	60</span>
+util-linux-2.12p/fdisk/fdisk.c:} ptes[MAXIMUM_PARTS];
+util-linux-2.12p/fdisk/fdisk.c:	for (i = 0; i < MAXIMUM_PARTS; i++)
+util-linux-2.12p/fdisk/fdisk.c:		if (partitions >= MAXIMUM_PARTS) {
+util-linux-2.12p/fdisk/fdisk.c:			   this program uses arrays of size MAXIMUM_PARTS.
+util-linux-2.12p/fdisk/fdisk.c:	if (!free_primary && partitions >= MAXIMUM_PARTS) {
+util-linux-2.12p/fdisk/fdisk.c:	} else if (partitions >= MAXIMUM_PARTS) {
+util-linux-2.12p/fdisk/fdiskaixlabel.h:extern char changed[MAXIMUM_PARTS];</pre>
+
+            <p>&nbsp;</p>
+
+            <h3 id="Section_vine50">Vine Linux 5.0（2009年リリース）</h3>
+
+            <pre>
+$ <b>wget http://ftp.kddilabs.jp/pub/Linux/packages/Vine/Vine-5.0/SRPMS/SRPMS.main/util-linux-ng-2.14.1-2vl5.src.rpm</b>
+$ <b>7z x util-linux-ng-2.14.1-2vl5.src.rpm</b>
+$ <b>7z x util-linux-ng-2.14.1-2vl5.src.cpio -o./util-linux-ng-2.14</b>
+$ <b>cd util-linux-ng-2.14/</b>
+util-linux-ng-2.14$ <b>tar -xvf util-linux-ng-2.14.1.tar.bz2</b>
+
+util-linux-ng-2.14$ <b>grep -e 'MAXIMUM_PARTS' -R *</b>
+util-linux-ng-2.14.1/fdisk/cfdisk.c:<span class="marker_orange">#define MAXIMUM_PARTS 60</span>
+util-linux-ng-2.14.1/fdisk/cfdisk.c:partition_info p_info[MAXIMUM_PARTS];
+util-linux-ng-2.14.1/fdisk/cfdisk.c:int logical_sectors[MAXIMUM_PARTS];
+util-linux-ng-2.14.1/fdisk/cfdisk.c:    if (num_parts == MAXIMUM_PARTS) {
+util-linux-ng-2.14.1/fdisk/cfdisk.c:	    } while (pn < 4 && logical < MAXIMUM_PARTS-4);
+util-linux-ng-2.14.1/fdisk/fdisk.h:<span class="marker_orange">#define MAXIMUM_PARTS	60</span>
+util-linux-ng-2.14.1/fdisk/fdisk.c:} ptes[MAXIMUM_PARTS];
+util-linux-ng-2.14.1/fdisk/fdisk.c:	for (i = 0; i < MAXIMUM_PARTS; i++)
+util-linux-ng-2.14.1/fdisk/fdisk.c:		if (partitions >= MAXIMUM_PARTS) {
+util-linux-ng-2.14.1/fdisk/fdisk.c:			   this program uses arrays of size MAXIMUM_PARTS.
+util-linux-ng-2.14.1/fdisk/fdisk.c:	if (!free_primary && partitions >= MAXIMUM_PARTS) {
+util-linux-ng-2.14.1/fdisk/fdisk.c:	} else if (partitions >= MAXIMUM_PARTS) {</pre>
+
+            <p>&nbsp;</p>
+
+            <h3 id="Section_centos50">CentOS 5.0（2011年リリース）</h3>
+
+            <pre>
+$ <b>wget https://vault.centos.org/6.0/os/SRPMS/Packages/util-linux-ng-2.17.2-6.el6.src.rpm</b>
+$ <b>7z x util-linux-ng-2.17.2-6.el6.src.rpm</b>
+$ <b>7z x util-linux-ng-2.17.2-6.el6.src.cpio -o./util-linux-ng-2.17</b>
+$ <b>cd util-linux-ng-2.17/</b>
+util-linux-ng-2.17$ <b>tar -xvf util-linux-ng-2.17.2.tar.bz2</b>
+
+util-linux-ng-2.17$ <b>grep -e 'MAXIMUM_PARTS' -R *</b>
+util-linux-ng-2.17.2/fdisk/cfdisk.c:<span class="marker_orange">#define MAXIMUM_PARTS 60</span>
+util-linux-ng-2.17.2/fdisk/cfdisk.c:partition_info p_info[MAXIMUM_PARTS];
+util-linux-ng-2.17.2/fdisk/cfdisk.c:long long logical_sectors[MAXIMUM_PARTS];
+util-linux-ng-2.17.2/fdisk/cfdisk.c:    if (num_parts == MAXIMUM_PARTS) {
+util-linux-ng-2.17.2/fdisk/cfdisk.c:	    } while (pn < 4 && logical < MAXIMUM_PARTS-4);
+util-linux-ng-2.17.2/fdisk/fdisk.h:<span class="marker_orange">#define MAXIMUM_PARTS	60</span>
+util-linux-ng-2.17.2/fdisk/fdisk.c:} ptes[MAXIMUM_PARTS];
+util-linux-ng-2.17.2/fdisk/fdisk.c:	for (i = 0; i < MAXIMUM_PARTS; i++)
+util-linux-ng-2.17.2/fdisk/fdisk.c:		if (partitions >= MAXIMUM_PARTS) {
+util-linux-ng-2.17.2/fdisk/fdisk.c:			   this program uses arrays of size MAXIMUM_PARTS.
+util-linux-ng-2.17.2/fdisk/fdisk.c:	if (!free_primary && partitions >= MAXIMUM_PARTS) {
+util-linux-ng-2.17.2/fdisk/fdisk.c:	} else if (partitions >= MAXIMUM_PARTS) {</pre>
+
+            <p>&nbsp;</p>
+
+            <h3 id="Section_centos80">CentOS 8.0（2019年リリース）</h3>
+
+            <pre>
+$ <b>wget https://vault.centos.org/8.0.1905/BaseOS/Source/SPackages/util-linux-2.32.1-8.el8.src.rpm</b>
+$ <b>7z x util-linux-2.32.1-8.el8.src.rpm</b>
+$ <b>7z x util-linux-2.32.1-8.el8.src.cpio -o./util-linux-2.32</b>
+$ <b>cd util-linux-2.32/</b>
+util-linux-2.32$ <b>tar -xvf util-linux-2.32.1.tar.xz</b>
+
+util-linux-2.32$ <b>grep -e 'MAXIMUM_PARTS' -R *</b>
+util-linux-2.32.1/libfdisk/src/dos.c:<span class="marker_orange">#define MAXIMUM_PARTS	60</span>
+util-linux-2.32.1/libfdisk/src/dos.c:	struct pte	ptes[MAXIMUM_PARTS];	/* partition */
+util-linux-2.32.1/libfdisk/src/dos.c:		if (cxt->label->nparts_max >= MAXIMUM_PARTS) {
+util-linux-2.32.1/libfdisk/src/dos.c:			   this program uses arrays of size MAXIMUM_PARTS.
+util-linux-2.32.1/libfdisk/src/dos.c:	if (!free_primary && cxt->label->nparts_max >= MAXIMUM_PARTS) {
+util-linux-2.32.1/libfdisk/src/dos.c:	} else if (cxt->label->nparts_max >= MAXIMUM_PARTS) {</pre>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <h2 id="Section_h2_src_compare">パーティション数制限あり／なしのfdiskソースコード比較</h2>
+
+            <h3 id="Section_h3_ubuntu2204">パーティション制限なしの場合（Ubuntu 22.04）</h3>
+
+            <p>util-linuxソースパッケージをくわしく観察すると、MBRでのパーティションはfdiskでは 1から59まで、partedでは1から63までとなっている</p>
 
             <pre class="title">util-linux-2.37.2  -&gt;  /libfdisk/src/dos.c</pre>
 
@@ -94,76 +1050,104 @@
 
 static void read_extended(struct fdisk_context *cxt, size_t ext)
 {
-    size_t i;
-    struct pte *pex, *pe;
-    struct dos_partition *p, *q;
-    struct fdisk_dos_label *l = self_label(cxt);
+size_t i;
+struct pte *pex, *pe;
+struct dos_partition *p, *q;
+struct fdisk_dos_label *l = self_label(cxt);
 
-    l->ext_index = ext;
-    pex = self_pte(cxt, ext);
-    if (!pex) {
-        DBG(LABEL, ul_debug("DOS: uninitialized pointer to %zu pex", ext));
-        return;
-    }
-    pex->ex_entry = pex->pt_entry;
+l->ext_index = ext;
+pex = self_pte(cxt, ext);
+if (!pex) {
+DBG(LABEL, ul_debug("DOS: uninitialized pointer to %zu pex", ext));
+return;
+}
+pex->ex_entry = pex->pt_entry;
 
-    p = pex->pt_entry;
-    if (!dos_partition_get_start(p)) {
-        fdisk_warnx(cxt, _("Bad offset in primary extended partition."));
-        return;
-    }
+p = pex->pt_entry;
+if (!dos_partition_get_start(p)) {
+fdisk_warnx(cxt, _("Bad offset in primary extended partition."));
+return;
+}
 
-    DBG(LABEL, ul_debug("DOS: Reading extended %zu", ext));
+DBG(LABEL, ul_debug("DOS: Reading extended %zu", ext));
 
-    while (IS_EXTENDED (p->sys_ind)) {
+while (IS_EXTENDED (p->sys_ind)) {
 <span style="color:red; background-color:yellow;">        if (cxt->label->nparts_max >= MAXIMUM_PARTS) {</span>
-            /* This is not a Linux restriction, but
-                this program uses arrays of size MAXIMUM_PARTS.
-                Do not try to `improve' this test. */
-            struct pte *pre = self_pte(cxt,
-                        cxt->label->nparts_max - 1);
-            fdisk_warnx(cxt,
-            _("Omitting partitions after #%zu. They will be deleted "
-                "if you save this partition table."),
-                cxt->label->nparts_max);
+    /* This is not a Linux restriction, but
+        this program uses arrays of size MAXIMUM_PARTS.
+        Do not try to `improve' this test. */
+    struct pte *pre = self_pte(cxt,
+                cxt->label->nparts_max - 1);
+    fdisk_warnx(cxt,
+    _("Omitting partitions after #%zu. They will be deleted "
+        "if you save this partition table."),
+        cxt->label->nparts_max);
 
-            if (pre) {
-                clear_partition(pre->ex_entry);
-                partition_set_changed(cxt,
-                        cxt->label->nparts_max - 1, 1);
-            }
-            return;
-        }
-                
-            </pre>
+    if (pre) {
+        clear_partition(pre->ex_entry);
+        partition_set_changed(cxt,
+                cxt->label->nparts_max - 1, 1);
+    }
+    return;
+}</pre>
 
-            <pre class="title">parted-3.4  -&gt;  /libparted/arch/linux.c</pre>
+            <p>&nbsp;</p>
+
+            <h3 id="Section_h3_vine25">パーティション制限ありの場合（Vine Linux 2.5）</h3>
+
+            <pre class="title">util-linux-2.11n-4vl5.src.rpm -&gt; fdisk/fdisk.h</pre>
 
             <pre>
-/* Maximum number of partitions supported by linux. */
-<span style="color:red; background-color:yellow;">#define MAX_NUM_PARTS		64</span>
-
-// 〜 途中省略 〜
-
 /*
-* The number of partitions that a device can have depends on the kernel.
-* If we don't find this value in /sys/block/DEV/ext_range, we will use our own
-* value.
+   fdisk.h
 */
-static unsigned int
-_device_get_partition_range(PedDevice const* dev)
-{
-        int range;
-        if (dev->type == PED_DEVICE_DM)
-                return MAX_NUM_PARTS;
-        bool ok = _sysfs_int_entry_from_dev(dev, "ext_range", &range);
 
-        if (!ok)
-                return MAX_NUM_PARTS;
-        /* both 0 and 1 mean no partitions */
-        return range > 1 ? range : 0;
-}
+#define DEFAULT_SECTOR_SIZE	512
+#define MAX_SECTOR_SIZE	2048
+#define SECTOR_SIZE	512	/* still used in BSD code */
+<span style="background-color: yellow;">#define MAXIMUM_PARTS	60</span>
             </pre>
+
+            <pre class="title">util-linux-2.11n-4vl5.src.rpm -&gt; fdisk/fdisk.c</pre>
+
+            <pre>
+<span style="background-color: yellow;">if (partitions >= MAXIMUM_PARTS)</span> {
+    /* This is not a Linux restriction, but
+       this program uses arrays of size MAXIMUM_PARTS.
+       Do not try to `improve' this test. */
+    struct pte *pre = &ptes[partitions-1];
+
+    fprintf(stderr,
+        _("Warning: deleting partitions after %d\n"),
+        partitions);
+    clear_partition(pre->ext_pointer);
+    pre->changed = 1;
+    return;
+}</pre>
+
+            <pre class="title">util-linux-2.11n-4vl5.src.rpm -&gt; util-linux-2.11n-miscfixes.patch</pre>
+
+            <pre>
+--- util-linux-2.11n/fdisk/fdisk.h.miscfixes	Thu Sep 13 19:05:35 2001
++++ util-linux-2.11n/fdisk/fdisk.h	Wed Dec 26 16:57:41 2001
+@@ -5,7 +5,7 @@
+ #define DEFAULT_SECTOR_SIZE	512
+ #define MAX_SECTOR_SIZE	2048
+ #define SECTOR_SIZE	512	/* still used in BSD code */
+<span style="background-color: yellow;">-#define MAXIMUM_PARTS	60
++#define MAXIMUM_PARTS	16</span></pre>
+
+            <blockquote class="title">util-linux-2.11n-4vl5.src.rpm -&gt; README.fdisk</blockquote>
+            <blockquote>
+
+                <p>DOS and Linux both allow you to access several partitions on a
+                    single disk; on DOS these are treated as if they were separate disks or
+                    drives, and under Linux they are treated as different "devices".</p>
+
+                <p>You can have up to 64 partitions on a single IDE disk, or up to 16
+                    partitions on a single SCSI disk, at least as far as Linux is
+                    concerned; in practice you will rarely want so many. </p>
+            </blockquote>
 
             <!-- HTML本文ここまで（貼付ここまで） -->
             <!-- ********* CONTENTS END AT THIS LINE ********* -->
@@ -174,7 +1158,7 @@ _device_get_partition_range(PedDevice const* dev)
                 <p style="text-align:left;"><a href="http://validator.w3.org/" target="_self"><img
                             src="https://oasis3855.github.io/webpage/pics/w3c-valid-xhtml10-pale.png" border="0"
                             align="left" alt="Valid XHTML 1.0 Transitional" width="88" height="31" /></a> &nbsp;Last
-                    update on 15 August 2023<br /> &nbsp;Powered by GitHub Pages<br clear="all" />
+                    update on 14 September 2023<br /> &nbsp;Powered by GitHub Pages<br clear="all" />
                 </p>
             </div>
             <div id="layout_footer_right">
