@@ -110,12 +110,12 @@
 #### Android上で実行するソフトウエア
 
 - **『[Android 電話・連絡帳を扱うソフトウエア](https://github.com/oasis3855/android-phone-tools)』**（目次ページ）
-- [Android 通話履歴の表示・追加・削除プログラム](https://github.com/oasis3855/android-phone-tools/blob/main/call-log) (2014/06/29)
-- [Android 連絡先一覧表示・一括削除プログラム](https://github.com/oasis3855/android-phone-tools/blob/main/contact-edit) (2016/12/23)
+  - [Android 通話履歴の表示・追加・削除プログラム](https://github.com/oasis3855/android-phone-tools/blob/main/call-log) (2014/06/29)
+  - [Android 連絡先一覧表示・一括削除プログラム](https://github.com/oasis3855/android-phone-tools/blob/main/contact-edit) (2016/12/23)
 - **『[Android メディアを扱うソフトウエア](https://github.com/oasis3855/android-media-tools)』**（目次ページ）
-- [Android ネットラジオ受信プログラム](https://github.com/oasis3855/android-media-tools/blob/main/net-radio) (2015/10/25)
+  - [Android ネットラジオ受信プログラム](https://github.com/oasis3855/android-media-tools/blob/main/net-radio) (2015/10/25)
 - **『[Android ツール類](https://github.com/oasis3855/android-tools/tree/main)』**（目次ページ）
-- [シンプル デスク クロック](https://github.com/oasis3855/android-tools/tree/main/SimpleDeskClock) (2023/06/12)
+  - [シンプル デスク クロック](https://github.com/oasis3855/android-tools/tree/main/SimpleDeskClock) (2023/06/12)
 
 <br />
 <br />
@@ -182,6 +182,7 @@
 
   - [Gnomeデスクトップ壁紙 スライドショー XML作成 (Linux Perlスクリプト)](https://github.com/oasis3855/linux-scripts/blob/main/gnome-desktop-img-xmlmaker) (2011/04/20)
   - [Gnome 2 ログオンテーマ](https://github.com/oasis3855/linux-scripts/blob/main/gnome2_logon_theme) (2008/09/14)
+  - [Googleカレンダーの読み書きとiCalインポート](https://github.com/oasis3855/linux-scripts/tree/main/googlecalendar_readwrite) (2014/03/14)
   - [天気・気温通知Gnomeインジケータ アプレット (Linux)](https://github.com/oasis3855/linux-scripts/blob/main/weather_indicator) (2014/05/17)
 
 
