@@ -25,6 +25,12 @@
     -->
     <!-- VSCode DEBUG : jpeg popup window : lightbox -->
 
+    <!-- language highlight (https://highlightjs.org/) -->
+    <link rel="stylesheet" href="../../css-language-hilight/styles/default.min.css">
+    <script src="../../css-language-hilight/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <!-- language highlight (https://highlightjs.org/) -->
+
     <!-- disable viewport for mobile device -->
     <meta name="viewport"
         content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
@@ -432,6 +438,47 @@ int main(void)
     return 0;
 }
             </pre>
+
+            <h4>ソースコード着色（シンタックス ハイライト）</h4>
+
+            <p>サーバサイドではなく、フロントエンド（ブラウザ）のJava Scriptでソースコード着色する highlight.js（<a href="https://highlightjs.org/">https://highlightjs.org/</a> , <a href="https://github.com/highlightjs/highlight.js">GitHub</a>）を用いる方法</p>
+
+            <pre class="title">HTMLでこのように記述する</pre>
+
+            <pre>
+
+&lt;head&gt;
+&lt;link rel="stylesheet" href="../../css-language-hilight/styles/default.min.css"&gt;
+&lt;script src="../../css-language-hilight/highlight.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;hljs.highlightAll();&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;html&gt;
+
+&lt;pre&gt;&lt;code class="language-c"&gt;
+#include&amp;lt;stdio.h&amp;gt;
+    
+int main(void)
+{
+    printf("Hello World\n");
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/html&gt;
+</pre>
+
+            <pre class="title">ブラウザでは、このように表示される</pre>
+
+            <pre><code class="language-c">
+#include&lt;stdio.h&gt;
+    
+int main(void)
+{
+    printf("Hello World\n");
+    return 0;
+}
+</code></pre>
 
             <h4>引用</h4>
 

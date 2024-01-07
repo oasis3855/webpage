@@ -1195,9 +1195,18 @@ code {
     font-family: monospace;
     padding-left: 5px;
     padding-right: 5px;
-    border: 1px dashed #cc9966;
-    background-color: #f8ede2;
+    background-color: #f8ede2 !important;
     white-space: pre-wrap;
+}
+
+/* language highlight (https://highlightjs.org/)  selector */
+code:not([class^="language"]) {
+    border: 1px dashed #cc9966;
+}
+
+code[class^="language"] {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
 }
 
 /********** 引用文書表示 **********/
