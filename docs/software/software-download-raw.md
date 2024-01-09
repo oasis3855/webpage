@@ -123,6 +123,7 @@
 #### 動画、サウンドを扱うソフトウエア
 
 - [mp3 ID3タグ読込・書込ツール(Linux, Perlスクリプト)](https://github.com/oasis3855/linux-scripts/blob/main/mp3_id3_tool) (2012/03/20)
+- [Banshee/Rhythmboxのインターネットラジオ一覧をインポート/エクスポートするPerlスクリプト (Linux)](https://github.com/oasis3855/linux-scripts/tree/main/banshee-rhythmbox-import-export) (2012/03/06)
 
 <br />
 <br />
@@ -209,6 +210,7 @@
 
 - 『**[画像ファイルの関連処理プログラム](https://github.com/oasis3855/image-tools/)**』 （目次ページ）
   - [J6I イメージコンバータ for RICOHデジカメDC-1/DC-2 (Windows)](https://github.com/oasis3855/image-tools/tree/main/j6i-conv-win) (2000/03/07)
+  - [画像管理ソフトdigiKamの画像コメントをSQLiteデータベースとの間でインポート／エクスポートするスクリプト (Linux)](https://github.com/oasis3855/image-tools/tree/main/digikam-comment-csv) (2012/01/28)
 
 - **『[Android ツール類](https://github.com/oasis3855/android-tools/tree/main)』**（目次ページ）
   - [大気汚染物質広域監視システム「そらまめ君」の簡易受信アプリ](https://github.com/oasis3855/android-tools/tree/main/Webtool_SoramameReceive) (2014/05/24)
