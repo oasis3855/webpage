@@ -101,8 +101,10 @@
 - [Linux Nautilusのコンテキストメニュー「スクリプト」で使う小技スクリプト類](https://github.com/oasis3855/linux-scripts/blob/main/nautilus-script) (2020/07/12)
 - [テキストファイルを扱うWindows VBScript (Visual Basic Script)](https://github.com/oasis3855/win-scripts/tree/main/VB_Script) (2021/07/19)
   - テキストエディタを選択して開く , ファイル名・更新日時変更
-- [CopyTime ファイルタイムスタンプ（日時）コピー (Windows)](https://github.com/oasis3855/windows-filer-program/blob/main/copytimestamp) (2002/05/20)
-- [ShiftTime ファイル日時の一括補正 (Windows)](https://github.com/oasis3855/windows-filer-program/blob/main/shifttimestamp) (2002/05/20)
+- **『[ファイル操作関連ソフトウエア（Windows）](https://github.com/oasis3855/windows-filer-program)』**（目次ページ）
+  - [CopyTime ファイルタイムスタンプ（日時）コピー (Windows)](https://github.com/oasis3855/windows-filer-program/blob/main/copytimestamp) (2002/05/20)
+  - [ShiftTime ファイル日時の一括補正 (Windows)](https://github.com/oasis3855/windows-filer-program/blob/main/shifttimestamp) (2002/05/20)
+  - [FileSequenceCutter ファイル連続カッター (Windows)](https://github.com/oasis3855/windows-filer-program/blob/main/filesequencecutter) (2004/10/11)
 
 <br />
 <br />
