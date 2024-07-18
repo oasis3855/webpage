@@ -35,6 +35,7 @@
 
 - [BMP280,DHT11の温湿度計測値をアップロード、ブラウザ表示(Perlスクリプト)](https://github.com/oasis3855/linux-weblogger/tree/main/web-loggraph) (2018/05/12)
 - [Raspberry Pi用I2C汎用ライブラリ](https://github.com/oasis3855/rpi-i2c) (2018/11/20)
+- [赤外線リモコンのエミュレーションのための送信回路サンプル](https://github.com/oasis3855/pic-ir-sender/)  (2024/07/15)
 
 <br />
 <br />
@@ -58,6 +59,7 @@
   - [シリアル接続温度計 (PIC 12F675)](https://github.com/oasis3855/pic-program/blob/main/thermometer-12f675) (2013/02/09)
   - [ログデータ保存機能つきLCD表示温度計 (PIC 12F1822)](https://github.com/oasis3855/pic-program/blob/main/thermometer-12f1822) (2013/02/09)
   - [最低・最高温度記憶機能つきLCD表示温度計 (PIC 16F690)](https://github.com/oasis3855/pic-program/blob/main/thermometer-16f690) (2012/08/26)
+- [赤外線リモコンのエミュレーションのための送信回路サンプル](https://github.com/oasis3855/pic-ir-sender/)  (2024/07/15)
 
 <br />
 <br />
