@@ -1,0 +1,306 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" dir="ltr" lang="ja">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="../../styles.css" type="text/css" />
+
+    <!-- disable viewport for mobile device -->
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
+
+    <title>WindowsMobileでGPS地図を使う : GPSの設定</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="layout_header_menu">
+            <!-- page top menu line -->
+
+            <ul>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/index.shtml" target="_self">Home</a></li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/traveldia/index.html" target="_self">Travels</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub" href="http://www.youtube.com/user/inoue0111"
+                                target="_self">動画(YouTube)</a></li>
+                        <li><a class="new_sub_bottom" href="http://oasis-halfmoon.blogspot.com/"
+                                target="_self">編集前旅行記(Blogger)</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">Photo</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">All Page
+                                List</a></li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub_bottom" href="https://oasis.halfmoon.jp/about/index.html"
+                                target="_self">利用許諾条件</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="../../software/index.html" target="_self">Software</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="../../software/index.html" target="_self">Software Main Page</a>
+                        </li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/cgi-bin/websvn/"
+                                target="_self">Subversion</a></li>
+                        <li><a class="new_sub" href="https://github.com/oasis3855" target="_self">GitHub</a></li>
+                        <li><a class="new_sub_bottom" href="http://code.google.com/u/101092603816443690725/"
+                                target="_self">Google Code</a></li>
+                    </ul>
+                </li>
+                <li><a class="new" href="https://oasis.halfmoon.jp/links/index.html" target="_self">Links</a></li>
+            </ul>
+        </div>
+        <div id="layout_header_menu_line">
+            <!-- Horizonal Line (Menu) -->
+        </div>
+
+        <div id="main_content_full">
+            <!-- ********* CONTENTS START FROM HERE ********* -->
+            <!-- HTML本文ここから（貼付ここから） -->
+
+            <h1>WindowsMobileでGPS地図を使う : GPSの設定</h1>
+
+            <p><a href="../../index.html">Home</a> &gt; <a href="../../software/index.html">Software</a> &gt; <a
+                    href="../../software/software_server_memo.html">ソフトウエア開発・サーバ管理のメモ帳</a> &gt; このページ</p>
+
+            <p style="text-align: right;">Last Update 2010/01/19</p>
+
+            <table>
+                <caption>もくじ</caption>
+                <tr>
+                    <td><a href="./index.html">デバイスの基本設定</a><br /><a href="./desktop.html">デスクトップの設定</a><br /><a
+                            href="./network.html">ネットワークの設定</a><br /><a href="./gps_setup.html">GPSの設定</a><br /><a
+                            href="./gps_firmware.html">SiRF GPSモジュールの設定</a><br /><a href="./map_maker.html">地図の作成</a>
+                    </td>
+                </tr>
+            </table>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>この文章の大部分の設定内容は、mitac社のMio168での設定例を示している。機種固有のパラメータ（ポート番号等）を少しいじれば、他のWindows Mobile 5,6マシンでも流用出来る。（HP
+                iPAQ112でも確認済み）</p>
+
+            <h4>設定シート</h4>
+
+            <p>プログラム中でGPSレシーバの接続方法を入力する場合に指定する設定値。（mio168の場合）</p>
+
+            <ul>
+                <li>GPSレシーバ ： SiRF II e/LP</li>
+                <li>接続ポート ： COM 2</li>
+                <li>リンク速度 ： 4800 bps</li>
+            </ul>
+
+            <h4>VisualGPSce</h4>
+
+            <p><a class="link_external"
+                    href="http://www.visualgps.net/VisualGPSce/">VisualGPSce</a>を用いて、NAVSTAR衛星からの電波の受信状況を把握できる。現在地や移動ベクトルも数値形式ではあるが把握できる。NMEAログを書き出す機能も持っている。
+            </p>
+
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/visualgpsce-disp1.png" height="320" alt="gps fig" /><br /><br />
+                衛星番号と電波受信強度グラフ<br />現在位置（緯度、経度、高度）、捕捉衛星数<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/visualgpsce-disp2.png" height="320" alt="gps fig" /><br /><br />
+                NAVSTAR衛星の見える位置<br />（仰角15°毎のサークルは指標）<br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/visualgpsce-disp3.png" height="320" alt="gps fig" /><br /><br />
+                速度（水平） ・ 高度<br />方位 ・ 速度（垂直）<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/visualgpsce-disp4.png" height="320" alt="gps fig" /><br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/visualgpsce-conf.png" height="320" alt="gps fig" /><br /><br />
+                設定 （Connectメニューの中にある）<br />COM 2, 4800 bps に設定する<br />
+            </div>
+            <div class="clear"></div>
+
+            <h4>NMEAモニタ</h4>
+
+            <p><a class="link_external" href="http://harukaze.sakura.ne.jp/garmap/garmap.html">NMEA Monitor
+                    CE</a>は、上のVisualGPSCEと同じようなソフト。こちらは1画面で全てが確認できるコンパクト設計</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/nmeamon.png" height="320" alt="gps fig" /><br /><br />
+                メイン画面<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/nmeamon-conf1.png" height="320" alt="gps fig" /><br /><br />
+                測地系の変換設定<br />WGS84（NMEAデータ） → 変換先<br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/nmeamon-conf2.png" height="320" alt="gps fig" /><br /><br />
+                通信ポート番号のみ設定できる<br />COM 2 に設定する<br />
+            </div>
+            <div class="clear"></div>
+
+            <h4>loxtrax</h4>
+
+            <p><a class="link_external" href="http://www.magnalox.net/index.php=3fpg=3d200=26topic=3dabout">loxtrax</a>
+                というソフト。地図の用意できていないところで、迷路のような都市に迷い込むときに役立ちそうなソフトです。<br />
+                画面の表示範囲は100m, 1km, 5km, ... 100km と調整可能。GPSから得られた数値データを表示しつつ、移動軌跡や進行方向を表示できます。速度やDOPもグラフで表示できます。<br />
+                シェアウエアの登録をすれば、背景に地図画像などを表示させることも出来るようです。（フリー版では、30分で地図画面が消去されると書かれている）</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/loxtrax-1.png" height="320" alt="gps fig" /><br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/loxtrax-2.png" height="320" alt="gps fig" /><br />
+            </div>
+            <div class="clear"></div>
+
+            <h4>GarmapCE</h4>
+
+            <p>日常の現在位置を知る作業や、NMEAログ取りは <a class="link_external"
+                    href="http://harukaze.sakura.ne.jp/garmap/garmap.html">GarmapCE</a>
+                で行っている。WGS84測地系の地図さえ用意すれば、世界中のどこででも使えると思われる。</p>
+
+            <p>■ 地図の作成</p>
+
+            <p><a class="link_orange" href="./map_maker.html">地図の作成は別のページで説明しています。</a></p>
+
+            <p>■ 基本設定</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/garmap-openmap.png" height="320" alt="gps fig" /><br /><br />
+                File － Load Map ...<br />地図ファイル（ビットマップ地図）を開く<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/garmap-conf1.png" height="320" alt="gps fig" /><br /><br /><br />
+                Option － GPS ...<br />GPSレシーバの設定。COM 2, 9600 bps<br />（4800bpsが無いため、9600bpsとしている）<br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/garmap-conf2.png" height="320" alt="gps fig" /><br /><br />
+                Option － Preference ...<br />WGS84座標系、Metricに設定<br />Save
+                NMEA：保存時に対象とするNMEAデータの種類をセミコロンで区切って指定する（※１）<br />Log Interval：NMEAデータを受けている場合は、この値は無視される。<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/garmap-conf3.png" height="320" alt="gps fig" /><br /><br />
+                View － View data Fieldにチェック<br />GPSオンライン時に画面下部にデータ表示<br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/garmap-start.png" height="320" alt="gps fig" /><br /><br />
+                設定が終われば、ナビゲーション開始<br />
+            </div>
+            <div class="clear"></div>
+
+            <p>COM 2のリンク速度設定が9600bps未満が無いため、9600bpsで利用している。今のところ問題なし。GPS Model の設定は、Other Garmin
+                としている。Garmin社のGPSでなくても、NMEAを吐き出すGPSなら対応可能なようです。<br />
+                ※１：NMEA保存時に対象とするデータの種類を設定する （Save MNEA）<br />
+                例：GGA;GLL;GSA;RMC&nbsp;&nbsp;&nbsp;&nbsp; → 時刻・緯度・経度・高度；緯度・経度；衛星番号・DOP；進行方向・速度<br />
+                メッセージの種類については、「<a class="link_orange" href="./gps_firmware.html">SiRF GPSモジュールの設定</a>」を参照。
+            </p>
+
+            <p>■ ロードテスト</p>
+
+            <p>世界各国で行ったロード・テスト時のキャプチャ画像。航空機・高速鉄道・在来鉄道・バスの車内でも窓際の席に座ることで衛星からのシグナルを受信できて位置決定が出来た。<br />
+                インターネット地図サイトから切り出して作った手製のGPS地図も結構使えるものだ。大きな移動を把握するだけなら、全く問題なし。</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/garmap-loadtest-tiba.png" height="320" alt="gps fig" /><br /><br />
+                房総半島上空を飛ぶ航空機<br />（地図はGTOPO30）<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/garmap-loadtest-izumisano.png" height="320"
+                    alt="gps fig" /><br /><br />
+                大阪の泉佐野を自動車で移動中<br />（地図は国土地理院1/25000）<br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/garmap-loadtest-greenwich1.png" height="320"
+                    alt="gps fig" /><br /><br />
+                イギリスのグリニッジ （子午線付近）<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/garmap-loadtest-greenwich2.png" height="320"
+                    alt="gps fig" /><br /><br />
+                イギリスのグリニッジ （子午線のモニュメント上）<br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/garmap-loadtest-ljubljana.png" height="320"
+                    alt="gps fig" /><br /><br />
+                スロベニアの首都リュブリャーナ郊外<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/garmap-loadtest-croatia.png" height="320" alt="gps fig" /><br /><br />
+                クロアチア、プリトビチェからザダールへのバス<br />途中で電源を切っているため、位置がジャンプ<br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/garmap-loadtest-utrecht.png" height="320" alt="gps fig" /><br /><br />
+                オランダのユトレヒト郊外を走る鉄道<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/garmap-loadtest-tilburg.png" height="320" alt="gps fig" /><br /><br />
+                オランダのティルブルフ郊外を走るバス<br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img width="240" src="./pics_gps/garmap-loadtest-cordoba.png" height="320" alt="gps fig" /><br /><br />
+                スペインのマドリッド発コルドバ行きAVE<br />（地図はGTOPO30）<br />
+            </div>
+            <div class="clear"></div>
+
+            <p>&nbsp;</p>
+
+            <!-- HTML本文ここまで（貼付ここまで） -->
+
+            <!-- ********* CONTENTS END AT THIS LINE ********* -->
+        </div>
+        <div id="layout_footer">
+            <div id="layout_footer_left">
+
+                <p style="text-align:left;"><a href="http://validator.w3.org/" target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/w3c-valid-xhtml10-pale.png" border="0"
+                            align="left" alt="Valid XHTML 1.0 Transitional" width="88" height="31" /></a>
+                    &nbsp;Last update on 19 January 2010<br />
+                    &nbsp;Powered by GitHub Pages<br clear="all" />
+                </p>
+            </div>
+
+            <div id="layout_footer_right">
+
+                <p style="text-align:right;"><a href="http://creativecommons.org/licenses/by-nc-nd/2.1/jp/"
+                        target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/creativecommons-by-nc-nd-pale.png" border="0"
+                            align="right" alt="Creative Commons Licence : Attribution-Noncommercial-No Derivative Works"
+                            width="88" height="31" /></a>
+                    <a href="/about/index.html" target="_self">Copyright (C) INOUE Hirokazu.</a>&nbsp;<br />For
+                    <i>commercial usage</i> ? See detail at <a href="/about/index.html"
+                        target="_self">HERE</a>.&nbsp;<br clear="all" />
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

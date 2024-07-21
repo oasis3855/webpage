@@ -1,0 +1,318 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" dir="ltr" lang="ja">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="../../styles.css" type="text/css" />
+
+    <!-- disable viewport for mobile device -->
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
+
+    <title>WindowsMobileでGPS地図を使う : 地図の作成</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="layout_header_menu">
+            <!-- page top menu line -->
+
+            <ul>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/index.shtml" target="_self">Home</a></li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/traveldia/index.html" target="_self">Travels</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub" href="http://www.youtube.com/user/inoue0111"
+                                target="_self">動画(YouTube)</a></li>
+                        <li><a class="new_sub_bottom" href="http://oasis-halfmoon.blogspot.com/"
+                                target="_self">編集前旅行記(Blogger)</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">Photo</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">All Page
+                                List</a></li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub_bottom" href="https://oasis.halfmoon.jp/about/index.html"
+                                target="_self">利用許諾条件</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="../../software/index.html" target="_self">Software</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="../../software/index.html" target="_self">Software Main Page</a>
+                        </li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/cgi-bin/websvn/"
+                                target="_self">Subversion</a></li>
+                        <li><a class="new_sub" href="https://github.com/oasis3855" target="_self">GitHub</a></li>
+                        <li><a class="new_sub_bottom" href="http://code.google.com/u/101092603816443690725/"
+                                target="_self">Google Code</a></li>
+                    </ul>
+                </li>
+                <li><a class="new" href="https://oasis.halfmoon.jp/links/index.html" target="_self">Links</a></li>
+            </ul>
+        </div>
+        <div id="layout_header_menu_line">
+            <!-- Horizonal Line (Menu) -->
+        </div>
+
+        <div id="main_content_full">
+            <!-- ********* CONTENTS START FROM HERE ********* -->
+            <!-- HTML本文ここから（貼付ここから） -->
+
+            <h1>WindowsMobileでGPS地図を使う : 地図の作成</h1>
+
+            <p><a href="../../index.html">Home</a> &gt; <a href="../../software/index.html">Software</a> &gt; <a
+                    href="../../software/software_server_memo.html">ソフトウエア開発・サーバ管理のメモ帳</a> &gt; このページ</p>
+
+            <p style="text-align: right;">Last Update 2010/01/25</p>
+
+            <table>
+                <caption>もくじ</caption>
+                <tr>
+                    <td><a href="./index.html">デバイスの基本設定</a><br /><a href="./desktop.html">デスクトップの設定</a><br /><a
+                            href="./network.html">ネットワークの設定</a><br /><a href="./gps_setup.html">GPSの設定</a><br /><a
+                            href="./gps_firmware.html">SiRF GPSモジュールの設定</a><br /><a href="./map_maker.html">地図の作成</a>
+                    </td>
+                </tr>
+            </table>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>GarmapCEで表示する地図データを作る方法の説明です。GPSレシーバを用いることで、現在地を表示することができます。</p>
+
+            <p><br />
+                USGSやNASAが公開している標高データ、国土地理院の1/25000地図のほか任意の地図画像（座標のキャリブレーションが可能なもの）から、地図データを作成します。</p>
+
+            <h4>地図データの作成の概略</h4>
+
+            <p>■ NASAの標高データを用いる場合</p>
+
+            <ol>
+                <li><a class="link_orange" href="#gtopo">GTOPO30データのダウンロード</a>または、<a class="link_orange"
+                        href="#srtm">SRTMデータのダウンロード</a></li>
+                <li><a class="link_orange" href="#mapcut">カシミール3Dで読み込んで、マップカッターで切り出す</a></li>
+            </ol>
+
+            <p>■ 国土地理院1/25000地図データを用いる場合</p>
+
+            <ol>
+                <li>カシミール3Dで国土地理院のサイトからデータダウンロード</li>
+                <li><a class="link_orange" href="#mapcut">カシミール3Dで読み込んで、マップカッターで切り出す</a></li>
+            </ol>
+
+            <p>■ インターネット地図サイトの画像を用いる場合</p>
+
+            <ol>
+                <li><a class="link_orange" href="#imagemap">地図画像の作成（キャプチャ、スキャン）</a></li>
+                <li><a class="link_orange" href="#calibration" target="_self">カシミール3Dで読み込んで、WGS84測地系座標でキャリブレーション</a>
+                </li>
+                <li><a class="link_orange" href="#mapcut">カシミール3Dのマップカッターで切り出す</a></li>
+            </ol>
+
+            <h4>このページで使用しているソフトウエアの入手先リンク集</h4>
+
+            <ul>
+                <li><a class="link_external" href="http://www.kashmir3d.com/">カシミール3D</a> ： 地図ソフト</li>
+                <li><a class="link_external" href="http://www.kashmir3d.com/kash/kashget.html#plugin_mapc">カシミール3D用
+                        マップカッター・プラグイン（標準でインストール済み）</a></li>
+                <li><a class="link_external" href="http://www.kashmir3d.com/kash/kashget.html#plugin_srtm">カシミール3D用
+                        スペースシャトル地図プラグイン</a> ： SRTMデータを使うときに必要です</li>
+                <li><a class="link_external" href="http://panshinspace.com/?p=283">Map Grabber</a> / <a
+                        class="link_external" href="http://code.msdn.microsoft.com/MapGrabber">(MSDN Code Gallery)</a> ：
+                    地図サイトより自動切り出し</li>
+                <li><a class="link_external" href="http://gimp-win.sourceforge.net/">Gimp for Windows</a> ： 画像処理ソフト</li>
+            </ul>
+
+            <h4><a name="gtopo"></a>GTOPO30地図</h4>
+
+            <p>USGS (United States Geological Survey アメリカ合衆国地質調査所) が公開している高度データから地図を作成する方法の説明。GTOPO30
+                とは、地球表面を立体角30秒（約1kmメッシュ）の解像度を持つ高度データです。</p>
+
+            <p>■ データのダウンロード</p>
+
+            <p>地図データのダウンロードは、<a class="link_external"
+                    href="http://edc.usgs.gov/products/elevation/gtopo30/gtopo30.html">USGSのサイト</a>または<a
+                    class="link_external"
+                    href="http://www1.gsi.go.jp/geowww/globalmap-gsi/gtopo30/gtopo30.html">日本のミラーサイト</a>から行います。</p>
+
+            <p>複数の地区の地図をダウンロードした場合でも、それらを一つのフォルダに格納すれば1枚の地図として扱えます。ダウンロードしたデータのうち、*.SRC というデータは使わないので削除してもOKです。</p>
+
+            <p><img src="./pics_mapmaker/gtopo-folder.png" width="400" height="348" alt="説明図" /><br /><br />
+                ダウンロードしたファイルを解凍して、フォルダに入れた状態</p>
+
+            <p>■ カシミール3Dで読み込む</p>
+
+            <p>カシミール3Dの 「ファイル － 開く － 形式を指定した地図 ... － USGS30秒/GTOPO30 ...」
+                メニューで、地図データを開くだけです。複数の地域の地図データが入っているフォルダの場合、どれか一つのファイルを開くだけで自動的に全てのファイルが連結されて地図として認識されるようです。</p>
+
+            <p><img src="./pics_mapmaker/gtopo-kas-open.png" width="400" height="309" alt="説明図" /></p>
+
+            <p>■ 座標の調整</p>
+
+            <p>データはWGS84測地系の座標値を持っているため、調整の必要は無いようです。</p>
+
+            <p>■ 表示色の調整</p>
+
+            <p>「表示 － 表示の設定」メニューのダイアログで、「地形表現」タブで等高線の描き方を設定できます。<br /><br />
+                「表示 － パレットの選択」メニューで色パレットの使い方を指定できます。</p>
+
+            <p>地図表現 ： 段彩図 無段階、パレット：衛星写真の色分けとすると違和感の無い表示になるはずです。</p>
+
+            <div id="srtm"></div>
+
+            <h4>SRTM地図</h4>
+
+            <p>NASAが公開しているスペースシャトルによるレーダー計測データです。立体角30秒、3秒、1秒（最大解像度は約30m）に対応するデータが存在しますが、どのデータも地球の全表面を網羅しているわけではないようです。
+            </p>
+
+            <p>■ データのダウンロード</p>
+
+            <p>NASAの<a class="link_external" href="http://www2.jpl.nasa.gov/srtm/">SRTMホームページ</a>に、<a
+                    class="link_external"
+                    href="ftp://e0srp01u.ecs.nasa.gov/">FTPサーバへのリンク</a>が作られています。計測地区（四角形）の左下の座標値をファイル名にしています。（<a
+                    class="link_external"
+                    href="ftp://e0srp01u.ecs.nasa.gov/srtm/version2/Documentation/Quickstart.pdf">説明書：Quickstart.pdf</a>）
+            </p>
+
+            <p>例 ： N46E007.hgt.zip → 北緯46°東経7°</p>
+
+            <p>■ カシミール3Dで読み込む</p>
+
+            <p>カシミール3Dの 「ファイル － 開く － 形式を指定した地図 ... －
+                スペースシャトル地図」メニューで、地図データを開くだけです。複数の地域の地図データが入っているフォルダの場合、どれか一つのファイルを開くだけで自動的に全てのファイルが連結されて地図として認識されるようです。
+            </p>
+
+            <p>■ 座標の調整</p>
+
+            <p>データはWGS84測地系の座標値を持っているため、調整の必要は無いようです。</p>
+
+            <div id="imagemap"></div>
+
+            <h4>地図サイトの地図画像を流用</h4>
+
+            <p>WGS84測地系にマッピングできる地図画像なら、どんな画像でも使えるはずです。</p>
+
+            <p>■ データのダウンロード</p>
+
+            <p>インターネットの地図サイトや地図帳なら何でもOKです。画面をキャプチャ（スキャン）して画像編集ソフトでつなぎ合わせるだけです。<br /><br />
+                ただし、「地球の歩き方」や「Lonely Planet」の本に掲載されている地図は、座標がムチャクチャですので使えません。（使えたら便利なんですけどね...）</p>
+
+            <p>なお、地図の選択と利用は自己責任で行ってください。</p>
+
+            <p><img src="./pics_mapmaker/bitmap-googlemap.png" width="400" height="390" alt="説明図" /></p>
+
+            <p>地図サイトのホームページで地図を表示する。</p>
+
+            <p><a class="link_external" href="http://code.msdn.microsoft.com/MapGrabber">Map
+                    Grabber</a>で自動切り出しを行うか、手動で画面キャプチャして（Gimpなどの）画像ソフトで切り貼りして地図画像を作成する。</p>
+
+            <p><img src="./pics_mapmaker/bitmap-mergeimage.png" width="400" height="361" alt="説明図" /></p>
+
+            <p>Gimpを利用して、画面キャプチャと画像の張り合わせを行う。張り合わせた画像は（出来れば256色に減色して） BMP形式のビットマップ画像として保存する。</p>
+
+            <p>■ カシミール3Dで読み込む</p>
+
+            <p>カシミール3Dの 「ファイル － 開く － 形式を指定した地図 ... － ビットマップ地図... 」メニューで、ビットマップ画像を開きます。<br /><br />
+                「緯度経度情報の指定」ダイアログが出てきますが、ここでは何も設定しません。何も考えずに「作成」ボタンを押すと、カシミール3Dに地図画像が読み込まれます。</p>
+
+            <div id="calibration"></div>
+            ■ 座標の調整
+
+            <p>地図画像中の任意の場所（市街地図なら街路の交差点、広域の地図なら幹線道路の交差点など）の座標（WGS84測地系）を調べます。出来れば画像の対角付近の2点と中央付近の1点の3点を調べます。</p>
+
+            <p><img src="./pics_mapmaker/bitmap-googleearth.png" width="400" height="312" alt="説明図" /></p>
+
+            <p>Google Earthで調べたい箇所にプレースマークを置いたときに出るダイアログボックスや、画面の下端あたりに座標（緯度・経度）が表示されます。</p>
+
+            <p>カシミール3Dの 「編集 － 地図のキャリブレーション ... 」 メニューを開きます。</p>
+
+            <p><img src="./pics_mapmaker/bitmap-calibration0.png" width="400" height="309" alt="説明図" /></p>
+
+            <p><img src="./pics_mapmaker/bitmap-calibration2.png" width="400" height="309" alt="説明図" /></p>
+
+            <p>① 指定開始ボタンを押す。</p>
+
+            <p>② 地図上の計測地点をクリックする。（X座標、Y座標にビットマップ上での位置が入力される）</p>
+
+            <p>③ （Google Earth などで調べた） WGS84測地系の座標値（緯度・経度）を入力する</p>
+
+            <p>④ 指定開始ボタンを再度押して、編集モードを抜ける。</p>
+
+            <p>上記作業を地図上の3地点で行います。</p>
+
+            <div id="mapcut"></div>
+
+            <h4>GarmapCE用に地図を切り出す</h4>
+
+            <p>引き続き、カシミール3Dを使います。</p>
+
+            <p>広い範囲を選択する場合は、あらかじめズームレベルを下げて広い範囲を選択しておきます。</p>
+
+            <p>「編集 － 選択範囲を決める」メニューをクリックします。</p>
+
+            <p><img src="./pics_mapmaker/bitmap-kas-mapcut1.png" width="400" height="309" alt="説明図" /></p>
+
+            <p>マウスで範囲を選択すると、赤斜線の四角形が表示されます。</p>
+
+            <p><img src="./pics_mapmaker/bitmap-kas-mapcut2.png" width="400" height="309" alt="説明図" /></p>
+
+            <p>切り出す画像の解像度に戻します。範囲選択はWGS８４座標系で行っているため、選択範囲を含む地図であれば差し替えることも出来ます。</p>
+
+            <p>「ツール － マップカッター － 切り出し」 をクリックします。</p>
+
+            <p><img src="./pics_mapmaker/bitmap-kas-mapcut3.png" width="400" height="309" alt="説明図" /></p>
+
+            <p>出力形式：GarmapCE形式、分割数：画面サイズ（240 × 320）を指定します。<br /><br />
+                ファイル形式はどれでもかまわないようです。通常はPNGが圧縮が掛かりファイルの大きさが小さくなるようです。<br /><br />
+                カラーは8ビット／ピクセルを選択します。16ビット／ピクセルを選ぶとファイルサイズが大きくなると共に、GarmapCEの動作が遅くなることがあるようです。</p>
+
+            <p><img src="./pics_mapmaker/bitmap-kas-mapcut4.png" width="400" height="336" alt="説明図" /></p>
+
+            <p>書き出されたファイルは、次のようになります。一つのフォルダに一つの地図しか格納できません。</p>
+
+            <p><img src="./pics_mapmaker/bitmap-kas-mapcut5.png" width="400" height="309" alt="説明図" /></p>
+
+            <p>&nbsp;</p>
+            <!-- HTML本文ここまで（貼付ここまで） -->
+
+            <!-- ********* CONTENTS END AT THIS LINE ********* -->
+        </div>
+        <div id="layout_footer">
+            <div id="layout_footer_left">
+
+                <p style="text-align:left;"><a href="http://validator.w3.org/" target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/w3c-valid-xhtml10-pale.png" border="0"
+                            align="left" alt="Valid XHTML 1.0 Transitional" width="88" height="31" /></a>
+                    &nbsp;Last update on 25 January 2010<br />
+                    &nbsp;Powered by GitHub Pages<br clear="all" />
+                </p>
+            </div>
+
+            <div id="layout_footer_right">
+
+                <p style="text-align:right;"><a href="http://creativecommons.org/licenses/by-nc-nd/2.1/jp/"
+                        target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/creativecommons-by-nc-nd-pale.png" border="0"
+                            align="right" alt="Creative Commons Licence : Attribution-Noncommercial-No Derivative Works"
+                            width="88" height="31" /></a>
+                    <a href="/about/index.html" target="_self">Copyright (C) INOUE Hirokazu.</a>&nbsp;<br />For
+                    <i>commercial usage</i> ? See detail at <a href="/about/index.html"
+                        target="_self">HERE</a>.&nbsp;<br clear="all" />
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

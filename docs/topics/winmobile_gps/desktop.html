@@ -1,0 +1,202 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" dir="ltr" lang="ja">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="../../styles.css" type="text/css" />
+
+    <!-- disable viewport for mobile device -->
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
+
+    <title>WindowsMobileでGPS地図を使う : デスクトップの設定</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="layout_header_menu">
+            <!-- page top menu line -->
+
+            <ul>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/index.shtml" target="_self">Home</a></li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/traveldia/index.html" target="_self">Travels</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub" href="http://www.youtube.com/user/inoue0111"
+                                target="_self">動画(YouTube)</a></li>
+                        <li><a class="new_sub_bottom" href="http://oasis-halfmoon.blogspot.com/"
+                                target="_self">編集前旅行記(Blogger)</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">Photo</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">All Page
+                                List</a></li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub_bottom" href="https://oasis.halfmoon.jp/about/index.html"
+                                target="_self">利用許諾条件</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="../../software/index.html" target="_self">Software</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="../../software/index.html" target="_self">Software Main Page</a>
+                        </li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/cgi-bin/websvn/"
+                                target="_self">Subversion</a></li>
+                        <li><a class="new_sub" href="https://github.com/oasis3855" target="_self">GitHub</a></li>
+                        <li><a class="new_sub_bottom" href="http://code.google.com/u/101092603816443690725/"
+                                target="_self">Google Code</a></li>
+                    </ul>
+                </li>
+                <li><a class="new" href="https://oasis.halfmoon.jp/links/index.html" target="_self">Links</a></li>
+            </ul>
+        </div>
+        <div id="layout_header_menu_line">
+            <!-- Horizonal Line (Menu) -->
+        </div>
+
+        <div id="main_content_full">
+            <!-- ********* CONTENTS START FROM HERE ********* -->
+            <!-- HTML本文ここから（貼付ここから） -->
+
+            <h1>WindowsMobileでGPS地図を使う : デスクトップの設定</h1>
+
+            <p><a href="../../index.html">Home</a> &gt; <a href="../../software/index.html">Software</a> &gt; <a
+                    href="../../software/software_server_memo.html">ソフトウエア開発・サーバ管理のメモ帳</a> &gt; このページ</p>
+
+            <p style="text-align: right;">Last Update 2010/01/29</p>
+
+            <table>
+                <caption>もくじ</caption>
+                <tr>
+                    <td><a href="./index.html">デバイスの基本設定</a><br /><a href="./desktop.html">デスクトップの設定</a><br /><a
+                            href="./network.html">ネットワークの設定</a><br /><a href="./gps_setup.html">GPSの設定</a><br /><a
+                            href="./gps_firmware.html">SiRF GPSモジュールの設定</a><br /><a href="./map_maker.html">地図の作成</a>
+                    </td>
+                </tr>
+            </table>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <h4>基本設定した後のデスクトップ状況</h4>
+
+            <p>標準状態では、夜間に画面を見るときに眩しすぎる。使いもしないPIM機能のために画面がごちゃごちゃしているのもすっきりさせたい。</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_desktop/gspocketmagic-menu.png" width="240" height="320" alt="キャプチャ画像" /><br /><br />
+                左上のWindowsアイコンをクリックして表示させた<br /><a class="link_external"
+                    href="http://homepage3.nifty.com/UK-taniyama/tools/GSPMagicPP.html">GSPocketMagic++</a>のメニュー<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_desktop/gspocketmagic-program.png" width="240" height="320"
+                    alt="キャプチャ画像" /><br /><br />
+                GSPocketMagic++のメニュー<br />プログラム・メニューの展開<br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_desktop/gspocketmagic-cpl.png" width="240" height="320" alt="キャプチャ画像" /><br /><br />
+                GSPocketMagic++のメニュー<br />設定メニューを展開<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_desktop/gspocketmagic-task.png" width="240" height="320" alt="キャプチャ画像" /><br /><br />
+                GSPocketMagic++のメニュー<br />タスクを閉じるメニュー<br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_desktop/gspocketmagic-exiticon.png" width="240" height="320"
+                    alt="キャプチャ画像" /><br /><br />
+                GSPocketMagic++の設定で「タスククローズ拡張<br />機能」をONにすると、右上に閉じるボタンが出る<br />
+            </div>
+            <div class="clear"></div>
+
+            <p><br />
+                スタート・メニューや設定メニューをカスタマイズしたときは、<a class="link_external"
+                    href="http://homepage3.nifty.com/UK-taniyama/tools/GSPMagicPP.html">GSPocketMagic++</a>のメニューで「オプション
+                － 設定」を表示させて「OK」ボタンを押さないと現在の状態が反映されない場合がある。</p>
+
+            <p>設定メニューに「電源」が表示されていないのは、何らかの不具合か？</p>
+
+            <h4>押してはならないボタン</h4>
+
+            <p>Windows Mobile/Pocket PCの機種によっては、ソフトリセットの実装に不具合があり、再起動に失敗してファクトリーリセットせざるを得なくなる場合がある。</p>
+
+            <p>私の保有しているMitac社のMio168には、この不具合がある。</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_desktop/gspocketmagic-cust.png" width="240" height="320" alt="キャプチャ画像" /><br /><br />
+                GSPocketMagic++のメニュー<br />「再起動ボタン」は押さない！<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_desktop/battery-monitor-dlg.png" width="240" height="320" alt="キャプチャ画像" /><br /><br />
+                <a class="link_external" href="http://d.hatena.ne.jp/KOTETU/00000111/p1">Battery Monitor</a>
+                のメッセージ・ボックス<br />「再起動ボタン」は押さない！<br />
+            </div>
+            <div class="clear"></div>
+
+            <h4>ファイル・エクスプローラ拡張</h4>
+
+            <p><a href="http://www.geocities.co.jp/SiliconValley-Cupertino/2039/">File Explorer
+                    extension</a>で機能拡張した後は、「ショートカットの作成」などが出来るようになる。</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_desktop/explorer-contextmenu.png" width="240" height="320" alt="キャプチャ画像" /><br /><br />
+                コンテキスト・メニューには<br />ショートカット作成が表示されるようになる<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_desktop/explorer-folderlist.png" width="240" height="320" alt="キャプチャ画像" /><br /><br />
+                フォルダ名をクリックすると<br />フォルダ・ツリーが表示されるようになる<br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_desktop/explorer-property.png" width="240" height="320" alt="キャプチャ画像" /><br /><br />
+                プロパティ設定では「読み取り専用属性」が<br />付けられるようになる<br />
+            </div>
+            <div class="clear"></div>
+
+            <p>しかし、ショートカット作成やフォルダ・ツリーという当たり前の機能すら付いていない「マイクロソフト製品」の中途半端ときたら...</p>
+            <!-- HTML本文ここまで（貼付ここまで） -->
+
+            <!-- ********* CONTENTS END AT THIS LINE ********* -->
+        </div>
+        <div id="layout_footer">
+            <div id="layout_footer_left">
+
+                <p style="text-align:left;"><a href="http://validator.w3.org/" target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/w3c-valid-xhtml10-pale.png" border="0"
+                            align="left" alt="Valid XHTML 1.0 Transitional" width="88" height="31" /></a>
+                    &nbsp;Last update on 29 January 2010<br />
+                    &nbsp;Powered by GitHub Pages<br clear="all" />
+                </p>
+            </div>
+
+            <div id="layout_footer_right">
+
+                <p style="text-align:right;"><a href="http://creativecommons.org/licenses/by-nc-nd/2.1/jp/"
+                        target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/creativecommons-by-nc-nd-pale.png" border="0"
+                            align="right" alt="Creative Commons Licence : Attribution-Noncommercial-No Derivative Works"
+                            width="88" height="31" /></a>
+                    <a href="/about/index.html" target="_self">Copyright (C) INOUE Hirokazu.</a>&nbsp;<br />For
+                    <i>commercial usage</i> ? See detail at <a href="/about/index.html"
+                        target="_self">HERE</a>.&nbsp;<br clear="all" />
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

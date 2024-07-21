@@ -1,0 +1,559 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" dir="ltr" lang="ja">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="../../styles.css" type="text/css" />
+
+    <!-- disable viewport for mobile device -->
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
+
+    <title>WindowsMobileでGPS地図を使う : SiRF GPSモジュールの設定</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="layout_header_menu">
+            <!-- page top menu line -->
+
+            <ul>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/index.shtml" target="_self">Home</a></li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/traveldia/index.html" target="_self">Travels</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub" href="http://www.youtube.com/user/inoue0111"
+                                target="_self">動画(YouTube)</a></li>
+                        <li><a class="new_sub_bottom" href="http://oasis-halfmoon.blogspot.com/"
+                                target="_self">編集前旅行記(Blogger)</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">Photo</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">All Page
+                                List</a></li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub_bottom" href="https://oasis.halfmoon.jp/about/index.html"
+                                target="_self">利用許諾条件</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="../../software/index.html" target="_self">Software</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="../../software/index.html" target="_self">Software Main Page</a>
+                        </li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/cgi-bin/websvn/"
+                                target="_self">Subversion</a></li>
+                        <li><a class="new_sub" href="https://github.com/oasis3855" target="_self">GitHub</a></li>
+                        <li><a class="new_sub_bottom" href="http://code.google.com/u/101092603816443690725/"
+                                target="_self">Google Code</a></li>
+                    </ul>
+                </li>
+                <li><a class="new" href="https://oasis.halfmoon.jp/links/index.html" target="_self">Links</a></li>
+            </ul>
+        </div>
+        <div id="layout_header_menu_line">
+            <!-- Horizonal Line (Menu) -->
+        </div>
+
+        <div id="main_content_full">
+            <!-- ********* CONTENTS START FROM HERE ********* -->
+            <!-- HTML本文ここから（貼付ここから） -->
+
+            <h1>WindowsMobileでGPS地図を使う : SiRF GPSモジュールの設定</h1>
+
+            <p><a href="../../index.html">Home</a> &gt; <a href="../../software/index.html">Software</a> &gt; <a
+                    href="../../software/software_server_memo.html">ソフトウエア開発・サーバ管理のメモ帳</a> &gt; このページ</p>
+
+            <p style="text-align: right;">Last Update 2010/01/20</p>
+
+            <table>
+                <caption>もくじ</caption>
+                <tr>
+                    <td><a href="./index.html">デバイスの基本設定</a><br /><a href="./desktop.html">デスクトップの設定</a><br /><a
+                            href="./network.html">ネットワークの設定</a><br /><a href="./gps_setup.html">GPSの設定</a><br /><a
+                            href="./gps_firmware.html">SiRF GPSモジュールの設定</a><br /><a href="./map_maker.html">地図の作成</a>
+                    </td>
+                </tr>
+            </table>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>※ SiRFエンジンのパラメーターを誤設定して機器を破損しても、何の責任も負いませんのであしからず！</p>
+
+            <h4>設定用プログラムの入手</h4>
+
+            <p><a class="link_external" href="http://w5.nuinternet.com/s660100031/SirfTech.htm">SiRF Tech</a> ： SiRF
+                モジュールの設定、受信データのリアルタイム確認ソフトウエア</p>
+
+            <p><a class="link_external" href="http://www.semsons.com/support.html">MMSiRF</a> ： SiRF モジュールの &quot;Static
+                Navigation&quot;, &quot;SBAS&quot; のON/OFF簡易設定ソフトウエア</p>
+
+            <p>今回は、『SiRF Tech』を使って設定を行います。</p>
+
+            <h4>NMEAモードからSiRFモードに切り替える</h4>
+
+            <p>SirfTech を起動すると、GPSモジュールからのデータ受信画面になる。<br />
+                何も表示されない場合は、「Comm」メニューを開いて通信ポートの設定を行う。</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-online-nmea.png" width="240" height="320"
+                    alt="acreen image" /><br /><br />
+                通信状態の表示何も表示されない場合は、「Comm」メニューをクリックして設定画面へ<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-comm.png" width="240" height="320"
+                    alt="acreen image" /><br /><br />
+                「Comm」メニューで開くことが出来る通信ポートの設定画面ポート番号（COM 2）、同期速度（4800bps）<br />
+            </div>
+            <div class="clear"></div>
+
+            <p>通信ポートの設定は自動的に行われる。COM2, 4800bps となっていない場合、手動であわせることになる。<br />
+                ここまでの操作では、まだSiRFモジュールに対して何の操作も行っていない。</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-menu-switchsirf.png" width="240" height="320"
+                    alt="acreen image" /><br /><br />
+                「NMEA － Set Serial Port」 メニューを開く<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-switch-sirf.png" width="240" height="320"
+                    alt="acreen image" /><br /><br />
+                ①のProtocol ： Sirf を確認して、②の Set ボタンを押した後、「Ok」を押して閉じる<br />
+            </div>
+            <div class="clear"></div>
+
+            <p>ここからは引き返せません。SiRF GPS モジュールは、プログラム・モードに切り替わっています。NMEAデータを吐き出さないので、GarmapCEやSuper Mapple
+                Digitalでは利用できない状態です。<br />
+                ここで「Exit」メニューをクリックして、SirfTechを終了する。10秒程度待ってから再びSirfTechを実行すると次のような画面になっているはずだ。</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sitftech-sirf-disp.png" width="240" height="320"
+                    alt="acreen image" /><br /><br />
+                SiRFモードの出力画面<br />
+            </div>
+            <div class="clear"></div>
+
+            <h4>SiRF GPSモジュールの設定メニュー</h4>
+
+            <p>"SiRFモード"に切り替えたときに、「SiRF」メニューを使用することが出来る。メニューの一番下にある「Switch to NMEA Protocol」で"NMEAモード"に戻ることが出来る。</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-sirf-menu.png" width="240" height="320"
+                    alt="acreen image" /><br />
+            </div>
+            <div class="clear"></div>
+
+            <p>それぞれのメニューをクリックしたときに現れる設定ダイアログを示す。念のため、設定変更する前に全ての値を記録して、不具合がある場合戻せるようにしたほうがよいかも...。</p>
+
+            <p>■ Poll Software Version</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-sirf-1softver.png" width="240" height="320"
+                    alt="acreen image" /><br /><br />
+            </div>
+
+            <p>ファームウエアのバージョンが表示される。</p>
+
+            <p>私が所持しているMio168の場合<br />
+                &quot;2.4.12.09-XMitac-C4PROD2.0&quot;, &quot;0000003729&quot; となっている。</p>
+
+            <div class="clear"></div>
+
+            <p>■ Initialize Data Source</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-sirf-2initdata.png" width="240" height="320"
+                    alt="acreen image" /><br />
+            </div>
+            <div style="float:left;width:50%;">
+
+                <p>ECEF X,Y,Z ： <br />
+                    最後に取得された測地地点（現在地）<br />
+                    Time of Week [s] ： 現在の週の開始時刻からの経過秒<br />
+                    Week Number ： 1980/JAN/06 から数えた週<br />
+                    SiRFのリブートのモードを選択する</p>
+
+                <ul>
+                    <li>Hot Start ：全てのデータ（現在地・現在時刻・エフェメリスデータ・アルマナックデータ）を保持したままリブートする</li>
+                    <li>Warm Start ：エフェメリスデータを消去してリブートする（現在地・現在時刻・アルマナックデータは保持）</li>
+                    <li>Cold Start ：現在地・現在時刻・エフェメリスデータ・アルマナックデータを消去してリブートする</li>
+                </ul>
+
+            </div>
+            <div class="clear"></div>
+
+            <p>ECEF座標系とは...</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/fig-ecef.png" width="305" height="285" alt="screen image" /><br />
+            </div>
+            <div class="clear"></div>
+
+            <p>■ Mode Control</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-sirf-3modecon.png" width="240" height="320"
+                    alt="acreen image" /><br />
+            </div>
+            <div style="float:left;width:50%;">
+
+                <ul>
+                    <li>Altitude Hold Mode ： 捕捉している衛星が4基未満になった場合の動作についての設定（高度データの固定）</li>
+                    <li>Degraded Mode ： 捕捉している衛星が3基未満になった場合の動作についての設定<br />
+                        方向、時間ドリフトのうち、どれを（最後に計測した値で）固定するかを選択できる。</li>
+                    <li>Dead Reckoning Timeout [s] ： 捕捉する衛星が全く無くなってから、どれだけの時間、最後に計測された方向と速度で推定位置を算出するかの設定</li>
+                    <li>Track Smoothing ： 軌跡がジグザグになるのを防ぎ、スムースに補正する機能（実際のGPSで得られた場所とずれても、軌跡をスムースに結ぶ）<br />
+                        GPSから得られた正直な場所が必要な場合は、OFFにすること。</li>
+                </ul>
+
+            </div>
+
+            <div class="clear"></div>
+
+            <p>■ Static Navigation</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-sirf-4statnav.png" width="240" height="320"
+                    alt="acreen image" /><br />
+            </div>
+            <div style="float:left;width:50%;">
+
+                <p>速度と前回の測地からの移動距離が"設定されたある値"以下になれば静止していると判断して、現在位置と進行方向を前回計測の値に固定するモード。</p>
+
+                <p>列車や自動車が停止したときに、位置がぶれるのを防ぐための機能。歩行者の場合はOFFにすると良いといわれている。<br />
+                    GPSから得られた正直な場所が必要な場合は、OFFにすること。</p>
+
+                <p>なお、"設定されたある値"を編集する画面は無い！</p>
+
+            </div>
+            <div class="clear"></div>
+
+            <p>■ DOP Mask</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-sirf-5dopmask.png" width="240" height="320"
+                    alt="acreen image" /><br />
+            </div>
+            <div style="float:left;width:50%;">
+
+                <p>DOP（Dilution of Position）の設定</p>
+
+                <ul>
+                    <li>Auto PDOP/HDOP ： 衛星が4基以上補足できればPDOPを、3基以下ならHDOPを用いる</li>
+                    <li>PDOP、HDOP、GDOP：それぞれのDOPを用いる</li>
+                    <li>Disabled：DOPによるデータ切捨てを行わない</li>
+                </ul>
+
+                <p>それぞれのDOPの切捨てレベルを数値で入力する。DOPの値がこれ以上になれば、得られたデータは（不正確であるとして）切捨てられる。</p>
+
+            </div>
+            <div class="clear"></div>
+
+            <p>※ DOPの意味</p>
+
+            <p>NAVSTAR衛星の見える方向が"かたまって"いる場合は、測地精度が落ちる。反対に天空のばらばらの位置に見えるほど測地精度が高まる。この"天空上で見える方向の密集具合"をDOPという数値で表す。</p>
+
+            <p>大きな値になるほど、衛星が密集して見える＝ 精度悪い</p>
+
+            <ul>
+                <li>HDOP：水平指標、VDOP：垂直指標、TDOP：時間指標、PDOP：=sqrt(HDOP^2+VDOP^2)</li>
+                <li>GDOP：=sqrt(PDOP^2+TDOP^2)</li>
+            </ul>
+
+            <p>■ Elevation Mask</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-sirf-6elevmask.png" width="240" height="320"
+                    alt="acreen image" /><br />
+            </div>
+            <div style="float:left;width:50%;">
+
+                <p>衛星の見える高度がここに設定した値以下になれば、受信データを切り捨てる。</p>
+
+            </div>
+            <div class="clear"></div>
+
+            <p>■ Power mask</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-sirf-7powermask.png" width="240" height="320"
+                    alt="acreen image" /><br />
+            </div>
+            <div style="float:left;width:50%;">
+
+                <p>衛星から受信している電波の強度がここに設定した値以下になれば、受信データを切り捨てる。</p>
+
+            </div>
+            <div class="clear"></div>
+
+            <p>■ DGPS Source</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-sirf-8dgpssrc.png" width="240" height="320"
+                    alt="acreen image" /><br />
+            </div>
+            <div style="float:left;width:50%;">
+
+                <p>DGPSを使う場合の設定。ここで用いているGPSモジュールではSBASが使えないので、この設定画面では設定すべきものが無い。<br />
+                    DGPS Source の設定 ：</p>
+
+                <ul>
+                    <li>None ： DGPSを利用しない（デフォルト）</li>
+                    <li>SBAS ： SBASを利用 （Mio168では無効）</li>
+                    <li>External RTCM ： 外部機器からDGPS用RTCM信号を入力</li>
+                </ul>
+
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sitftech-sirf-dgpserr.png" width="240" height="320"
+                    alt="acreen image" /><br />
+            </div>
+            <div style="float:left;width:50%;">
+
+                <p>SBASを選択して「Set」ボタンを押すと、エラーが返ってくる。</p>
+
+            </div>
+            <div class="clear"></div>
+
+            <p>■ DGPS Mode</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-sirf-9dgpsmod.png" width="240" height="320"
+                    alt="acreen image" /><br />
+            </div>
+            <div class="clear"></div>
+
+            <p>■ SBAS</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-sirf-10sbas.png" width="240" height="320"
+                    alt="acreen image" /><br />
+            </div>
+            <div style="float:left;width:50%;">
+
+                <p>Mio168では、この機能はサポートされていない<br />
+                    参考までに、どのような電波を利用するか...</p>
+
+                <ul>
+                    <li>WAAS ： アメリカ合衆国上空（太平洋・大西洋）の静止衛星から発信される信号を利用する</li>
+                    <li>EGNOS ： インド・欧州上空の静止衛星から発信される信号を利用する</li>
+                    <li>MSAS ： 日本の気象衛星ひまわり（運輸多目的衛星）から発信される信号を利用する</li>
+                    <li>GAGAN ： インドの静止衛星から発信される信号を利用する</li>
+                </ul>
+
+            </div>
+            <div class="clear"></div>
+
+            <p>■ Trickle Power</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-sirf-11triclepow.png" width="240" height="320"
+                    alt="acreen image" /><br />
+            </div>
+            <div style="float:left;width:50%;">
+
+                <p>ユーザが電源を切っているときであっても、（バックグラウンドで）定期的に起動してエフェメリスデータを受信して更新するかどうかの設定。</p>
+
+                <ul>
+                    <li>On-Time [ms] ： Trickle Power モードで（バックグラウンドで）起動したとき、ここで指定された時刻経過するとOFFとなる秒数（ミリ秒）</li>
+                </ul>
+
+            </div>
+            <div class="clear"></div>
+
+            <p>■ Low Power</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-sirf-12lowpow.png" width="240" height="320"
+                    alt="acreen image" /><br />
+            </div>
+            <div class="clear"></div>
+
+            <p>■ Advanced Power Management</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-sirf-13powermgmt.png" width="240" height="320"
+                    alt="acreen image" /><br />
+            </div>
+            <div class="clear"></div>
+
+            <p>■ Set Message Rate</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-sirf-14msgrate.png" width="240" height="320"
+                    alt="acreen image" /><br />
+            </div>
+            <div class="clear"></div>
+
+            <p>■ Switch to NMEA Protocol</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-sirf-14swnmea.png" width="240" height="320"
+                    alt="acreen image" /><br />
+            </div>
+            <div style="float:left;width:50%;">
+
+                <p>データを何秒ごとに出力するかの設定</p>
+
+                <ul>
+                    <li>GGA ： 時刻と緯度・経度・高度（通常の測地）</li>
+                    <li>GLL ： 緯度・経度のみ</li>
+                    <li>GSA ： 捕捉している衛星番号とDOP値</li>
+                    <li>GSV ： 捕捉している衛星毎の仰角・方位・信号強度</li>
+                    <li>RMC ： 緯度・経度・進行方位・速度</li>
+                    <li>VTG ： 進行方位・速度</li>
+                    <li>MSS ： DGPS用MSK受信状況</li>
+                    <li>ZDA ： 時刻</li>
+                </ul>
+
+                <p>例：「２」と設定すると、2秒に1回データを出力する。</p>
+
+                <ul>
+                    <li>Debug Message ： 選択無効（チェックははずせない）</li>
+                    <li>Baudrate ： 通信速度（デフォルト4800bps）</li>
+                </ul>
+
+                <p>※ 「Set」ボタンを押すことで、SiRFモードを抜けてNMEAモードに移る。モードの変更をした場合は、SirfTechの「Exit」ボタンを押して終了すること。</p>
+
+            </div>
+            <div class="clear"></div>
+
+            <h4>SiRFモードからNMEAモードに戻る</h4>
+
+            <p>■ SiRF － Switch to NMEA Protocol メニュー</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-sirf-14swnmea.png" width="240" height="320"
+                    alt="acreen image" /><br />
+            </div>
+            <div style="float:left;width:50%;">
+
+                <p>「Set」ボタンを押すことで、NMEAモードに戻ることが出来る。<br />
+                    ボタンを押す前に、Baudrate = 4800bps となっていることを確認すること。</p>
+
+            </div>
+            <div class="clear"></div>
+
+            <h4>カスタマイズした項目</h4>
+
+            <p>mitac社のMio168でのカスタマイズ例を示す。<br /><br />
+                いろいろなパラメータをいじって動作確認したが、さすが工場出荷時のパラメータはよく調整されている。</p>
+
+            <p>■ Static Navigation</p>
+
+            <p>徒歩のときは Static Navigation = OFF、自動車など高速で移動するときに Static Navigation = ON
+                というのが推奨値だと、ネット上のブログなどに書かれています。Static Navigation = ON では静止状態からの出発は 50mくらい移動しないと検知しないと書かれていました。</p>
+
+            <p>実際に設定を変えてテストしたところ、Static Navigation = ON
+                では10mくらい歩かないと移動したと検知しないようです。10mなら許容範囲内なので、静止時にふらふらと現在地が動くよりはマシかと思い、Static Navigation = ON で使っています。</p>
+
+            <p>■ DOP Mask</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-cust-dop.png" width="240" height="320"
+                    alt="acreen image" /><br />
+            </div>
+            <div class="clear"></div>
+
+            <p>電源ON時（ナビ開始時）や、掩蔽物の近くに接近したときなどに軌跡が大きくジャンプするのは、DOP値で棄却を掛けるとうまく行きます。工場出荷時はDOP Mask =
+                OFFですが、これをONにすると同時にしきい値を15としています。</p>
+
+            <p>15くらいなら、ビル街の間を自転車で走りぬける場合でも、ほとんど衛星をロストしなくて済んでいます。</p>
+
+            <p>■ データの出力頻度</p>
+
+            <p>データファイルが大きくなるので、1秒おきの出力は不要。2秒おきに変更しました。</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_gps_firmware/sirftech-cust-nmea.png" width="240" height="320"
+                    alt="acreen image" /><br />
+            </div>
+            <div class="clear"></div>
+
+            <h4>NMEA-0183 データ フォーマット</h4>
+
+            <p><a href="./pics_gps_firmware/nmea-format.png"><img src="./pics_gps_firmware/nmea-format.png" width="515"
+                        height="384" alt="NMEA format" /></a></p>
+
+            <p>図をクリックすると拡大します。</p>
+
+            <p><a class="link_external" href="http://bg66.soc.i.kyoto-u.ac.jp/forestgps/nmea.html">NMEA-0183フォーマットの説明
+                    (http://bg66.soc.i.kyoto-u.ac.jp/forestgps/nmea.html)</a></p>
+
+            <p><a class="link_external" href="http://www.gpsinformation.org/dale/nmea.htm">NMEA data
+                    (http://www.gpsinformation.org/dale/nmea.htm)</a></p>
+
+            <p>実際のNMEA-0183フォーマットでの出力は...</p>
+
+            <pre style="width:560px;">
+$GPGSA,A,1,,,,,,,,,,,,,,,*1E
+$GPGSV,3,1,11,26,69,318,37,29,67,359,27,24,65,271,36,10,52,080,24*72
+$GPGSV,3,2,11,21,27,312,22,09,23,195,20,02,20,161,15,08,19,041,15*7A
+$GPGSV,3,3,11,06,10,249,21,07,09,261,20,28,07,081,*4F
+$GPGGA,090523.314,3441.4841,N,13530.1417,E,0,00,,111.9,M,,,,0000*2F
+$GPGLL,3441.4841,N,13530.1417,E,090523.314,V,E*4D
+$GPRMC,090523.314,V,3441.4841,N,13530.1417,E,,,280207,,,E*75
+$GPGGA,090525.314,3441.4808,N,13530.1371,E,1,04,14.9,112.3,M,,,,0000*3D
+$GPGLL,3441.4808,N,13530.1371,E,090525.314,A,A*52
+$GPRMC,090525.314,A,3441.4808,N,13530.1371,E,10.50,258.55,280207,,,A*51
+$GPGGA,090527.314,3441.4797,N,13530.1313,E,1,04,14.9,112.7,M,,,,0000*36
+$GPGLL,3441.4797,N,13530.1313,E,090527.314,A,A*5D
+$GPGSA,A,3,24,26,29,21,,,,,,,,,23.6,14.9,18.4*0E
+$GPGSV,3,1,11,26,69,318,38,29,67,359,25,24,65,271,34,10,52,080,23*7A
+$GPGSV,3,2,11,21,27,312,19,09,23,195,20,02,20,161,19,08,19,041,16*7D
+$GPGSV,3,3,11,06,10,249,21,07,09,261,22,28,07,081,*4D
+$GPRMC,090527.314,A,3441.4797,N,13530.1313,E,7.88,259.98,280207,,,A*6D
+$GPGGA,090529.314,3441.4789,N,13530.1276,E,1,04,14.8,112.8,M,,,,0000*3B
+$GPGLL,3441.4789,N,13530.1276,E,090529.314,A,A*5E
+$GPRMC,090529.314,A,3441.4789,N,13530.1276,E,6.36,274.45,280207,,,A*65
+$GPGGA,090531.314,3441.4791,N,13530.1225,E,1,04,14.8,112.8,M,,,,0000*3D
+$GPGLL,3441.4791,N,13530.1225,E,090531.314,A,A*58
+$GPRMC,090531.314,A,3441.4791,N,13530.1225,E,7.84,268.34,280207,,,A*60
+            </pre>
+
+            <p>&nbsp;</p>
+            <!-- HTML本文ここまで（貼付ここまで） -->
+
+            <!-- ********* CONTENTS END AT THIS LINE ********* -->
+        </div>
+        <div id="layout_footer">
+            <div id="layout_footer_left">
+
+                <p style="text-align:left;"><a href="http://validator.w3.org/" target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/w3c-valid-xhtml10-pale.png" border="0"
+                            align="left" alt="Valid XHTML 1.0 Transitional" width="88" height="31" /></a>
+                    &nbsp;Last update on 20 January 2010<br />
+                    &nbsp;Powered by GitHub Pages<br clear="all" />
+                </p>
+            </div>
+
+            <div id="layout_footer_right">
+
+                <p style="text-align:right;"><a href="http://creativecommons.org/licenses/by-nc-nd/2.1/jp/"
+                        target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/creativecommons-by-nc-nd-pale.png" border="0"
+                            align="right" alt="Creative Commons Licence : Attribution-Noncommercial-No Derivative Works"
+                            width="88" height="31" /></a>
+                    <a href="/about/index.html" target="_self">Copyright (C) INOUE Hirokazu.</a>&nbsp;<br />For
+                    <i>commercial usage</i> ? See detail at <a href="/about/index.html"
+                        target="_self">HERE</a>.&nbsp;<br clear="all" />
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

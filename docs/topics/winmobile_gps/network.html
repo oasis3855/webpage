@@ -1,0 +1,360 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" dir="ltr" lang="ja">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="../../styles.css" type="text/css" />
+
+    <!-- disable viewport for mobile device -->
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
+
+    <title>WindowsMobileでGPS地図を使う : ネットワークの設定</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="layout_header_menu">
+            <!-- page top menu line -->
+
+            <ul>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/index.shtml" target="_self">Home</a></li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/traveldia/index.html" target="_self">Travels</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub" href="http://www.youtube.com/user/inoue0111"
+                                target="_self">動画(YouTube)</a></li>
+                        <li><a class="new_sub_bottom" href="http://oasis-halfmoon.blogspot.com/"
+                                target="_self">編集前旅行記(Blogger)</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">Photo</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">All Page
+                                List</a></li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub_bottom" href="https://oasis.halfmoon.jp/about/index.html"
+                                target="_self">利用許諾条件</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="../../software/index.html" target="_self">Software</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="../../software/index.html" target="_self">Software Main Page</a>
+                        </li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/cgi-bin/websvn/"
+                                target="_self">Subversion</a></li>
+                        <li><a class="new_sub" href="https://github.com/oasis3855" target="_self">GitHub</a></li>
+                        <li><a class="new_sub_bottom" href="http://code.google.com/u/101092603816443690725/"
+                                target="_self">Google Code</a></li>
+                    </ul>
+                </li>
+                <li><a class="new" href="https://oasis.halfmoon.jp/links/index.html" target="_self">Links</a></li>
+            </ul>
+        </div>
+        <div id="layout_header_menu_line">
+            <!-- Horizonal Line (Menu) -->
+        </div>
+
+        <div id="main_content_full">
+            <!-- ********* CONTENTS START FROM HERE ********* -->
+            <!-- HTML本文ここから（貼付ここから） -->
+
+            <h1>WindowsMobileでGPS地図を使う : ネットワークの設定</h1>
+
+            <p><a href="../../index.html">Home</a> &gt; <a href="../../software/index.html">Software</a> &gt; <a
+                    href="../../software/software_server_memo.html">ソフトウエア開発・サーバ管理のメモ帳</a> &gt; このページ</p>
+
+            <p style="text-align: right;">Last Update 2010/01/28</p>
+
+            <table>
+                <caption>もくじ</caption>
+                <tr>
+                    <td><a href="./index.html">デバイスの基本設定</a><br /><a href="./desktop.html">デスクトップの設定</a><br /><a
+                            href="./network.html">ネットワークの設定</a><br /><a href="./gps_setup.html">GPSの設定</a><br /><a
+                            href="./gps_firmware.html">SiRF GPSモジュールの設定</a><br /><a href="./map_maker.html">地図の作成</a>
+                    </td>
+                </tr>
+            </table>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>インターネットに接続するための最低限の設定をします。具体的には、Wifi接続の設定、ブラウザ、メーラー、FTPクライアント、２ちゃんねるビューワーなどの設定を行います。</p>
+
+            <h4>無線LANの設定</h4>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/wireless-icon.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                接続アイコンをクリックして<br />設定ダイアログを表示する<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/wireless-cpl.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                接続 － 詳細設定 － ネットワークカード<br />このメニューで無線LANの設定を行う<br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/wlan-select.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                ワイヤレス・ネットワークの構成<br />アクセスポイント一覧が出る<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/wlan-context-menu.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                アクセスポイントの上でタップ＆ホールドを<br />行うと、「接続／削除」メニューが表示される<br />
+            </div>
+            <div class="clear"></div>
+
+            <p>Windowsの無線LAN設定メニューのように、アクセスポイントの「セキュリティON／OFF」の状況を知ることは出来ない。また、タップ＆ホールドして現れるコンテキスト・メニューには「切断」という項目が無いため、接続状態のLANから切断するためには他のアクセスポイントへ接続しないといけない。
+            </p>
+
+            <p>アクセスポイントをクリックすると、設定メニューが表示される</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/wlan-security.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                認証（暗号化）の設定<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/wlan-security2.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                拡張認証の設定<br />
+            </div>
+            <div class="clear"></div>
+
+            <p>認証の設定では、市販の一般的なアクセスポイントのセキュリティ設定が</p>
+
+            <ul>
+                <li>暗号化無しの場合 → 認証：オープンシステム認証、データ暗号化：無効</li>
+                <li>WEP暗号化の場合 → 認証：オープンシステム認証、データ暗号化：WEP</li>
+                <li>TKIP暗号化の場合 → 認証：WPA-PSK、データ暗号化：TKIP</li>
+            </ul>
+
+            <p>のように設定するとうまく繋がる（場合が多い）。</p>
+
+            <p><a class="link_external"
+                    href="http://www.microsoft.com/japan/technet/community/columns/cableguy/cg0303.mspx">Wi-Fi Protected
+                    Access (WPA) の概要 （Microsoft TechNet）</a></p>
+
+            <p>稀な例として、DHCPではなく固定IPアドレスのネットワークに接続する場合は、「ワイヤレスネットワークの構成」の「ネットワークアダプタ」の設定で固定アドレスを指定する。</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/wlan-ip.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                接続 － ネットワークカード － ネットワークアダプタ<br />IPアドレスの指定<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/wlan-dns.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                接続 － ネットワークカード － ネットワークアダプタ<br />DNSの設定<br />
+            </div>
+            <div class="clear"></div>
+
+            <h4>無線LAN接続状況の確認</h4>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/wireless-icon.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                接続アイコンをクリックすると出てくる<br />メッセージボックスには電波強度が表示される<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/vxutil-ip1.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                <a class="link_external" href="http://www.cam.com/vxutil_pers.html">vxUtil
+                    (Personal)</a>を用いて<br />IPアドレスの確認<br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/vxutil-ip2.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                vxUtil (Personal)を用いて<br />IPアドレスの確認<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/vxutil-ping.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                vxUtil (Personal)を用いて<br />ゲートウェイとgoogle.comにping<br />
+            </div>
+            <div class="clear"></div>
+
+            <h4>NTPサーバと時刻の同期</h4>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/ntp.png" width="240" height="320" alt="画面キャプチャ" /><br />
+                <a class="link_external" href="http://homepage3.nifty.com/UK-taniyama/tools/SNTPc.html">SNTPc</a>
+                を用いてNTPサーバとの同期<br />
+            </div>
+            <div class="clear"></div>
+
+            <p>NTPサーバは、<a class="link_external" href="http://wiki.nothing.sh/page/NTP">wiki@nothing NTP</a>
+                にリストアップされている。</p>
+
+            <h4>メール（Pocket Outlook）の設定</h4>
+
+            <p>POP3・SMTP サーバへのアクセスが、特殊なポート番号や特定の暗号化方式でアクセスしなければならないときを除いて、Pocket Outlook （受信トレイ）で問題ない。</p>
+
+            <p>なんといっても設定項目が少なすぎて、ニッチなニーズに対応できない。現在主流のサブミッション・ポート（TCP/587）しか通過できない場合には対応不可。</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/outlook-user.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                ユーザ名、パスワードの設定<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/outlook-pop3.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                POP3/IMAP の選択<br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/outlook-server.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                POP/SMTPサーバ名の設定<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/outlook-auto.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                自動受信の設定<br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/outlook-security.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                セキュリティ設定<br />SSL、認証のON/OFFが設定できる<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/outlook.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                Pocket Outlook （受信トレイ）の受信画面<br />
+            </div>
+            <div class="clear"></div>
+
+            <h4>メール（nPOP）の設定</h4>
+
+            <p>Pocket Outlook で出来ないような接続方法を試してみる場合は、<a class="link_external"
+                    href="http://www.nakka.com/soft/npop/">nPOP</a> を試してみては？ 現在主流のサブミッション・ポート（TCP/587）も用いることが出来る。</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/npop-receive.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                受信設定<br />POP3サーバ、ユーザ名、パスワードの設定<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/npop-receive-conf1.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                受信設定 － SSL方式の設定<br />自動/TLS1.0/SSL3.0/SSL2.0/STARTTLS<br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/npop-send.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                送信設定<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/npop-send-conf1.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                送信設定 － SMTP認証ユーザ名・パスワード<br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/npop-send-conf2.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                送信設定 － SSL方式の設定<br />自動/TLS1.0/SSL3.0/SSL2.0/STARTTLS<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/npop.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                受信画面<br />
+            </div>
+            <div class="clear"></div>
+
+            <p>nPOPはリモート・メールボックスを見に行くタイプのソフトなので、Pocket Outlookのように（基本的に）メールをダウンロードするようなソフトとはだいぶ使い勝手が違う。</p>
+
+            <p>メールの受信は、受信画面で「郵便箱の形をした青いボタン」を押すとダウンロードが行われる。<br /><br />
+                メールの送信は、送信箱で「メールをタップ＆ホールドして出るコンテキスト・メニューで、送信用にマーク」してから、「封筒の形をした黄色いボタン」を押すことで送信できる。<br /><br />
+                送信箱・リモートメールボックスの切り替えは、タイトル・バーの下にあるドロップダウンリストで行う。</p>
+
+            <h4>インターネット・エクスプローラ</h4>
+
+            <p>最近の画像やフレームを多用した巨大なページは、読み込みが遅いだけでなく途中でフリーズしたりします。一応見れるだけマシ...　という代物でしょうか</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/ie-yahoo.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                Yahoo! Japanを表示した<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/ie-google.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                Google PDA版を表示した<br />
+            </div>
+            <div class="clear"></div>
+
+            <h4>FTPクライアント</h4>
+
+            <p>ファイルの交換には必要です。 <a class="link_external"
+                    href="http://hp.vector.co.jp/authors/VA023546/soft/cedar.html">CedarFTP</a>を利用しています</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/cedarftp-conf.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                サーバ・ユーザ名・パスワードの設定<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/cedarftp.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                FTP接続中の画面<br />
+            </div>
+            <div class="clear"></div>
+
+            <h4>２ちゃんねるビュワー</h4>
+
+            <p>ニュースをチェックするのは、重くて固まるインターネット・エクスプローラより、２ちゃんねるブラウザ（テキストのみ）の方が断然軽快です。</p>
+
+            <p><a class="link_external"
+                    href="http://hpcgi3.nifty.com/UK-taniyama/access.cgi?tools/2++.html">2++</a>という専用ブラウザを使います</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/2pp-ita.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                掲示板一覧<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/2pp-download.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                スレッド一覧やスレッドを読み込むときは、<br />「ミ田」でメニューを出し、「受信」
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/2pp-thread.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                スレッド一覧<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_network/2pp-read.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                スレッドを開いたところ<br />元のメニューに戻るのは「←」ボタンを押す<br />
+            </div>
+            <div class="clear"></div>
+
+            <p>このソフトのキャッシュファイルは、\My Documents\Log に格納されている。</p>
+
+            <p>&nbsp;</p>
+
+            <!-- HTML本文ここまで（貼付ここまで） -->
+
+            <!-- ********* CONTENTS END AT THIS LINE ********* -->
+        </div>
+        <div id="layout_footer">
+            <div id="layout_footer_left">
+
+                <p style="text-align:left;"><a href="http://validator.w3.org/" target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/w3c-valid-xhtml10-pale.png" border="0"
+                            align="left" alt="Valid XHTML 1.0 Transitional" width="88" height="31" /></a>
+                    &nbsp;Last update on 28 January 2010<br />
+                    &nbsp;Powered by GitHub Pages<br clear="all" />
+                </p>
+            </div>
+
+            <div id="layout_footer_right">
+
+                <p style="text-align:right;"><a href="http://creativecommons.org/licenses/by-nc-nd/2.1/jp/"
+                        target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/creativecommons-by-nc-nd-pale.png" border="0"
+                            align="right" alt="Creative Commons Licence : Attribution-Noncommercial-No Derivative Works"
+                            width="88" height="31" /></a>
+                    <a href="/about/index.html" target="_self">Copyright (C) INOUE Hirokazu.</a>&nbsp;<br />For
+                    <i>commercial usage</i> ? See detail at <a href="/about/index.html"
+                        target="_self">HERE</a>.&nbsp;<br clear="all" />
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

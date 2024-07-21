@@ -1,0 +1,238 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" dir="ltr" lang="ja">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="../../styles.css" type="text/css" />
+
+    <!-- disable viewport for mobile device -->
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
+
+    <title>WindowsMobileでGPS地図を使う : デバイスの基本設定</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="layout_header_menu">
+            <!-- page top menu line -->
+
+            <ul>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/index.shtml" target="_self">Home</a></li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/traveldia/index.html" target="_self">Travels</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub" href="http://www.youtube.com/user/inoue0111"
+                                target="_self">動画(YouTube)</a></li>
+                        <li><a class="new_sub_bottom" href="http://oasis-halfmoon.blogspot.com/"
+                                target="_self">編集前旅行記(Blogger)</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">Photo</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">All Page
+                                List</a></li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub_bottom" href="https://oasis.halfmoon.jp/about/index.html"
+                                target="_self">利用許諾条件</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="../../software/index.html" target="_self">Software</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="../../software/index.html" target="_self">Software Main Page</a>
+                        </li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/cgi-bin/websvn/"
+                                target="_self">Subversion</a></li>
+                        <li><a class="new_sub" href="https://github.com/oasis3855" target="_self">GitHub</a></li>
+                        <li><a class="new_sub_bottom" href="http://code.google.com/u/101092603816443690725/"
+                                target="_self">Google Code</a></li>
+                    </ul>
+                </li>
+                <li><a class="new" href="https://oasis.halfmoon.jp/links/index.html" target="_self">Links</a></li>
+            </ul>
+        </div>
+        <div id="layout_header_menu_line">
+            <!-- Horizonal Line (Menu) -->
+        </div>
+
+        <div id="main_content_full">
+            <!-- ********* CONTENTS START FROM HERE ********* -->
+            <!-- HTML本文ここから（貼付ここから） -->
+
+            <h1>WindowsMobileでGPS地図を使う : デバイスの基本設定</h1>
+
+            <p><a href="../../index.html">Home</a> &gt; <a href="../../software/index.html">Software</a> &gt; <a
+                    href="../../software/software_server_memo.html">ソフトウエア開発・サーバ管理のメモ帳</a> &gt; このページ</p>
+
+            <p style="text-align: right;">Last Update 2010/01/25</p>
+
+            <table>
+                <caption>もくじ</caption>
+                <tr>
+                    <td><a href="./index.html">デバイスの基本設定</a><br /><a href="./desktop.html">デスクトップの設定</a><br /><a
+                            href="./network.html">ネットワークの設定</a><br /><a href="./gps_setup.html">GPSの設定</a><br /><a
+                            href="./gps_firmware.html">SiRF GPSモジュールの設定</a><br /><a href="./map_maker.html">地図の作成</a>
+                    </td>
+                </tr>
+            </table>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>このページではWindows Mobile（Pocket PC）OS搭載のPDAで、オフラインのGPS地図が使えるようになるまでの各種設定について記している。 動作確認した機種は次の通り</p>
+
+            <ul>
+                <li>Mitac製 Mio 168, 2003年発売, Pocket PC 2003搭載, CPU:Intel Xscale PXA255 300MHz, display 640x480</li>
+                <li>HP製 iPAQ 112, 2008年発売, Windows Mobile 6搭載, CPU:Marvell PXA310 624MHz, display 320x240</li>
+            </ul>
+
+            <h3>基本設定</h3>
+
+            <p>ハードウエア・リセット（工場出荷状態）から、最低限行ったセットアップ</p>
+
+            <h4>デスクトップの設定</h4>
+
+            <p>標準状態では、夜間に画面を見るときに眩しすぎる。使いもしないPIM機能のために画面がごちゃごちゃしているのもすっきりさせたい。</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_index/desktop-init.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                インストール直後の状態<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_index/cpl-today-1.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                設定 － Today<br /><br />
+                デスクトップテーマを設定する<br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_index/cpl-today-2.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                設定 － Today<br />日付、<a
+                    href="http://homepage3.nifty.com/UK-taniyama/tools/UKCalendar.html">UKCalendar</a>のみチェック<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_index/desktop-theme.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                カスタマイズを行った後<br />
+            </div>
+            <div class="clear"></div>
+
+            <h4>電源の設定</h4>
+
+            <p>バッテリーの持ちを最大限伸ばすための設定</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_index/cpl-backlight.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                設定 － バックライト<br />最も暗く設定、「画面タップで点灯」をOFF<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_index/cpl-power.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                設定 － 電源<br />バッテリ使用時の電源切断までを設定<br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_index/mioutil-cpu.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                Mioユーティリティ － スマートバッテリ<br />「低性能」に設定<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_index/mioutil-resume.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                Mioユーティリティ － 再開<br />スリープ時にSDカードOFF、ホットボタン未使用<br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_index/pocket-tweak-power.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                <a href="http://tillanosoft.com/ce/ptweakj.html">Pocket Tweak</a> － 電源オフ<br />「設定－電源」の設定値が優先される<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_index/cpl-irbeam.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                設定 － ビーム<br />赤外線の受信をOFFにする<br />
+            </div>
+            <div class="clear"></div>
+
+            <h4>サウンド設定</h4>
+
+            <p>標準設定では音が大きすぎる。</p>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_index/cpl-sound.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                設定 － 音と通知<br />最小音量、「音の設定」では音を鳴らさない<br />
+            </div>
+            <div class="clear"></div>
+
+            <h4>メニューの設定</h4>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_index/cpl-button.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                設定 － ボタン<br />割り当てを調整<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_index/cpl-menu.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                設定 － メニュー<br />普段使わないメニューはOFF<br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_index/startup-default.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                \Windows\スタートアップ フォルダ<br />全て削除しても問題なし<br />
+            </div>
+            <div class="fig_left" style="width:40%;">
+                <img src="./pics_index/startup-manual.png" width="240" height="320" alt="画面キャプチャ" /><br /><br />
+                \Windows\ｽﾀｰﾄ ﾒﾆｭｰ\ﾌﾟﾛｸﾞﾗﾑ\... フォルダ<br />必要に応じ手動で立ち上げるソフトウエア<br />
+            </div>
+            <div class="clear"></div>
+
+            <p>※ 再起動時に自動的に起動するプログラムと、ソフトウエア・リセットのエラー回避<br />
+                「スタートアップ」フォルダに入れたプログラムが少ないほど再起動に失敗する確率が下がる気がする。特に、<a
+                    href="http://homepage3.nifty.com/UK-taniyama/tools/GSPMagicPP.html">GSPocketMagic++</a>
+                というメニュー拡張ソフトを自動起動しておくと（ほぼ確実に）起動に失敗する。</p>
+
+            <p>再起動後に手動で<a
+                    href="http://homepage3.nifty.com/UK-taniyama/tools/GSPMagicPP.html">GSPocketMagic++</a>を立ち上げるため、スタートメニューにフォルダを作って、そこにショートカットを入れている。
+            </p>
+
+            <p>Pocket Outlook も自動起動になっていたが、メーラは別のものを使っているので、自動起動から外している。</p>
+
+            <p>&nbsp;</p>
+            <!-- HTML本文ここまで（貼付ここまで） -->
+
+            <!-- ********* CONTENTS END AT THIS LINE ********* -->
+        </div>
+        <div id="layout_footer">
+            <div id="layout_footer_left">
+
+                <p style="text-align:left;"><a href="http://validator.w3.org/" target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/w3c-valid-xhtml10-pale.png" border="0"
+                            align="left" alt="Valid XHTML 1.0 Transitional" width="88" height="31" /></a>
+                    &nbsp;Last update on 15 January 2010<br />
+                    &nbsp;Powered by GitHub Pages<br clear="all" />
+                </p>
+            </div>
+
+            <div id="layout_footer_right">
+
+                <p style="text-align:right;"><a href="http://creativecommons.org/licenses/by-nc-nd/2.1/jp/"
+                        target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/creativecommons-by-nc-nd-pale.png" border="0"
+                            align="right" alt="Creative Commons Licence : Attribution-Noncommercial-No Derivative Works"
+                            width="88" height="31" /></a>
+                    <a href="/about/index.html" target="_self">Copyright (C) INOUE Hirokazu.</a>&nbsp;<br />For
+                    <i>commercial usage</i> ? See detail at <a href="/about/index.html"
+                        target="_self">HERE</a>.&nbsp;<br clear="all" />
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
