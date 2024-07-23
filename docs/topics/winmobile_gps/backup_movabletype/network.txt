@@ -1,0 +1,234 @@
+<h1>Windows Mobile/Pocket PC ネットワーク設定</h1>
+
+<div class="link_right"><a class="link_return" href="http://oasis.halfmoon.jp/mw/index.php?title=PcInfo-Programming-ServerMaintenance-Menu">一つ前のメニューに戻る</a></div>
+
+インターネットに接続するための最低限の設定
+
+<h4>無線LANの設定</h4>
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/wireless-icon.png" width="240" height="320" alt="画面キャプチャ" /><br />
+接続アイコンをクリックして<br />設定ダイアログを表示する
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/wireless-cpl.png" width="240" height="320" alt="画面キャプチャ" /><br />
+接続 － 詳細設定 － ネットワークカード<br />このメニューで無線LANの設定を行う
+</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/wlan-select.png" width="240" height="320" alt="画面キャプチャ" /><br />
+ワイヤレス・ネットワークの構成<br />アクセスポイント一覧が出る
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/wlan-context-menu.png" width="240" height="320" alt="画面キャプチャ" /><br />
+アクセスポイントの上でタップ＆ホールドを<br />行うと、「接続／削除」メニューが表示される
+</div>
+<div class="clear"></div>
+
+Windowsの無線LAN設定メニューのように、アクセスポイントの「セキュリティON／OFF」の状況を知ることは出来ない。また、タップ＆ホールドして現れるコンテキスト・メニューには「切断」という項目が無いため、接続状態のLANから切断するためには他のアクセスポイントへ接続しないといけない。
+
+アクセスポイントをクリックすると、設定メニューが表示される
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/wlan-security.png" width="240" height="320" alt="画面キャプチャ" /><br />
+認証（暗号化）の設定
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/wlan-security2.png" width="240" height="320" alt="画面キャプチャ" /><br />
+拡張認証の設定
+</div>
+<div class="clear"></div>
+
+認証の設定では、市販の一般的なアクセスポイントのセキュリティ設定が
+
+<ul>
+<li>暗号化無しの場合 → 認証：オープンシステム認証、データ暗号化：無効</li>
+<li>WEP暗号化の場合 → 認証：オープンシステム認証、データ暗号化：WEP</li>
+<li>TKIP暗号化の場合 → 認証：WPA-PSK、データ暗号化：TKIP</li>
+</ul>
+
+のように設定するとうまく繋がる（場合が多い）。
+
+<a class="link_external" href="http://www.microsoft.com/japan/technet/community/columns/cableguy/cg0303.mspx">Wi-Fi Protected Access (WPA) の概要 （Microsoft TechNet）</a>
+
+稀な例として、DHCPではなく固定IPアドレスのネットワークに接続する場合は、「ワイヤレスネットワークの構成」の「ネットワークアダプタ」の設定で固定アドレスを指定する。
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/wlan-ip.png" width="240" height="320" alt="画面キャプチャ" /><br />
+接続 － ネットワークカード － ネットワークアダプタ<br />IPアドレスの指定
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/wlan-dns.png" width="240" height="320" alt="画面キャプチャ" /><br />
+接続 － ネットワークカード － ネットワークアダプタ<br />DNSの設定
+</div>
+<div class="clear"></div>
+
+<h4>無線LAN接続状況の確認</h4>
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/wireless-icon.png" width="240" height="320" alt="画面キャプチャ" /><br />
+接続アイコンをクリックすると出てくる<br />メッセージボックスには電波強度が表示される
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/vxutil-ip1.png" width="240" height="320" alt="画面キャプチャ" /><br />
+<a class="link_external" href="http://www.cam.com/vxutil_pers.html">vxUtil (Personal)</a>を用いて<br />IPアドレスの確認
+</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/vxutil-ip2.png" width="240" height="320" alt="画面キャプチャ" /><br />
+vxUtil (Personal)を用いて<br />IPアドレスの確認
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/vxutil-ping.png" width="240" height="320" alt="画面キャプチャ" /><br />
+vxUtil (Personal)を用いて<br />ゲートウェイとgoogle.comにping
+</div>
+<div class="clear"></div>
+
+<h4>NTPサーバと時刻の同期</h4>
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/ntp.png" width="240" height="320" alt="画面キャプチャ" />
+<a class="link_external" href="http://homepage3.nifty.com/UK-taniyama/tools/SNTPc.html">SNTPc</a> を用いてNTPサーバとの同期
+</div>
+<div class="clear"></div>
+
+NTPサーバは、<a class="link_external" href="http://wiki.nothing.sh/page/NTP">wiki@nothing NTP</a> にリストアップされている。
+
+<h4>メール（Pocket Outlook）の設定</h4>
+
+POP3・SMTP サーバへのアクセスが、特殊なポート番号や特定の暗号化方式でアクセスしなければならないときを除いて、Pocket Outlook （受信トレイ）で問題ない。
+
+なんといっても設定項目が少なすぎて、ニッチなニーズに対応できない。現在主流のサブミッション・ポート（TCP/587）しか通過できない場合には対応不可。
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/outlook-user.png" width="240" height="320" alt="画面キャプチャ" /><br />
+ユーザ名、パスワードの設定
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/outlook-pop3.png" width="240" height="320" alt="画面キャプチャ" /><br />
+POP3/IMAP の選択
+</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/outlook-server.png" width="240" height="320" alt="画面キャプチャ" /><br />
+POP/SMTPサーバ名の設定
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/outlook-auto.png" width="240" height="320" alt="画面キャプチャ" /><br />
+自動受信の設定
+</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/outlook-security.png" width="240" height="320" alt="画面キャプチャ" /><br />
+セキュリティ設定<br />SSL、認証のON/OFFが設定できる
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/outlook.png" width="240" height="320" alt="画面キャプチャ" /><br />
+Pocket Outlook （受信トレイ）の受信画面
+</div>
+<div class="clear"></div>
+
+<h4>メール（nPOP）の設定</h4>
+
+Pocket Outlook で出来ないような接続方法を試してみる場合は、<a class="link_external" href="http://www.nakka.com/soft/npop/">nPOP</a> を試してみては？ 現在主流のサブミッション・ポート（TCP/587）も用いることが出来る。
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/npop-receive.png" width="240" height="320" alt="画面キャプチャ" /><br />
+受信設定<br />POP3サーバ、ユーザ名、パスワードの設定
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/npop-receive-conf1.png" width="240" height="320" alt="画面キャプチャ" /><br />
+受信設定 － SSL方式の設定<br />自動/TLS1.0/SSL3.0/SSL2.0/STARTTLS
+</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/npop-send.png" width="240" height="320" alt="画面キャプチャ" /><br />
+送信設定
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/npop-send-conf1.png" width="240" height="320" alt="画面キャプチャ" /><br />
+送信設定 － SMTP認証ユーザ名・パスワード
+</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/npop-send-conf2.png" width="240" height="320" alt="画面キャプチャ" /><br />
+送信設定 － SSL方式の設定<br />自動/TLS1.0/SSL3.0/SSL2.0/STARTTLS
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/npop.png" width="240" height="320" alt="画面キャプチャ" /><br />
+受信画面
+</div>
+<div class="clear"></div>
+
+nPOPはリモート・メールボックスを見に行くタイプのソフトなので、Pocket Outlookのように（基本的に）メールをダウンロードするようなソフトとはだいぶ使い勝手が違う。
+
+メールの受信は、受信画面で「郵便箱の形をした青いボタン」を押すとダウンロードが行われる。<br />
+メールの送信は、送信箱で「メールをタップ＆ホールドして出るコンテキスト・メニューで、送信用にマーク」してから、「封筒の形をした黄色いボタン」を押すことで送信できる。<br />
+送信箱・リモートメールボックスの切り替えは、タイトル・バーの下にあるドロップダウンリストで行う。
+
+<h4>インターネット・エクスプローラ</h4>
+
+最近の画像やフレームを多用した巨大なページは、読み込みが遅いだけでなく途中でフリーズしたりします。一応見れるだけマシ...　という代物でしょうか
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/ie-yahoo.png" width="240" height="320" alt="画面キャプチャ" /><br />
+Yahoo! Japanを表示した
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/ie-google.png" width="240" height="320" alt="画面キャプチャ" /><br />
+Google PDA版を表示した
+</div>
+<div class="clear"></div>
+
+<h4>FTPクライアント</h4>
+
+ファイルの交換には必要です。 <a class="link_external" href="http://hp.vector.co.jp/authors/VA023546/soft/cedar.html">CedarFTP</a>を利用しています
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/cedarftp-conf.png" width="240" height="320" alt="画面キャプチャ" /><br />
+サーバ・ユーザ名・パスワードの設定
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/cedarftp.png" width="240" height="320" alt="画面キャプチャ" /><br />
+FTP接続中の画面
+</div>
+<div class="clear"></div>
+
+<h4>２ちゃんねるビュワー</h4>
+
+ニュースをチェックするのは、重くて固まるインターネット・エクスプローラより、２ちゃんねるブラウザ（テキストのみ）の方が断然軽快です。
+
+<a class="link_external" href="http://hpcgi3.nifty.com/UK-taniyama/access.cgi?tools/2++.html">2++</a>という専用ブラウザを使います
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/2pp-ita.png" width="240" height="320" alt="画面キャプチャ" /><br />
+掲示板一覧
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/2pp-download.png" width="240" height="320" alt="画面キャプチャ" /><br />
+スレッド一覧やスレッドを読み込むときは、<br />「ミ田」でメニューを出し、「受信」</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/2pp-thread.png" width="240" height="320" alt="画面キャプチャ" /><br />
+スレッド一覧
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_network/2pp-read.png" width="240" height="320" alt="画面キャプチャ" /><br />
+スレッドを開いたところ<br />元のメニューに戻るのは「←」ボタンを押す
+</div>
+<div class="clear"></div>
+
+このソフトのキャッシュファイルは、\My Documents\Log に格納されている。
+
+&nbsp;
+
+<div class="link_right"><a class="link_return" href="http://oasis.halfmoon.jp/mw/index.php?title=PcInfo-Programming-ServerMaintenance-Menu">一つ前のメニューに戻る</a></div>
+
+&nbsp;

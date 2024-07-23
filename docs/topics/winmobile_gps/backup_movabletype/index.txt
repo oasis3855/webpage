@@ -1,0 +1,107 @@
+<h1>Mio168/Pocket PC 2003 基本設定</h1>
+
+<div class="link_right"><a class="link_return" href="http://oasis.halfmoon.jp/mw/index.php?title=PcInfo-Programming-ServerMaintenance-Menu">一つ前のメニューに戻る</a></div>
+
+ハードウエア・リセット（工場出荷状態）から、最低限行ったセットアップ
+
+<h4>デスクトップの設定</h4>
+
+標準状態では、夜間に画面を見るときに眩しすぎる。使いもしないPIM機能のために画面がごちゃごちゃしているのもすっきりさせたい。
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_setup_basic/desktop-init.png" width="240" height="320" alt="画面キャプチャ" /><br />
+インストール直後の状態
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_setup_basic/cpl-today-1.png" width="240" height="320" alt="画面キャプチャ" /><br />
+設定 － Today<br />
+デスクトップテーマを設定する
+</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_setup_basic/cpl-today-2.png" width="240" height="320" alt="画面キャプチャ" /><br />
+設定 － Today<br />日付、<a href="http://homepage3.nifty.com/UK-taniyama/tools/UKCalendar.html">UKCalendar</a>のみチェック
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_setup_basic/desktop-theme.png" width="240" height="320" alt="画面キャプチャ" /><br />
+カスタマイズを行った後
+</div>
+<div class="clear"></div>
+
+<h4>電源の設定</h4>
+
+バッテリーの持ちを最大限伸ばすための設定
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_setup_basic/cpl-backlight.png" width="240" height="320" alt="画面キャプチャ" /><br />
+設定 － バックライト<br />最も暗く設定、「画面タップで点灯」をOFF
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_setup_basic/cpl-power.png" width="240" height="320" alt="画面キャプチャ" /><br />
+設定 － 電源<br />バッテリ使用時の電源切断までを設定
+</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_setup_basic/mioutil-cpu.png" width="240" height="320" alt="画面キャプチャ" /><br />
+Mioユーティリティ － スマートバッテリ<br />「低性能」に設定
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_setup_basic/mioutil-resume.png" width="240" height="320" alt="画面キャプチャ" /><br />
+Mioユーティリティ － 再開<br />スリープ時にSDカードOFF、ホットボタン未使用
+</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_setup_basic/pocket-tweak-power.png" width="240" height="320" alt="画面キャプチャ" /><br />
+<a href="http://tillanosoft.com/ce/ptweakj.html">Pocket Tweak</a> － 電源オフ<br />「設定－電源」の設定値が優先される
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_setup_basic/cpl-irbeam.png" width="240" height="320" alt="画面キャプチャ" /><br />
+設定 － ビーム<br />赤外線の受信をOFFにする
+</div>
+<div class="clear"></div>
+
+<h4>サウンド設定</h4>
+
+標準設定では音が大きすぎる。
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_setup_basic/cpl-sound.png" width="240" height="320" alt="画面キャプチャ" /><br />
+設定 － 音と通知<br />最小音量、「音の設定」では音を鳴らさない
+</div>
+<div class="clear"></div>
+
+<h4>メニューの設定</h4>
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_setup_basic/cpl-button.png" width="240" height="320" alt="画面キャプチャ" /><br />
+設定 － ボタン<br />割り当てを調整
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_setup_basic/cpl-menu.png" width="240" height="320" alt="画面キャプチャ" /><br />
+設定 － メニュー<br />普段使わないメニューはOFF
+</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_setup_basic/startup-default.png" width="240" height="320" alt="画面キャプチャ" /><br />
+\Windows\スタートアップ フォルダ<br />全て削除しても問題なし
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_setup_basic/startup-manual.png" width="240" height="320" alt="画面キャプチャ" /><br />
+\Windows\ｽﾀｰﾄ ﾒﾆｭｰ\ﾌﾟﾛｸﾞﾗﾑ\... フォルダ<br />必要に応じ手動で立ち上げるソフトウエア
+</div>
+<div class="clear"></div>
+
+※ 再起動時に自動的に起動するプログラムと、ソフトウエア・リセットのエラー回避
+「スタートアップ」フォルダに入れたプログラムが少ないほど再起動に失敗する確率が下がる気がする。特に、<a href="http://homepage3.nifty.com/UK-taniyama/tools/GSPMagicPP.html">GSPocketMagic++</a> というメニュー拡張ソフトを自動起動しておくと（ほぼ確実に）起動に失敗する。
+
+再起動後に手動で<a href="http://homepage3.nifty.com/UK-taniyama/tools/GSPMagicPP.html">GSPocketMagic++</a>を立ち上げるため、スタートメニューにフォルダを作って、そこにショートカットを入れている。
+
+Pocket Outlook も自動起動になっていたが、メーラは別のものを使っているので、自動起動から外している。
+
+&nbsp;
+
+<div class="link_right"><a class="link_return" href="http://oasis.halfmoon.jp/mw/index.php?title=PcInfo-Programming-ServerMaintenance-Menu">一つ前のメニューに戻る</a></div>

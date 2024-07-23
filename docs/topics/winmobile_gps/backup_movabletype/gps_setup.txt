@@ -1,0 +1,172 @@
+<h1>WindowsMobile (PocketPC)でGPSを使う</h1>
+
+<div class="link_right"><a class="link_return" href="http://oasis.halfmoon.jp/mw/index.php?title=PcInfo-Programming-ServerMaintenance-Menu">一つ前のメニューに戻る</a></div>
+
+この文章の大部分の設定内容は、mitac社のMio168での設定例を示している。機種固有のパラメータ（ポート番号等）を少しいじれば、他のWindows Mobile 5,6マシンでも流用出来る。（HP iPAQ112でも確認済み）
+
+<h4>設定シート</h4>
+
+プログラム中でGPSレシーバの接続方法を入力する場合に指定する設定値。（mio168の場合）
+
+GPSレシーバ ： SiRF II e/LP
+接続ポート ： COM 2
+リンク速度 ： 4800 bps
+
+<h4>VisualGPSce</h4>
+
+<a class="link_external" href="http://www.visualgps.net/VisualGPSce/">VisualGPSce</a>を用いて、NAVSTAR衛星からの電波の受信状況を把握できる。現在地や移動ベクトルも数値形式ではあるが把握できる。NMEAログを書き出す機能も持っている。
+
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/visualgpsce-disp1.png" height="320" alt="gps fig" /><br />
+衛星番号と電波受信強度グラフ<br />現在位置（緯度、経度、高度）、捕捉衛星数
+</div>
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/visualgpsce-disp2.png" height="320" alt="gps fig" /><br />
+NAVSTAR衛星の見える位置<br />（仰角15°毎のサークルは指標）
+</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/visualgpsce-disp3.png" height="320" alt="gps fig" /><br />
+速度（水平） ・ 高度<br />方位 ・ 速度（垂直）
+</div>
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/visualgpsce-disp4.png" height="320" alt="gps fig" />
+</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/visualgpsce-conf.png" height="320" alt="gps fig" /><br />
+設定 （Connectメニューの中にある）<br />COM 2, 4800 bps に設定する
+</div>
+<div class="clear"></div>
+
+<h4>NMEAモニタ</h4>
+
+<a class="link_external" href="http://harukaze.sakura.ne.jp/garmap/garmap.html">NMEA Monitor CE</a>は、上のVisualGPSCEと同じようなソフト。こちらは1画面で全てが確認できるコンパクト設計
+
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/nmeamon.png" height="320" alt="gps fig" /><br />
+メイン画面
+</div>
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/nmeamon-conf1.png" height="320" alt="gps fig" /><br />
+測地系の変換設定<br />WGS84（NMEAデータ） → 変換先
+</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/nmeamon-conf2.png" height="320" alt="gps fig" /><br />
+通信ポート番号のみ設定できる<br />COM 2 に設定する
+</div>
+<div class="clear"></div>
+
+<h4>loxtrax</h4>
+
+<a class="link_external" href="http://www.magnalox.net/index.php=3fpg=3d200=26topic=3dabout">loxtrax</a> というソフト。地図の用意できていないところで、迷路のような都市に迷い込むときに役立ちそうなソフトです。
+画面の表示範囲は100m, 1km, 5km, ... 100km と調整可能。GPSから得られた数値データを表示しつつ、移動軌跡や進行方向を表示できます。速度やDOPもグラフで表示できます。
+シェアウエアの登録をすれば、背景に地図画像などを表示させることも出来るようです。（フリー版では、30分で地図画面が消去されると書かれている）
+
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/loxtrax-1.png" height="320" alt="gps fig" />
+</div>
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/loxtrax-2.png" height="320" alt="gps fig" />
+</div>
+<div class="clear"></div>
+
+<h4>GarmapCE</h4>
+
+日常の現在位置を知る作業や、NMEAログ取りは <a class="link_external" href="http://harukaze.sakura.ne.jp/garmap/garmap.html">GarmapCE</a> で行っている。WGS84測地系の地図さえ用意すれば、世界中のどこででも使えると思われる。
+
+■ 地図の作成
+
+<a class="link_orange" href="/other/mio168/gps_makemap.html">地図の作成は別のページで説明しています。</a>
+
+■ 基本設定
+
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/garmap-openmap.png" height="320" alt="gps fig" /><br />
+File － Load Map ...<br />地図ファイル（ビットマップ地図）を開く
+</div>
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/garmap-conf1.png" height="320" alt="gps fig" /><br /><br />
+Option － GPS ...<br />GPSレシーバの設定。COM 2, 9600 bps<br />（4800bpsが無いため、9600bpsとしている）
+</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/garmap-conf2.png" height="320" alt="gps fig" /><br />
+Option － Preference ...<br />WGS84座標系、Metricに設定<br />Save NMEA：保存時に対象とするNMEAデータの種類をセミコロンで区切って指定する（※１）<br />Log Interval：NMEAデータを受けている場合は、この値は無視される。
+</div>
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/garmap-conf3.png" height="320" alt="gps fig" /><br />
+View － View data Fieldにチェック<br />GPSオンライン時に画面下部にデータ表示
+</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/garmap-start.png" height="320" alt="gps fig" /><br />
+設定が終われば、ナビゲーション開始
+</div>
+<div class="clear"></div>
+
+COM 2のリンク速度設定が9600bps未満が無いため、9600bpsで利用している。今のところ問題なし。GPS Model の設定は、Other Garmin としている。Garmin社のGPSでなくても、NMEAを吐き出すGPSなら対応可能なようです。
+※１：NMEA保存時に対象とするデータの種類を設定する （Save MNEA）
+例：GGA;GLL;GSA;RMC&nbsp;&nbsp;&nbsp;&nbsp; → 時刻・緯度・経度・高度；緯度・経度；衛星番号・DOP；進行方向・速度
+メッセージの種類については、「<a class="link_orange"  href="http://oasis.halfmoon.jp/other/mio168/gps_firmware.html">GPSの調整</a>」を参照。
+
+■ ロードテスト
+
+世界各国で行ったロード・テスト時のキャプチャ画像。航空機・高速鉄道・在来鉄道・バスの車内でも窓際の席に座ることで衛星からのシグナルを受信できて位置決定が出来た。
+インターネット地図サイトから切り出して作った手製のGPS地図も結構使えるものだ。大きな移動を把握するだけなら、全く問題なし。
+
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/garmap-loadtest-tiba.png" height="320" alt="gps fig" /><br />
+房総半島上空を飛ぶ航空機<br />（地図はGTOPO30）
+</div>
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/garmap-loadtest-izumisano.png" height="320" alt="gps fig" /><br />
+大阪の泉佐野を自動車で移動中<br />（地図は国土地理院1/25000）
+</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/garmap-loadtest-greenwich1.png" height="320" alt="gps fig" /><br />
+イギリスのグリニッジ （子午線付近）
+</div>
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/garmap-loadtest-greenwich2.png" height="320" alt="gps fig" /><br />
+イギリスのグリニッジ （子午線のモニュメント上）
+</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/garmap-loadtest-ljubljana.png" height="320" alt="gps fig" /><br />
+スロベニアの首都リュブリャーナ郊外
+</div>
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/garmap-loadtest-croatia.png" height="320" alt="gps fig" /><br />
+クロアチア、プリトビチェからザダールへのバス<br />途中で電源を切っているため、位置がジャンプ
+</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/garmap-loadtest-utrecht.png" height="320" alt="gps fig" /><br />
+オランダのユトレヒト郊外を走る鉄道
+</div>
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/garmap-loadtest-tilburg.png" height="320" alt="gps fig" /><br />
+オランダのティルブルフ郊外を走るバス
+</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img width="240" src="/other/mio168/pics_gps/garmap-loadtest-cordoba.png" height="320" alt="gps fig" /><br />
+スペインのマドリッド発コルドバ行きAVE<br />（地図はGTOPO30）
+</div>
+<div class="clear"></div>
+
+&nbsp;
+
+<div class="link_right"><a class="link_return" href="http://oasis.halfmoon.jp/mw/index.php?title=PcInfo-Programming-ServerMaintenance-Menu">一つ前のメニューに戻る</a></div>

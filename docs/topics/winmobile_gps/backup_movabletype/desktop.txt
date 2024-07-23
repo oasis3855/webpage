@@ -1,0 +1,81 @@
+
+<h1>Windows Mobile/Pocket PC デスクトップ初期設定</h1>
+
+<div class="link_right"><a class="link_return" href="http://oasis.halfmoon.jp/mw/index.php?title=PcInfo-Programming-ServerMaintenance-Menu">一つ前のメニューに戻る</a></div>
+
+<h4>基本設定した後のデスクトップ状況</h4>
+
+標準状態では、夜間に画面を見るときに眩しすぎる。使いもしないPIM機能のために画面がごちゃごちゃしているのもすっきりさせたい。
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_desktop/gspocketmagic-menu.png" width="240" height="320" alt="キャプチャ画像" /><br />
+左上のWindowsアイコンをクリックして表示させた<br /><a class="link_external" href="http://homepage3.nifty.com/UK-taniyama/tools/GSPMagicPP.html">GSPocketMagic++</a>のメニュー
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_desktop/gspocketmagic-program.png" width="240" height="320" alt="キャプチャ画像" /><br />
+GSPocketMagic++のメニュー<br />プログラム・メニューの展開
+</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_desktop/gspocketmagic-cpl.png" width="240" height="320" alt="キャプチャ画像" /><br />
+GSPocketMagic++のメニュー<br />設定メニューを展開
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_desktop/gspocketmagic-task.png" width="240" height="320" alt="キャプチャ画像" /><br />
+GSPocketMagic++のメニュー<br />タスクを閉じるメニュー
+</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_desktop/gspocketmagic-exiticon.png" width="240" height="320" alt="キャプチャ画像" /><br />
+GSPocketMagic++の設定で「タスククローズ拡張<br />機能」をONにすると、右上に閉じるボタンが出る
+</div>
+<div class="clear"></div>
+
+
+スタート・メニューや設定メニューをカスタマイズしたときは、<a class="link_external" href="http://homepage3.nifty.com/UK-taniyama/tools/GSPMagicPP.html">GSPocketMagic++</a>のメニューで「オプション － 設定」を表示させて「OK」ボタンを押さないと現在の状態が反映されない場合がある。
+
+設定メニューに「電源」が表示されていないのは、何らかの不具合か？
+
+<h4>押してはならないボタン</h4>
+
+Windows Mobile/Pocket PCの機種によっては、ソフトリセットの実装に不具合があり、再起動に失敗してファクトリーリセットせざるを得なくなる場合がある。
+
+私の保有しているMitac社のMio168には、この不具合がある。
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_desktop/gspocketmagic-cust.png" width="240" height="320" alt="キャプチャ画像" /><br />
+GSPocketMagic++のメニュー<br />「再起動ボタン」は押さない！
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_desktop/battery-monitor-dlg.png" width="240" height="320" alt="キャプチャ画像" /><br />
+<a class="link_external" href="http://d.hatena.ne.jp/KOTETU/00000111/p1">Battery Monitor</a> のメッセージ・ボックス<br />「再起動ボタン」は押さない！
+</div>
+<div class="clear"></div>
+
+<h4>ファイル・エクスプローラ拡張</h4>
+
+<a href="http://www.geocities.co.jp/SiliconValley-Cupertino/2039/">File Explorer extension</a>で機能拡張した後は、「ショートカットの作成」などが出来るようになる。
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_desktop/explorer-contextmenu.png" width="240" height="320" alt="キャプチャ画像" /><br />
+コンテキスト・メニューには<br />ショートカット作成が表示されるようになる
+</div>
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_desktop/explorer-folderlist.png" width="240" height="320" alt="キャプチャ画像" /><br />
+フォルダ名をクリックすると<br />フォルダ・ツリーが表示されるようになる
+</div>
+<div class="clear"></div>
+
+<div class="fig_left" style="width:40%;">
+<img src="/other/mio168/pics_desktop/explorer-property.png" width="240" height="320" alt="キャプチャ画像" /><br />
+プロパティ設定では「読み取り専用属性」が<br />付けられるようになる
+</div>
+<div class="clear"></div>
+
+しかし、ショートカット作成やフォルダ・ツリーという当たり前の機能すら付いていない「マイクロソフト製品」の中途半端ときたら...
+
+&nbsp;
+
+<div class="link_right"><a class="link_return" href="http://oasis.halfmoon.jp/mw/index.php?title=PcInfo-Programming-ServerMaintenance-Menu">一つ前のメニューに戻る</a></div>
