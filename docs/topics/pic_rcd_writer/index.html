@@ -1,0 +1,399 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" dir="ltr" lang="ja">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="../../styles.css" type="text/css" />
+
+    <!-- disable viewport for mobile device -->
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
+
+    <title>ICピン配置図（個人的参考資料）</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="layout_header_menu">
+            <!-- page top menu line -->
+
+            <ul>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/index.shtml" target="_self">Home</a></li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/traveldia/index.html" target="_self">Travels</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub" href="http://www.youtube.com/user/inoue0111"
+                                target="_self">動画(YouTube)</a></li>
+                        <li><a class="new_sub_bottom" href="http://oasis-halfmoon.blogspot.com/"
+                                target="_self">編集前旅行記(Blogger)</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">Photo</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">All Page
+                                List</a></li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub_bottom" href="https://oasis.halfmoon.jp/about/index.html"
+                                target="_self">利用許諾条件</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="../../software/index.html" target="_self">Software</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="../../software/index.html" target="_self">Software Main Page</a>
+                        </li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/cgi-bin/websvn/"
+                                target="_self">Subversion</a></li>
+                        <li><a class="new_sub" href="https://github.com/oasis3855" target="_self">GitHub</a></li>
+                        <li><a class="new_sub_bottom" href="http://code.google.com/u/101092603816443690725/"
+                                target="_self">Google Code</a></li>
+                    </ul>
+                </li>
+                <li><a class="new" href="https://oasis.halfmoon.jp/links/index.html" target="_self">Links</a></li>
+            </ul>
+        </div>
+        <div id="layout_header_menu_line">
+            <!-- Horizonal Line (Menu) -->
+        </div>
+
+        <div id="main_content_full">
+            <!-- ********* CONTENTS START FROM HERE ********* -->
+
+            <h1>PICマイクロプロセッサ用 ファームウエア書き換え基板<br />&nbsp;&nbsp;&nbsp;RCDプログラマの製作</h1>
+
+            <p><a href="../../index.html">Home</a> &gt; <a href="../../software/index.html">Software</a> &gt; <a
+                    href="../../software/software_server_memo.html">ソフトウエア開発・サーバ管理のメモ帳</a> &gt; このページ</p>
+
+            <p style="text-align: right;">Created on 2005/03, Last Update 2012/01/27</p>
+
+            <div class="fig_center"><img src="./pics/pic-concept.jpg" width="200" height="133" alt="PIC IC イメージ" />
+            </div>
+
+            <div class="clear"></div>
+
+            <p>i486もZ80も良いですが、安価なPICにも手を伸ばして見ることにしました...</p>
+
+            <p>所要時間：情報収集1日、RCDライタ製作1時間、LEDテスト基板製作5分、LEDテストプログラム製作1時間。<br />
+                日曜日に初めてPICマイコンを購入し、部品類を集め基板を作り、今日（月曜日）このページを書いてます...</p>
+
+            <h3>市販されているフラッシュROM書き込み装置は...</h3>
+            2005年現在の情報...<br />
+
+            <h4>オフィシャルなプログラマ （メーカー製で確実）</h4>
+
+            <p>■ シリアル（RS-232C）接続<br />
+                <a class="link_external" href="http://www.microchip.co.jp/tools.html">マイクロチップ・テクノロジー PICSTART Plus</a>
+                （純正品、完成品 30,000円）<br />
+                <a class="link_external"
+                    href="http://akizukidenshi.com/catalog/items2.php?c=picw&amp;s=popularity&amp;p=1&amp;r=1&amp;page=#K-00038">秋月電子
+                    ＡＫＩ－ＰＩＣプログラマー</a> （組み立てキット。部品のみ販売 6,700円）
+            </p>
+
+            <p>■ パラレル（セントロニクス）接続<br />
+                <a class="link_external" href="http://www11.plala.or.jp/silicon/DATA/develop_picavr.html">シリコンハウス共立
+                    SK-PICW</a> （完成品 5,040円）
+            </p>
+
+            <h4>簡易プログラマ （個人的に作っているので、ＰＩＣ型番により動かない場合もあるらしい）</h4>
+
+            <p>■シリアル（RS-232C）接続<br />
+                <a class="link_external" href="http://www.jdm.homepage.dk/newpics.htm">JDMライタ</a> （JDM氏） → <a
+                    class="link_external" href="http://cgi.biwa.ne.jp/~jr3roc/pic/">日本語訳および改良</a> （jr3roc氏）<br />
+                <a class="link_external" href="http://feng3.cool.ne.jp/rcd/">RCDライタ</a> （feng3氏） ／ <a
+                    href="http://feng3.cool.ne.jp/rcd/">過電流保護付きRCDライタ</a> （feng3氏）
+            </p>
+
+            <p>■ パラレル接続<br />
+                <a class="link_external" href="http://ww1.microchip.com/downloads/en/AppNotes/00589a.pdf">AN589ライタ</a>
+                （マイクロチップ・テクノロジーの技術資料） → <a class="link_external" href="http://www.picfun.com/pic07.html">日本語訳</a>
+                （電子工作の実験室）<br />
+                <a class="link_external" href="http://einst.hp.infoseek.co.jp/PICer/picerJ.html">PICer ユーザーズ・マニュアル</a>
+                （Einstein氏）
+            </p>
+
+            <p>いずれも１０００円程度の材料で出来るそうです。</p>
+
+            <h3>RCDライタを製作してみた</h3>
+
+            <p>安価な小型 PIC 12F629 を使うために、RCDライタを作ってみました。確かに、部品を全部揃えても500円程度です。<br />
+                （在庫を使った部品もあるため、値段は参考価格）</p>
+
+            <table width="650px">
+                <tr>
+                    <th width="33%">名称</th>
+                    <th width="33%">型番・スペック</th>
+                    <th width="33%">参考価格</th>
+                </tr>
+                <tr>
+                    <td>炭素皮膜抵抗</td>
+                    <td>0.2k, 1/4W</td>
+                    <td>1 個 （@5 円）</td>
+                </tr>
+                <tr>
+                    <td>炭素皮膜抵抗</td>
+                    <td>1k, 1/4W</td>
+                    <td>1 個 （@5 円）</td>
+                </tr>
+                <tr>
+                    <td>炭素皮膜抵抗</td>
+                    <td>1.5k, 1/4W</td>
+                    <td>2 個 （@5 円×2）</td>
+                </tr>
+                <tr>
+                    <td>炭素皮膜抵抗</td>
+                    <td>10k, 1/4W</td>
+                    <td>1 個 （@5 円）</td>
+                </tr>
+                <tr>
+                    <td>可変抵抗</td>
+                    <td>10k, B特性</td>
+                    <td>1 個 （@40 円）</td>
+                </tr>
+                <tr>
+                    <td>ツェナー・ダイオード</td>
+                    <td>13V, 1/2W</td>
+                    <td>1 個 （@15 円）</td>
+                </tr>
+                <tr>
+                    <td>ツェナー・ダイオード</td>
+                    <td>5.1V, 1/2W</td>
+                    <td>1 個 （@15 円）</td>
+                </tr>
+                <tr>
+                    <td>汎用整流ダイオード</td>
+                    <td>(1S1588同等品) 1S2076A</td>
+                    <td>5 個 （@15 円×5）</td>
+                </tr>
+                <tr>
+                    <td>LED(発光ダイオード)</td>
+                    <td>2V, 20mA</td>
+                    <td>1 個 （@25 円）</td>
+                </tr>
+                <tr>
+                    <td>アルミ電解コンデンサ</td>
+                    <td>470uF, 16V</td>
+                    <td>1 個 （@30 円）</td>
+                </tr>
+                <tr>
+                    <td>積層セラミック・コンデンサ</td>
+                    <td>0.1uF, 50V</td>
+                    <td>1 個 （@20 円）</td>
+                </tr>
+                <tr>
+                    <td>ICソケット</td>
+                    <td>DIP 18pin用</td>
+                    <td>1 個 （@50 円）</td>
+                </tr>
+                <tr>
+                    <td>シリアルポート用ソケット</td>
+                    <td>EIA-574 メス</td>
+                    <td>1 個 （@150 円）</td>
+                </tr>
+                <tr>
+                    <td>ユニバーサル基板</td>
+                    <td>&nbsp;</td>
+                    <td>1 枚 （@85 円）</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>合計金額 530円</td>
+                </tr>
+            </table>
+
+            <p><a class="link_external" href="http://feng3.cool.ne.jp/rcd/">feng3氏のホームページ</a>より、過電流対策済みの回路図を参照して製作
+                （10kの可変抵抗は、7.5kで利用しました）</p>
+
+            <div class="fig_center">
+                <img src="./pics/rcdv2r3sch.gif" width="665" height="512" alt="回路図" /><br />
+                <img src="./pics/rcd-pgmr-inoueh.jpg" width="600" height="449" alt="作動試験中の写真" /><br />
+            </div>
+
+            <p>実装配置図も何も書かずに、左端の部品から適当にくっつけていったため、えらく間延びした基板になってしまいました。RCDプログラマ考案者のfeng3氏は、プリント基板を使ってもっとコンパクトにまとめておられます。これからRCDプログラマを作る人は、この写真のような『不恰好な』基板は作らないで欲しいという願いが込められています。
+            </p>
+
+            <h3>テスト用ＬＥＤ点滅基板</h3>
+
+            <p>PICの動作確認のため、テスト用基板を作ってみました。</p>
+
+            <table width="650px">
+                <tr>
+                    <th width="33%">名称</th>
+                    <th width="33%">型番・スペック</th>
+                    <th width="33%">参考価格</th>
+                </tr>
+                <tr>
+                    <td>PICマイコン</td>
+                    <td>PIC 12F629</td>
+                    <td>1 個 （@160 円）</td>
+                </tr>
+                <tr>
+                    <td>ICソケット</td>
+                    <td>DIP 18pin用</td>
+                    <td>1 個 （@50 円）</td>
+                </tr>
+                <tr>
+                    <td>炭素皮膜抵抗</td>
+                    <td>150, 1/4W</td>
+                    <td>1 個 （@5 円）</td>
+                </tr>
+                <tr>
+                    <td>LED(発光ダイオード)</td>
+                    <td>2V, 20mA</td>
+                    <td>1 個 （@25 円）</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>合計金額 240円</td>
+                </tr>
+            </table>
+
+            <div class="fig_center">
+                <img src="./pics/test-led-drw.png" width="386" height="169" alt="回路図" /><br />
+            </div>
+
+            <p>この回路を作動させるためのプログラムは、<a class="link_download" href="./download/12f629-led.asm">ここ（12f629-led.asm）</a>
+                からダウンロードできます。</p>
+
+            <h3>開発環境の入手</h3>
+
+            <p>アセンブラは、マイクロチップ・テクノロジーが無料で配布しています。</p>
+
+            <p>『 MPLAB IDE 』という統合開発環境です。（アセンブラもこの中に入っています）</p>
+
+            <p><a class="link_external" href="http://www.microchip.co.jp/download.html">日本のサイト</a> （アメリカのMPLAB
+                IDEへのリンクがあります）<br />
+                <a class="link_external"
+                    href="http://www.microchip.com/stellent/idcplg?IdcService=SS_GET_PAGE&amp;nodeId=81">アメリカのサイト（Development
+                    Tools Main Page）</a>
+            </p>
+
+            <p>使い方は、マイクロソフトのVisual Studioとほとんど同一です。プロジェクトを作成し、ASMファイルを取り込んで、コンパイルすればHEXファイルが完成します。</p>
+
+            <h3>フラッシュ・プログラムの入手</h3>
+
+            <p>IC-Prog（フリー・ソフトウエア）を利用して、PICへのプログラムの書き込み、PICからの読み込みが出来ます。</p>
+
+            <p><a class="link_external" href="http://www.ic-prog.com/">IC-Prog 開発元</a></p>
+
+            <p>日本語化するパッチは</p>
+
+            <p><a class="link_external" href="http://cgi.biwa.ne.jp/~jr3roc/pic/#icprogj">IC-Progの日本語化パッチ</a>
+                （ROC氏）（2010年現在リンク切れ）</p>
+
+            <h3>プログラムの書き込み</h3>
+
+            <p>IC-Progの初期設定</p>
+
+            <p><img src="./pics/000.png" width="338" height="284" alt="通信設定" /></p>
+
+            <p>プログラマ ＝ JDM プログラマ<br />
+                インターフェース ＝ ダイレクトI/O (私の環境では、Win2000, Win98の両方で確認)<br />
+                ポート ＝ RCDプログラマを接続したポート (私の環境では、USB-RS232Cコンバータでは動作しない)<br />
+                I/Oの遅延 ＝ 初期値どおり （10）</p>
+
+            <p>MPLAB IDE でコンパイルしたバイナリコード（HEXファイル）を、IC-Progで読み込みます。</p>
+
+            <p><img src="./pics/002.png" width="305" height="117" alt="警告表示" /></p>
+
+            <p>このような警告が出てきましたが、かまわずに進んで問題ありませんでした。</p>
+
+            <p>「コマンド」 － 「全てプログラム」 で書き込みを開始します。</p>
+
+            <p><img src="./pics/001.png" width="642" height="496" alt="書き込みダイアログ" /></p>
+
+            <p>以後、出てくるダイアログを貼り付けておきます。完了まで、およそ30秒くらいです。</p>
+
+            <p><img align="middle" src="./pics/003.png" width="271" height="117" alt="dlg" />&nbsp;→&nbsp;<img
+                    align="middle" src="./pics/004.png" width="230" height="142" alt="dlg" />&nbsp;→</p>
+
+            <p><img align="middle" src="./pics/005.png" width="349" height="114" alt="dlg" />&nbsp;→&nbsp;<img
+                    align="middle" src="./pics/006.png" width="230" height="142" alt="dlg" />&nbsp;→</p>
+
+            <p>校正値が見つからない場合 →「はい」を押す<br />
+                校正値○○○と出る場合 → 「いいえ」を押す</p>
+
+            <p><img align="middle" src="./pics/007.png" width="230" height="142" alt="dlg" />&nbsp;→&nbsp;<img
+                    align="middle" src="./pics/008.png" width="230" height="142" alt="dlg" />&nbsp;→</p>
+
+            <p><img align="middle" src="./pics/009.png" width="230" height="142" alt="dlg" />&nbsp;→&nbsp;<img
+                    align="middle" src="./pics/010.png" width="230" height="142" alt="dlg" />&nbsp;→</p>
+
+            <p><img align="middle" src="./pics/011.png" width="233" height="117" alt="dlg" /></p>
+
+            <p>※「オッシレータの校正値」は、購入したばかりの未書込みのPICを読み取って、プログラムアドレス 0x3ffにある値の事です。購入したときにちゃんと読み出しておかないと、「代用値を用いますか？ ＝
+                YES」で簡単に消去されてしまうようですので、要注意です。</p>
+
+            <p>プログラムを書き込んだPICを取り出して、テスト基板に取り付けて動作確認します。<br />
+                多分、動くはずです...</p>
+
+            <h3>参考リンク集</h3>
+
+            <p><a class="link_external" href="http://www.microchip.co.jp/">マイクロチップ・テクノロジー・ジャパン</a> ... PIC開発元<br />
+                <a class="link_external" href="http://www.microchip.com">Microchip Technology Inc USA</a> ...
+                PIC開発元、ツール類やリファレンスのダウンロードもここから<br />
+                <a class="link_external" href="http://www.picfun.com/index5.html">電子工作の実験室</a> （後閑氏） ...
+                PICだけでなく、電子部品や電子回路関連の説明が充実してます<br />
+                <a class="link_external" href="http://www.picfun.com/app00.html">ワンチップマイコン活用工作</a> ...
+                上記、電子工作の実験室の中のページ<br />
+                <a class="link_external" href="http://hobby_elec.piclist.com/menu.htm">趣味の電子工作</a> （井上氏） ...
+                PIC、電子工作の知識が学べます。PIC命令のリファレンスもここで入手可能<br />
+                <a class="link_external" href="http://feng3.cool.ne.jp/">FENG3氏のホームページ</a> ... JDM,
+                RCDプログラマに関する情報など<br />
+                <a class="link_external" href="http://www9.plala.or.jp/fsson/NewHP_elc/Link_nPIC.html">500円で始めるPIC</a>
+                ... 私がRCDライタを作ろうと思った、キッカケのサイトです （ありがとうございます）<br />
+                <a class="link_external" href="http://cgi.biwa.ne.jp/~jr3roc/kousaku.html">電子工作のコーナー</a> （ROC氏） ...
+                IC-Prog日本語化パッチ開発者（2010年現在リンク切れ）<br />
+                <a class="link_external" href="http://cai.cs.shinshu-u.ac.jp/sugsi/Lecture/picnic/">IT技術演習 （信州大学
+                    大学院）</a> ... 本当に、大学院の内容ですか。でも、次の解説のビデオは初心者には役立ちます<br />
+                <a class="link_external"
+                    href="http://cai.cs.shinshu-u.ac.jp/sugsi/Lecture/picnic/section5.html">周辺拡張オプションキットの製作</a> ...
+                最近の院生は... 動画で半田作業の解説<br />
+                <a class="link_external" href="http://scw.asahi-u.ac.jp/~sanozemi/Sakuhin/pic01/PIC01.html">PIC を使った、LED
+                    点灯回路の実験</a> （朝日大学） ... PIC12F629の基本情報も掲載されています<br />
+                <a class="link_external"
+                    href="http://scw.asahi-u.ac.jp/~sanozemi/Sakuhin/pic02/PIC02.html">PICと温度計モジュール</a> ...
+                RS232C経由でパソコンに温度情報を取り込む方法
+            </p>
+
+            <p>&nbsp;</p>
+
+            <!-- HTML本文ここまで（貼付ここまで） -->
+
+            <!-- ********* CONTENTS END AT THIS LINE ********* -->
+        </div>
+        <div id="layout_footer">
+            <div id="layout_footer_left">
+
+                <p style="text-align:left;"><a href="http://validator.w3.org/" target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/w3c-valid-xhtml10-pale.png" border="0"
+                            align="left" alt="Valid XHTML 1.0 Transitional" width="88" height="31" /></a>
+                    &nbsp;Last update on 22 July 2018<br />
+                    &nbsp;Powered by GitHub Pages<br clear="all" />
+                </p>
+            </div>
+
+            <div id="layout_footer_right">
+
+                <p style="text-align:right;"><a href="http://creativecommons.org/licenses/by-nc-nd/2.1/jp/"
+                        target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/creativecommons-by-nc-nd-pale.png" border="0"
+                            align="right" alt="Creative Commons Licence : Attribution-Noncommercial-No Derivative Works"
+                            width="88" height="31" /></a>
+                    <a href="/about/index.html" target="_self">Copyright (C) INOUE Hirokazu.</a>&nbsp;<br />For
+                    <i>commercial usage</i> ? See detail at <a href="/about/index.html"
+                        target="_self">HERE</a>.&nbsp;<br clear="all" />
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

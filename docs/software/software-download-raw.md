@@ -60,6 +60,7 @@
   - [ログデータ保存機能つきLCD表示温度計 (PIC 12F1822)](https://github.com/oasis3855/pic-program/blob/main/thermometer-12f1822) (2013/02/09)
   - [最低・最高温度記憶機能つきLCD表示温度計 (PIC 16F690)](https://github.com/oasis3855/pic-program/blob/main/thermometer-16f690) (2012/08/26)
 - [赤外線リモコンのエミュレーションのための送信回路サンプル](https://github.com/oasis3855/pic-ir-sender/)  (2024/07/15)
+- [PICマイクロプロセッサ用 ファームウエア書き換え基板 RCDプログラマの製作](https://oasis3855.github.io/webpage/topics/pic_rcd_writer/index.html)  (2005/03)
 
 <br />
 <br />
