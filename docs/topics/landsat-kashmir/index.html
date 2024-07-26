@@ -1,0 +1,332 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" dir="ltr" lang="ja">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="../../styles.css" type="text/css" />
+
+    <!-- disable viewport for mobile device -->
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
+
+    <title>LANDSAT衛星画像のカシミール3Dでの利用方法</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="layout_header_menu">
+            <!-- page top menu line -->
+
+            <ul>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/index.shtml" target="_self">Home</a></li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/traveldia/index.html" target="_self">Travels</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub" href="http://www.youtube.com/user/inoue0111"
+                                target="_self">動画(YouTube)</a></li>
+                        <li><a class="new_sub_bottom" href="http://oasis-halfmoon.blogspot.com/"
+                                target="_self">編集前旅行記(Blogger)</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">Photo</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">All Page
+                                List</a></li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub_bottom" href="https://oasis.halfmoon.jp/about/index.html"
+                                target="_self">利用許諾条件</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="../../software/index.html" target="_self">Software</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="../../software/index.html" target="_self">Software Main Page</a>
+                        </li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/cgi-bin/websvn/"
+                                target="_self">Subversion</a></li>
+                        <li><a class="new_sub" href="https://github.com/oasis3855" target="_self">GitHub</a></li>
+                        <li><a class="new_sub_bottom" href="http://code.google.com/u/101092603816443690725/"
+                                target="_self">Google Code</a></li>
+                    </ul>
+                </li>
+                <li><a class="new" href="https://oasis.halfmoon.jp/links/index.html" target="_self">Links</a></li>
+            </ul>
+        </div>
+        <div id="layout_header_menu_line">
+            <!-- Horizonal Line (Menu) -->
+        </div>
+
+        <div id="main_content_full">
+            <!-- ********* CONTENTS START FROM HERE ********* -->
+            <!-- HTML本文ここから（貼付ここから） -->
+
+            <h1>LANDSAT衛星画像のカシミール3Dでの利用方法</h1>
+
+            <p><a href="../../index.html">Home</a> &gt; <a href="../../software/index.html">Software</a> &gt; <a
+                    href="../../software/software_server_memo.html">ソフトウエア開発・サーバ管理のメモ帳</a> &gt; このページ</p>
+
+            <p style="text-align: right;">Created on 2002/04, Last Update 2004/10/15</p>
+
+            <p>&nbsp;</p>
+
+            <p>
+            <div style="text-align: center;"><img src="pics/landsat.png" width="207" height="114" /></div>
+            </p>
+
+            <p><br />
+                アメリカ合衆国の科学衛星「ランドサット（LANDSAT）」が高度700Kmから撮影した解像度30mの画像データが公開されています。この画像データと標高データ（SRTMまたはGTOPO30）をカシミール3Dという風景シミュレーターを用いて、旅先の風景を再現するための方法を説明します。
+            </p>
+
+            <p>シミュレーションの結果をまずご覧ください</p>
+
+            <div class="fig_center">
+                <img src="pics/landsat-santorini.jpg" alt=" " width="593" height="316"
+                    title="サントリーニ島（スィラ島）、ギリシア" /><br /><br />
+                サントリーニ島（スィラ島）、ギリシア<br />
+            </div>
+
+            <div class="fig_center">
+                <img src="pics/landsat-aletsch-gletscher.jpg" alt=" " width="593" height="316"
+                    title="アレッチ氷河とユングフラウ付近の山々、スイス" /><br /><br />
+                アレッチ氷河とユングフラウ付近の山々、スイス<br />
+            </div>
+
+            <div class="fig_center">
+                <img src="pics/landsat-mt-fuji.jpg" alt=" " width="593" height="316" title="富士山、日本" /><br /><br />
+                富士山、日本<br />
+            </div>
+
+            <h2>風景シミュレーションの概念</h2>
+
+            <div class="fig_center">
+                <img border="0" src="pics/landsat-concept.png" alt="concept" width="359" height="200"
+                    title="風景シミュレーションの概念" /><br />
+            </div>
+
+            <p>LANDSAT衛星画像を標高データの上に貼り付けて（マッピングして）実際の風景をシミュレートします。</p>
+
+            <h2>利用ソフト (Windows)</h2>
+
+            <ul>
+                <li>カシミール3D （地図ブラウザ、風景CG作成のためのフリーソフトウエア） <a class="link_external"
+                        href="http://www.kashmir3d.com/">http://www.kashmir3d.com/</a></li>
+                <li>ランドサット衛星画像（TM, ETM+ 専用） カシミール3D用プラグイン <a class="link_external"
+                        href="http://www.kashmir3d.com/landsat/">http://www.kashmir3d.com/landsat/</a></li>
+                <li>スペースシャトル・レーダー（SRTM） カシミール3D用プラグイン <a class="link_external"
+                        href="http://www.kashmir3d.com/srtm/">http://www.kashmir3d.com/srtm/</a></li>
+            </ul>
+
+            <h2>利用するデータ</h2>
+
+            <ul>
+                <li>ランドサット衛星画像（Global Land Cover Facility : Earth Science Data Interface ：ESDI）<a class="link_external"
+                        href="http://glcfapp.umiacs.umd.edu:8080/esdi/index.jsp">http://glcfapp.umiacs.umd.edu:8080/esdi/index.jsp</a>
+                </li>
+                <li>スペースシャトル・レーダー地形データ : SRTM <a class="link_external"
+                        href="ftp://edcsgs9.cr.usgs.gov/pub/data/srtm/">ftp://edcsgs9.cr.usgs.gov/pub/data/srtm/</a>
+                </li>
+                <li>GTOPO30 DEMデータ <a class="link_external"
+                        href="http://edcdaac.usgs.gov/gtopo30/gtopo30.asp">http://edcdaac.usgs.gov/gtopo30/gtopo30.asp</a>
+                </li>
+            </ul>
+
+            <h3>ダウンロード方法の簡単な説明</h3>
+
+            <h4>ランドサット衛星画像</h4>
+
+            <p>（１）メニュー「MAP SEARCH」をクリック</p>
+
+            <div class="fig_center">
+                <img src="pics/inst-landsat-1.png" alt=" " width="374" height="182" /><br />
+            </div>
+
+            <p>（２）左側ペインの「ETM+」と「TM」のチエックボックスをチェック<br />
+                （３）地図上のターゲット ポイントをクリックし拡大<br />
+                （４）地図ウインドウ情報にあるツール（ルーペや拡大縮小など）の「四角枠の選択ツール」をクリック<br />
+                （５）地図下に「Preview &amp; Download」と表示されるので、そこクリック<br />
+                （６）データセットのID番号をクリックするとプレビューエリアに縮小画像とターゲット地図が表示される</p>
+
+            <div class="fig_center">
+                <img src="pics/inst-landsat-2.png" alt=" " width="391" height="293" /><br />
+            </div>
+
+            <h4>スペースシャトル・レーダー地形データ SRTM</h4>
+
+            <p>（１）上記ftpサイトにアクセスする<br />
+                （２）大陸・地区のディレクトリを選択<br />
+                （３）緯度、経度のファイル名となっているので必要箇所をダウンロード<br />
+                ※ ターゲットの緯度、経度はあらかじめGTOPO30などで調べておくと便利</p>
+
+            <p>※注意事項<br />
+                ダウンロード高速化ツールなど同時ダウンロードするとブラックリストに載るようです。１個ずつおとなしくダウンロードしましょう。</p>
+
+            <h4>ランドサット衛星データの説明</h4>
+
+            <p>TMセンサー Thematic Mapper （LANDSAT 4号、5号）</p>
+
+            <table>
+                <tr>
+                    <td width="25%">SENSOR</td>
+                    <td width="25%">SPECTRAL RANGE (μm)</td>
+                    <td width="25%">Resolution (m)</td>
+                </tr>
+                <tr>
+                    <td width="25%">Band 1</td>
+                    <td width="25%">0.45～0.52 （青）</td>
+                    <td width="25%">30</td>
+                </tr>
+                <tr>
+                    <td width="25%">Band 2</td>
+                    <td width="25%">0.52～0.6 （緑）</td>
+                    <td width="25%">30</td>
+                </tr>
+                <tr>
+                    <td width="25%">Band 3</td>
+                    <td width="25%">0.63～0.69&nbsp; （赤）</td>
+                    <td width="25%">30</td>
+                </tr>
+                <tr>
+                    <td width="25%">Band 4</td>
+                    <td width="25%">0.76～0.9 （近赤外）</td>
+                    <td width="25%">30</td>
+                </tr>
+                <tr>
+                    <td width="25%">Band 5</td>
+                    <td width="25%">1.55～1.75 （近赤外）</td>
+                    <td width="25%">30</td>
+                </tr>
+                <tr>
+                    <td width="25%">Band 6</td>
+                    <td width="25%">10.4～12.5 （遠赤外）</td>
+                    <td width="25%">120</td>
+                </tr>
+                <tr>
+                    <td width="25%">Band 7</td>
+                    <td width="25%">2.08～2.35 （中間赤外）</td>
+                    <td width="25%">30</td>
+                </tr>
+            </table>
+
+            <p>ETMセンサー Enhanced Thematic Mapper （LANDSAT 6号）</p>
+
+            <p>ETM+センサー Enhanced Thematic Mapper Plus （LANDSAT 7号）</p>
+
+            <table>
+                <tr>
+                    <td width="25%">SENSOR</td>
+                    <td width="25%">SPECTRAL RANGE (μm)</td>
+                    <td width="25%">Resolution (m)</td>
+                </tr>
+                <tr>
+                    <td width="25%">Band 1</td>
+                    <td width="25%">0.45～0.515 （青）</td>
+                    <td width="25%">30</td>
+                </tr>
+                <tr>
+                    <td width="25%">Band 2</td>
+                    <td width="25%">0.525～0.605 （緑）</td>
+                    <td width="25%">30</td>
+                </tr>
+                <tr>
+                    <td width="25%">Band 3</td>
+                    <td width="25%">0.63～0.69&nbsp; （赤）</td>
+                    <td width="25%">30</td>
+                </tr>
+                <tr>
+                    <td width="25%">Band 4</td>
+                    <td width="25%">0.75～0.9 （近赤外）</td>
+                    <td width="25%">30</td>
+                </tr>
+                <tr>
+                    <td width="25%">Band 5</td>
+                    <td width="25%">1.55～1.75 （近赤外）</td>
+                    <td width="25%">30</td>
+                </tr>
+                <tr>
+                    <td width="25%">Band 6</td>
+                    <td width="25%">10.4～12.5 （遠赤外）</td>
+                    <td width="25%">60</td>
+                </tr>
+                <tr>
+                    <td width="25%">Band 7</td>
+                    <td width="25%">2.09～2.35 （中間赤外）</td>
+                    <td width="25%">30</td>
+                </tr>
+            </table>
+
+            <p>必要なデータだけダウンロードしてもいいのですが、フルセットでダウンロードしておくことをオススメします。</p>
+
+            <h2>具体的な使い方</h2>
+
+            <p>■ ランドサットデータの準備<br />
+                （１）ダウンロードしたランドサットデータの存在するフォルダをエクスプローラなどで開きます<br />
+                （２）*.met.txt と拡張子に余分な「.txt」が付いているものをはずします。（IEなどでダウンロードした場合）<br />
+                （３）圧縮ファイル（.gz）を解凍します。</p>
+
+            <p>■ SRTM（スペースシャトル・レーダー地形データ）の準備<br />
+                （１）ダウンロードしたファイル（*.hgt.zip）を解凍します<br />
+                （２）適当なフォルダを作り、地図として表示したい範囲のデータファイルを格納します<br />
+                ※ 同一フォルダの中のデータファイルは自動的に結合されてカシミール3Dで表示されます</p>
+
+            <p>■カシミール3Dでの準備<br />
+                ※ ランドサット用プラグイン、SRTM用プラグインはあらかじめ組み込んでおく<br />
+                （１）「ツール」 － 「ランドサット衛星画像」 － 「ランドサット衛星画像の変換」をクリック<br />
+                （２）ランドサットデータの存在するフォルダのメタファイル（たいていの場合 *.met）を選択<br />
+                （３）変換後のXEMファイルを保存するフォルダを選択して、変換開始<br />
+                ※ データ変換後、必要なファイルは *.xem のみです。ダウンロードしたランドサットデータは消去可能</p>
+
+            <p>計算中 ～ ワークステーションのスピードにより違いますが、30分程度は掛かります</p>
+
+            <p>（４）変換完了。変換した画像データを開きます。地図の位置がでたらめな位置（大抵は北緯0度、東経0度）になっているので、データの存在する範囲までジャンプする<br />
+                （５）「編集」 － 「標高データを重ねる」 をクリック。SRTMデータの存在するフォルダの適当な *.hgt ファイルを選択</p>
+
+            <p>標高データを持った衛星画像地図が画面に表示される</p>
+
+            <p>■ カシミール3Dでの風景CG（シミュレーション）作成<br />
+                （１）任意の視点位置で「カシバード」起動<br />
+                （２）「風景の設定」 － 「マッピング」で自動的にマッピングするを必ず選択。そのほかのオプションは任意で...<br />
+                （３）「設定」 － 「プレビュー（Direct3D設定）」で、「テクスチャ機能を使用する」をOFF<br />
+                ※ 私の常用環境下で「テクスチャ機能 ON」で DirectX プレビューするとプログラムが落ちました。巨大テクスチャを貼ることはできないのでしょう...</p>
+
+            <p>　<br />
+                アメリカの納税者に感謝しつつ、衛星画像によるシミュレーションを楽しみます...</p>
+
+            <p>&nbsp;</p>
+            <!-- HTML本文ここまで（貼付ここまで） -->
+
+            <!-- ********* CONTENTS END AT THIS LINE ********* -->
+        </div>
+        <div id="layout_footer">
+            <div id="layout_footer_left">
+
+                <p style="text-align:left;"><a href="http://validator.w3.org/" target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/w3c-valid-xhtml10-pale.png" border="0"
+                            align="left" alt="Valid XHTML 1.0 Transitional" width="88" height="31" /></a>
+                    &nbsp;Last update on 15 October 2004<br />
+                    &nbsp;Powered by GitHub Pages<br clear="all" />
+                </p>
+            </div>
+
+            <div id="layout_footer_right">
+
+                <p style="text-align:right;"><a href="http://creativecommons.org/licenses/by-nc-nd/2.1/jp/"
+                        target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/creativecommons-by-nc-nd-pale.png" border="0"
+                            align="right" alt="Creative Commons Licence : Attribution-Noncommercial-No Derivative Works"
+                            width="88" height="31" /></a>
+                    <a href="/about/index.html" target="_self">Copyright (C) INOUE Hirokazu.</a>&nbsp;<br />For
+                    <i>commercial usage</i> ? See detail at <a href="/about/index.html"
+                        target="_self">HERE</a>.&nbsp;<br clear="all" />
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

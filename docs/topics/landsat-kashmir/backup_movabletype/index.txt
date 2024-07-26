@@ -1,0 +1,213 @@
+<div id="layout_header" style="background-image: url('http://oasis.halfmoon.jp/other/kashmir/pics/landsat.png'); background-repeat: no-repeat; background-attachment: scroll; background-position: 0% 50%">
+<p><br />
+LANDSAT衛星画像の利用方法</p>
+</div>
+
+<div class="link_right"><a class="link_return" href="http://oasis.halfmoon.jp/mw/index.php?title=PcInfo-Programming-ServerMaintenance-Menu">一つ前のメニューに戻る</a></div>
+
+
+アメリカ合衆国の科学衛星「ランドサット（LANDSAT）」が高度700Kmから撮影した解像度30mの画像データが公開されています。この画像データと標高データ（SRTMまたはGTOPO30）をカシミール3Dという風景シミュレーターを用いて、旅先の風景を再現するための方法を説明します。
+
+シミュレーションの結果をまずご覧ください
+
+<div class="fig_center">
+<img src="pics/landsat-santorini.jpg" alt=" " width="593" height="316" title="サントリーニ島（スィラ島）、ギリシア" /><br/>
+サントリーニ島（スィラ島）、ギリシア
+</div>
+
+<div class="fig_center">
+<img src="pics/landsat-aletsch-gletscher.jpg" alt=" " width="593" height="316" title="アレッチ氷河とユングフラウ付近の山々、スイス" /><br />
+アレッチ氷河とユングフラウ付近の山々、スイス
+</div>
+
+<div class="fig_center">
+<img src="pics/landsat-mt-fuji.jpg" alt=" " width="593" height="316" title="富士山、日本" /><br />
+富士山、日本
+</div>
+
+<h2>風景シミュレーションの概念</h2>
+
+<div class="fig_center">
+<img border="0" src="pics/landsat-concept.png" alt="concept" width="359" height="200" title="風景シミュレーションの概念" />
+</div>
+
+LANDSAT衛星画像を標高データの上に貼り付けて（マッピングして）実際の風景をシミュレートします。
+
+<h2>利用ソフト (Windows)</h2>
+
+<ul>
+<li>カシミール3D （地図ブラウザ、風景CG作成のためのフリーソフトウエア） <a class="link_external" href="http://www.kashmir3d.com/">http://www.kashmir3d.com/</a></li>
+<li>ランドサット衛星画像（TM, ETM+ 専用） カシミール3D用プラグイン <a class="link_external" href="http://www.kashmir3d.com/landsat/">http://www.kashmir3d.com/landsat/</a></li>
+<li>スペースシャトル・レーダー（SRTM） カシミール3D用プラグイン <a class="link_external" href="http://www.kashmir3d.com/srtm/">http://www.kashmir3d.com/srtm/</a></li>
+</ul>
+
+<h2>利用するデータ</h2>
+
+<ul>
+<li>ランドサット衛星画像（Global Land Cover Facility : Earth Science Data Interface ：ESDI）<a class="link_external" href="http://glcfapp.umiacs.umd.edu:8080/esdi/index.jsp">http://glcfapp.umiacs.umd.edu:8080/esdi/index.jsp</a></li>
+<li>スペースシャトル・レーダー地形データ : SRTM <a class="link_external" href="ftp://edcsgs9.cr.usgs.gov/pub/data/srtm/">ftp://edcsgs9.cr.usgs.gov/pub/data/srtm/</a></li>
+<li>GTOPO30 DEMデータ <a class="link_external" href="http://edcdaac.usgs.gov/gtopo30/gtopo30.asp">http://edcdaac.usgs.gov/gtopo30/gtopo30.asp</a></li>
+</ul>
+
+<h3>ダウンロード方法の簡単な説明</h3>
+
+<h4>ランドサット衛星画像</h4>
+
+（１）メニュー「MAP SEARCH」をクリック
+
+<div class="fig_center">
+<img src="pics/inst-landsat-1.png" alt=" " width="374" height="182" />
+</div>
+
+（２）左側ペインの「ETM+」と「TM」のチエックボックスをチェック
+（３）地図上のターゲット ポイントをクリックし拡大
+（４）地図ウインドウ情報にあるツール（ルーペや拡大縮小など）の「四角枠の選択ツール」をクリック
+（５）地図下に「Preview &amp; Download」と表示されるので、そこクリック
+（６）データセットのID番号をクリックするとプレビューエリアに縮小画像とターゲット地図が表示される
+
+<div class="fig_center">
+<img src="pics/inst-landsat-2.png" alt=" " width="391" height="293" />
+</div>
+
+<h4>スペースシャトル・レーダー地形データ SRTM</h4>
+
+（１）上記ftpサイトにアクセスする
+（２）大陸・地区のディレクトリを選択
+（３）緯度、経度のファイル名となっているので必要箇所をダウンロード
+※ ターゲットの緯度、経度はあらかじめGTOPO30などで調べておくと便利
+
+※注意事項
+ダウンロード高速化ツールなど同時ダウンロードするとブラックリストに載るようです。１個ずつおとなしくダウンロードしましょう。
+
+<h4>ランドサット衛星データの説明</h4>
+
+TMセンサー Thematic Mapper （LANDSAT 4号、5号）
+
+<table>
+    <tr>
+        <td width="25%">SENSOR</td>
+        <td width="25%">SPECTRAL RANGE (μm)</td>
+        <td width="25%">Resolution (m)</td>
+    </tr>
+    <tr>
+        <td width="25%">Band 1</td>
+        <td width="25%">0.45～0.52 （青）</td>
+        <td width="25%">30</td>
+    </tr>
+    <tr>
+        <td width="25%">Band 2</td>
+        <td width="25%">0.52～0.6 （緑）</td>
+        <td width="25%">30</td>
+    </tr>
+    <tr>
+        <td width="25%">Band 3</td>
+        <td width="25%">0.63～0.69&nbsp; （赤）</td>
+        <td width="25%">30</td>
+    </tr>
+    <tr>
+        <td width="25%">Band 4</td>
+        <td width="25%">0.76～0.9 （近赤外）</td>
+        <td width="25%">30</td>
+    </tr>
+    <tr>
+        <td width="25%">Band 5</td>
+        <td width="25%">1.55～1.75 （近赤外）</td>
+        <td width="25%">30</td>
+    </tr>
+    <tr>
+        <td width="25%">Band 6</td>
+        <td width="25%">10.4～12.5 （遠赤外）</td>
+        <td width="25%">120</td>
+    </tr>
+    <tr>
+        <td width="25%">Band 7</td>
+        <td width="25%">2.08～2.35 （中間赤外）</td>
+        <td width="25%">30</td>
+    </tr>
+</table>
+
+ETMセンサー Enhanced Thematic Mapper （LANDSAT 6号）
+
+ETM+センサー Enhanced Thematic Mapper Plus （LANDSAT 7号）
+
+<table>
+    <tr>
+        <td width="25%">SENSOR</td>
+        <td width="25%">SPECTRAL RANGE (μm)</td>
+        <td width="25%">Resolution (m)</td>
+    </tr>
+    <tr>
+        <td width="25%">Band 1</td>
+        <td width="25%">0.45～0.515 （青）</td>
+        <td width="25%">30</td>
+    </tr>
+    <tr>
+        <td width="25%">Band 2</td>
+        <td width="25%">0.525～0.605 （緑）</td>
+        <td width="25%">30</td>
+    </tr>
+    <tr>
+        <td width="25%">Band 3</td>
+        <td width="25%">0.63～0.69&nbsp; （赤）</td>
+        <td width="25%">30</td>
+    </tr>
+    <tr>
+        <td width="25%">Band 4</td>
+        <td width="25%">0.75～0.9 （近赤外）</td>
+        <td width="25%">30</td>
+    </tr>
+    <tr>
+        <td width="25%">Band 5</td>
+        <td width="25%">1.55～1.75 （近赤外）</td>
+        <td width="25%">30</td>
+    </tr>
+    <tr>
+        <td width="25%">Band 6</td>
+        <td width="25%">10.4～12.5 （遠赤外）</td>
+        <td width="25%">60</td>
+    </tr>
+    <tr>
+        <td width="25%">Band 7</td>
+        <td width="25%">2.09～2.35 （中間赤外）</td>
+        <td width="25%">30</td>
+    </tr>
+</table>
+
+必要なデータだけダウンロードしてもいいのですが、フルセットでダウンロードしておくことをオススメします。
+
+<h2>具体的な使い方</h2>
+
+■ ランドサットデータの準備
+（１）ダウンロードしたランドサットデータの存在するフォルダをエクスプローラなどで開きます
+（２）*.met.txt と拡張子に余分な「.txt」が付いているものをはずします。（IEなどでダウンロードした場合）
+（３）圧縮ファイル（.gz）を解凍します。
+
+■ SRTM（スペースシャトル・レーダー地形データ）の準備
+（１）ダウンロードしたファイル（*.hgt.zip）を解凍します
+（２）適当なフォルダを作り、地図として表示したい範囲のデータファイルを格納します
+※ 同一フォルダの中のデータファイルは自動的に結合されてカシミール3Dで表示されます
+
+■カシミール3Dでの準備
+※ ランドサット用プラグイン、SRTM用プラグインはあらかじめ組み込んでおく
+（１）「ツール」 － 「ランドサット衛星画像」 － 「ランドサット衛星画像の変換」をクリック
+（２）ランドサットデータの存在するフォルダのメタファイル（たいていの場合 *.met）を選択
+（３）変換後のXEMファイルを保存するフォルダを選択して、変換開始
+※ データ変換後、必要なファイルは *.xem のみです。ダウンロードしたランドサットデータは消去可能
+
+計算中 ～ ワークステーションのスピードにより違いますが、30分程度は掛かります
+
+（４）変換完了。変換した画像データを開きます。地図の位置がでたらめな位置（大抵は北緯0度、東経0度）になっているので、データの存在する範囲までジャンプする
+（５）「編集」 － 「標高データを重ねる」 をクリック。SRTMデータの存在するフォルダの適当な *.hgt ファイルを選択
+
+標高データを持った衛星画像地図が画面に表示される
+
+■ カシミール3Dでの風景CG（シミュレーション）作成
+（１）任意の視点位置で「カシバード」起動
+（２）「風景の設定」 － 「マッピング」で自動的にマッピングするを必ず選択。そのほかのオプションは任意で...
+（３）「設定」 － 「プレビュー（Direct3D設定）」で、「テクスチャ機能を使用する」をOFF
+※ 私の常用環境下で「テクスチャ機能 ON」で DirectX プレビューするとプログラムが落ちました。巨大テクスチャを貼ることはできないのでしょう...
+
+　
+アメリカの納税者に感謝しつつ、衛星画像によるシミュレーションを楽しみます...
+
+<div class="link_right"><a class="link_return" href="http://oasis.halfmoon.jp/mw/index.php?title=PcInfo-Programming-ServerMaintenance-Menu">一つ前のメニューに戻る</a></div>
