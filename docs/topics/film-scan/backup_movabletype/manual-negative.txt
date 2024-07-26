@@ -1,0 +1,146 @@
+<h1>フィルムスキャナ考察 ： 手動で反転処理</h1>
+
+<div class="link_right"><a class="link_return" href="index.html">一つ前のメニューに戻る</a></div>
+
+<p><span style="background-color:yellow;">注意：このページは最終更新が2002年04月で、現在では利用できない情報の可能性があります。</span></p>
+
+ネガフィルムのRAWデータを手動で色調整するとどうなるか？ 利用した機材等は次のようなものです。
+
+<ul>
+<li>イメージスキャナ ： MINOLTA Dimage Scan Dual II</li>
+<li>ドライバ ： vuescan</li>
+<li>画像ソフト ： Photoshop</li>
+</ul>
+
+<h3>RAWデータとオレンジベース</h3>
+
+必要なコマを「ポジ」モードでスキャンします。（RAWデータが出力されるものでは、それを使う）
+
+また、何も映っていないフィルムの先頭などのオレンジ色の部分をスキャンして、これを「オレンジ・ベース」として保存します。
+
+オレンジ・ベースは演算に使うので、全面一色が好ましいです。全ピクセルの平均値の色で「塗りつぶし」た画像とします。（スキャンしたオレンジ・ベースに何度かソフトネス・フィルタやモーション・ブロワ・フィルタなどをかけて均質化し、スポイド・ツールで平均的なピクセルを吸い取って、その色で塗りつぶした画像を演算用のオレンジ・ベースとする）
+
+<div class="clear"></div>
+<div class="photo_left">
+<img src="nega-nega.jpg" width="384" height="259" alt=" " />
+<br />
+ネガ
+</div>
+
+<div class="clear"></div>
+<div class="photo_left">
+<img src="nega-orange.jpg" width="384" height="259" alt=" " />
+<br />
+オレンジ・ベース
+</div>
+
+<div class="clear"></div>
+
+<h3>演算「ネガ画像 － オレンジ・ベース」</h3>
+
+Photoshop の 「イメージ(Image)」メニューの「演算(Calculations)」を実行します。
+
+<img src="nega-substruat.gif" width="444" height="382" alt=" " />
+
+Source 1 に 「ネガ」、Source 2 に「オレンジ・ベース」を指定し、演算を「減算（Substract)」にします。
+
+チャンネルの「赤(R)」、「緑(G)」、「青(B)」のそれぞれで、この演算を行います。
+
+その結果は、アルファ・チャンネル３つにそれぞれ格納されます。
+
+<img src="nega-channel.gif" width="212" height="311" alt=" " />
+
+※ 重要
+
+演算後、次の演算に移る前に、必ずアルファ・チャンネルの選択をはずしてください。これをしないと、アルファ・チャンネルに対してさらに演算処理すると言うばかばかしいことが起こります。（左端の目のマークをＲＧＢ側に移す）
+
+<h3>不要なチャンネルの削除とアルファ・チャンネルの変換</h3>
+
+<div class="clear"></div>
+<div class="photo_right">
+<img src="nega-alpha.jpg" width="384" height="259" alt=" " />
+<br />
+アルファチャンネルを結合する前   (Multichannel)
+</div>
+
+３つのアルファ・チャンネル作成後、チャンネル・ウインドウで「赤(R)」、「緑(G)」、「青(B)」のチャンネルを削除します。（自動的に「RGB」という結合チャンネルも削除されます）
+
+その後、「イメージ(Image)」メニューの「モード(Mode)」を「RGB Color」にすると、自動的にチャンネルが結合され通常の画像となります。
+
+<div class="clear"></div>
+<div class="photo_right">
+<img src="nega-alpha-rgb.jpg" width="384" height="259" alt=" " />
+<br />
+アルファチャンネル結合後   (RGB Color)
+</div>
+
+<h3>色の調整</h3>
+
+ＲＧＢそれぞれの色を調整します。
+
+まず、「イメージ(Image)」メニューの「調整(Adjust)」の「レベル補正(Level)」で、可視領域の一部分に偏って格納されているデータを、全体的になるように調整します。
+具体的には、「チャンネル(Channel)」のＲ，Ｇ，Ｂそれぞれのヒストグラムを表示し、ヒストグラム値の「存在する」領域に入力ルーラー（黒三角や白三角のやつ）を持ってゆきます。
+
+<img src="nega-level1.gif" width="405" height="280" alt=" " />
+
+この結果、それなりの色の画像が出来上がります。が、かなり明るいです。（明るすぎます）
+さらに、レベル調整で暗くしてみます。（下のように設定します）
+
+<img src="nega-level2.gif" width="405" height="280" alt=" " />
+
+レベル調整の段階ごとの画像。
+
+最終的には、「汎用ドライバ vuescan」での取り込み結果とほぼ同レベルの結果が得られる。
+
+<div class="clear"></div>
+<div class="photo_left">
+<img src="nega-level1.jpg" width="384" height="259" alt=" " />
+<br />
+RGBの調整
+</div>
+
+<div class="clear"></div>
+<div class="photo_left">
+<img src="nega-level2.jpg" width="384" height="259" alt=" " />
+<br />
+明るすぎるので、少し暗くしてみる
+</div>
+<div class="clear"></div>
+
+<div class="clear"></div>
+<div class="photo_left">
+<img src="nega-level3.jpg" width="384" height="259" alt=" " />
+<br />
+レベル調整で、Rを少し調整。一応完成
+</div>
+
+<div class="clear"></div>
+<div class="photo_left">
+<img src="grk2-vue.jpg" width="384" height="257" alt=" " />
+<br />
+【比較用】汎用ドライバ vuescan の取り込み結果
+</div>
+<div class="clear"></div>
+
+<h3>試行錯誤の歴史（その他のネガ反転方法）</h3>
+
+オレンジ・ベースを減算処理する方法を取る前は、
+
+「イメージ(Image)」 -  「調整(Adjust)」 － 「反転(Invert)」を使って反転処理した画像をレベル調整していました。
+
+<div class="clear"></div>
+<div class="photo_left">
+<img src="nega-inv1.jpg" width="384" height="260" alt=" " />
+<br />
+ネガ・イメージを反転（invert) するとこの画像が得られる
+</div>
+
+<div class="clear"></div>
+<div class="photo_left">
+<img src="nega-inv2.jpg" width="384" height="260" alt=" " />
+<br />
+それなりのレベル補正をするとこのようになる
+</div>
+<div class="clear"></div>
+
+<div class="link_right"><a class="link_return" href="index.html">一つ前のメニューに戻る</a></div>

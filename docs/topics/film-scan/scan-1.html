@@ -1,0 +1,226 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" dir="ltr" lang="ja">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="../../styles.css" type="text/css" />
+
+    <!-- disable viewport for mobile device -->
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
+
+    <title>フィルムスキャナ考察 ネガフィルムの取り込み</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="layout_header_menu">
+            <!-- page top menu line -->
+
+            <ul>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/index.shtml" target="_self">Home</a></li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/traveldia/index.html" target="_self">Travels</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub" href="http://www.youtube.com/user/inoue0111"
+                                target="_self">動画(YouTube)</a></li>
+                        <li><a class="new_sub_bottom" href="http://oasis-halfmoon.blogspot.com/"
+                                target="_self">編集前旅行記(Blogger)</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">Photo</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">All Page
+                                List</a></li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub_bottom" href="https://oasis.halfmoon.jp/about/index.html"
+                                target="_self">利用許諾条件</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="../../software/index.html" target="_self">Software</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="../../software/index.html" target="_self">Software Main Page</a>
+                        </li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/cgi-bin/websvn/"
+                                target="_self">Subversion</a></li>
+                        <li><a class="new_sub" href="https://github.com/oasis3855" target="_self">GitHub</a></li>
+                        <li><a class="new_sub_bottom" href="http://code.google.com/u/101092603816443690725/"
+                                target="_self">Google Code</a></li>
+                    </ul>
+                </li>
+                <li><a class="new" href="https://oasis.halfmoon.jp/links/index.html" target="_self">Links</a></li>
+            </ul>
+        </div>
+        <div id="layout_header_menu_line">
+            <!-- Horizonal Line (Menu) -->
+        </div>
+
+        <div id="main_content_full">
+            <!-- ********* CONTENTS START FROM HERE ********* -->
+            <!-- HTML本文ここから（貼付ここから） -->
+
+            <h1>フィルムスキャナ考察 ： ネガフィルムの取り込み</h1>
+
+            <p><a href="../../index.html">Home</a> &gt; <a href="../../software/index.html">Software</a> &gt; <a
+                    href="../../software/software_server_memo.html">ソフトウエア開発・サーバ管理のメモ帳</a> &gt; このページ</p>
+
+            <p style="text-align: right;">Created on 2002/04, Last Update 2004/10/15</p>
+
+            <table>
+                <caption>もくじ</caption>
+                <tr>
+                    <td><a href="./index.html">概要</a><br /><a href="./scanner-config.html">スキャナドライバの設定</a><br /><a
+                            href="./scan-1.html">スキャン実例（晴天日）</a><br /><a
+                            href="./scan-2.html">スキャン実例（曇天日・建物内）</a><br /><a href="./manual-negative.html">手動でネガ反転処理</a>
+                    </td>
+                </tr>
+            </table>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p><span style="background-color:yellow;">注意：このページは最終更新が2002年04月で、現在では利用できない情報の可能性があります。</span></p>
+
+            <h2>晴天日の景色取り込み（石垣造りの城壁）</h2>
+
+            <p>ギリシアのロドス島旧市街のセント・アタナシウス門の写真です。利用したフィルムはKODAK GOLD 400（ネガ フィルム）。</p>
+
+            <p>基準となるスキャン結果をPhotoCDにしたいのですが、読み取るソフトや設定でまったく違う色になります。<br />
+                ここでは、PhotoshopでNegativeモードにして取り込んだ画像が「最も忠実な色再現をしている」と考えることとします（私自身も、あの場所ではそういう色だったと思うため）。</p>
+
+            <p>フィルムから取り込んだものは、汎用ドライバ「vuescan」のものが最もよい結果なのではないでしょうか。できることなら、WhitePointをさらに0.1程度下げるか、Brightnessをさらに0.1ほど下げたほうが、ぎらつきがなくなると思います（個人的には、WhitePointをさらに0.1下げるのがよいと思う）。
+            </p>
+
+            <p>空の部分のクローズアップを見ると、フィルム スキャナでの取り込み結果とPhotoCDの間で、ずいぶん粒状感が違うなと思います。やはり、プロ機材で取り込んだPhotoCDに軍配が上がりますね。（Dimage
+                Scan Dual II でマルチパスのスキャンを行うと、うまくいかない）</p>
+
+            <p><img border="0" src="./pics/grk1-min.jpg" width="384" height="260" alt="" /> <img border="0"
+                    src="./pics/grk1-min-up.jpg" width="384" height="256" alt="" /><br />
+                Dimage Scan Dual II 純正TWAINドライバ（スキャン毎AF, sRGB, 2820dpi）</p>
+
+            <p><br />
+                <img border="0" src="./pics/grk1-vue.jpg" width="384" height="259" alt="" /> <img border="0"
+                    src="./pics/grk1-vue-up.jpg" width="384" height="256" alt="" /><br />
+                vuescan（24bit BlackPoint=3, WhitePoint=0.4, Bright=0.6, Kodak Gold 400G1, sRGB, 2820dpi）
+            </p>
+
+            <p><br />
+                <img border="0" src="./pics/grk1-pcd.jpg" width="384" height="256" alt="" /> <img border="0"
+                    src="./pics/grk1-pcd-up.jpg" width="384" height="256" alt="" /><br />
+                PhotoCD (Paint Shop Proで読み込み)
+            </p>
+
+            <p><br />
+                <img border="0" src="./pics/grk1-pcd-pneg.jpg" width="384" height="256" alt="" /> <img border="0"
+                    src="./pics/grk1-pcd-pneg-up.jpg" width="384" height="256" alt="" /><br />
+                PhotoCD (Photoshopで読み込み。Negativeモード)
+            </p>
+
+            <p><br />
+                <img border="0" src="./pics/grk1-pcd-pycc.jpg" width="384" height="256" alt="" /> <img border="0"
+                    src="./pics/grk1-pcd-pycc-up.jpg" width="384" height="256" alt="" /><br />
+                PhotoCD (Photoshopで読み込み。Photo YCCモード)
+            </p>
+
+            <h2>晴天日の景色取り込み（青空と海、白い家）</h2>
+
+            <p>ギリシアのロドス島リンドスの景色です。</p>
+
+            <p>これも、PhotoCDがオリジナルの色に近いとすれば、やはり、vuescan がマトモにスキャンできているのではないでしょうか。「石垣造りの城壁」のスキャン結果の経験を踏まえ、WhitePoint = 0.3
+                としています。</p>
+
+            <p>クローズアップ写真を見て分かることは、「純正TWAINドライバ」では右の扉にあるスリットがぼんやりしてますが、「汎用ドライバ
+                vuescan」ではスリットがちゃんと分解されて表示されています。同じスキャナを使っていて、これだけ差が出るのは不思議です。vuescanがシャープネス処理やアン・シャープマスクを「こそっと」かけているのかと疑ってみました。が、一番下につけておいたRAWデータでもちゃんと表示されているところを見ると、「純正TWAINドライバ」が、粒状感を減らすために「こそっと」ソフトネス・フィルタをかけていることが分かります。
+            </p>
+
+            <p>「汎用ドライバ vuescan」のクローズアップの船のところに、「ホコリ」がのっています。安物スキャナはホコリ取りのための赤外線モードを持っていないので、せっせと手で取らないといけません。</p>
+
+            <p><img border="0" src="./pics/grk2-min.jpg" width="384" height="257" alt="" /> <img border="0"
+                    src="./pics/grk2-min-up.jpg" width="384" height="256" alt="" /><br />
+                Dimage Scan Dual II 純正TWAINドライバ（スキャン毎AF, sRGB, 2820dpi）</p>
+
+            <p><br />
+                <img border="0" src="./pics/grk2-vue.jpg" width="384" height="257" alt="" /> <img border="0"
+                    src="./pics/grk2-vue-up.jpg" width="384" height="256" alt="" /><br />
+                vuescan（24bit BlackPoint=3, WhitePoint=0.3, Bright=0.6, Kodak Gold 400G1, sRGB, 2820dpi）
+            </p>
+
+            <p><br />
+                <img border="0" src="./pics/grk2-pcd.jpg" width="384" height="256" alt="" /> <img border="0"
+                    src="./pics/grk2-pcd-up.jpg" width="384" height="256" alt="" /><br />
+                PhotoCD (Photoshopで読み込み。Negativeモード)
+            </p>
+
+            <p><img border="0" src="./pics/grk2-vue-raw.jpg" width="135" height="279" alt="" /><br />
+                vuescan 扉の部分のRAWデータ</p>
+
+            <h2>晴天日の景色取り込み（日陰のある景色）</h2>
+
+            <p>ギリシアのロドス島旧市街の路地写真です。</p>
+
+            <p>３種類がほとんど同じに見えます。取り込みやすい画像なのでしょうか。</p>
+
+            <p>その中で、「純正TWAINドライバ」の左側に茂っている葉っぱの色が、「プラスチックの模造品」のようになっているので、やはりおかしいですね。</p>
+
+            <p>クローズアップでは、ハイライト部分とシャドウ部分の両方を切り取ってきましたが、どのスキャン結果でもまあまあ取り込めているのではないでしょうか。クローズアップの右側では、PhotoCDが他を凌いでいると見えますね。
+            </p>
+
+            <p><img border="0" src="./pics/grk3-min.jpg" width="256" height="383" alt="" /> <img border="0"
+                    src="./pics/grk3-min-up.jpg" width="384" height="256" alt="" /><br />
+                Dimage Scan Dual II 純正TWAINドライバ（スキャン毎AF, sRGB, 2820dpi）</p>
+
+            <p><br />
+                <img border="0" src="./pics/grk3-vue.jpg" width="257" height="378" alt="" /> <img border="0"
+                    src="./pics/grk3-vue-up.jpg" width="384" height="256" alt="" /><br />
+                vuescan（24bit BlackPoint=3, WhitePoint=0.3, Bright=0.6, Kodak Gold 400G1, sRGB, 2820dpi）
+            </p>
+
+            <p><br />
+                <img border="0" src="./pics/grk3-pcd.jpg" width="256" height="384" alt="" /> <img border="0"
+                    src="./pics/grk3-pcd-up.jpg" width="384" height="256" alt="" /><br />
+                PhotoCD (Photoshopで読み込み。Negativeモード)
+            </p>
+
+            <p>&nbsp;</p>
+            <!-- HTML本文ここまで（貼付ここまで） -->
+
+            <!-- ********* CONTENTS END AT THIS LINE ********* -->
+        </div>
+        <div id="layout_footer">
+            <div id="layout_footer_left">
+
+                <p style="text-align:left;"><a href="http://validator.w3.org/" target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/w3c-valid-xhtml10-pale.png" border="0"
+                            align="left" alt="Valid XHTML 1.0 Transitional" width="88" height="31" /></a>
+                    &nbsp;Last update on 15 October 2004<br />
+                    &nbsp;Powered by GitHub Pages<br clear="all" />
+                </p>
+            </div>
+
+            <div id="layout_footer_right">
+
+                <p style="text-align:right;"><a href="http://creativecommons.org/licenses/by-nc-nd/2.1/jp/"
+                        target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/creativecommons-by-nc-nd-pale.png" border="0"
+                            align="right" alt="Creative Commons Licence : Attribution-Noncommercial-No Derivative Works"
+                            width="88" height="31" /></a>
+                    <a href="/about/index.html" target="_self">Copyright (C) INOUE Hirokazu.</a>&nbsp;<br />For
+                    <i>commercial usage</i> ? See detail at <a href="/about/index.html"
+                        target="_self">HERE</a>.&nbsp;<br clear="all" />
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

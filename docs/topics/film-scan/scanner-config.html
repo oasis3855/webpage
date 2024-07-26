@@ -1,0 +1,245 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" dir="ltr" lang="ja">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="../../styles.css" type="text/css" />
+
+    <!-- disable viewport for mobile device -->
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
+
+    <title>フィルムスキャナ考察 ネガフィルムの取り込み</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="layout_header_menu">
+            <!-- page top menu line -->
+
+            <ul>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/index.shtml" target="_self">Home</a></li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/traveldia/index.html" target="_self">Travels</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub" href="http://www.youtube.com/user/inoue0111"
+                                target="_self">動画(YouTube)</a></li>
+                        <li><a class="new_sub_bottom" href="http://oasis-halfmoon.blogspot.com/"
+                                target="_self">編集前旅行記(Blogger)</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">Photo</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">All Page
+                                List</a></li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub_bottom" href="https://oasis.halfmoon.jp/about/index.html"
+                                target="_self">利用許諾条件</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="../../software/index.html" target="_self">Software</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="../../software/index.html" target="_self">Software Main Page</a>
+                        </li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/cgi-bin/websvn/"
+                                target="_self">Subversion</a></li>
+                        <li><a class="new_sub" href="https://github.com/oasis3855" target="_self">GitHub</a></li>
+                        <li><a class="new_sub_bottom" href="http://code.google.com/u/101092603816443690725/"
+                                target="_self">Google Code</a></li>
+                    </ul>
+                </li>
+                <li><a class="new" href="https://oasis.halfmoon.jp/links/index.html" target="_self">Links</a></li>
+            </ul>
+        </div>
+        <div id="layout_header_menu_line">
+            <!-- Horizonal Line (Menu) -->
+        </div>
+
+        <div id="main_content_full">
+            <!-- ********* CONTENTS START FROM HERE ********* -->
+            <!-- HTML本文ここから（貼付ここから） -->
+
+            <h1>フィルムスキャナ考察 ： ネガフィルムの取り込み</h1>
+
+            <p><a href="../../index.html">Home</a> &gt; <a href="../../software/index.html">Software</a> &gt; <a
+                    href="../../software/software_server_memo.html">ソフトウエア開発・サーバ管理のメモ帳</a> &gt; このページ</p>
+
+            <p style="text-align: right;">Created on 2002/04, Last Update 2004/10/15</p>
+
+            <table>
+                <caption>もくじ</caption>
+                <tr>
+                    <td><a href="./index.html">概要</a><br /><a href="./scanner-config.html">スキャナドライバの設定</a><br /><a
+                            href="./scan-1.html">スキャン実例（晴天日）</a><br /><a
+                            href="./scan-2.html">スキャン実例（曇天日・建物内）</a><br /><a href="./manual-negative.html">手動でネガ反転処理</a>
+                    </td>
+                </tr>
+            </table>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p><span style="background-color:yellow;">注意：このページは最終更新が2002年04月で、現在では利用できない情報の可能性があります。</span></p>
+
+            <h4>MINOLTA Dimage Scan Dual IIの概略仕様</h4>
+
+            <table>
+                <tr>
+                    <td>型式</td>
+                    <td>Dimage Scan Dual II, AF-2820U</td>
+                </tr>
+                <tr>
+                    <td>取り込みメディア</td>
+                    <td>35mmスリーブ, 35mmリバーサル用マウント, APS<br /><br />
+                        スリーブは連続8枚長、マウントは４枚装填可</td>
+                </tr>
+                <tr>
+                    <td>光学解像度と取り込みサイズ</td>
+                    <td>2820 dpi, 2688 × 4032 ピクセル （35mmフィルムの場合）</td>
+                </tr>
+                <tr>
+                    <td>入力</td>
+                    <td>12 bit</td>
+                </tr>
+                <tr>
+                    <td>出力</td>
+                    <td>8 bit または 16 bit</td>
+                </tr>
+                <tr>
+                    <td>イメージ・センサー</td>
+                    <td>CCD (RGB 3ライン カラーCCD)</td>
+                </tr>
+                <tr>
+                    <td>光源</td>
+                    <td>３波長蛍光管</td>
+                </tr>
+                <tr>
+                    <td>インターフェース</td>
+                    <td>USB 1.1</td>
+                </tr>
+                <tr>
+                    <td>ホコリ取り機能</td>
+                    <td>なし</td>
+                </tr>
+            </table>
+
+            <p>写真1枚あたりの取り込み時間比較</p>
+
+            <ul>
+                <li>純正TWAINドライバ：約5分15秒「オートフォーカス → 露出調整 → 本スキャン」</li>
+                <li>vuescan：約3分5秒「プレビュー → オートフォーカス → 本スキャン → TIFF or RAW保存」</li>
+            </ul>
+
+            <h2>純正TWAINドライバ</h2>
+
+            <p>スキャナに付属しているMINOLTAの標準ドライバです。画像ソフトからTWAINデータ ソースとして画像をキャプチャ出来ます。ネガの取り込みは「露出アンダー」に出やすいため、レベル調整などが必要かもしれません。
+            </p>
+
+            <h4>画像取り込みダイアログ</h4>
+
+            <ul>
+                <li>ネガ/ポジ設定はこのダイアログを閉じるとリセットされるため、毎回確認が必要</li>
+                <li>解像度をコマごとで変えてスキャンした後、次回の取り込み時に解像度設定が残ったままになっているので確認が必要</li>
+            </ul>
+
+            <p><img border="0" src="./pics/min-1.gif" width="620" height="460" alt="" /></p>
+
+            <h4>環境設定</h4>
+
+            <ul>
+                <li>画像取り込みダイアログを閉じるとリセットされるため、毎回設定しなおす必要がある</li>
+            </ul>
+
+            <p><img border="0" src="./pics/min-2.gif" width="410" height="381" alt="" /></p>
+
+            <h2>vuescan</h2>
+
+            <p>汎用ドライバ（シェアウエア）。純正TWAINドライバに比べて設定できる項目が多い。</p>
+
+            <p>基本的には前回（終了時）の設定が引き継がれていますが、ディスク モードやスキャナ
+                モードの違い、スキャナ機種を変更したりすると設定が変わっていることもあるので、毎回全ての設定をチェックするか、設定ファイルを読み込む。</p>
+
+            <h4>Device設定</h4>
+
+            <ul>
+                <li>Scan From は スキャナ名またはファイルから読込(RAW)を指定</li>
+                <li>Scan Mode が Film , Slide など適切に選択されているか</li>
+                <li>Media Type が ネガ/ポジ選択されているか</li>
+                <li>Batch Scan には スキャンしたいコマをスペースで区切って指定</li>
+                <li>Scan Resolution は 意図した解像度か</li>
+                <li>Auto Focus は これでよいか</li>
+            </ul>
+
+            <p><img border="0" src="./pics/vue-1.gif" width="338" height="587" alt="" /></p>
+
+            <h4>Crop設定</h4>
+
+            <ul>
+                <li>Size, Region は Auto なのか 手動なのか （通常はAutoで問題なし）</li>
+            </ul>
+
+            <p><img border="0" src="./pics/vue-2.gif" width="336" height="302" alt="" /></p>
+
+            <h4>Color設定</h4>
+
+            <ul>
+                <li>Color Balance は White Balance でよいか。蛍光灯下ではFluorescent(蛍光灯)にする</li>
+                <li>Black Pointは標準的には3だが、これでよいか。vuescanデフォルトは 1.5</li>
+                <li>White Piointは標準的には0.4だが、これでよいか。vuescanデフォルトは 1.0</li>
+                <li>Brightnessは得たい画像の明るさにあわせる。標準的には 0.6～0.8</li>
+                <li>フィルムの設定は、これであっているか？ エマルジョンによって違ってくるので Gen *** は試行錯誤であわせる</li>
+            </ul>
+
+            <p><img border="0" src="./pics/vue-3.gif" width="336" height="419" alt="" /></p>
+
+            <h4>File設定</h4>
+
+            <ul>
+                <li>TIFFとRAWのファイルを書き出すだけでよいか。圧縮はするのか</li>
+            </ul>
+
+            <p><img border="0" src="./pics/vue-4.gif" width="336" height="524" alt="" /></p>
+
+            <p>&nbsp;</p>
+            <!-- HTML本文ここまで（貼付ここまで） -->
+
+            <!-- ********* CONTENTS END AT THIS LINE ********* -->
+        </div>
+        <div id="layout_footer">
+            <div id="layout_footer_left">
+
+                <p style="text-align:left;"><a href="http://validator.w3.org/" target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/w3c-valid-xhtml10-pale.png" border="0"
+                            align="left" alt="Valid XHTML 1.0 Transitional" width="88" height="31" /></a>
+                    &nbsp;Last update on 15 October 2004<br />
+                    &nbsp;Powered by GitHub Pages<br clear="all" />
+                </p>
+            </div>
+
+            <div id="layout_footer_right">
+
+                <p style="text-align:right;"><a href="http://creativecommons.org/licenses/by-nc-nd/2.1/jp/"
+                        target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/creativecommons-by-nc-nd-pale.png" border="0"
+                            align="right" alt="Creative Commons Licence : Attribution-Noncommercial-No Derivative Works"
+                            width="88" height="31" /></a>
+                    <a href="/about/index.html" target="_self">Copyright (C) INOUE Hirokazu.</a>&nbsp;<br />For
+                    <i>commercial usage</i> ? See detail at <a href="/about/index.html"
+                        target="_self">HERE</a>.&nbsp;<br clear="all" />
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

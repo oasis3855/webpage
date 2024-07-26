@@ -1,0 +1,267 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" dir="ltr" lang="ja">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="../../styles.css" type="text/css" />
+
+    <!-- disable viewport for mobile device -->
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
+
+    <title>フィルムスキャナ考察 ネガフィルムの取り込み</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="layout_header_menu">
+            <!-- page top menu line -->
+
+            <ul>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/index.shtml" target="_self">Home</a></li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/traveldia/index.html" target="_self">Travels</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub" href="http://www.youtube.com/user/inoue0111"
+                                target="_self">動画(YouTube)</a></li>
+                        <li><a class="new_sub_bottom" href="http://oasis-halfmoon.blogspot.com/"
+                                target="_self">編集前旅行記(Blogger)</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">Photo</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/photo/index.html" target="_self">All Page
+                                List</a></li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/index.html"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub_bottom" href="https://oasis.halfmoon.jp/about/index.html"
+                                target="_self">利用許諾条件</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="../../software/index.html" target="_self">Software</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="../../software/index.html" target="_self">Software Main Page</a>
+                        </li>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/cgi-bin/websvn/"
+                                target="_self">Subversion</a></li>
+                        <li><a class="new_sub" href="https://github.com/oasis3855" target="_self">GitHub</a></li>
+                        <li><a class="new_sub_bottom" href="http://code.google.com/u/101092603816443690725/"
+                                target="_self">Google Code</a></li>
+                    </ul>
+                </li>
+                <li><a class="new" href="https://oasis.halfmoon.jp/links/index.html" target="_self">Links</a></li>
+            </ul>
+        </div>
+        <div id="layout_header_menu_line">
+            <!-- Horizonal Line (Menu) -->
+        </div>
+
+        <div id="main_content_full">
+            <!-- ********* CONTENTS START FROM HERE ********* -->
+            <!-- HTML本文ここから（貼付ここから） -->
+
+            <h1>フィルムスキャナ考察 ： ネガフィルムの取り込み</h1>
+
+            <p><a href="../../index.html">Home</a> &gt; <a href="../../software/index.html">Software</a> &gt; <a
+                    href="../../software/software_server_memo.html">ソフトウエア開発・サーバ管理のメモ帳</a> &gt; このページ</p>
+
+            <p style="text-align: right;">Created on 2002/04, Last Update 2004/10/15</p>
+
+            <table>
+                <caption>もくじ</caption>
+                <tr>
+                    <td><a href="./index.html">概要</a><br /><a href="./scanner-config.html">スキャナドライバの設定</a><br /><a
+                            href="./scan-1.html">スキャン実例（晴天日）</a><br /><a
+                            href="./scan-2.html">スキャン実例（曇天日・建物内）</a><br /><a href="./manual-negative.html">手動でネガ反転処理</a>
+                    </td>
+                </tr>
+            </table>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p>&nbsp;</p>
+
+            <p><span style="background-color:yellow;">注意：このページは最終更新が2002年04月で、現在では利用できない情報の可能性があります。</span></p>
+
+            <p>ネガフィルムのRAWデータを手動で色調整するとどうなるか？ 利用した機材等は次のようなものです。</p>
+
+            <ul>
+                <li>イメージスキャナ ： MINOLTA Dimage Scan Dual II</li>
+                <li>ドライバ ： vuescan</li>
+                <li>画像ソフト ： Photoshop</li>
+            </ul>
+
+            <h3>RAWデータとオレンジベース</h3>
+
+            <p>必要なコマを「ポジ」モードでスキャンします。（RAWデータが出力されるものでは、それを使う）</p>
+
+            <p>また、何も映っていないフィルムの先頭などのオレンジ色の部分をスキャンして、これを「オレンジ・ベース」として保存します。</p>
+
+            <p>オレンジ・ベースは演算に使うので、全面一色が好ましいです。全ピクセルの平均値の色で「塗りつぶし」た画像とします。（スキャンしたオレンジ・ベースに何度かソフトネス・フィルタやモーション・ブロワ・フィルタなどをかけて均質化し、スポイド・ツールで平均的なピクセルを吸い取って、その色で塗りつぶした画像を演算用のオレンジ・ベースとする）
+            </p>
+
+            <div class="clear"></div>
+            <div class="photo_left">
+                <img src="./pics/nega-nega.jpg" width="384" height="259" alt=" " /><br />
+                <br /><br />
+                ネガ<br />
+            </div>
+
+            <div class="clear"></div>
+            <div class="photo_left">
+                <img src="./pics/nega-orange.jpg" width="384" height="259" alt=" " /><br />
+                <br /><br />
+                オレンジ・ベース<br />
+            </div>
+
+            <div class="clear"></div>
+
+            <h3>演算「ネガ画像 － オレンジ・ベース」</h3>
+
+            <p>Photoshop の 「イメージ(Image)」メニューの「演算(Calculations)」を実行します。</p>
+
+            <p><img src="./pics/nega-substruat.gif" width="444" height="382" alt=" " /></p>
+
+            <p>Source 1 に 「ネガ」、Source 2 に「オレンジ・ベース」を指定し、演算を「減算（Substract)」にします。</p>
+
+            <p>チャンネルの「赤(R)」、「緑(G)」、「青(B)」のそれぞれで、この演算を行います。</p>
+
+            <p>その結果は、アルファ・チャンネル３つにそれぞれ格納されます。</p>
+
+            <p><img src="./pics/nega-channel.gif" width="212" height="311" alt=" " /></p>
+
+            <p>※ 重要</p>
+
+            <p>演算後、次の演算に移る前に、必ずアルファ・チャンネルの選択をはずしてください。これをしないと、アルファ・チャンネルに対してさらに演算処理すると言うばかばかしいことが起こります。（左端の目のマークをＲＧＢ側に移す）
+            </p>
+
+            <h3>不要なチャンネルの削除とアルファ・チャンネルの変換</h3>
+
+            <div class="clear"></div>
+            <div class="photo_right">
+                <img src="./pics/nega-alpha.jpg" width="384" height="259" alt=" " /><br />
+                <br /><br />
+                アルファチャンネルを結合する前 (Multichannel)<br />
+            </div>
+
+            <p>３つのアルファ・チャンネル作成後、チャンネル・ウインドウで「赤(R)」、「緑(G)」、「青(B)」のチャンネルを削除します。（自動的に「RGB」という結合チャンネルも削除されます）</p>
+
+            <p>その後、「イメージ(Image)」メニューの「モード(Mode)」を「RGB Color」にすると、自動的にチャンネルが結合され通常の画像となります。</p>
+
+            <div class="clear"></div>
+            <div class="photo_right">
+                <img src="./pics/nega-alpha-rgb.jpg" width="384" height="259" alt=" " /><br />
+                <br /><br />
+                アルファチャンネル結合後 (RGB Color)<br />
+            </div>
+
+            <h3>色の調整</h3>
+
+            <p>ＲＧＢそれぞれの色を調整します。</p>
+
+            <p>まず、「イメージ(Image)」メニューの「調整(Adjust)」の「レベル補正(Level)」で、可視領域の一部分に偏って格納されているデータを、全体的になるように調整します。<br />
+                具体的には、「チャンネル(Channel)」のＲ，Ｇ，Ｂそれぞれのヒストグラムを表示し、ヒストグラム値の「存在する」領域に入力ルーラー（黒三角や白三角のやつ）を持ってゆきます。</p>
+
+            <p><img src="./pics/nega-level1.gif" width="405" height="280" alt=" " /></p>
+
+            <p>この結果、それなりの色の画像が出来上がります。が、かなり明るいです。（明るすぎます）<br />
+                さらに、レベル調整で暗くしてみます。（下のように設定します）</p>
+
+            <p><img src="./pics/nega-level2.gif" width="405" height="280" alt=" " /></p>
+
+            <p>レベル調整の段階ごとの画像。</p>
+
+            <p>最終的には、「汎用ドライバ vuescan」での取り込み結果とほぼ同レベルの結果が得られる。</p>
+
+            <div class="clear"></div>
+            <div class="photo_left">
+                <img src="./pics/nega-level1.jpg" width="384" height="259" alt=" " /><br />
+                <br /><br />
+                RGBの調整<br />
+            </div>
+
+            <div class="clear"></div>
+            <div class="photo_left">
+                <img src="./pics/nega-level2.jpg" width="384" height="259" alt=" " /><br />
+                <br /><br />
+                明るすぎるので、少し暗くしてみる<br />
+            </div>
+            <div class="clear"></div>
+
+            <div class="clear"></div>
+            <div class="photo_left">
+                <img src="./pics/nega-level3.jpg" width="384" height="259" alt=" " /><br />
+                <br /><br />
+                レベル調整で、Rを少し調整。一応完成<br />
+            </div>
+
+            <div class="clear"></div>
+            <div class="photo_left">
+                <img src="./pics/grk2-vue.jpg" width="384" height="257" alt=" " /><br />
+                <br /><br />
+                【比較用】汎用ドライバ vuescan の取り込み結果<br />
+            </div>
+            <div class="clear"></div>
+
+            <h3>試行錯誤の歴史（その他のネガ反転方法）</h3>
+
+            <p>オレンジ・ベースを減算処理する方法を取る前は、</p>
+
+            <p>「イメージ(Image)」 - 「調整(Adjust)」 － 「反転(Invert)」を使って反転処理した画像をレベル調整していました。</p>
+
+            <div class="clear"></div>
+            <div class="photo_left">
+                <img src="./pics/nega-inv1.jpg" width="384" height="260" alt=" " /><br />
+                <br /><br />
+                ネガ・イメージを反転（invert) するとこの画像が得られる<br />
+            </div>
+
+            <div class="clear"></div>
+            <div class="photo_left">
+                <img src="./pics/nega-inv2.jpg" width="384" height="260" alt=" " /><br />
+                <br /><br />
+                それなりのレベル補正をするとこのようになる<br />
+            </div>
+            <div class="clear"></div>
+
+            <p>&nbsp;</p>
+            <!-- HTML本文ここまで（貼付ここまで） -->
+
+            <!-- ********* CONTENTS END AT THIS LINE ********* -->
+        </div>
+        <div id="layout_footer">
+            <div id="layout_footer_left">
+
+                <p style="text-align:left;"><a href="http://validator.w3.org/" target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/w3c-valid-xhtml10-pale.png" border="0"
+                            align="left" alt="Valid XHTML 1.0 Transitional" width="88" height="31" /></a>
+                    &nbsp;Last update on 15 October 2004<br />
+                    &nbsp;Powered by GitHub Pages<br clear="all" />
+                </p>
+            </div>
+
+            <div id="layout_footer_right">
+
+                <p style="text-align:right;"><a href="http://creativecommons.org/licenses/by-nc-nd/2.1/jp/"
+                        target="_self"><img
+                            src="https://oasis3855.github.io/webpage/pics/creativecommons-by-nc-nd-pale.png" border="0"
+                            align="right" alt="Creative Commons Licence : Attribution-Noncommercial-No Derivative Works"
+                            width="88" height="31" /></a>
+                    <a href="/about/index.html" target="_self">Copyright (C) INOUE Hirokazu.</a>&nbsp;<br />For
+                    <i>commercial usage</i> ? See detail at <a href="/about/index.html"
+                        target="_self">HERE</a>.&nbsp;<br clear="all" />
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

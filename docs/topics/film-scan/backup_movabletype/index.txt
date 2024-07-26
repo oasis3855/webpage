@@ -1,0 +1,29 @@
+<h1>フィルムスキャナ考察 ： ネガ フィルム取り込み</h1>
+
+
+<div class="link_right"><a class="link_return" href="http://oasis.halfmoon.jp/mw/index.php?title=PcInfo-Programming-ServerMaintenance-Menu">一つ前のメニューに戻る</a></div>
+
+<span style="background-color:yellow;">注意：このページは最終更新が2002年04月で、現在では利用できない情報の可能性があります。</span>
+
+<div class="fig_right">
+<img src="img-dimage.jpg" width="250" height="230" alt="MINOLTA DIMAGE SCAN DUAL II" title="MINOLTA DIMAGE SCAN DUAL II" />
+</div>
+
+安価なフィルム スキャナ MINOLTA DIMAGE SCAN DUAL II を使ってネガ フィルムを取り込みます。この機種は、「ホコリ取り機能がない」とか、「色再現性がおかしい」とかいろいろ言われていますが、4万円程度のスキャナとしては、「仕方ないかな...」と言うところでしょうか。
+
+機器付属の標準TWAINドライバでは、ポジ（リバーサル）フィルムはそれなりの色再現性を見せてくれますが、ネガ フィルムはちょっと遠慮したいような色になります。そこで、汎用ドライバvuescanを使ってどれくらいマトモになるかも試してみました。
+
+プロ用の機材でデジタルデータ化されたPhoto CDの画像と、デジタルカメラで撮影された画像との比較も行います。
+
+結論から言えば、「ある程度はマトモになるが、ネガである以上、推測に基づく色を作っているだけ」ということを再度認識しました。「重要な写真はポジ（リバーサル）フィルムで撮る」ほうが良いかもしれません。
+
+ここでは、「標準TWAINドライバ」、「汎用ドライバ vuescan」、「PhotoCD」、「サービス版プリント」、「デジタルカメラ」で比較しています。
+
+<h3>実験結果</h3>
+
+<ul>
+<li><a href="http://oasis.halfmoon.jp/other/film-scan/scan-1.html">ネガの取り込み その１</a></li>
+<li><a href="http://oasis.halfmoon.jp/other/film-scan/scan-2.html">ネガの取り込み その２</a></li>
+<li><a href="http://oasis.halfmoon.jp/other/film-scan/manual-negative.html">手動で反転処理</a></li>
+<li><a href="http://oasis.halfmoon.jp/other/film-scan/spec.html">フィルムスキャナの設定</a></li>
+</ul>

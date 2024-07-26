@@ -1,0 +1,82 @@
+<h1>フィルムスキャナ考察 ： ネガフィルム取り込み（その１）</h1>
+
+<div class="link_right"><a class="link_return" href="http://oasis.halfmoon.jp/other/film-scan/index.html">一つ前のメニューに戻る</a></div>
+
+<span style="background-color:yellow;">注意：このページは最終更新が2002年04月で、現在では利用できない情報の可能性があります。</span>
+
+<h2>晴天日の景色取り込み（石垣造りの城壁）</h2>
+
+ギリシアのロドス島旧市街のセント・アタナシウス門の写真です。利用したフィルムはKODAK GOLD 400（ネガ フィルム）。
+
+基準となるスキャン結果をPhotoCDにしたいのですが、読み取るソフトや設定でまったく違う色になります。
+ここでは、PhotoshopでNegativeモードにして取り込んだ画像が「最も忠実な色再現をしている」と考えることとします（私自身も、あの場所ではそういう色だったと思うため）。
+
+フィルムから取り込んだものは、汎用ドライバ「vuescan」のものが最もよい結果なのではないでしょうか。できることなら、WhitePointをさらに0.1程度下げるか、Brightnessをさらに0.1ほど下げたほうが、ぎらつきがなくなると思います（個人的には、WhitePointをさらに0.1下げるのがよいと思う）。
+
+空の部分のクローズアップを見ると、フィルム スキャナでの取り込み結果とPhotoCDの間で、ずいぶん粒状感が違うなと思います。やはり、プロ機材で取り込んだPhotoCDに軍配が上がりますね。（Dimage Scan Dual II でマルチパスのスキャンを行うと、うまくいかない）
+
+<img border="0" src="grk1-min.jpg" width="384" height="260" alt="" /> <img border="0" src="grk1-min-up.jpg" width="384" height="256" alt="" />
+Dimage Scan Dual II 純正TWAINドライバ（スキャン毎AF, sRGB, 2820dpi）
+
+
+<img border="0" src="grk1-vue.jpg" width="384" height="259" alt="" /> <img border="0" src="grk1-vue-up.jpg" width="384" height="256" alt="" />
+vuescan（24bit BlackPoint=3, WhitePoint=0.4, Bright=0.6, Kodak Gold 400G1, sRGB, 2820dpi）
+
+
+<img border="0" src="grk1-pcd.jpg" width="384" height="256" alt="" /> <img border="0" src="grk1-pcd-up.jpg" width="384" height="256" alt="" />
+PhotoCD (Paint Shop Proで読み込み)
+
+
+<img border="0" src="grk1-pcd-pneg.jpg" width="384" height="256" alt="" /> <img border="0" src="grk1-pcd-pneg-up.jpg" width="384" height="256" alt="" />
+PhotoCD (Photoshopで読み込み。Negativeモード)
+
+
+<img border="0" src="grk1-pcd-pycc.jpg" width="384" height="256" alt="" /> <img border="0" src="grk1-pcd-pycc-up.jpg" width="384" height="256" alt="" />
+PhotoCD (Photoshopで読み込み。Photo YCCモード)
+
+<h2>晴天日の景色取り込み（青空と海、白い家）</h2>
+
+ギリシアのロドス島リンドスの景色です。
+
+これも、PhotoCDがオリジナルの色に近いとすれば、やはり、vuescan がマトモにスキャンできているのではないでしょうか。「石垣造りの城壁」のスキャン結果の経験を踏まえ、WhitePoint = 0.3 としています。
+
+クローズアップ写真を見て分かることは、「純正TWAINドライバ」では右の扉にあるスリットがぼんやりしてますが、「汎用ドライバ vuescan」ではスリットがちゃんと分解されて表示されています。同じスキャナを使っていて、これだけ差が出るのは不思議です。vuescanがシャープネス処理やアン・シャープマスクを「こそっと」かけているのかと疑ってみました。が、一番下につけておいたRAWデータでもちゃんと表示されているところを見ると、「純正TWAINドライバ」が、粒状感を減らすために「こそっと」ソフトネス・フィルタをかけていることが分かります。
+
+「汎用ドライバ vuescan」のクローズアップの船のところに、「ホコリ」がのっています。安物スキャナはホコリ取りのための赤外線モードを持っていないので、せっせと手で取らないといけません。
+
+<img border="0" src="grk2-min.jpg" width="384" height="257" alt="" /> <img border="0" src="grk2-min-up.jpg" width="384" height="256" alt="" />
+Dimage Scan Dual II 純正TWAINドライバ（スキャン毎AF, sRGB, 2820dpi）
+
+
+<img border="0" src="grk2-vue.jpg" width="384" height="257" alt="" /> <img border="0" src="grk2-vue-up.jpg" width="384" height="256" alt="" />
+vuescan（24bit BlackPoint=3, WhitePoint=0.3, Bright=0.6, Kodak Gold 400G1, sRGB, 2820dpi）
+
+
+<img border="0" src="grk2-pcd.jpg" width="384" height="256" alt="" /> <img border="0" src="grk2-pcd-up.jpg" width="384" height="256" alt="" />
+PhotoCD (Photoshopで読み込み。Negativeモード)
+
+<img border="0" src="grk2-vue-raw.jpg" width="135" height="279" alt="" />
+vuescan 扉の部分のRAWデータ
+
+<h2>晴天日の景色取り込み（日陰のある景色）</h2>
+
+ギリシアのロドス島旧市街の路地写真です。
+
+３種類がほとんど同じに見えます。取り込みやすい画像なのでしょうか。
+
+その中で、「純正TWAINドライバ」の左側に茂っている葉っぱの色が、「プラスチックの模造品」のようになっているので、やはりおかしいですね。
+
+クローズアップでは、ハイライト部分とシャドウ部分の両方を切り取ってきましたが、どのスキャン結果でもまあまあ取り込めているのではないでしょうか。クローズアップの右側では、PhotoCDが他を凌いでいると見えますね。
+
+<img border="0" src="grk3-min.jpg" width="256" height="383" alt="" /> <img border="0" src="grk3-vue-up.jpg" width="384" height="256" alt="" />
+Dimage Scan Dual II 純正TWAINドライバ（スキャン毎AF, sRGB, 2820dpi）
+
+
+<img border="0" src="grk3-vue.jpg" width="257" height="378" alt="" /> <img border="0" src="grk3-vue-up.jpg" width="384" height="256" alt="" />
+vuescan（24bit BlackPoint=3, WhitePoint=0.3, Bright=0.6, Kodak Gold 400G1, sRGB, 2820dpi）
+
+
+<img border="0" src="grk3-pcd.jpg" width="256" height="384" alt="" /> <img border="0" src="grk3-pcd-up.jpg" width="384" height="256" alt="" />
+PhotoCD (Photoshopで読み込み。Negativeモード)
+
+<div class="link_right"><a class="link_return" href="http://oasis.halfmoon.jp/other/film-scan/index.html">一つ前のメニューに戻る</a></div>

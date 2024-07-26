@@ -1,0 +1,124 @@
+<h1>フィルムスキャナ考察 ： スキャナドライバの設定</h1>
+
+<div class="link_right"><a class="link_return" href="http://oasis.halfmoon.jp/other/film-scan/index.html">一つ前のメニューに戻る</a></div>
+
+<span style="background-color:yellow;">注意：このページは最終更新が2002年04月で、現在では利用できない情報の可能性があります。</span>
+
+<h4>MINOLTA Dimage Scan Dual IIの概略仕様</h4>
+
+<table>
+    <tr>
+        <td>型式</td>
+        <td>Dimage Scan Dual II,  AF-2820U</td>
+    </tr>
+    <tr>
+        <td>取り込みメディア</td>
+        <td>35mmスリーブ, 35mmリバーサル用マウント, APS<br />
+            スリーブは連続8枚長、マウントは４枚装填可</td>
+    </tr>
+    <tr>
+        <td>光学解像度と取り込みサイズ</td>
+        <td>2820 dpi, 2688 × 4032 ピクセル （35mmフィルムの場合）</td>
+    </tr>
+    <tr>
+        <td>入力</td>
+        <td>12 bit</td>
+    </tr>
+    <tr>
+        <td>出力</td>
+        <td>8 bit または 16 bit</td>
+    </tr>
+    <tr>
+        <td>イメージ・センサー</td>
+        <td>CCD (RGB 3ライン カラーCCD)</td>
+    </tr>
+    <tr>
+        <td>光源</td>
+        <td>３波長蛍光管</td>
+    </tr>
+    <tr>
+        <td>インターフェース</td>
+        <td>USB 1.1</td>
+    </tr>
+    <tr>
+        <td>ホコリ取り機能</td>
+        <td>なし</td>
+    </tr>
+</table>
+
+写真1枚あたりの取り込み時間比較
+
+<ul>
+<li>純正TWAINドライバ：約5分15秒「オートフォーカス → 露出調整 → 本スキャン」</li>
+<li>vuescan：約3分5秒「プレビュー → オートフォーカス → 本スキャン → TIFF or RAW保存」</li>
+</ul>
+
+<h2>純正TWAINドライバ</h2>
+
+スキャナに付属しているMINOLTAの標準ドライバです。画像ソフトからTWAINデータ ソースとして画像をキャプチャ出来ます。ネガの取り込みは「露出アンダー」に出やすいため、レベル調整などが必要かもしれません。
+
+<h4>画像取り込みダイアログ</h4>
+
+<ul>
+<li>ネガ/ポジ設定はこのダイアログを閉じるとリセットされるため、毎回確認が必要</li>
+<li>解像度をコマごとで変えてスキャンした後、次回の取り込み時に解像度設定が残ったままになっているので確認が必要</li>
+</ul>
+
+<img border="0" src="min-1.gif" width="620" height="460" alt="" />
+
+<h4>環境設定</h4>
+
+<ul>
+<li>画像取り込みダイアログを閉じるとリセットされるため、毎回設定しなおす必要がある</li>
+</ul>
+
+<img border="0" src="min-2.gif" width="410" height="381" alt="" />
+
+<h2>vuescan</h2>
+
+汎用ドライバ（シェアウエア）。純正TWAINドライバに比べて設定できる項目が多い。
+
+基本的には前回（終了時）の設定が引き継がれていますが、ディスク モードやスキャナ モードの違い、スキャナ機種を変更したりすると設定が変わっていることもあるので、毎回全ての設定をチェックするか、設定ファイルを読み込む。
+
+<h4>Device設定</h4>
+
+<ul>
+<li>Scan From は スキャナ名またはファイルから読込(RAW)を指定</li>
+<li>Scan Mode が Film , Slide など適切に選択されているか</li>
+<li>Media Type が ネガ/ポジ選択されているか</li>
+<li>Batch Scan には スキャンしたいコマをスペースで区切って指定</li>
+<li>Scan Resolution は 意図した解像度か</li>
+<li>Auto Focus は これでよいか</li>
+</ul>
+
+<img border="0" src="vue-1.gif" width="338" height="587" alt="" />
+
+<h4>Crop設定</h4>
+
+<ul>
+<li>Size, Region は Auto なのか 手動なのか （通常はAutoで問題なし）</li>
+</ul>
+
+<img border="0" src="vue-2.gif" width="336" height="302" alt="" />
+
+<h4>Color設定</h4>
+
+<ul>
+<li>Color Balance は White Balance でよいか。蛍光灯下ではFluorescent(蛍光灯)にする</li>
+<li>Black Pointは標準的には3だが、これでよいか。vuescanデフォルトは 1.5</li>
+<li>White Piointは標準的には0.4だが、これでよいか。vuescanデフォルトは 1.0</li>
+<li>Brightnessは得たい画像の明るさにあわせる。標準的には 0.6～0.8</li>
+<li>フィルムの設定は、これであっているか？ エマルジョンによって違ってくるので Gen *** は試行錯誤であわせる</li>
+</ul>
+
+<img border="0" src="vue-3.gif" width="336" height="419" alt="" />
+
+<h4>File設定</h4>
+
+<ul>
+<li>TIFFとRAWのファイルを書き出すだけでよいか。圧縮はするのか</li>
+</ul>
+
+<img border="0" src="vue-4.gif" width="336" height="524" alt="" />
+
+<div class="link_right"><a class="link_return" href="http://oasis.halfmoon.jp/other/film-scan/index.html">一つ前のメニューに戻る</a></div>
