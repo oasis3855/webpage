@@ -23,9 +23,10 @@
 #### 文書スキャン・PDFファイルを扱うソフトウエア
 
 - **『[電子書籍 自炊で行こう](https://github.com/oasis3855/linux-bookscan-jpg2pdf)』**（目次ページ）
-- [デスクトップ全画面表示した書籍を 左右キーで自動ページ送りして連続キャプチャ（Linux）](https://github.com/oasis3855/linux-bookscan-jpg2pdf/tree/main/capture-desktopimage) (2019/10/13)
-- [jpeg画像ファイル二分割・画質調整 for 書籍スキャン（Linux）](https://github.com/oasis3855/linux-bookscan-jpg2pdf/tree/main/image-divider) (2019/10/13)
-- [複数のjpegファイルを結合しpdfファイルを作成する for 書籍スキャン（Linux）](https://github.com/oasis3855/linux-bookscan-jpg2pdf/tree/main/jpg2pdf) (2019/10/13)
+    - [デスクトップ全画面表示した書籍を 左右キーで自動ページ送りして連続キャプチャ（Linux）](https://github.com/oasis3855/linux-bookscan-jpg2pdf/tree/main/capture-desktopimage) (2019/10/13)
+    - [jpeg画像ファイル二分割・画質調整 for 書籍スキャン（Linux）](https://github.com/oasis3855/linux-bookscan-jpg2pdf/tree/main/image-divider) (2019/10/13)
+    - [複数のjpegファイルを結合しpdfファイルを作成する for 書籍スキャン（Linux）](https://github.com/oasis3855/linux-bookscan-jpg2pdf/tree/main/jpg2pdf) (2019/10/13)
+    - [PDFファイルを扱う単機能ツール類（Linux）](https://github.com/oasis3855/linux-bookscan-jpg2pdf/tree/main/pdf-misc-tools) (2010/?/?)
 - [PDFファイルを扱うWindowsバッチファイル](https://github.com/oasis3855/win-scripts/tree/main/batchfile_pdftool) (2022/03/21)
 
 <br />
@@ -35,6 +36,11 @@
 
 - [BMP280,DHT11の温湿度計測値をアップロード、ブラウザ表示(Perlスクリプト)](https://github.com/oasis3855/linux-weblogger/tree/main/web-loggraph) (2018/05/12)
 - [Raspberry Pi用I2C汎用ライブラリ](https://github.com/oasis3855/rpi-i2c) (2018/11/20)
+  - 温度湿度系センサー : BMP280, BMP085, BMP280, DHT12, LM75A
+  - 電流電圧センサー : INA219
+  - 環境光センサー : TSL2561
+  - メモリー : EEPROM 24LCxx
+  - LCD : SSD1306
 - [赤外線リモコンのエミュレーションのための送信回路サンプル](https://github.com/oasis3855/pic-ir-sender/)  (2024/07/15)
 
 <br />
