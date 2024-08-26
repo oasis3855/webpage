@@ -1,0 +1,19 @@
+<header style="position: fixed; right: 30px;">
+    <details class="headermenu">
+        <summary>☰<span style="font-size:0.6em;">&nbsp;MENU</span></summary>
+        <dl>
+        <dt><a href="https://oasis3855.github.io/webpage/">Home</a></dt>
+        <dt><a href="https://oasis.halfmoon.jp/traveldia/">Travels</a></dt>
+        <dt><a href="https://www.youtube.com/user/inoue0111">YouTube</a></dt>
+        <dt><a href="https://oasis-halfmoon.blogspot.com/">Blogger</a></dt>
+        <dt><a href="https://oasis.halfmoon.jp/photo/">Photo</a></dt>
+        <dt><a href="https://oasis3855.github.io/webpage/software/index.html">Software</a></dt>
+        <dt><a href="https://github.com/oasis3855?tab=repositories">GitHub</a></dt>
+        <dt><a href="https://oasis3855.github.io/webpage/links/">Links</a></dt>
+        <dt><a href="https://oasis3855.github.io/webpage/about/index.html">About</a></dt>
+        <dt><hr></dt>
+        <dt><input type="button" value="色テーマ変更" onclick="onPressButtonDarkmode()" /></dt>
+        <dt><input type="button" value="CSS変更" onclick="onPressButtonChangeCSS()" /></dt>
+        </dl>
+    </details>
+</header>

@@ -1,0 +1,59 @@
+        <div id="layout_header_menu">
+            <!-- page top menu line -->
+
+            <ul>
+                <li><a class="new_sec" href="https://oasis3855.github.io/webpage/" target="_self">Home</a>
+                <ul>
+                        <li><a class="new_sub" href="https://oasis3855.github.io/webpage/"
+                                target="_self">Home</a></li>
+                        <li><a class="new_sub_bottom" href="https://oasis3855.github.io/webpage/about/index.html"
+                                target="_self">About This Page</a></li>
+                        <li><a class="new_sub_bottom" href=""
+                                target="_self"><input type="button" value="CSS変更" onclick="onPressButtonChangeCSS()" /></a></li>
+                </ul>
+                </li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/traveldia/" target="_self">Travels</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/traveldia/"
+                                target="_self">Country List</a></li>
+                        <li><a class="new_sub" href="https://www.youtube.com/user/inoue0111"
+                                target="_self">動画(YouTube)</a></li>
+                        <li><a class="new_sub_bottom" href="https://oasis-halfmoon.blogspot.com/"
+                                target="_self">編集前旅行記(Blogger)</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="https://oasis.halfmoon.jp/photo/" target="_self">Photo</a>
+
+                    <ul>
+                        <li><a class="new_sub" href="https://oasis.halfmoon.jp/photo/" target="_self">All Page
+                                List</a></li>
+                        <li><a class="new_sub_bottom" href="https://oasis.halfmoon.jp/traveldia/"
+                                target="_self">Country List</a></li>
+                    </ul>
+                </li>
+                <li><a class="new_sec" href="https://oasis3855.github.io/webpage/software/index.html"
+                        target="_self">Software</a>
+
+                    <ul>
+                        <li><a class="new_sub"
+                                href="https://oasis3855.github.io/webpage/software/index.html"
+                                target="_self">Software Main Page</a></li>
+                        <li><a class="new_sub"
+                                href="https://oasis3855.github.io/webpage/software/software-download.html"
+                                target="_self">Software Download</a></li>
+                        <li><a class="new_sub"
+                                href="https://oasis3855.github.io/webpage/software/software_server_memo.html"
+                                target="_self">開発・PC管理 メモ帳</a></li>
+                        <li><a class="new_sub_bottom" href="https://github.com/oasis3855?tab=repositories"
+                                target="_self">GitHubリポジトリ</a></li>
+                    </ul>
+                </li>
+                <li><a class="new" href="https://oasis3855.github.io/webpage/links/index.html" target="_self">Links</a>
+                </li>
+            </ul>
+
+        </div>
+        <div id="layout_header_menu_line">
+            <!-- Horizonal Line (Menu) -->
+        </div>
