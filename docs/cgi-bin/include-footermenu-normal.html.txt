@@ -16,8 +16,8 @@
                             src="https://oasis3855.github.io/webpage/pics/creativecommons-by-nc-nd-pale.png" border="0"
                             align="right" alt="Creative Commons Licence : Attribution-Noncommercial-No Derivative Works"
                             width="88" height="31" /></a>
-                    <a href="/about/index.html" target="_self">Copyright (C) INOUE Hirokazu.</a>&nbsp;<br />For
-                    <i>commercial usage</i> ? See detail at <a href="/about/index.html"
+                    <a href="https://oasis3855.github.io/webpage/about/index.html" target="_self">Copyright (C) INOUE Hirokazu.</a>&nbsp;<br />For
+                    <i>commercial usage</i> ? See detail at <a href="https://oasis3855.github.io/webpage/about/index.html"
                         target="_self">HERE</a>.&nbsp;<br clear="all" />
                 </p>
             </div>

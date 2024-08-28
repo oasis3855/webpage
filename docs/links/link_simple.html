@@ -1,10 +1,13 @@
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja" dir="ltr">
 
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- stylesheet (normal/simple toggle from javascript) -->
+    <link rel="stylesheet" href="https://oasis3855.github.io/webpage/styles.css" type="text/css" title="normal" />
+    <link rel="stylesheet" href="https://oasis3855.github.io/webpage/styles-simple.css" type="text/css" title="simple"
+        disabled />
 
     <!-- disable viewport for mobile device -->
     <meta name="viewport"
@@ -12,29 +15,35 @@
 
     <title>Linklist for Mobile Device</title>
 
-    <style>
-        h1 {
-            font-size: inherit;
-            font-weight: inherit;
-            margin: 0;
-            background-color: #F8C47C;
-            border: 1 ridge #F8D2B4;
-            width: 100%;
-            line-height: 1.5em;
-        }
+    <!-- jQuery : common library -->
+    <script src="https://oasis3855.github.io/webpage/cgi-bin/jquery-3.7.1.min.js"></script>
 
-        p {
-            line-height: 1.0em;
+    <!-- darkmode support (only on simple css) -->
+    <script src="https://oasis3855.github.io/webpage/cgi-bin/darkmode.js"></script>
+
+    <!-- css normal/simple toggle and header footer include -->
+    <script id="javascript-init-data" type="application/json">
+        {
+        "LastEdit": "2024/07/31",
+            "BuildProg": "GitHub Pages, VS Code",
+            "__comment_css__": "normal | simple | saved-normal | saved-simple",
+            "css": "simple"
         }
-    </style>
+    </script>
+    <script src="https://oasis3855.github.io/webpage/cgi-bin/change_style.js"></script>
 
 </head>
 
 <body>
 
-    <div style="background-color: #ece1bf; width:100%; line-height:2.0em;">
+    <div id="top">
+        <div id="include-headermenu"></div>
 
-        <p style="font-size:1.2em; line-height:1.5em;">Linklist for Mobile Device : Last Update 2024/07/31</p>
+        <p><a href="https://oasis3855.github.io/webpage/">Home</a> &gt; <a href="./index.html">Links</a> &gt; this page
+        </p>
+
+        <p style="text-align: right;">Last Update <span id="lastedit-date"></span></p>
+
         <!-- ==================================== -->
 
         <h1>検索サイト</h1>
@@ -134,7 +143,7 @@
         <p>
             <a href="https://www.traders.co.jp/index.asp">トレーダーズ・ウェブ</a> | <a
                 href="https://www.traders.co.jp/market_jp/schedule_m">国内市場スケジュール</a> | <a
-                href="https://www.traders.co.jp/market_fo/schedule_m">海外市場スケジュール</a>  | <a
+                href="https://www.traders.co.jp/market_fo/schedule_m">海外市場スケジュール</a> | <a
                 href="https://www.traders.co.jp/margin_derivatives/investor_trends">投資主体別売買動向</a>
         </p>
 
@@ -372,6 +381,8 @@
             <a href="https://oasis.halfmoon.jp/">Main Page</a> | <a
                 href="https://oasis3855.github.io/webpage/links/index.html">Link List Menu Page</a>
         </p>
+        <div id="include-footermenu"></div>
+
     </div>
 
 </body>
