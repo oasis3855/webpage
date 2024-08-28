@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /webpage/
+
+Sitemap: https://oasis3855.github.io/webpage/sitemap.xml
+Sitemap: https://oasis3855.github.io/webpage/sitemap_githubrepo.xml
+
