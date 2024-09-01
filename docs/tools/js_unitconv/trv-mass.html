@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja" dir="ltr">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- stylesheet (normal/simple toggle from javascript) -->
+    <link rel="stylesheet" href="https://oasis3855.github.io/webpage/styles.css" type="text/css" title="normal" />
+    <link rel="stylesheet" href="https://oasis3855.github.io/webpage/styles-simple.css" type="text/css" title="simple"
+        disabled />
+
+    <!-- disable viewport for mobile device -->
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
+
+    <title>単位換算（質量,重さ） - Unit Conversion (Weight)</title>
+
+    <!-- jQuery : common library -->
+    <script src="https://oasis3855.github.io/webpage/cgi-bin/jquery-3.7.1.min.js"></script>
+
+    <!-- darkmode support (only on simple css) -->
+    <script src="https://oasis3855.github.io/webpage/cgi-bin/darkmode.js"></script>
+
+    <!-- css normal/simple toggle and header footer include -->
+    <script id="javascript-init-data" type="application/json">
+        {
+        "LastEdit": "2024/08/25",
+            "BuildProg": "GitHub Pages, VS Code",
+            "__comment_css__": "normal | simple | saved-normal | saved-simple",
+            "css": "simple"
+        }
+    </script>
+
+    <script src="https://oasis3855.github.io/webpage/cgi-bin/change_style.js"></script>
+
+    <!-- language highlight (https://highlightjs.org/) -->
+    <!--
+    <link rel="stylesheet"
+        href="https://oasis3855.github.io/webpage/css-language-hilight/styles/default.min.css">
+    <script src="https://oasis3855.github.io/webpage/css-language-hilight/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    -->
+    <!-- language highlight (https://highlightjs.org/) -->
+
+    <!-- jpeg popup window : lightbox -->
+    <!--
+    <script type="text/javascript"
+        src="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/jquery.mousewheel-3.0.6.pack.js"></script>
+    <script type="text/javascript"
+        src="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/jquery.fancybox.pack.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/jquery.fancybox.css" media="screen" />
+    <script type="text/javascript"
+        src="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/fancyboxOnload.js"></script>
+    -->
+    <!-- jpeg popup window : lightbox -->
+
+    <!-- unitconv javascript -->
+    <script src="./conv-func.js"></script>
+
+    <!-- unitconv javascript : initial -->
+
+    <script type="text/javascript">
+        /* ページの読込完了したら呼び出す初期化関数 */
+        window.onload = init_forms;
+        /* 初期化関数（単位変換Javascriptの実行に必須） */
+        function init_forms() {
+            //    変換フォームの初期化
+            document.forms[0].count = 8;    // number of unit types
+            document.forms[0].rsize = 9;    // Rounding size, use same as SIZE
+            document.forms[0].val1.factor = 1000;       // g
+            document.forms[0].val2.factor = 1;          // kg
+            document.forms[0].val3.factor = 1 / 1000;   // ton
+            document.forms[0].val4.factor = 1 / 0.45359237; // lb
+            document.forms[0].val5.factor = 1 / 28.349523125 * 1000;    // oz
+            document.forms[0].val6.factor = 1 / 31.1034768 / 12 * 1000;    // troy lb (precious metal)
+            document.forms[0].val7.factor = 1 / 31.1034768 * 1000;    // troy oz  (precious metal)
+            document.forms[0].val8.factor = 5 * 1000;       // ct  (precious stone)
+
+            /* darkmode.js内の window.onload が上書きされるための対策 */
+            darkmode_startup();
+        }
+    </script>
+
+</head>
+
+<body>
+    <div id="container">
+        <div id="include-headermenu"></div>
+        <div id="main_content_full">
+
+            <h1>単位換算（<a href="http://ja.wikipedia.org/wiki/%E8%B3%AA%E9%87%8F">質量,重さ</a>） - Unit Conversion (Weight)
+                [M]
+            </h1>
+
+            <p><a href="https://oasis3855.github.io/webpage/">Home</a> &gt; <a
+                    href="https://oasis3855.github.io/webpage/software/">Software</a> &gt; This page </p>
+
+            <p style="text-align: right;">Last Update <span id="lastedit-date"></span></p>
+
+            <p><a class="box-brown" href="trv-temp.html">温度</a>
+                <a class="box-brown" href="trv-length.html">長さ</a>
+                <a class="box-red" href="trv-mass.html">重さ</a>
+                <a class="box-brown" href="trv-volume.html">容積</a>
+                <a class="box-brown" href="conv-angle.html">角度</a>
+                <a class="box-brown" href="conv-revolution.html">回転速度</a>
+                <a class="box-brown" href="conv-pressure.html">圧力</a>
+                <a class="box-brown" href="conv-force.html">応力</a>
+                <a class="box-brown" href="conv-power.html">動力</a>
+                <a class="box-brown" href="conv-work.html">仕事</a>
+                <a class="box-brown" href="conv-weight.html">力</a>
+                <a class="box-white" href="index.html">ヘルプ</a>
+            </p>
+
+            <form action="">
+
+                <table class="noborder">
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>記号</td>
+                        <td>日本語</td>
+                        <td>中国語</td>
+                        <td>英語</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val1" onfocus="clearform(this.form)" /></td>
+                        <td>g</td>
+                        <td><a class="link_external"
+                                href="http://ja.wikipedia.org/wiki/%E3%82%B0%E3%83%A9%E3%83%A0">グラム</a>
+                        </td>
+                        <td>克</td>
+                        <td>Gram</td>
+                        <td>(CGS unit)</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val2" onfocus="clearform(this.form)" /></td>
+                        <td><b>kg</b></td>
+                        <td><a class="link_external"
+                                href="http://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0">キログラム</a>
+                        </td>
+                        <td>公斤<b> </b><sup>(*1)</sup></td>
+                        <td>Kilo Gram</td>
+                        <td><span style="color:red;">(SI unit)</span></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val3" onfocus="clearform(this.form)" /></td>
+                        <td>t</td>
+                        <td><a class="link_external" href="http://ja.wikipedia.org/wiki/%E3%83%88%E3%83%B3">トン</a>
+                        </td>
+                        <td>&#21544;</td>
+                        <td>Ton</td>
+                        <td>(MTS unit)</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val4" onfocus="clearform(this.form)" /></td>
+                        <td>lb</td>
+                        <td><a class="link_external"
+                                href="http://ja.wikipedia.org/wiki/%E3%83%9D%E3%83%B3%E3%83%89_%28%E8%B3%AA%E9%87%8F%29">ポンド</a>
+                        </td>
+                        <td>磅</td>
+                        <td>Pound</td>
+                        <td>(FTS unit)</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val5" onfocus="clearform(this.form)" /></td>
+                        <td>oz</td>
+                        <td><a class="link_external"
+                                href="http://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%B3%E3%82%B9">オンス</a>
+                        </td>
+                        <td>盎司, &#30414;斯</td>
+                        <td>Ounce</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val6" onfocus="clearform(this.form)" /></td>
+                        <td>Troy Pound</td>
+                        <td><a class="link_external"
+                                href="http://ja.wikipedia.org/wiki/%E3%83%88%E3%83%AD%E3%82%A4%E3%82%AA%E3%83%B3%E3%82%B9">トロイポンド
+                                (貴金属、薬）</a></td>
+                        <td>金衡制磅</td>
+                        <td>Troy Pound (precious metals, medicen)</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val7" onfocus="clearform(this.form)" /></td>
+                        <td>toz, ozt</td>
+                        <td><a class="link_external"
+                                href="http://ja.wikipedia.org/wiki/%E3%83%88%E3%83%AD%E3%82%A4%E3%82%AA%E3%83%B3%E3%82%B9">トロイオンス
+                                (貴金属、薬）</a></td>
+                        <td>金衡制盎司</td>
+                        <td>Troy Ounce (precious metals, medicen)</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val8" onfocus="clearform(this.form)" /></td>
+                        <td>ct, car</td>
+                        <td><a class="link_external"
+                                href="http://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%A9%E3%83%83%E3%83%88">カラット
+                                (宝石)</a></td>
+                        <td>克拉</td>
+                        <td>Carat (precious stone)</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+
+                <input type="button" value="換算" onclick="convertform(this.form)" />
+                <input type="button" value="リセット" onclick="resetform(this.form)" />
+            </form>
+
+            <table border="1" width="100%">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>g</td>
+                    <td><b>kg</b></td>
+                    <td>t</td>
+                    <td>lb</td>
+                    <td>oz</td>
+                    <td>Troy Pound</td>
+                    <td>ozt</td>
+                    <td>ct</td>
+                </tr>
+                <tr>
+                    <td>g</td>
+                    <td>1</td>
+                    <td>1X10<sup>-3</sup></td>
+                    <td>1X10<sup>-6</sup></td>
+                    <td>2.204X10<sup>-3</sup></td>
+                    <td>0.0352</td>
+                    <td>2.681X10<sup>-3</sup></td>
+                    <td>0.0321</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td><b>kg</b></td>
+                    <td>1X10<sup>3</sup></td>
+                    <td>1</td>
+                    <td>1X10<sup>-3</sup></td>
+                    <td>2.204</td>
+                    <td>35.27</td>
+                    <td>2.681</td>
+                    <td>32.15</td>
+                    <td>5000</td>
+                </tr>
+                <tr>
+                    <td>t</td>
+                    <td>1X10<sup>6</sup></td>
+                    <td>1X10<sup>3</sup></td>
+                    <td>1</td>
+                    <td>2204</td>
+                    <td>35270</td>
+                    <td>2681</td>
+                    <td>32150</td>
+                    <td>5X10<sup>6</sup></td>
+                </tr>
+                <tr>
+                    <td>lb</td>
+                    <td>453.6</td>
+                    <td>0.4536</td>
+                    <td>4.536X10<sup>-4</sup></td>
+                    <td>1</td>
+                    <td>16</td>
+                    <td>1.216</td>
+                    <td>14.58</td>
+                    <td>2268</td>
+                </tr>
+                <tr>
+                    <td>oz</td>
+                    <td>28.35</td>
+                    <td>0.02835</td>
+                    <td>2.835X10<sup>-5</sup></td>
+                    <td>1/16</td>
+                    <td>1</td>
+                    <td>0.076</td>
+                    <td>0.911</td>
+                    <td>141.7</td>
+                </tr>
+                <tr>
+                    <td>Troy Pound</td>
+                    <td>373</td>
+                    <td>0.373</td>
+                    <td>3.73X10<sup>-4</sup></td>
+                    <td>0.822</td>
+                    <td>13.16</td>
+                    <td>1</td>
+                    <td>12</td>
+                    <td>1865</td>
+                </tr>
+                <tr>
+                    <td>ozt</td>
+                    <td>31.1</td>
+                    <td>0.0311</td>
+                    <td>3.11X10<sup>-5</sup></td>
+                    <td>0.0685</td>
+                    <td>1.097</td>
+                    <td>1/12</td>
+                    <td>1</td>
+                    <td>155.5</td>
+                </tr>
+                <tr>
+                    <td>ct</td>
+                    <td>1/5</td>
+                    <td>2X10<sup>-4</sup></td>
+                    <td>2X10<sup>-7</sup></td>
+                    <td>4.409X10<sup>-4</sup></td>
+                    <td>7.054X10<sup>-3</sup></td>
+                    <td>5.362X10<sup>-4</sup></td>
+                    <td>6.43X10<sup>-3</sup></td>
+                    <td>1</td>
+                </tr>
+            </table>
+
+            <p>表の見方 ： （例） 1 kg は 何ポンドか？
+                「左のkgの所と上のlbのラインの交わる2.204が値となる。1kg=2.204lb｣<br />
+                10のn乗の例 ： 1 X 10<sup>-3</sup> = 1 X (1/10<sup>3</sup>) = 1 X (1/1000)
+                = 1 X 0.001</p>
+
+            <p>(*1) 中国の単位 1 斤 = 0.5 公斤 = 0.5kg</p>
+
+        </div>
+        <div id="include-footermenu"></div>
+    </div>
+</body>
+
+</html>

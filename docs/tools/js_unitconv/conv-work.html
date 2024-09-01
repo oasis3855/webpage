@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja" dir="ltr">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- stylesheet (normal/simple toggle from javascript) -->
+    <link rel="stylesheet" href="https://oasis3855.github.io/webpage/styles.css" type="text/css" title="normal" />
+    <link rel="stylesheet" href="https://oasis3855.github.io/webpage/styles-simple.css" type="text/css" title="simple"
+        disabled />
+
+    <!-- disable viewport for mobile device -->
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
+
+    <title>単位換算（エネルギー） - Unit Conversion (Energy)</title>
+
+    <!-- jQuery : common library -->
+    <script src="https://oasis3855.github.io/webpage/cgi-bin/jquery-3.7.1.min.js"></script>
+
+    <!-- darkmode support (only on simple css) -->
+    <script src="https://oasis3855.github.io/webpage/cgi-bin/darkmode.js"></script>
+
+    <!-- css normal/simple toggle and header footer include -->
+    <script id="javascript-init-data" type="application/json">
+        {
+        "LastEdit": "2024/08/25",
+            "BuildProg": "GitHub Pages, VS Code",
+            "__comment_css__": "normal | simple | saved-normal | saved-simple",
+            "css": "simple"
+        }
+    </script>
+
+    <script src="https://oasis3855.github.io/webpage/cgi-bin/change_style.js"></script>
+
+    <!-- language highlight (https://highlightjs.org/) -->
+    <!--
+    <link rel="stylesheet"
+        href="https://oasis3855.github.io/webpage/css-language-hilight/styles/default.min.css">
+    <script src="https://oasis3855.github.io/webpage/css-language-hilight/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    -->
+    <!-- language highlight (https://highlightjs.org/) -->
+
+    <!-- jpeg popup window : lightbox -->
+    <!--
+    <script type="text/javascript"
+        src="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/jquery.mousewheel-3.0.6.pack.js"></script>
+    <script type="text/javascript"
+        src="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/jquery.fancybox.pack.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/jquery.fancybox.css" media="screen" />
+    <script type="text/javascript"
+        src="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/fancyboxOnload.js"></script>
+    -->
+    <!-- jpeg popup window : lightbox -->
+
+    <!-- unitconv javascript -->
+    <script src="./conv-func.js"></script>
+
+    <!-- unitconv javascript : initial -->
+
+    <script type="text/javascript">
+        /* ページの読込完了したら呼び出す初期化関数 */
+        window.onload = init_forms;
+        /* 初期化関数（単位変換Javascriptの実行に必須） */
+        function init_forms() {
+            //    変換フォームの初期化
+            document.forms[0].count = 7;                    // 項目数
+            document.forms[0].rsize = 10;                   // 丸め桁数
+            document.forms[0].val1.factor = 1;              // J.
+            document.forms[0].val2.factor = 1 / 9.80665;    // kgf/m.
+            document.forms[0].val3.factor = 1 / 101.325;    // latm.
+            document.forms[0].val4.factor = 1 / 1055.05585262;      // Btu.
+            document.forms[0].val5.factor = 1 / 4.184;      // cal.
+            document.forms[0].val6.factor = 1 / 4.1868;     // calIT.
+            document.forms[0].val7.factor = 1 / 3.6;        //  x10-6kWh.
+
+            /* darkmode.js内の window.onload が上書きされるための対策 */
+            darkmode_startup();
+        }
+    </script>
+
+</head>
+
+<body>
+    <div id="container">
+        <div id="include-headermenu"></div>
+        <div id="main_content_full">
+
+            <h1>単位換算（<a href="http://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%8D%E3%83%AB%E3%82%AE%E3%83%BC">エネルギー</a>）
+                -
+                Unit Conversion (Energy) [ML<sup>2</sup>T<sup>-2</sup>]</h1>
+
+            <p><a href="https://oasis3855.github.io/webpage/">Home</a> &gt; <a
+                    href="https://oasis3855.github.io/webpage/software/">Software</a> &gt; This page </p>
+
+            <p style="text-align: right;">Last Update <span id="lastedit-date"></span></p>
+
+            <p><a class="box-brown" href="trv-temp.html">温度</a>
+                <a class="box-brown" href="trv-length.html">長さ</a>
+                <a class="box-brown" href="trv-mass.html">重さ</a>
+                <a class="box-brown" href="trv-volume.html">容積</a>
+                <a class="box-brown" href="conv-angle.html">角度</a>
+                <a class="box-brown" href="conv-revolution.html">回転速度</a>
+                <a class="box-brown" href="conv-pressure.html">圧力</a>
+                <a class="box-brown" href="conv-force.html">応力</a>
+                <a class="box-brown" href="conv-power.html">動力</a>
+                <a class="box-red" href="conv-work.html">仕事</a>
+                <a class="box-brown" href="conv-weight.html">力</a>
+                <a class="box-white" href="index.html">ヘルプ</a>
+            </p>
+
+            <form action="">
+
+                <table class="noborder">
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>記号</td>
+                        <td>日本語</td>
+                        <td>中国語</td>
+                        <td>英語</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val1" onfocus="clearform(this.form)" /></td>
+                        <td><strong>J</strong> = W･s = N･m</td>
+                        <td><a class="link_external"
+                                href="http://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB">ジュール</a>
+                        </td>
+                        <td>焦耳</td>
+                        <td>Joule</td>
+                        <td><span style="color:red;">(SI unit)</span></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val2" onfocus="clearform(this.form)" /></td>
+                        <td>kgf･m</td>
+                        <td><a class="link_external"
+                                href="http://ja.wikipedia.org/wiki/%E9%87%8D%E9%87%8F%E3%82%AD%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0#.E9.87.8D.E9.87.8F.E3.82.AD.E3.83.AD.E3.82.B0.E3.83.A9.E3.83.A0.E3.83.A1.E3.83.BC.E3.83.88.E3.83.AB">重量キログラムメートル</a>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val3" onfocus="clearform(this.form)" /></td>
+                        <td>ﾘｯﾄﾙ･atm</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val4" onfocus="clearform(this.form)" /></td>
+                        <td>Btu</td>
+                        <td><a class="link_external"
+                                href="http://ja.wikipedia.org/wiki/%E8%8B%B1%E7%86%B1%E9%87%8F">英熱量</a>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>British Thermal unit</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val5" onfocus="clearform(this.form)" /></td>
+                        <td>cal<sub>th</sub></td>
+                        <td><a class="link_external"
+                                href="http://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%AD%E3%83%AA%E3%83%BC">熱力学カロリー</a>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>Thermochemical Calorie</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val6" onfocus="clearform(this.form)" /></td>
+                        <td>cal<sub>IT</sub></td>
+                        <td><a class="link_external"
+                                href="http://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%AD%E3%83%AA%E3%83%BC">国際蒸気表カロリー</a>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>Calorie</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val7" onfocus="clearform(this.form)" /></td>
+                        <td>x10<sup>-6</sup>kW･h</td>
+                        <td>キロワット時</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+                <input type="button" value="換算" onclick="convertform(this.form)" />
+                <input type="button" value="リセット" onclick="resetform(this.form)" />
+            </form>
+
+            <table width="100%">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><strong>J</strong></td>
+                    <td>kgf・m</td>
+                    <td>ﾘｯﾄﾙ・atm</td>
+                    <td>Btu</td>
+                    <td>kcal<sub>IT</sub></td>
+                    <td>kW・h</td>
+                </tr>
+                <tr>
+                    <td><strong>J</strong></td>
+                    <td>1</td>
+                    <td>0.1020</td>
+                    <td>0.009869</td>
+                    <td>9.478×10<sup>-4</sup></td>
+                    <td>2.388×10<sup>-4</sup></td>
+                    <td>2.778×10<sup>-7</sup></td>
+                </tr>
+                <tr>
+                    <td>kgf・m</td>
+                    <td>9.807</td>
+                    <td>1</td>
+                    <td>0.09678</td>
+                    <td>0.009295</td>
+                    <td>0.002342</td>
+                    <td>2.724×10<sup>-6</sup></td>
+                </tr>
+                <tr>
+                    <td>ﾘｯﾄﾙ・atm</td>
+                    <td>101.3</td>
+                    <td>10.33</td>
+                    <td>1</td>
+                    <td>0.0960</td>
+                    <td>0.02420</td>
+                    <td>2.815×10<sup>-5</sup></td>
+                </tr>
+                <tr>
+                    <td>Btu</td>
+                    <td>1055</td>
+                    <td>107.6</td>
+                    <td>10.41</td>
+                    <td>1</td>
+                    <td>0.2520</td>
+                    <td>2.930×10<sup>-4</sup></td>
+                </tr>
+                <tr>
+                    <td>kcal<sub>IT</sub></td>
+                    <td>4187</td>
+                    <td>426.9</td>
+                    <td>41.32</td>
+                    <td>3.968</td>
+                    <td>1</td>
+                    <td>0.001163</td>
+                </tr>
+                <tr>
+                    <td>kW・h</td>
+                    <td>3.6×10<sup>6</sup></td>
+                    <td>3.671×10<sup>5</sup></td>
+                    <td>3.553×10<sup>4</sup></td>
+                    <td>3412</td>
+                    <td>859.8</td>
+                    <td>1</td>
+                </tr>
+            </table>
+
+            <p>（参考） 1 erg = 1 dyn・cm = 10<sup>7 </sup>J , 1 W・sec = 1 V・A・sec = 1 J<br />
+                熱化学カロリー ： 1 cal<sub>th</sub> = 4.1840 J , 国際カロリー ： 1 cal<sub>IT</sub> = 4.1868 J</p>
+
+        </div>
+        <div id="include-footermenu"></div>
+    </div>
+</body>
+
+</html>

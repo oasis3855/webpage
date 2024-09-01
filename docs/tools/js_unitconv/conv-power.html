@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja" dir="ltr">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- stylesheet (normal/simple toggle from javascript) -->
+    <link rel="stylesheet" href="https://oasis3855.github.io/webpage/styles.css" type="text/css" title="normal" />
+    <link rel="stylesheet" href="https://oasis3855.github.io/webpage/styles-simple.css" type="text/css" title="simple"
+        disabled />
+
+    <!-- disable viewport for mobile device -->
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
+
+    <title>単位換算（仕事率,動力） - Unit Conversion (Power)</title>
+
+    <!-- jQuery : common library -->
+    <script src="https://oasis3855.github.io/webpage/cgi-bin/jquery-3.7.1.min.js"></script>
+
+    <!-- darkmode support (only on simple css) -->
+    <script src="https://oasis3855.github.io/webpage/cgi-bin/darkmode.js"></script>
+
+    <!-- css normal/simple toggle and header footer include -->
+    <script id="javascript-init-data" type="application/json">
+        {
+        "LastEdit": "2024/08/25",
+            "BuildProg": "GitHub Pages, VS Code",
+            "__comment_css__": "normal | simple | saved-normal | saved-simple",
+            "css": "simple"
+        }
+    </script>
+
+    <script src="https://oasis3855.github.io/webpage/cgi-bin/change_style.js"></script>
+
+    <!-- language highlight (https://highlightjs.org/) -->
+    <!--
+    <link rel="stylesheet"
+        href="https://oasis3855.github.io/webpage/css-language-hilight/styles/default.min.css">
+    <script src="https://oasis3855.github.io/webpage/css-language-hilight/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    -->
+    <!-- language highlight (https://highlightjs.org/) -->
+
+    <!-- jpeg popup window : lightbox -->
+    <!--
+    <script type="text/javascript"
+        src="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/jquery.mousewheel-3.0.6.pack.js"></script>
+    <script type="text/javascript"
+        src="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/jquery.fancybox.pack.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/jquery.fancybox.css" media="screen" />
+    <script type="text/javascript"
+        src="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/fancyboxOnload.js"></script>
+    -->
+    <!-- jpeg popup window : lightbox -->
+
+    <!-- unitconv javascript -->
+    <script src="./conv-func.js"></script>
+
+    <!-- unitconv javascript : initial -->
+
+    <script type="text/javascript">
+        /* ページの読込完了したら呼び出す初期化関数 */
+        window.onload = init_forms;
+        /* 初期化関数（単位変換Javascriptの実行に必須） */
+        function init_forms() {
+            //    変換フォームの初期化
+            document.forms[0].count = 6;        // 項目数
+            document.forms[0].rsize = 10;       // 丸め桁数
+            document.forms[0].val1.factor = 1000;           // W to W.
+            document.forms[0].val2.factor = 1;              // W to kW.
+            document.forms[0].val3.factor = 1000 / 9.80665; // W to kgfm-s.
+            document.forms[0].val4.factor = 1000 / 745.7;   // W to HP.
+            document.forms[0].val5.factor = 1000 / 735.49875;   // W to PS.
+            document.forms[0].val6.factor = 1000 / 1.163;   // W to kcal.h.
+
+            /* darkmode.js内の window.onload が上書きされるための対策 */
+            darkmode_startup();
+        }
+    </script>
+
+</head>
+
+<body>
+    <div id="container">
+        <div id="include-headermenu"></div>
+        <div id="main_content_full">
+
+            <h1>単位換算（<a href="http://ja.wikipedia.org/wiki/%E4%BB%95%E4%BA%8B%E7%8E%87">仕事率,動力</a>） - Unit
+                Conversion
+                (Power) [FLT<sup>-1</sup>]</h1>
+
+            <p><a href="https://oasis3855.github.io/webpage/">Home</a> &gt; <a
+                    href="https://oasis3855.github.io/webpage/software/">Software</a> &gt; This page </p>
+
+            <p style="text-align: right;">Last Update <span id="lastedit-date"></span></p>
+
+            <p><a class="box-brown" href="trv-temp.html">温度</a>
+                <a class="box-brown" href="trv-length.html">長さ</a>
+                <a class="box-brown" href="trv-mass.html">重さ</a>
+                <a class="box-brown" href="trv-volume.html">容積</a>
+                <a class="box-brown" href="conv-angle.html">角度</a>
+                <a class="box-brown" href="conv-revolution.html">回転速度</a>
+                <a class="box-brown" href="conv-pressure.html">圧力</a>
+                <a class="box-brown" href="conv-force.html">応力</a>
+                <a class="box-red" href="conv-power.html">動力</a>
+                <a class="box-brown" href="conv-work.html">仕事</a>
+                <a class="box-brown" href="conv-weight.html">力</a>
+                <a class="box-white" href="index.html">ヘルプ</a>
+            </p>
+
+            <form action="">
+
+                <table class="noborder">
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>記号</td>
+                        <td>日本語</td>
+                        <td>中国語</td>
+                        <td>英語</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val1" onfocus="clearform(this.form)" /></td>
+                        <td><strong>W</strong>　=J/s=kg･m<sup>2</sup>/s<sup>3</sup>　</td>
+                        <td><a class="link_external"
+                                href="http://ja.wikipedia.org/wiki/%E3%83%AF%E3%83%83%E3%83%88">ワット</a>
+                        </td>
+                        <td>瓦特</td>
+                        <td>Watt</td>
+                        <td><span style="color:red;">(SI unit)</span></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val2" onfocus="clearform(this.form)" /></td>
+                        <td>kW</td>
+                        <td>キロワット</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val3" onfocus="clearform(this.form)" /></td>
+                        <td>kgf･m/s</td>
+                        <td>重量キログラムメートル毎秒</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>(MKS unit)</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val4" onfocus="clearform(this.form)" /></td>
+                        <td>HP</td>
+                        <td><a class="link_external" href="http://ja.wikipedia.org/wiki/%E9%A6%AC%E5%8A%9B">英馬力</a>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>Hydraulic Horsepower</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val5" onfocus="clearform(this.form)" /></td>
+                        <td>PS</td>
+                        <td><a class="link_external" href="http://ja.wikipedia.org/wiki/%E9%A6%AC%E5%8A%9B">仏馬力</a>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>(Horsepower)</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val6" onfocus="clearform(this.form)" /></td>
+                        <td>kcal<sub>IT</sub>/h</td>
+                        <td>キロカロリー毎時</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+                <input type="button" value="換算" onclick="convertform(this.form)" />
+                <input type="button" value="リセット" onclick="resetform(this.form)" />
+            </form>
+
+            <table border="1" width="100%">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><strong>kW</strong></td>
+                    <td>kgf・m/sec</td>
+                    <td>HP (馬力, 英馬力)</td>
+                    <td>PS (仏馬力)</td>
+                    <td>kcal<sub>IT</sub>/hour</td>
+                </tr>
+                <tr>
+                    <td><strong>kW</strong></td>
+                    <td>1</td>
+                    <td>102.0</td>
+                    <td>1.341</td>
+                    <td>1.360</td>
+                    <td>859.8</td>
+                </tr>
+                <tr>
+                    <td>kgf・m/sec</td>
+                    <td>0.009807</td>
+                    <td>1</td>
+                    <td>0.01315</td>
+                    <td>0.01333</td>
+                    <td>8.432</td>
+                </tr>
+                <tr>
+                    <td>HP (馬力, 英馬力)</td>
+                    <td>0.7457</td>
+                    <td>76.04</td>
+                    <td>1</td>
+                    <td>1.014</td>
+                    <td>641.1</td>
+                </tr>
+                <tr>
+                    <td>PS (仏馬力)</td>
+                    <td>0.7355</td>
+                    <td>75</td>
+                    <td>0.9863</td>
+                    <td>1</td>
+                    <td>632.4</td>
+                </tr>
+                <tr>
+                    <td>kcal<sub>IT</sub>/hour</td>
+                    <td>0.001163</td>
+                    <td>0.1186</td>
+                    <td>0.001559</td>
+                    <td>0.001581</td>
+                    <td>1</td>
+                </tr>
+            </table>
+
+            <p>（参考） 1 W = 1 J/sec = 1 kg・m<sup>2</sup>/sec<sup>3</sup> , 1 HP = 550 lbf・ft/sec</p>
+
+        </div>
+        <div id="include-footermenu"></div>
+    </div>
+</body>
+
+</html>

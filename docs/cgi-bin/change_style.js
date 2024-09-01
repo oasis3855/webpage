@@ -91,16 +91,16 @@ function readConfigCssSelection() {
  * normal ヘッダー、フッターをHTMLに挿入
  */
 function displayNormalHeader() {
-    $('#include-headermenu').load('/webpage/cgi-bin/include-headermenu-normal.html.txt');
-    displayFooter('/webpage/cgi-bin/include-footermenu-normal.html.txt');
+    $('#include-headermenu').load('https://oasis3855.github.io/webpage/cgi-bin/include-headermenu-normal.html.txt');
+    displayFooter('https://oasis3855.github.io/webpage/cgi-bin/include-footermenu-normal.html.txt');
 }
 
 /***
  * simple ヘッダー、フッターをHTMLに挿入
  */
 function displaySimpleHeader() {
-    $('#include-headermenu').load('/webpage/cgi-bin/include-headermenu-simple.html.txt');
-    displayFooter('/webpage/cgi-bin/include-footermenu-simple.html.txt');
+    $('#include-headermenu').load('https://oasis3855.github.io/webpage/cgi-bin/include-headermenu-simple.html.txt');
+    displayFooter('https://oasis3855.github.io/webpage/cgi-bin/include-footermenu-simple.html.txt');
 }
 
 /***

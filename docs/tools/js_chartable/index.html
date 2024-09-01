@@ -13,7 +13,7 @@
     <meta name="viewport"
         content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
 
-    <title>Travel and Software - Powered by GitHub Pages</title>
+    <title>UTF16文字コード表</title>
 
     <!-- jQuery : common library -->
     <script src="https://oasis3855.github.io/webpage/cgi-bin/jquery-3.7.1.min.js"></script>
@@ -24,12 +24,13 @@
     <!-- css normal/simple toggle and header footer include -->
     <script id="javascript-init-data" type="application/json">
         {
-        "LastEdit": "2024/09/01",
+        "LastEdit": "2024/08/15",
             "BuildProg": "GitHub Pages, VS Code",
             "__comment_css__": "normal | simple | saved-normal | saved-simple",
-            "css": "saved-normal"
+            "css": "simple"
         }
     </script>
+
     <script src="https://oasis3855.github.io/webpage/cgi-bin/change_style.js"></script>
 
     <!-- language highlight (https://highlightjs.org/) -->
@@ -54,27 +55,38 @@
     -->
     <!-- jpeg popup window : lightbox -->
 
+    <script src="./chartable.js"></script>
+
 </head>
 
 <body>
-    <div id="container">
+
+    <div id="top">
         <div id="include-headermenu"></div>
 
-        <div id="main_content_full">
-            <!-- ********* CONTENTS START FROM HERE ********* -->
+        <h1>UTF16文字コード表</h1>
 
-            <h1>HTMLファイル テンプレート</h1>
+        <p><a href="https://oasis3855.github.io/webpage/">Home</a> &gt; <a
+                href="https://oasis3855.github.io/webpage/software/">Software</a> &gt; This page </p>
 
-            <p>&nbsp;</p>
+        <p style="text-align: right;">Last Update <span id="lastedit-date"></span></p>
 
-            <p>&nbsp;</p>
+        <p><label for="text_input">開始アドレス</label>
+            <input type="text" name="" id="text_input" size="10" maxlength="5" value="0000" />
+            <input type="button" value="文字コード表を表示" onclick="onPressButtonDisplay()">
+            <input type="button" value="前ページ" onclick="onPressButtonPrev()">
+            <input type="button" value="次ページ" onclick="onPressButtonNext()">
+        </p>
 
-            <p>&nbsp;</p>
+        <p id="guide">開始アドレスは16進数4桁で入力してください。なお、下2桁は無視されます。<br />入力例 : 1200 →
+            1200〜12FFのコード表が表示されます。<br /><br />コード表に表示される各文字にマウスカーソルをポイントすると、UTF-16,UTF-8コードをポップアップ表示します。</p>
 
-            <p>&nbsp;</p>
-            <!-- ********* CONTENTS END AT THIS LINE ********* -->
-        </div>
+        <!-- javascript insert chartable at this div section -->
+        <div id="insert"></div>
+
+        <p>&nbsp;</p>
         <div id="include-footermenu"></div>
+
     </div>
 </body>
 

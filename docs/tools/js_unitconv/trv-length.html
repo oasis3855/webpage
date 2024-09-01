@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja" dir="ltr">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- stylesheet (normal/simple toggle from javascript) -->
+    <link rel="stylesheet" href="https://oasis3855.github.io/webpage/styles.css" type="text/css" title="normal" />
+    <link rel="stylesheet" href="https://oasis3855.github.io/webpage/styles-simple.css" type="text/css" title="simple"
+        disabled />
+
+    <!-- disable viewport for mobile device -->
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
+
+    <title>単位換算（長さ） - Unit Conversion (Length)</title>
+
+    <!-- jQuery : common library -->
+    <script src="https://oasis3855.github.io/webpage/cgi-bin/jquery-3.7.1.min.js"></script>
+
+    <!-- darkmode support (only on simple css) -->
+    <script src="https://oasis3855.github.io/webpage/cgi-bin/darkmode.js"></script>
+
+    <!-- css normal/simple toggle and header footer include -->
+    <script id="javascript-init-data" type="application/json">
+        {
+        "LastEdit": "2024/08/25",
+            "BuildProg": "GitHub Pages, VS Code",
+            "__comment_css__": "normal | simple | saved-normal | saved-simple",
+            "css": "simple"
+        }
+    </script>
+    <script src="https://oasis3855.github.io/webpage/cgi-bin/change_style.js"></script>
+
+    <!-- language highlight (https://highlightjs.org/) -->
+    <!--
+    <link rel="stylesheet"
+        href="https://oasis3855.github.io/webpage/css-language-hilight/styles/default.min.css">
+    <script src="https://oasis3855.github.io/webpage/css-language-hilight/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    -->
+    <!-- language highlight (https://highlightjs.org/) -->
+
+    <!-- jpeg popup window : lightbox -->
+    <!--
+    <script type="text/javascript"
+        src="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/jquery.mousewheel-3.0.6.pack.js"></script>
+    <script type="text/javascript"
+        src="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/jquery.fancybox.pack.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/jquery.fancybox.css" media="screen" />
+    <script type="text/javascript"
+        src="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/fancyboxOnload.js"></script>
+    -->
+    <!-- jpeg popup window : lightbox -->
+
+    <!-- unitconv javascript -->
+    <script src="./conv-func.js"></script>
+
+    <!-- unitconv javascript : initial -->
+
+    <script type="text/javascript">
+        /* ページの読込完了したら呼び出す初期化関数 */
+        window.onload = init_forms;
+        /* 初期化関数（単位変換Javascriptの実行に必須） */
+        function init_forms() {
+            //    変換フォームの初期化
+            document.forms[0].count = 8;  // 項目数
+            document.forms[0].rsize = 9;  // 丸め桁数
+            document.forms[0].val1.factor = 100;    // cm
+            document.forms[0].val2.factor = 1;      // m
+            document.forms[0].val3.factor = 1.0e-3; // km
+            document.forms[0].val4.factor = 1 / 0.0254;                 // in
+            document.forms[0].val5.factor = 1 / 0.0254 / 12;            // ft
+            document.forms[0].val6.factor = 1 / 0.0254 / 12 / 3;        // yd
+            document.forms[0].val7.factor = 1 / 0.0254 / 12 / 3 / 1760; // mil
+            document.forms[0].val8.factor = 1 / 1852;                   // nm
+
+            /* darkmode.js内の window.onload が上書きされるための対策 */
+            darkmode_startup();
+        }
+    </script>
+
+</head>
+
+<body>
+    <div id="container">
+        <div id="include-headermenu"></div>
+        <div id="main_content_full">
+
+            <h1>単位換算（<a href="http://ja.wikipedia.org/wiki/%E9%95%B7%E3%81%95">長さ</a>） - Unit Conversion (Length)
+                [L]</h1>
+
+            <p><a href="https://oasis3855.github.io/webpage/">Home</a> &gt; <a
+                    href="https://oasis3855.github.io/webpage/software/">Software</a> &gt; This page </p>
+
+            <p style="text-align: right;">Last Update <span id="lastedit-date"></span></p>
+
+            <p><a class="box-brown" href="trv-temp.html">温度</a>
+                <a class="box-red" href="trv-length.html">長さ</a>
+                <a class="box-brown" href="trv-mass.html">重さ</a>
+                <a class="box-brown" href="trv-volume.html">容積</a>
+                <a class="box-brown" href="conv-angle.html">角度</a>
+                <a class="box-brown" href="conv-revolution.html">回転速度</a>
+                <a class="box-brown" href="conv-pressure.html">圧力</a>
+                <a class="box-brown" href="conv-force.html">応力</a>
+                <a class="box-brown" href="conv-power.html">動力</a>
+                <a class="box-brown" href="conv-work.html">仕事</a>
+                <a class="box-brown" href="conv-weight.html">力</a>
+                <a class="box-white" href="index.html">ヘルプ</a>
+            </p>
+
+            <form action="">
+
+                <table class="noborder">
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>記号</td>
+                        <td>日本語</td>
+                        <td>（中国）</td>
+                        <td>英語</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val1" onfocus="clearform(this.form)" /></td>
+                        <td>cm</td>
+                        <td><a class="link_external"
+                                href="http://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%B3%E3%83%81%E3%83%A1%E3%83%BC%E3%83%88%E3%83%AB">センチメートル</a>
+                        </td>
+                        <td>厘米</td>
+                        <td>Centimetre</td>
+                        <td>(CGS unit)</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val2" onfocus="clearform(this.form)" /></td>
+                        <td><b>m</b></td>
+                        <td><a class="link_external"
+                                href="http://ja.wikipedia.org/wiki/%E3%83%A1%E3%83%BC%E3%83%88%E3%83%AB">メートル</a>
+                        </td>
+                        <td>米</td>
+                        <td>Meter</td>
+                        <td><span style="color:red;">(SI unit)</span></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val3" onfocus="clearform(this.form)" /></td>
+                        <td>km</td>
+                        <td><a class="link_external"
+                                href="http://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%AD%E3%83%A1%E3%83%BC%E3%83%88%E3%83%AB">キロメートル</a>
+                        </td>
+                        <td>公里, 千米</td>
+                        <td>Kilo Meter</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val4" onfocus="clearform(this.form)" /></td>
+                        <td>in</td>
+                        <td><a class="link_external"
+                                href="http://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%83%81">インチ</a>
+                        </td>
+                        <td>英寸</td>
+                        <td>Inch</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val5" onfocus="clearform(this.form)" /></td>
+                        <td>ft</td>
+                        <td><a class="link_external"
+                                href="http://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A3%E3%83%BC%E3%83%88">フィート</a>
+                        </td>
+                        <td>英尺</td>
+                        <td>Feet</td>
+                        <td>(FPS unit)</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val6" onfocus="clearform(this.form)" /></td>
+                        <td>yd</td>
+                        <td><a class="link_external"
+                                href="http://ja.wikipedia.org/wiki/%E3%83%A4%E3%83%BC%E3%83%89">ヤード</a>
+                        </td>
+                        <td>码</td>
+                        <td>Yard</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val7" onfocus="clearform(this.form)" /></td>
+                        <td>mi</td>
+                        <td><a class="link_external"
+                                href="http://ja.wikipedia.org/wiki/%E3%83%9E%E3%82%A4%E3%83%AB">マイル</a>
+                        </td>
+                        <td>英里</td>
+                        <td>Mile</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val8" onfocus="clearform(this.form)" /></td>
+                        <td>nmi, NM</td>
+                        <td><a class="link_external" href="http://ja.wikipedia.org/wiki/%E6%B5%B7%E9%87%8C">海里</a>
+                        </td>
+                        <td>海里</td>
+                        <td>Nautical Mile (metric nautical mile)</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+                <input type="button" value="換算" onclick="convertform(this.form)" />
+                <input type="button" value="リセット" onclick="resetform(this.form)" />
+            </form>
+
+            <table width="100%">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><b>m</b></td>
+                    <td>km</td>
+                    <td>in</td>
+                    <td>ft</td>
+                    <td>yd</td>
+                    <td>mi</td>
+                    <td>nmi, NM</td>
+                </tr>
+                <tr>
+                    <td><b>m</b></td>
+                    <td>1</td>
+                    <td>1X10<sup>-3</sup></td>
+                    <td>39.37</td>
+                    <td>3.28</td>
+                    <td>1.093</td>
+                    <td>6.214X10<sup>-4</sup></td>
+                    <td>5.39X10<sup>-4</sup></td>
+                </tr>
+                <tr>
+                    <td>km</td>
+                    <td>1X10<sup>3</sup></td>
+                    <td>1</td>
+                    <td>3.937X10<sup>4</sup></td>
+                    <td>3280</td>
+                    <td>1093</td>
+                    <td>0.621</td>
+                    <td>0.539</td>
+                </tr>
+                <tr>
+                    <td>in</td>
+                    <td>0.0254</td>
+                    <td>2.54X10<sup>-5</sup></td>
+                    <td>1</td>
+                    <td>1/12</td>
+                    <td>1/36</td>
+                    <td>1.58X10<sup>-5</sup></td>
+                    <td>1.37X10<sup>-5</sup></td>
+                </tr>
+                <tr>
+                    <td>ft</td>
+                    <td>0.305</td>
+                    <td>3.048X10<sup>-4</sup></td>
+                    <td>12</td>
+                    <td>1</td>
+                    <td>1/3</td>
+                    <td>1.894X10<sup>-4</sup></td>
+                    <td>1.646X10<sup>-4</sup></td>
+                </tr>
+                <tr>
+                    <td>yd</td>
+                    <td>0.914</td>
+                    <td>9.144X10<sup>-4</sup></td>
+                    <td>36</td>
+                    <td>3</td>
+                    <td>1</td>
+                    <td>5.682X10<sup>-4</sup></td>
+                    <td>4.937X10<sup>-4</sup></td>
+                </tr>
+                <tr>
+                    <td>mi</td>
+                    <td>1609</td>
+                    <td>1.609</td>
+                    <td>63360</td>
+                    <td>5280</td>
+                    <td>1760</td>
+                    <td>1</td>
+                    <td>0.869</td>
+                </tr>
+                <tr>
+                    <td>nmi, NM</td>
+                    <td>1852</td>
+                    <td>1.852</td>
+                    <td>72910</td>
+                    <td>6076</td>
+                    <td>2025</td>
+                    <td>1.151</td>
+                    <td>1</td>
+                </tr>
+            </table>
+
+            <p>表の見方 ： （例） 1 km は 何mileか？ 「左のkmの所と上のmileのラインの交わる0.621が値となる。1km=0.621mile｣<br />
+                10のn乗の例 ： 1 X 10<sup>-3</sup> = 1 X (1/10<sup>3</sup>) = 1 X (1/1000) = 1 X 0.001</p>
+
+        </div>
+        <div id="include-footermenu"></div>
+    </div>
+</body>
+
+</html>

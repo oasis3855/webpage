@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja" dir="ltr">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- stylesheet (normal/simple toggle from javascript) -->
+    <link rel="stylesheet" href="https://oasis3855.github.io/webpage/styles.css" type="text/css" title="normal" />
+    <link rel="stylesheet" href="https://oasis3855.github.io/webpage/styles-simple.css" type="text/css" title="simple"
+        disabled />
+
+    <!-- disable viewport for mobile device -->
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
+
+    <title>文字列のハッシュ、エンコード変換</title>
+
+    <!-- jQuery : common library -->
+    <script src="https://oasis3855.github.io/webpage/cgi-bin/jquery-3.7.1.min.js"></script>
+
+    <!-- darkmode support (only on simple css) -->
+    <script src="https://oasis3855.github.io/webpage/cgi-bin/darkmode.js"></script>
+
+    <!-- css normal/simple toggle and header footer include -->
+    <script id="javascript-init-data" type="application/json">
+        {
+        "LastEdit": "2024/08/13",
+            "BuildProg": "GitHub Pages, VS Code",
+            "__comment_css__": "normal | simple | saved-normal | saved-simple",
+            "css": "simple"
+        }
+    </script>
+
+    <script src="https://oasis3855.github.io/webpage/cgi-bin/change_style.js"></script>
+
+    <!-- language highlight (https://highlightjs.org/) -->
+    <!--
+    <link rel="stylesheet"
+        href="https://oasis3855.github.io/webpage/css-language-hilight/styles/default.min.css">
+    <script src="https://oasis3855.github.io/webpage/css-language-hilight/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    -->
+    <!-- language highlight (https://highlightjs.org/) -->
+
+    <!-- jpeg popup window : lightbox -->
+    <!--
+    <script type="text/javascript"
+        src="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/jquery.mousewheel-3.0.6.pack.js"></script>
+    <script type="text/javascript"
+        src="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/jquery.fancybox.pack.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/jquery.fancybox.css" media="screen" />
+    <script type="text/javascript"
+        src="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/fancyboxOnload.js"></script>
+    -->
+    <!-- jpeg popup window : lightbox -->
+
+    <script src="./string_encoder.js"></script>
+    <script src="./md5.js"></script>
+</head>
+
+<body>
+
+    <div id="top">
+        <div id="include-headermenu"></div>
+
+        <h1>文字列のハッシュ、エンコード変換</h1>
+
+        <p><a href="https://oasis3855.github.io/webpage/">Home</a> &gt; <a
+                href="https://oasis3855.github.io/webpage/software/">Software</a> &gt; This page </p>
+
+        <p style="text-align: right;">Last Update <span id="lastedit-date"></span></p>
+
+        <p><label for="text_input">入力文字列（最大100文字）</label>
+            <input type="text" name="" id="text_input" size="50" maxlength="100" />
+            <input type="button" value="変換" onclick="onPressButtonConvert()">
+        </p>
+
+        <table class="noborder">
+            <tr>
+                <td>入力文字列</td>
+                <td></td>
+                <td id="input_string"></td>
+            </tr>
+            <tr>
+                <td>文字列の長さ</td>
+                <td></td>
+                <td id="length"></td>
+            </tr>
+            <tr>
+                <td>HEX</td>
+                <td></td>
+                <td id="hex"></td>
+            </tr>
+            <tr>
+                <td>MD5</td>
+                <td><input type="checkbox" name="" id="md5" checked /></td>
+                <td id="md5"></td>
+            </tr>
+            <tr>
+                <td>SHA-1</td>
+                <td><input type="checkbox" name="" id="sha-1" checked /></td>
+                <td id="sha-1"></td>
+            </tr>
+            <tr>
+                <td>SHA-256</td>
+                <td><input type="checkbox" name="" id="sha-256" checked /></td>
+                <td id="sha-256"></td>
+            </tr>
+            <tr>
+                <td>urlencode(component)</td>
+                <td><input type="checkbox" name="" id="urlencode_component" checked /></td>
+                <td id="urlencode_component"></td>
+            </tr>
+            <tr>
+                <td>urlencode</td>
+                <td><input type="checkbox" name="" id="urlencode" checked /></td>
+                <td id="urlencode"></td>
+            </tr>
+            <tr>
+                <td>urldecode</td>
+                <td><input type="checkbox" name="" id="urldecode" /></td>
+                <td id="urldecode"></td>
+            </tr>
+            <tr>
+                <td>base64</td>
+                <td><input type="checkbox" name="" id="base64" checked /></td>
+                <td id="base64"></td>
+            </tr>
+            <tr>
+                <td>base64decode</td>
+                <td><input type="checkbox" name="" id="base64decode" /></td>
+                <td id="base64decode"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+
+        <p>&nbsp;</p>
+        <div id="include-footermenu"></div>
+
+    </div>
+</body>
+
+</html>

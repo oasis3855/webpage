@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja" dir="ltr">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- stylesheet (normal/simple toggle from javascript) -->
+    <link rel="stylesheet" href="https://oasis3855.github.io/webpage/styles.css" type="text/css" title="normal" />
+    <link rel="stylesheet" href="https://oasis3855.github.io/webpage/styles-simple.css" type="text/css" title="simple"
+        disabled />
+
+    <!-- disable viewport for mobile device -->
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=1" />
+
+    <title>単位換算（力,重量） - Unit Conversion (Force) </title>
+
+    <!-- jQuery : common library -->
+    <script src="https://oasis3855.github.io/webpage/cgi-bin/jquery-3.7.1.min.js"></script>
+
+    <!-- darkmode support (only on simple css) -->
+    <script src="https://oasis3855.github.io/webpage/cgi-bin/darkmode.js"></script>
+
+    <!-- css normal/simple toggle and header footer include -->
+    <script id="javascript-init-data" type="application/json">
+        {
+        "LastEdit": "2024/08/25",
+            "BuildProg": "GitHub Pages, VS Code",
+            "__comment_css__": "normal | simple | saved-normal | saved-simple",
+            "css": "simple"
+        }
+    </script>
+
+    <script src="https://oasis3855.github.io/webpage/cgi-bin/change_style.js"></script>
+
+    <!-- language highlight (https://highlightjs.org/) -->
+    <!--
+    <link rel="stylesheet"
+        href="https://oasis3855.github.io/webpage/css-language-hilight/styles/default.min.css">
+    <script src="https://oasis3855.github.io/webpage/css-language-hilight/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    -->
+    <!-- language highlight (https://highlightjs.org/) -->
+
+    <!-- jpeg popup window : lightbox -->
+    <!--
+    <script type="text/javascript"
+        src="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/jquery.mousewheel-3.0.6.pack.js"></script>
+    <script type="text/javascript"
+        src="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/jquery.fancybox.pack.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/jquery.fancybox.css" media="screen" />
+    <script type="text/javascript"
+        src="https://oasis3855.github.io/webpage/cgi-bin/fancybox-2.1.5/fancyboxOnload.js"></script>
+    -->
+    <!-- jpeg popup window : lightbox -->
+
+    <!-- unitconv javascript -->
+    <script src="./conv-func.js"></script>
+
+    <!-- unitconv javascript : initial -->
+
+    <script type="text/javascript">
+        /* ページの読込完了したら呼び出す初期化関数 */
+        window.onload = init_forms;
+        /* 初期化関数（単位変換Javascriptの実行に必須） */
+        function init_forms() {
+            //    変換フォームの初期化
+            document.forms[0].count = 3;    // number of unit types
+            document.forms[0].rsize = 10;   // Rounding size, use same as SIZE
+            document.forms[0].val1.factor = 1 / 9.80665;        // kgf
+            document.forms[0].val2.factor = 1 / 4.448221615;    // lbf.
+            document.forms[0].val3.factor = 1;                  // N.
+
+            /* darkmode.js内の window.onload が上書きされるための対策 */
+            darkmode_startup();
+        }
+    </script>
+
+</head>
+
+<body>
+    <div id="container">
+        <div id="include-headermenu"></div>
+        <div id="main_content_full">
+
+            <h1>単位換算（<a href="http://ja.wikipedia.org/wiki/%E5%8A%9B">力,重量</a>） - Unit Conversion (Force)
+                [MLT<sup>-2</sup>]</h1>
+
+            <p><a href="https://oasis3855.github.io/webpage/">Home</a> &gt; <a
+                    href="https://oasis3855.github.io/webpage/software/">Software</a> &gt; This page </p>
+
+            <p style="text-align: right;">Last Update <span id="lastedit-date"></span></p>
+
+            <p><a class="box-brown" href="trv-temp.html">温度</a>
+                <a class="box-brown" href="trv-length.html">長さ</a>
+                <a class="box-brown" href="trv-mass.html">重さ</a>
+                <a class="box-brown" href="trv-volume.html">容積</a>
+                <a class="box-brown" href="conv-angle.html">角度</a>
+                <a class="box-brown" href="conv-revolution.html">回転速度</a>
+                <a class="box-brown" href="conv-pressure.html">圧力</a>
+                <a class="box-brown" href="conv-force.html">応力</a>
+                <a class="box-brown" href="conv-power.html">動力</a>
+                <a class="box-brown" href="conv-work.html">仕事</a>
+                <a class="box-red" href="conv-weight.html">力</a>
+                <a class="box-white" href="index.html">ヘルプ</a>
+            </p>
+
+            <form action="">
+
+                <table class="noborder">
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>記号</td>
+                        <td>日本語</td>
+                        <td>中国語</td>
+                        <td>英語</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val1" onfocus="clearform(this.form)" /></td>
+                        <td>kgf, kgw</td>
+                        <td><a class="link_external"
+                                href="http://ja.wikipedia.org/wiki/%E9%87%8D%E9%87%8F%E3%82%AD%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0">重量キログラム,
+                                キログラム重</a></td>
+                        <td>千克力</td>
+                        <td>Kilogram-force</td>
+                        <td>(MKS unit)</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val2" onfocus="clearform(this.form)" /></td>
+                        <td>lbf</td>
+                        <td><a class="link_external"
+                                href="http://ja.wikipedia.org/wiki/%E9%87%8D%E9%87%8F%E3%83%9D%E3%83%B3%E3%83%89">重量ポンド</a>
+                        </td>
+                        <td>磅力</td>
+                        <td>Pound-force</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" size="10" name="val3" onfocus="clearform(this.form)" /></td>
+                        <td><strong>N</strong> = m･kg/s<sup>2</sup> </td>
+                        <td>ニュートン</td>
+                        <td>牛頓</td>
+                        <td>Newton</td>
+                        <td><span style="color:red;">(SI unit)</span></td>
+                    </tr>
+                </table>
+                <input type="button" value="換算" onclick="convertform(this.form)" />
+                <input type="button" value="リセット" onclick="resetform(this.form)" />
+            </form>
+
+            <table width="100%">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>kgf</td>
+                    <td>lbf</td>
+                    <td><strong>N</strong></td>
+                </tr>
+                <tr>
+                    <td>kgf</td>
+                    <td>1</td>
+                    <td>2.205</td>
+                    <td>9.807</td>
+                </tr>
+                <tr>
+                    <td>lbf</td>
+                    <td>0.4536</td>
+                    <td>1</td>
+                    <td>4.4482</td>
+                </tr>
+                <tr>
+                    <td><strong>N</strong></td>
+                    <td>0.1020</td>
+                    <td>0.2248</td>
+                    <td>1</td>
+                </tr>
+            </table>
+
+        </div>
+        <div id="include-footermenu"></div>
+    </div>
+</body>
+
+</html>
