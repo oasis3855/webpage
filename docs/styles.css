@@ -1169,11 +1169,11 @@ li {
 /********** ソースコード **********/
 pre, div.code {
     font-family: monospace;
-    line-height: 1.2em;
+    /*line-height: 1.2em;*/
     padding: 5px;
     margin: 0px 0px 5px 20px;
-    border: 1px solid #cc9966;
-    background-color: #f8ede2;
+    border: 1px solid #aaa;
+    background-color: #ddd;
     overflow-x: scroll;
     white-space: pre;
     width: 700px;
@@ -1185,8 +1185,8 @@ pre.title, div.codetitle, blockquote.title, div.topictitle {
     margin: 5px 0px 0px 20px;
     border-width: 1px 1px 0px 1px;
     border-style: solid;
-    border-color: #cc9966;
-    background-color: #f8ede2;
+    border-color: #aaa;
+    background-color: #ddd;
     white-space: pre;
     width: 700px;
 }
@@ -1195,13 +1195,13 @@ code {
     font-family: monospace;
     padding-left: 5px;
     padding-right: 5px;
-    background-color: #f8ede2 !important;
+    background-color: #ddd !important;
     white-space: pre-wrap;
 }
 
 /* language highlight (https://highlightjs.org/)  selector */
 code:not([class^="language"]) {
-    border: 1px dashed #cc9966;
+    /* border: 1px dashed #cc9966; */
 }
 
 code[class^="language"] {
