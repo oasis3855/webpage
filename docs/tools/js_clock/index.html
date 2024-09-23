@@ -21,6 +21,7 @@
     <!-- Google Fonts (web font)-->
     <link id="font-link" rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+
 </head>
 
 <body>
@@ -71,9 +72,15 @@
                         <option value="Tourney">Tourney</option>
                         <option value="Bungee Hairline">Bungee Hairline</option>
                     </select></dt>
+                <hr>
+                <dt><input type="checkbox" name="avoid_sleep" id="avoid_sleep" checked /><label
+                        for="avoid_sleep">スリープ抑止</label></dt>
         </details>
     </header>
     <!-- Dropdown Menu (end) -->
+    <!-- スリープ抑止javascript（「スリープ抑止」checkboxより後に読み込む）-->
+    <script src="avoid_sleep.js"></script>
+
 </body>
 
 </html>

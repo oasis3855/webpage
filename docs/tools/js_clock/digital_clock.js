@@ -9,6 +9,7 @@
  * of the GNU General Public License version 3.0 or later.
  * 
  * Version 1.0 (2024/09/21)
+ * Version 1.1 (2024/09/23) - スリープ抑止
  */
 
 let fontSizeBase = 1.0;
