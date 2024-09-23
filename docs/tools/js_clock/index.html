@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<!--
+    クライアントWebブラウザで、デジタル時計を表示するJavaScript
+    Copyright (C) 2024 Hirokazu INOUE
+    This program is free software.
+    You can redistribute it and/or modify it under the terms 
+    of GNU General Public License version 3.0 or later.
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScrippt 時計</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- darkmode support (only on simple css) -->
+    <script src="https://oasis3855.github.io/webpage/cgi-bin/darkmode.js"></script>
+
+    <!-- Google Fonts (web font)-->
+    <link id="font-link" rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+</head>
+
+<body>
+
+    <!-- Digital Clock -->
+    <div class="container">
+        <div id="clock_date"></div>
+        <div id="clock_time"></div>
+    </div>
+    <script src="./digital_clock.js"></script>
+
+    <!-- Dropdown Menu -->
+    <header style="position: fixed; right: 30px; top: 50px;">
+        <details class="headermenu">
+            <summary>☰<span style="font-size:0.8em;">&nbsp;MENU</span></summary>
+            <dl>
+                <dt><a href="https://oasis3855.github.io/webpage/">Home</a></dt>
+                <dt><a href="https://oasis.halfmoon.jp/traveldia/">Travels</a></dt>
+                <dt><a href="https://oasis.halfmoon.jp/photo/">Photo</a></dt>
+                <dt><a href="https://oasis3855.github.io/webpage/software/index.html">Software</a></dt>
+                <dt><a href="https://github.com/oasis3855?tab=repositories">GitHub</a></dt>
+                <dt><a href="https://oasis3855.github.io/webpage/links/">Links</a></dt>
+                <dt><a href="https://oasis3855.github.io/webpage/about/index.html">About</a></dt>
+                <dt>
+                    <hr>
+                </dt>
+                <dt><input type="button" value="色テーマ変更" onclick="onPressButtonDarkmode()" /></dt>
+                <hr>
+                <dt style="font-size:0.8em;">フォントサイズ</dt>
+                <dt><input type="button" id="font_bigger" value="△" /><input type="button" id="font_smaller"
+                        value="▽" /></dt>
+                <hr>
+                <dt><input type="button" id="font_select" value="フォント選択" /></dt>
+                <dt><select id="font_select_list">
+                        <option value="Roboto">Roboto</option>
+                        <option value="Roboto Mono">Roboto Mono</option>
+                        <option value="Space Mono">Space Mono</option>
+                        <option value="Share Tech Mono">Share Tech Mono</option>
+                        <option value="Kode Mono">Kode Mono</option>
+                        <option value="Workbench">Workbench</option>
+                        <option value="Economica">Economica</option>
+                        <option value="Oxanium">Oxanium</option>
+                        <option value="DotGothic16">DotGothic16</option>
+                        <option value="Rampart One">Rampart One</option>
+                        <option value="Gaegu">Gaegu</option>
+                        <option value="Cute Font">Cute Font</option>
+                        <option value="Londrina Outline">Londrina Outline</option>
+                        <option value="Tourney">Tourney</option>
+                        <option value="Bungee Hairline">Bungee Hairline</option>
+                    </select></dt>
+        </details>
+    </header>
+    <!-- Dropdown Menu (end) -->
+</body>
+
+</html>
