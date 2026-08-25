@@ -10,6 +10,7 @@
 #### 画像ファイルを扱うソフトウエア
 
 - 『**[画像ファイルの関連処理プログラム](https://github.com/oasis3855/image-tools/)**』 （目次ページ）
+  - [Gimpで保存したjpgファイルで改変されたExifタグを書き戻すスクリプト（Linux,Windows）](https://github.com/oasis3855/image-tools/tree/main/gimp_exif_writeback) (2026/08/23)
   - [サムネイルHTML作成スクリプト（Linux）](https://github.com/oasis3855/image-tools/tree/main/thumbnail-html) (2014/04/26)
   - [サムネイルHTML作成プログラム（Windows）](https://github.com/oasis3855/image-tools/tree/main/thumbnail-html-win) (2003/05/11)
   - [画像一括リサイズ スクリプト（Linux）](https://github.com/oasis3855/image-tools/tree/main/image-resize) (2011/07/20)
